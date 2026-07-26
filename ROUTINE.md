@@ -16,42 +16,67 @@ _Last updated: 2026-07-26_
 - **Proximity to failure:** most sets to 1–3 reps in reserve (RIR); training to true failure only trivially outperforms this and adds fatigue/injury risk — reserve failure sets for safe machine movements (leg press, leg extension/curl, pec deck) if used at all.
 - **Supersets/rest:** antagonist-paired supersets (push↔pull, biceps↔triceps) give each muscle ~60–90s of implicit rest while its partner works, preserving most of the hypertrophy benefit of longer rest while cutting session time roughly in half.
 
+## Muscle Grouping Methodology
+"Push"/"pull"/"arms" are movement categories, not muscles — each has its own recovery capacity and volume landmark, so volume gets tracked at this granularity instead:
+- **Chest, Back, Quads, Hamstrings** — standard, each with distinct landmarks
+- **Delts split into three:** front, side, and rear respond differently and need separate direct volume. Front delts are the exception — they get so much indirect work from every pressing movement (incline press, Arnold press, dips) that direct front-delt training is rarely needed and can push past their (small) recoverable volume. Side and rear delts get comparatively little indirect carryover, so they need dedicated isolation work — hence adding **lateral raise** below to cover side delt, which nothing in the original exercise list trained directly.
+- **Biceps and triceps are tracked separately**, not as one "arms" bucket — different exercises, different landmarks. Pulling movements (rows, pull-ups, pulldowns) count for ~50% synergist credit toward biceps; pressing movements (bench/incline press, dips) count ~50% toward triceps. "Pull" itself isn't tracked as a group — it resolves into Back (primary) + Biceps (secondary) + a little Rear Delt (secondary).
+- **Abs/core** — intentionally under-dosed here relative to textbook volume; ab visibility is driven far more by the 15% body-fat target than by extra crunch volume, and the back constraint argues against piling on loaded flexion work.
+
+## Volume Thresholds by Muscle Group
+Based on RP-style volume landmarks (MEV = minimum effective volume, the floor below which growth stalls; a conservative mid-MAV figure for "optimal" given concurrent Hyrox conditioning eating into recovery).
+
+| Muscle | 3-Day Floor (MEV) | Achieved, Days 1–3 | 5-Day Optimal | Achieved, Days 1–4 |
+|---|---|---|---|---|
+| Chest | 8–10 | 9 | 12–14 | 12 |
+| Back | 10–12 | 10 | 13–15 | 13 |
+| Side delt | 6–8 | 6 | 9–10 | 9 |
+| Rear delt | 6–8 | ~6.5* | 9–10 | ~9.5* |
+| Biceps | 6–8 | ~11* | 12–14 | ~11* (already there) |
+| Triceps | 6–8 | ~10.5* | 12–14 | ~10.5* (already there) |
+| Quads | 8–12 | 9 | 12–13 | 12 |
+| Hamstrings | 6–10 | ~6* | 9–10 | ~9* |
+| Abs | (secondary priority) | 3 | — | — |
+
+_*Includes ~50%/25% synergist credit from compound lifts (e.g. rows count half toward biceps), per Menno Henselmans' volume-counting method — not just the isolation exercise alone._
+
 ## Preferred Exercises
 Machine/cable-leaning selection — works well with the back constraint since these load the spine less than free-weight squats/deadlifts.
-- **Push:** incline DB press, Arnold press, weighted dips, pec deck
-- **Pull:** low cable row, weighted pull-ups, lat pulldown, reverse pec deck (rear delt)
+- **Chest:** incline DB press, weighted dips, pec deck
+- **Back:** low cable row, weighted pull-ups, lat pulldown
+- **Delts:** Arnold press (side delt), lateral raise (side delt — added to cover the gap above), reverse pec deck (rear delt)
 - **Legs:** leg press, weighted lunges (barbell/smith machine), leg extension, leg curl
-- **Arms:** DB curl, hammer curl, triceps pushdown, overhead triceps extension
+- **Arms:** DB curl, hammer curl (biceps), triceps pushdown, overhead triceps extension (triceps)
 - **Core:** crunches — ⚠️ loaded/repeated spinal flexion can aggravate a bulging disc; watch for any tweak or pain and swap to a flexion-free alternative (e.g. Pallof press, plank) if it flares up
 - **Cardio:** zone 2 runs, Norwegian 4x4 intervals (both directly Hyrox-relevant)
 
 ## Weekly Structure
 
-Flexible full-body rotation, 3–5 days/week. **Days 1–3 are the core 80/20 dose** — push, pull, legs, arms, and cardio all get covered even on a 3-day week. **Days 4–5 are additive** — extra volume and Hyrox-specific station practice, for weeks with more time. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
+Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, and quads into the optimal zone; biceps/triceps are already there from synergist credit alone, so Day 4 doesn't need extra arm work. **Day 5 is Hyrox-specific conditioning** — it doesn't add meaningfully to hypertrophy volume, but completes the 5-day week for race prep. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
 
 ### Day 1 — Full Body A
-- Superset: incline DB press 3x8–12 ↔ low cable row 3x10–12
-- Superset: leg press 3x10–15 ↔ crunches 3x15–20
-- Superset: DB curl 3x10–12 ↔ triceps pushdown 3x10–12
+- Superset: incline DB press 3x8–12 (chest) ↔ low cable row 4x10–12 (back)
+- Superset: leg press 3x10–15 (quads) ↔ crunches 3x15–20 (abs)
+- Superset: DB curl 3x10–12 (biceps) ↔ triceps pushdown 3x10–12 (triceps)
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B
-- Superset: Arnold press 3x8–12 ↔ weighted pull-ups 3x6–10
-- Superset: weighted lunges (smith machine) 3x10–12/leg ↔ reverse pec deck 3x12–15
-- Superset: hammer curl 3x10–12 ↔ overhead triceps extension 3x10–12
+- Superset: Arnold press 3x8–12 (side delt) ↔ weighted pull-ups 3x6–10 (back)
+- Superset: weighted lunges (smith machine) 3x10–12/leg (quads) ↔ reverse pec deck 4x12–15 (rear delt)
+- Superset: hammer curl 3x10–12 (biceps) ↔ overhead triceps extension 3x10–12 (triceps)
 - Cardio: Norwegian 4x4
 
 ### Day 3 — Full Body C
-- Superset: weighted dips 3x8–12 ↔ lat pulldown 3x10–12
-- Superset: leg extension 3x12–15 ↔ leg curl 3x12–15
-- Superset: pec deck 3x12–15 ↔ crunches 3x15–20 (skip/swap crunches if day 1's set felt irritating)
+- Superset: weighted dips 3x8–12 (chest) ↔ lat pulldown 3x10–12 (back)
+- Superset: leg extension 3x12–15 (quads) ↔ leg curl 5x12–15 (hamstrings)
+- Superset: pec deck 3x12–15 (chest) ↔ lateral raise 3x12–15 (side delt)
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 4 — Optional: Extra Volume
-Pushes chest/back/legs from ~9 sets/week (days 1–3 only) into the 12+ range. Also where lagging spots get extra attention — reverse pec deck (rear delt) and leg curl (hamstrings) get the least direct volume from the core 3 days, so bias extra sets there.
-- Superset: low cable row 3x10–12 ↔ incline DB press 3x8–12
-- Superset: leg curl 3x12–15 ↔ leg extension 3x12–15
-- Optional: reverse pec deck 3x12–15, or an extra arm superset if time allows
+Repeats the exercises that are still below the optimal zone after Days 1–3 — chest, back, both delt heads, hamstrings, and quads. Skips biceps/triceps and abs since they're already at/near target.
+- Superset: incline DB press 3x8–12 (chest) ↔ low cable row 3x10–12 (back)
+- Superset: leg curl 3x12–15 (hamstrings) ↔ leg extension 3x12–15 (quads)
+- Superset: lateral raise 3x12–15 (side delt) ↔ reverse pec deck 3x12–15 (rear delt)
 - Cardio: Norwegian 4x4 or zone 2
 
 ### Day 5 — Optional: Hyrox Station Practice
@@ -61,6 +86,7 @@ Pushes chest/back/legs from ~9 sets/week (days 1–3 only) into the 12+ range. A
 
 ## Notes
 - Update this file whenever the plan changes; keep workout logs in `workouts/` matching what's actually done, even when it deviates from plan.
-- Exercise swaps are fine — keep the push/pull/legs/arms/core/cardio balance and stay back-friendly.
-- Side/rear delts (currently just Arnold press + reverse pec deck) and hamstrings (leg curl + lunges) get the least direct volume of the tracked muscle groups from your preferred exercise list — worth a lateral raise or extra leg curl set if either becomes a priority.
+- Exercise swaps are fine — keep the muscle-group balance above and stay back-friendly.
+- **Lateral raise is new** — nothing in the original preferred-exercise list trained side delts directly, so it was added to close that gap. Swap it out if there's a reason to avoid it, but something needs to fill that slot.
+- Rear delt and hamstrings are the tightest fit on a 3-day week (right at floor, relying partly on synergist credit) — if you're consistently doing 3 days, not 4–5, consider bumping reverse pec deck and leg curl sets slightly further.
 - Progressive overload: once the top of a rep range is hit with good form across all sets, add weight next session and drop back to the bottom of the range.
