@@ -1,6 +1,13 @@
 # Goals
 
-_Last updated: 2026-07-25_
+_Last updated: 2026-07-26_
+
+## Profile
+- Age: 25
+- Height: 5'6"
+- Weight: 163 lb
+- Estimated body fat: high teens–low 20s %
+- Training experience: 10 years weightlifting
 
 ## Primary
 - Look good — physique-driven goal
