@@ -16,3 +16,11 @@ _Last updated: 2026-07-26_
 | Distance | Time | Date |
 |----------|------|------|
 |          |      |      |
+
+## Nutrition Calibration Log
+Track calorie target changes here alongside the reasoning, so adjustments over time are traceable.
+
+| Date | Calorie Target | Reasoning |
+|------|----------------|-----------|
+| 2026-07-26 | ~2,200 | Initial estimate — Mifflin-St Jeor formula, moderate-activity assumption |
+| 2026-07-26 | ~1,700 | Revised same day — WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority |
