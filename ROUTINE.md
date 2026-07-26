@@ -9,6 +9,7 @@ _Weekly structure not yet defined — tell Claude your current split/plan and it
 - **80/20 efficiency.** Favor compound lifts and Hyrox-relevant conditioning over isolation/accessory volume; cut anything that isn't clearly earning its place.
 - **Lower back caution.** Bulging disc — avoid heavy loaded spinal flexion and risky deadlift variations; prefer neutral-spine, back-friendly alternatives (e.g. trap bar over straight bar, controlled hip hinge, avoid weighted spinal flexion work like weighted sit-ups/good mornings).
 - **Hyrox prep (through Sept 20, 2026).** Programming should maintain running capacity and Hyrox station movements (sled push/pull, rowing, wall balls, farmers carry, lunges, burpees, etc.) alongside hypertrophy work, not sacrifice one for the other.
+- **Supersets where feasible.** Pair exercises (usually opposing muscle groups, e.g. push/pull or biceps/triceps) back-to-back to cut rest time and keep sessions efficient.
 
 ## Preferred Exercises
 Machine/cable-leaning selection — works well with the back constraint since these load the spine less than free-weight squats/deadlifts.
@@ -24,30 +25,25 @@ Machine/cable-leaning selection — works well with the back constraint since th
 Flexible full-body rotation, 3–5 days/week. **Days 1–3 are the core 80/20 dose** — push, pull, legs, arms, and cardio all get covered even on a 3-day week. **Days 4–5 are additive** — extra volume and Hyrox-specific station practice, for weeks with more time. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
 
 ### Day 1 — Full Body A
-- Push: incline DB press
-- Pull: low cable row
-- Legs: leg press
-- Arms: DB curl, triceps pushdown
-- Core: crunches
+- Superset: incline DB press ↔ low cable row
+- Superset: leg press ↔ crunches
+- Superset: DB curl ↔ triceps pushdown
 - Cardio: zone 2 run
 
 ### Day 2 — Full Body B
-- Push: Arnold press
-- Pull: weighted pull-ups
-- Legs: weighted lunges (smith machine)
-- Arms: hammer curl, overhead triceps extension
-- Rear delt: reverse pec deck
+- Superset: Arnold press ↔ weighted pull-ups
+- Superset: weighted lunges (smith machine) ↔ reverse pec deck
+- Superset: hammer curl ↔ overhead triceps extension
 - Cardio: Norwegian 4x4
 
 ### Day 3 — Full Body C
-- Push: weighted dips, pec deck
-- Pull: lat pulldown
-- Legs: leg extension, leg curl
-- Core: crunches (skip/swap if day 1's set felt irritating)
+- Superset: weighted dips ↔ lat pulldown
+- Superset: leg extension ↔ leg curl
+- Superset: pec deck ↔ crunches (skip/swap crunches if day 1's set felt irritating)
 - Cardio: zone 2 run
 
 ### Day 4 — Optional: Extra Volume
-- Extra sets on whichever push/pull/arm exercise got the least volume that week (rotate through the preferred list above)
+- Extra superset pairs from whichever push/pull/arm exercises got the least volume that week (rotate through the preferred list above)
 - Cardio: Norwegian 4x4 or zone 2
 
 ### Day 5 — Optional: Hyrox Station Practice
