@@ -22,13 +22,14 @@ Optimize for the 20% of work that drives 80% of the result. Favor efficient, hig
 - Cut low-value volume/accessory work that doesn't clearly move the needle on hypertrophy, leanness, or Hyrox readiness
 
 ## Upcoming Event
-- **Hyrox competition — September 20, 2026.** Training through this date needs to build/maintain Hyrox-relevant conditioning (running + functional stations) alongside the hypertrophy/lean goals, not just pure bodybuilding work.
+- **Hyrox competition — September 20, 2026.** Secondary priority — main goals are physique/hypertrophy/leanness. General conditioning (zone 2 + Norwegian 4x4) is already in the routine and gets maintained, but the plan isn't being optimized around the race, and race-specific practice (Day 5) is fully optional.
 
 ## Injury Constraint
 - Slight lower back bulging disc. Avoid exercises/loading patterns that aggravate it (e.g. heavy loaded spinal flexion, risky deadlift variations). Favor neutral-spine, back-friendly alternatives. Flag this whenever suggesting new lifts.
 
 ## Targets
 - Body fat: 15% (from current estimated high teens–low 20s%)
+- Nutrition: ~2,200 kcal/day, ~175g protein/day — see `NUTRITION.md` for the full breakdown and calibration protocol
 - _(fill in as specifics come up — target bodyweight, lift numbers, run paces, etc.)_
 
 ## Notes

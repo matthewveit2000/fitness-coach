@@ -6,7 +6,7 @@ _Last updated: 2026-07-26_
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
 - **80/20 efficiency.** Favor compound lifts and Hyrox-relevant conditioning over isolation/accessory volume; cut anything that isn't clearly earning its place.
 - **Lower back caution.** Bulging disc — avoid heavy loaded spinal flexion and risky deadlift variations; prefer neutral-spine, back-friendly alternatives (e.g. trap bar over straight bar, controlled hip hinge, avoid weighted spinal flexion work like weighted sit-ups/good mornings).
-- **Hyrox prep (through Sept 20, 2026).** Programming should maintain running capacity and Hyrox station movements (sled push/pull, rowing, wall balls, farmers carry, lunges, burpees, etc.) alongside hypertrophy work, not sacrifice one for the other.
+- **Hyrox is secondary.** Main goals are physique/hypertrophy/leanness — Hyrox (Sept 20, 2026) gets maintained (zone 2 + Norwegian 4x4 already in the plan for general conditioning) but isn't optimized for specifically; Day 5 station practice is fully optional and skippable.
 - **Supersets hit opposing muscle groups first, same/adjacent equipment second.** Every pair below is antagonist (or push-vs-pull) *and* shares a machine, rack, or zone — so there's no setup time between exercises and no muscle worked twice in a row. Only one pair breaks the antagonist rule: abs has no opposing muscle in this exercise list, so it's paired for practicality instead.
 
 ## Hypertrophy Training Parameters (evidence-based)
@@ -52,24 +52,28 @@ Machine/cable-leaning selection — works well with the back constraint since th
 
 ## Weekly Structure
 
-Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, and quads into the optimal zone; biceps/triceps are already there from synergist credit alone, so Day 4 doesn't need extra arm work. **Day 5 is Hyrox-specific conditioning** — it doesn't add meaningfully to hypertrophy volume, but completes the 5-day week for race prep. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
+Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, and quads into the optimal zone; biceps/triceps are already there from synergist credit alone, so Day 4 doesn't need extra arm work. **Day 5 is Hyrox-specific conditioning** — optional, low priority given Hyrox is a secondary goal; skip it freely if the week's short on time. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
+
+Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained ≥2x/week like everything else, at the same weekly set total as before.
 
 ### Day 1 — Full Body A
 - Superset: weighted dips 3x8–12 (chest) ↔ weighted pull-ups 3x6–10 (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg extension 3x12–15 (quads) ↔ leg curl 5x12–15 (hamstrings) — _same leg machine · knee-joint antagonist_
+- Superset: leg press 3x10–15 (quads) ↔ crunches 3x15–20 (abs) — _leg-press area / no equipment for crunches_
 - Superset: Arnold press 3x8–12 (side delt) ↔ DB curl 3x10–12 (biceps) — _same DB rack · press vs curl, push vs pull_
+- Finisher: reverse pec deck 2x12–15 (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B
 - Superset: low cable row 4x10–12 (back) ↔ triceps pushdown 3x10–12 (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
-- Superset: leg press 3x10–15 (quads) ↔ weighted lunges (smith machine) 3x10–12/leg (glute/hamstring-leaning) — _same leg area · lunges bring meaningfully more posterior-chain work than leg press, so this leans quad-emphasis vs glute/hamstring-emphasis, not a pure isolated antagonist_
+- Superset: leg extension 3x12–15 (quads) ↔ leg curl 3x12–15 (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
 - Superset: lateral raise 3x12–15 (side delt) ↔ hammer curl 3x10–12 (biceps) — _same DB rack · raise vs curl, push vs pull_
-- Cardio: Norwegian 4x4
+- Cardio: Norwegian 4x4 — _this is now the lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
 ### Day 3 — Full Body C
-- Superset: pec deck 3x12–15 (chest) ↔ reverse pec deck 4x12–15 (rear delt) — _same machine, flip position · chest vs rear delt_
+- Superset: pec deck 3x12–15 (chest) ↔ reverse pec deck 2x12–15 (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
 - Superset: lat pulldown 3x10–12 (back) ↔ overhead triceps extension 3x10–12 (triceps) — _same cable stack · elbow-joint antagonist_
-- Superset: incline DB press 3x8–12 (chest) ↔ crunches 3x15–20 (abs) — _no equipment needed for crunches, done right at the bench · the one non-antagonist pair — abs has no opposing muscle anywhere in this exercise list_
+- Superset: incline DB press 3x8–12 (chest) ↔ weighted lunges (smith machine) 3x10–12/leg (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
+- Finisher: leg curl 2x12–15 (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 4 — Optional: Extra Volume
@@ -88,7 +92,8 @@ Repeats the exercises that are still below the optimal zone after Days 1–3 —
 - Update this file whenever the plan changes; keep workout logs in `workouts/` matching what's actually done, even when it deviates from plan.
 - Exercise swaps are fine — keep the muscle-group balance above and stay back-friendly.
 - **Lateral raise is new** — nothing in the original preferred-exercise list trained side delts directly, so it was added to close that gap. Swap it out if there's a reason to avoid it, but something needs to fill that slot.
-- Rear delt and hamstrings are the tightest fit on a 3-day week (right at floor, relying partly on synergist credit) — if you're consistently doing 3 days, not 4–5, consider bumping reverse pec deck and leg curl sets slightly further.
+- Rear delt and hamstrings were previously the tightest fit — each trained only once per week despite hitting their weekly set total. Fixed by splitting Reverse Pec Deck (2+2 across Days 1 & 3) and Leg Curl (3+2 across Days 2 & 3) into two smaller sessions instead of one, at the same weekly totals as before.
+- **"Push vs pull" is used broadly here**, not just single-joint antagonism: quads (knee extension) count as push, glute/hamstring-dominant movements (hip extension) count as pull. Lunges bring meaningfully more posterior-chain (glute/hamstring) involvement than leg press does, so it's categorized as the "pull" side of that framework — that's why incline DB press (chest, push) pairs with it on Day 3. Different joints, but genuinely opposing movement patterns, not a same-muscle repeat.
 - Progressive overload: once the top of a rep range is hit with good form across all sets, add weight next session and drop back to the bottom of the range.
-- Every superset above is the same 18 exercises at the same sets/reps as before, just repaired and reshuffled across days — the Volume Thresholds table didn't need to change.
-- Every pair is antagonist/push-vs-pull *and* same or adjacent equipment except two flagged exceptions: incline DB press ↔ crunches (Day 3) has no muscle logic — abs has no antagonist in this list, it's paired for zero setup only — and lateral raise ↔ reverse pec deck (Day 4) is genuine push/pull but crosses zones (DB rack to pec-deck machine).
+- Every pair is antagonist/push-vs-pull *and* same or adjacent equipment except one: leg press ↔ crunches (Day 1) has no muscle logic — abs has no antagonist anywhere in this exercise list, it's paired for zero setup time only (no equipment needed for crunches, done right at the leg press). The Day 4 lateral raise ↔ reverse pec deck pair is genuine push/pull but crosses zones (DB rack to pec-deck machine) since Day 4 only has 6 specific leftover exercises to work with.
+- Weekly per-muscle volume totals are unchanged from the validated table above — verified directly — despite the day reshuffle, the leg split, and splitting two exercises across two sessions each.
