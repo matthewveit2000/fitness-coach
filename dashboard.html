@@ -1,0 +1,386 @@
+<title>Fitness Dashboard</title>
+<style>
+  :root {
+    --bg: #eeece7;
+    --surface: #fbfaf7;
+    --surface-2: #f2f0ea;
+    --ink: #1c1e22;
+    --ink-soft: #5b5f66;
+    --ink-faint: #8c8f94;
+    --line: #dad6cc;
+    --line-strong: #c7c2b6;
+    --accent: #2e6171;
+    --accent-soft: #dce8ea;
+    --warn: #a6431f;
+    --good: #3f7a34;
+    --tag-chest: #2a78d6;
+    --tag-back: #eb6834;
+    --tag-legs: #1baf7a;
+    --tag-delts: #eda100;
+    --tag-arms: #e87ba4;
+    --tag-cardio: #008300;
+    --tag-abs: #8c8f94;
+    --shadow: 0 1px 2px rgba(28, 30, 34, 0.06), 0 6px 20px -8px rgba(28, 30, 34, 0.12);
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+    --sans: -apple-system, "Segoe UI", system-ui, Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a;
+      --surface: #1b1f23;
+      --surface-2: #20252a;
+      --ink: #ece9e4;
+      --ink-soft: #a1a7ad;
+      --ink-faint: #71767c;
+      --line: #2c3136;
+      --line-strong: #3a4046;
+      --accent: #7fc1d1;
+      --accent-soft: #1f333b;
+      --warn: #e08a5f;
+      --good: #8fc07a;
+      --tag-chest: #3987e5;
+      --tag-back: #d95926;
+      --tag-legs: #199e70;
+      --tag-delts: #c98500;
+      --tag-arms: #d55181;
+      --tag-cardio: #4bb34b;
+      --tag-abs: #71767c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -10px rgba(0, 0, 0, 0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171a; --surface: #1b1f23; --surface-2: #20252a; --ink: #ece9e4; --ink-soft: #a1a7ad;
+    --ink-faint: #71767c; --line: #2c3136; --line-strong: #3a4046; --accent: #7fc1d1; --accent-soft: #1f333b;
+    --warn: #e08a5f; --good: #8fc07a; --tag-chest: #3987e5; --tag-back: #d95926; --tag-legs: #199e70;
+    --tag-delts: #c98500; --tag-arms: #d55181; --tag-cardio: #4bb34b; --tag-abs: #71767c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -10px rgba(0, 0, 0, 0.5);
+  }
+  :root[data-theme="light"] {
+    --bg: #eeece7; --surface: #fbfaf7; --surface-2: #f2f0ea; --ink: #1c1e22; --ink-soft: #5b5f66;
+    --ink-faint: #8c8f94; --line: #dad6cc; --line-strong: #c7c2b6; --accent: #2e6171; --accent-soft: #dce8ea;
+    --warn: #a6431f; --good: #3f7a34; --tag-chest: #2a78d6; --tag-back: #eb6834; --tag-legs: #1baf7a;
+    --tag-delts: #eda100; --tag-arms: #e87ba4; --tag-cardio: #008300; --tag-abs: #8c8f94;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: clamp(16px,4vw,32px) clamp(12px,3vw,28px) 60px; }
+  a { color: var(--accent); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* header */
+  header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  header.top h1 { font-size: 1.4rem; margin: 0; letter-spacing: -0.01em; }
+  .sync-note { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); }
+
+  /* tabs */
+  .tabs { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 2px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .tab-btn { font-family: var(--sans); font-size: 0.86rem; font-weight: 600; background: none; border: none; padding: 9px 14px; color: var(--ink-faint); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .tab-panel.active { animation: none; } }
+
+  /* generic */
+  h2.section-title { font-size: 1.05rem; margin: 28px 0 10px; }
+  h2.section-title:first-child { margin-top: 0; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow); padding: 16px 18px; margin-bottom: 14px; }
+  .muted { color: var(--ink-soft); font-size: 0.86rem; }
+  .faint { color: var(--ink-faint); font-size: 0.78rem; }
+
+  /* stat tiles */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 18px; }
+  .stat { background: var(--surface); padding: 12px 14px; }
+  .stat .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 5px; }
+  .stat .value { font-family: var(--mono); font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .stat .value.accent { color: var(--accent); }
+  .stat .sub { font-size: 0.72rem; color: var(--ink-faint); margin-top: 2px; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+  th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+
+  /* chips / pills */
+  .chip { display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .pill { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--line-strong); color: var(--ink-faint); }
+  .pill.core { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .pill.warn { color: var(--warn); border-color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+  .pill.secondary { opacity: 0.7; }
+
+  ul.plain { margin: 6px 0; padding-left: 18px; }
+  ul.plain li { margin-bottom: 4px; }
+
+  .callout { border-left: 3px solid var(--warn); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px; font-size: 0.86rem; margin-bottom: 14px; }
+  .callout.info { border-left-color: var(--accent); }
+
+  .empty-state { color: var(--ink-faint); font-size: 0.85rem; font-style: italic; padding: 10px 0; }
+
+  /* routine day cards */
+  .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-bottom: 8px; }
+  .day-card { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 14px 16px; }
+  .day-card.core { border-left: 3px solid var(--accent); }
+  .day-card.optional { border-left: 3px dashed var(--line-strong); background: var(--surface-2); }
+  .day-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .day-head .name { font-weight: 700; font-size: 0.95rem; }
+  .ex-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 0.82rem; border-top: 1px dashed var(--line); }
+  .ex-row:first-of-type { border-top: none; }
+  .ex-row .ex-name { flex: 1; }
+  .ex-row .ex-load { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.78rem; }
+  .ss-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
+  .ss-label:first-child { margin-top: 0; }
+  .cardio-line { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--ink-soft); }
+
+  @media (max-width: 480px) { .stat-grid { grid-template-columns: repeat(2,1fr); } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Fitness Dashboard</h1>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-26</span>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="goals">Goals</button>
+    <button class="tab-btn" data-tab="routine">Routine</button>
+    <button class="tab-btn" data-tab="nutrition">Nutrition</button>
+    <button class="tab-btn" data-tab="progress">Progress</button>
+  </nav>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="tab-panel active" id="overview">
+    <div class="stat-grid">
+      <div class="stat"><span class="label">Weight</span><span class="value">163 lb</span></div>
+      <div class="stat"><span class="label">Body Fat</span><span class="value">~high&ndash;teens&ndash;20%</span><span class="sub">target 15%</span></div>
+      <div class="stat"><span class="label">Calorie Target</span><span class="value accent">~1,700/day</span></div>
+      <div class="stat"><span class="label">Protein Target</span><span class="value accent">~175g/day</span></div>
+      <div class="stat"><span class="label">Training Days</span><span class="value">3&ndash;5/week</span></div>
+      <div class="stat"><span class="label">Hyrox</span><span class="value">Sep 20</span><span class="sub">secondary goal</span></div>
+    </div>
+
+    <div class="callout">Bulging disc (lower back) &mdash; avoid heavy loaded spinal flexion and risky deadlift variations. Flagged on every relevant exercise.</div>
+
+    <h2 class="section-title">Primary Goals</h2>
+    <ul class="plain">
+      <li>Look good &mdash; physique-driven</li>
+      <li>Hypertrophy &mdash; build visible muscle size/shape</li>
+      <li>Stay lean / get leaner &mdash; reduce body fat while keeping/building muscle</li>
+      <li>General athleticism and health</li>
+    </ul>
+
+    <h2 class="section-title">What's Logged So Far</h2>
+    <div class="stat-grid">
+      <div class="stat"><span class="label">Workout Entries</span><span class="value">0</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">0</span></div>
+      <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
+      <div class="stat"><span class="label">Weigh-ins</span><span class="value">1</span></div>
+    </div>
+    <p class="faint">Log a workout or a meal (describe it or send a photo) any time &mdash; it'll show up here on the next sync.</p>
+  </section>
+
+  <!-- ============ GOALS ============ -->
+  <section class="tab-panel" id="goals">
+    <h2 class="section-title">Profile</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Age</th><td>25</td></tr>
+      <tr><th>Height</th><td>5'6"</td></tr>
+      <tr><th>Weight</th><td>163 lb</td></tr>
+      <tr><th>Body fat</th><td>high teens&ndash;low 20s %</td></tr>
+      <tr><th>Training experience</th><td>10 years weightlifting</td></tr>
+    </table></div>
+
+    <h2 class="section-title">Training Philosophy: 80/20</h2>
+    <ul class="plain">
+      <li>Full body sessions over single-muscle-group splits</li>
+      <li>Prioritize compound, multi-joint movements over isolation work</li>
+      <li>Cut low-value volume/accessory work that doesn't clearly move the needle</li>
+    </ul>
+
+    <h2 class="section-title">Upcoming Event</h2>
+    <p><strong>Hyrox competition &mdash; September 20, 2026.</strong> <span class="pill secondary">Secondary priority</span><br>
+    General conditioning (zone 2 + Norwegian 4x4) is maintained; the plan isn't optimized around the race, and Day 5 race-specific practice is fully optional.</p>
+
+    <h2 class="section-title">Injury Constraint</h2>
+    <div class="callout">Slight lower back bulging disc. Avoid exercises/loading patterns that aggravate it (heavy loaded spinal flexion, risky deadlift variations). Favor neutral-spine, back-friendly alternatives.</div>
+
+    <h2 class="section-title">Targets</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Body fat</th><td>15% <span class="faint">(from current estimated high teens&ndash;low 20s%)</span></td></tr>
+      <tr><th>Nutrition</th><td>~1,700 kcal/day, ~175g protein/day &mdash; see Nutrition tab</td></tr>
+    </table></div>
+  </section>
+
+  <!-- ============ ROUTINE ============ -->
+  <section class="tab-panel" id="routine">
+    <h2 class="section-title">Design Principles</h2>
+    <ul class="plain">
+      <li>Full body days, not body-part splits</li>
+      <li>80/20 efficiency &mdash; compound lifts and Hyrox-relevant conditioning over low-value accessory volume</li>
+      <li>Lower back caution baked into every exercise choice</li>
+      <li>Hyrox is secondary &mdash; maintained, not optimized for</li>
+      <li>Supersets hit opposing muscle groups first, same/adjacent equipment second</li>
+    </ul>
+
+    <h2 class="section-title">Volume Thresholds by Muscle</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Muscle</th><th>3-Day Floor (MEV)</th><th>Achieved D1&ndash;3</th><th>5-Day Optimal</th><th>Achieved D1&ndash;4</th></tr>
+      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;14</td><td class="num">12</td></tr>
+      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">10</td><td class="num">13&ndash;15</td><td class="num">13</td></tr>
+      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">9&ndash;10</td><td class="num">9</td></tr>
+      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">~6.5</td><td class="num">9&ndash;10</td><td class="num">~9.5</td></tr>
+      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">~11</td><td class="num">12&ndash;14</td><td class="num">~11</td></tr>
+      <tr><td>Triceps</td><td class="num">6&ndash;8</td><td class="num">~10.5</td><td class="num">12&ndash;14</td><td class="num">~10.5</td></tr>
+      <tr><td>Quads</td><td class="num">8&ndash;12</td><td class="num">9</td><td class="num">12&ndash;13</td><td class="num">12</td></tr>
+      <tr><td>Hamstrings</td><td class="num">6&ndash;10</td><td class="num">~6</td><td class="num">9&ndash;10</td><td class="num">~9</td></tr>
+      <tr><td>Abs</td><td class="num">&mdash;</td><td class="num">3</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+    </table></div>
+    <p class="faint">Frequency-fixed as of last update: rear delt and hamstrings now trained 2x/week (split across two days) instead of 1x, same weekly totals.</p>
+
+    <h2 class="section-title">Weekly Structure</h2>
+    <div class="day-grid">
+
+      <div class="day-card core">
+        <div class="day-head"><span class="name">Day 1 &mdash; Full Body A</span><span class="pill core">Core</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">3&times;6&ndash;10</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;15&ndash;20</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Arnold Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ss-label">Finisher</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
+      </div>
+
+      <div class="day-card core">
+        <div class="day-head"><span class="name">Day 2 &mdash; Full Body B</span><span class="pill core">Core</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 <span class="faint">&mdash; lightest leg day, best fit for the hardest interval</span></div>
+      </div>
+
+      <div class="day-card core">
+        <div class="day-head"><span class="name">Day 3 &mdash; Full Body C</span><span class="pill core">Core</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Weighted Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span></div>
+        <div class="ss-label">Finisher</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
+      </div>
+
+      <div class="day-card optional">
+        <div class="day-head"><span class="name">Day 4 &mdash; Extra Volume</span><span class="pill">Optional</span></div>
+        <p class="faint" style="margin:0 0 8px;">Pushes chest/back/delts/hamstrings/quads into the optimal zone. Skips biceps/triceps/abs &mdash; already at target.</p>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ss-label">Superset</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 or zone 2</div>
+      </div>
+
+      <div class="day-card optional">
+        <div class="day-head"><span class="name">Day 5 &mdash; Hyrox Station Practice</span><span class="pill">Optional</span></div>
+        <p class="faint" style="margin:0 0 8px;">Race-specific, not tracked toward hypertrophy volume. Fully skippable &mdash; Hyrox is a secondary goal.</p>
+        <div class="ex-row"><span class="ex-name">Sled push/pull, wall balls, burpee broad jumps, farmer carry, ski erg/row, sandbag lunges</span></div>
+        <div class="ss-label">Extra leg volume</div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press or Leg Curl</span><span class="ex-load">3&times;10&ndash;15</span></div>
+        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Long zone 2 run (&ge;40 min)</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ NUTRITION ============ -->
+  <section class="tab-panel" id="nutrition">
+    <h2 class="section-title">Daily Targets</h2>
+    <div class="stat-grid">
+      <div class="stat"><span class="label">Calories</span><span class="value accent">~1,700</span><span class="sub">range 1,600&ndash;1,800</span></div>
+      <div class="stat"><span class="label">Protein</span><span class="value accent">~175g</span><span class="sub">range 160&ndash;195g &mdash; the hard target</span></div>
+      <div class="stat"><span class="label">Fat</span><span class="value">~55g</span><span class="sub">minimum</span></div>
+      <div class="stat"><span class="label">Carbs</span><span class="value">~125g</span><span class="sub">fills remainder</span></div>
+    </div>
+
+    <div class="callout info">Revised down from an initial ~2,200 kcal estimate using WHOOP's measured burn (~1,800 kcal/day average, all days) &mdash; real tracked data over a population formula. This is a meaningful cut relative to training volume; watch strength/recovery/energy and don't wait for the scheduled check-in if training degrades.</div>
+
+    <h2 class="section-title">Why a Moderate Deficit</h2>
+    <p class="muted">Body recomposition (simultaneous muscle gain + fat loss) is achievable at 10 years of training experience, but slower and more execution-dependent than for a newer lifter &mdash; high protein + genuine training stimulus + only a mild deficit. This is built for modest, steady change, not a fast cut.</p>
+
+    <h2 class="section-title">Calibration Protocol</h2>
+    <ul class="plain">
+      <li>Weigh in regularly (see Progress tab)</li>
+      <li>After 2&ndash;3 weeks: losing ~0.5&ndash;1%/week &rarr; on track; not moving &rarr; drop ~100&ndash;150 kcal; losing &gt;1%/week &rarr; add ~100&ndash;150 back</li>
+      <li>Re-adjust every 2&ndash;3 weeks, not off single-day fluctuations</li>
+      <li>Override early if training performance clearly drops before the scheduled check-in</li>
+    </ul>
+
+    <h2 class="section-title">Recent Meals</h2>
+    <div class="empty-state">No meals logged yet. Describe what you ate, or send a photo, any time.</div>
+
+    <h2 class="section-title">Logging</h2>
+    <p class="muted">Fully conversational &mdash; describe a meal in chat or send a photo, and it gets estimated and logged to <code>meals/YYYY-MM.md</code>, same pattern as the workout log.</p>
+  </section>
+
+  <!-- ============ PROGRESS ============ -->
+  <section class="tab-panel" id="progress">
+    <h2 class="section-title">Bodyweight / Measurements</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-07-26</td><td class="num">163 lb</td><td>Estimated body fat high teens&ndash;low 20s%, 5'6"</td></tr>
+    </table></div>
+
+    <h2 class="section-title">Lift PRs</h2>
+    <div class="empty-state">No PRs logged yet.</div>
+
+    <h2 class="section-title">Run PRs</h2>
+    <div class="empty-state">No PRs logged yet.</div>
+
+    <h2 class="section-title">Nutrition Calibration Log</h2>
+    <div class="table-wrap"><table>
+      <tr><th>Date</th><th>Calorie Target</th><th>Reasoning</th></tr>
+      <tr><td>2026-07-26</td><td class="num">~2,200</td><td>Initial estimate &mdash; Mifflin-St Jeor formula, moderate-activity assumption</td></tr>
+      <tr><td>2026-07-26</td><td class="num">~1,700</td><td>Revised same day &mdash; WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority</td></tr>
+    </table></div>
+
+    <h2 class="section-title">Workout Log</h2>
+    <div class="empty-state">No workouts logged yet this month. Tell me what you did after a session and it'll show up here.</div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
