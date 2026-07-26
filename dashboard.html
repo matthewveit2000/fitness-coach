@@ -132,6 +132,7 @@
   .ex-row:first-of-type { border-top: none; }
   .ex-row .ex-name { flex: 1; }
   .ex-row .ex-load { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.78rem; }
+  .ex-row .ex-weight { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.74rem; color: var(--ink-faint); min-width: 46px; text-align: right; }
   .ss-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
   .ss-label:first-child { margin-top: 0; }
   .cardio-line { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--ink-soft); }
@@ -243,51 +244,52 @@
     <p class="faint">Frequency-fixed as of last update: rear delt and hamstrings now trained 2x/week (split across two days) instead of 1x, same weekly totals.</p>
 
     <h2 class="section-title">Weekly Structure</h2>
+    <p class="faint">Suggested weight (@ &mdash;) is inferred from your estimated 1RM per exercise (Epley formula, from logged sets, not tested maxes) &mdash; see Progress tab. Shows &mdash; until a set is logged for that exercise.</p>
     <div class="day-grid">
 
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 1 &mdash; Full Body A</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">3&times;6&ndash;10</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">3&times;6&ndash;10</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;15&ndash;20</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;15&ndash;20</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Arnold Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Arnold Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
       </div>
 
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 2 &mdash; Full Body B</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 <span class="faint">&mdash; lightest leg day, best fit for the hardest interval</span></div>
       </div>
 
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 3 &mdash; Full Body C</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">3&times;10&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Weighted Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Weighted Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">2&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
       </div>
 
@@ -295,14 +297,14 @@
         <div class="day-head"><span class="name">Day 4 &mdash; Extra Volume</span><span class="pill">Optional</span></div>
         <p class="faint" style="margin:0 0 8px;">Pushes chest/back/delts/hamstrings/quads into the optimal zone. Skips biceps/triceps/abs &mdash; already at target.</p>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 or zone 2</div>
       </div>
 
@@ -311,7 +313,7 @@
         <p class="faint" style="margin:0 0 8px;">Race-specific, not tracked toward hypertrophy volume. Fully skippable &mdash; Hyrox is a secondary goal.</p>
         <div class="ex-row"><span class="ex-name">Sled push/pull, wall balls, burpee broad jumps, farmer carry, ski erg/row, sandbag lunges</span></div>
         <div class="ss-label">Extra leg volume</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press or Leg Curl</span><span class="ex-load">3&times;10&ndash;15</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press or Leg Curl</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Long zone 2 run (&ge;40 min)</div>
       </div>
 
@@ -361,6 +363,30 @@
 
     <h2 class="section-title">Run PRs</h2>
     <div class="empty-state">No PRs logged yet.</div>
+
+    <h2 class="section-title">Estimated 1RMs</h2>
+    <p class="faint">Inferred from logged sets via the Epley formula &mdash; never tested directly. Confidence is high for exercises programmed &le;12 reps, and trend-only (not a precise number) for the 12&ndash;20 rep isolation exercises. Drives the suggested weights shown on the Routine tab.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Est. 1RM</th><th>Confidence</th></tr>
+      <tr><td>Incline DB Press</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Pec Deck</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Arnold Press</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Leg Press</td><td class="num">&mdash;</td><td class="faint">Medium</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Leg Extension</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Leg Curl</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>DB Curl</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Overhead Triceps Ext.</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Crunches</td><td class="num">n/a</td><td class="faint">Bodyweight, no meaningful 1RM</td></tr>
+    </table></div>
 
     <h2 class="section-title">Nutrition Calibration Log</h2>
     <div class="table-wrap"><table>
