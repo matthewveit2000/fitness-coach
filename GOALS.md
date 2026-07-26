@@ -28,7 +28,8 @@ Optimize for the 20% of work that drives 80% of the result. Favor efficient, hig
 - Slight lower back bulging disc. Avoid exercises/loading patterns that aggravate it (e.g. heavy loaded spinal flexion, risky deadlift variations). Favor neutral-spine, back-friendly alternatives. Flag this whenever suggesting new lifts.
 
 ## Targets
-_(fill in as specifics come up — target bodyweight, body fat %, lift numbers, run paces, etc.)_
+- Body fat: 15% (from current estimated high teens–low 20s%)
+- _(fill in as specifics come up — target bodyweight, lift numbers, run paces, etc.)_
 
 ## Notes
 - Training mix: weightlifting, running/cardio, bodyweight/calisthenics
