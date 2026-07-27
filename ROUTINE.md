@@ -44,7 +44,9 @@ _*Includes ~50%/25% synergist credit from compound lifts (e.g. rows count half t
 No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred from logged working sets instead, and used to suggest a working weight for each exercise's prescribed rep range below.
 
 - **Formula: Epley** — `e1RM = weight × (1 + reps/30)`. Validated to within ~2–10% error for 1–10 rep sets; accuracy drops noticeably beyond ~12 reps, and past ~15 the number is a rough trend indicator only, not a precise prescription. Several exercises here (pec deck, leg extension/curl, lateral raise, reverse pec deck, crunches) are programmed at 12–20 reps — treat their e1RM and suggested weight as directional, not exact.
-- **Reps-to-failure, not reps-performed** — sets here are trained at 1–3 RIR, not to failure, so e1RM is estimated from (reps performed + RIR), not the raw rep count. Mention how a set felt when logging it ("135×10, 2 left in the tank") for an accurate number. If RIR isn't mentioned, 2 RIR is assumed by default — a conservative floor, not an overestimate.
+- **Reps-to-failure, not reps-performed** — sets here are trained at 1–3 RIR, not to failure, so e1RM is estimated from (reps performed + RIR), not the raw rep count. Mention how a set felt when logging it ("135×10, 2 left in the tank") for an accurate number.
+  - **Assuming a higher RIR than reality *inflates* the estimate — that's the opposite of conservative.** An earlier version of this note claimed the default was "a conservative floor," which was backwards: assuming 2 RIR when a set was actually near failure overstates the true 1RM and pushes the suggested weight above what's actually achievable. Corrected 2026-07-27 after exactly this happened — a session logged as struggling had its 1RM estimated with the old +2-RIR default anyway, producing a suggested weight higher than what had just been a genuine struggle.
+  - **Context overrides the blanket default.** Language like "struggling," "had to drop the weight," "to failure," or symptoms of overexertion is direct evidence of ~0 RIR for that set — use 0, not a default. Only fall back to a default when the description is genuinely neutral with no such signal, and even then use ~1 RIR, not 2, since erring toward *underestimating* capability is the safer failure mode for a suggested working weight.
 - **Suggested weight for the prescribed range** — same formula solved for weight: `weight = e1RM / (1 + reps/30)`, computed at both ends of the rep range and rounded to a practical increment (2.5–5 lb for dumbbells/machines).
 - **Updates like a PR** — e1RM only moves up when a logged set implies a higher number than what's on file; a single off day doesn't lower it. Current estimates live in `PROGRESS.md`.
 - **No history yet** — every exercise below shows `—` until a set is logged for it. Log a workout any time and the suggested weights populate automatically here and on the dashboard.
@@ -66,8 +68,8 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained ≥2x/week like everything else, at the same weekly set total as before.
 
 ### Day 1 — Full Body A
-- Superset: weighted dips 3x8–12 @ **~45–50lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~47–52lb added** (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg press 3x10–15 @ **~510–575lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
+- Superset: weighted dips 3x8–12 @ **~43–47lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~45–50lb added** (back) — _dip/pull-up tower · chest vs back_
+- Superset: leg press 3x10–15 @ **~490–550lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
 - Superset: Arnold press 3x8–12 @ **—** (side delt) ↔ DB curl 3x10–12 @ **—** (biceps) — _same DB rack · press vs curl, push vs pull_
 - Finisher: reverse pec deck 2x12–15 @ **—** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min

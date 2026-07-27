@@ -24,15 +24,15 @@ Inferred from logged working sets via the Epley formula (see `ROUTINE.md` → Su
 | Exercise | Est. 1RM | Confidence | Based on (weight x reps, date) |
 |---|---|---|---|
 | Incline DB Press | — | High (≤12-rep range) | |
-| Weighted Dips | 63 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR not specified, assumed 2 |
+| Weighted Dips | 60 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR corrected to 0 (was 2); "struggling" + light-headed/nauseous partway through the session are direct evidence of near-failure effort, not 2 in reserve |
 | Pec Deck | — | Low — trend only (12–15 rep range) | |
 | Low Cable Row | — | High (≤12-rep range) | |
-| Weighted Pull-Ups | 63 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR not specified, assumed 2 |
+| Weighted Pull-Ups | 60 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR corrected to 0 (was 2); same reasoning as Weighted Dips above |
 | Lat Pulldown | — | High (≤12-rep range) | |
 | Arnold Press | — | High (≤12-rep range) | |
 | Lateral Raise | — | Low — trend only (12–15 rep range) | |
 | Reverse Pec Deck | — | Low — trend only (12–15 rep range) | |
-| Leg Press | 768 lb | Medium (10–15 rep range) | 490lb x 15, 7/27 — RIR not specified, assumed 2 |
+| Leg Press | 735 lb | Medium (10–15 rep range) | 490lb x 15, 7/27 — RIR corrected to 0 (was 2); reported "struggling with the weight," which is direct evidence the set was near failure, not 2 reps shy |
 | Weighted Lunges | — | High (≤12-rep range) | |
 | Leg Extension | — | Low — trend only (12–15 rep range) | |
 | Leg Curl | — | Low — trend only (12–15 rep range) | |
@@ -49,3 +49,4 @@ Track calorie target changes here alongside the reasoning, so adjustments over t
 |------|----------------|-----------|
 | 2026-07-26 | ~2,200 | Initial estimate — Mifflin-St Jeor formula, moderate-activity assumption |
 | 2026-07-26 | ~1,700 | Revised same day — WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority |
+| 2026-07-27 | ~1,840 | Revised again — user's own judgment that WHOOP underestimates burn; maintenance bumped 1,800→2,000, same ~8% deficit reapplied |

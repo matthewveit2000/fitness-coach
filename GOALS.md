@@ -29,7 +29,7 @@ Optimize for the 20% of work that drives 80% of the result. Favor efficient, hig
 
 ## Targets
 - Body fat: 15% (from current estimated high teens–low 20s%)
-- Nutrition: ~1,700 kcal/day, ~175g protein/day — see `NUTRITION.md` for the full breakdown and calibration protocol
+- Nutrition: ~1,840 kcal/day, ~175g protein/day — see `NUTRITION.md` for the full breakdown and calibration protocol
 - _(fill in as specifics come up — target bodyweight, lift numbers, run paces, etc.)_
 
 ## Notes

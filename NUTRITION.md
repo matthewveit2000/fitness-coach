@@ -6,18 +6,18 @@ _Last updated: 2026-07-26_
 Training determines the stimulus; body composition change (leaner + hypertrophy) is driven at least as much by intake. This was the single biggest gap found in the last routine audit — there was a body-fat target in `GOALS.md` but nothing about food.
 
 ## Targets (starting point — see Calibration below)
-Revised using WHOOP's measured burn (~1,800 kcal/day average across all days, including training) as the primary signal, in place of the initial Mifflin-St Jeor formula estimate (~2,600) — real tracked data beats a population-average formula. Nudged slightly above the raw WHOOP number because wearables tend to underestimate resting energy for higher-lean-mass/muscular individuals, so 1,800 is likely a slight floor rather than the true number.
+**Revised again 7/27**: maintenance bumped to ~2,000 kcal/day per your own judgment that WHOOP underestimates — consistent with the known bias (wearables tend to underestimate resting energy for higher-lean-mass/muscular individuals), just a larger correction than the ~1,850 estimate first applied. Your read on your own body's response is a legitimate input here, on top of the device data.
 
 | | Target | Basis |
 |---|---|---|
-| Calories | **~1,700/day** (range 1,600–1,800) | Revised maintenance estimate ~1,850 (WHOOP-anchored) · ~8% deficit — kept mild since the maintenance estimate itself already carries uncertainty |
-| Protein | **~175g/day** (range 160–195g) | 1.0–1.2g/lb bodyweight — unchanged even though calories dropped; protein needs stay high (or go up) in a deficit specifically to protect muscle, they don't scale down with calories |
-| Fat | **~55g/day** minimum | Trimmed from the original 65g to leave more room for carbs at this lower calorie ceiling; still comfortably above the ~50g hormonal-health floor |
-| Carbs | **~125g/day** | Fills the remainder — flex this around training days if performance/recovery suffers |
+| Calories | **~1,840/day** (range 1,750–1,950) | Maintenance ~2,000 (WHOOP + your correction) · same mild ~8% deficit as before |
+| Protein | **~175g/day** (range 160–195g) | 1.0–1.2g/lb bodyweight — unchanged; protein needs don't scale with the calorie target either direction |
+| Fat | **~65g/day** minimum | Restored to the original level now that there's more calorie room — was only trimmed to 55g because the lower ~1,700 ceiling needed the space for carbs |
+| Carbs | **~140g/day** | Fills the remainder — flex this around training days if performance/recovery suffers |
 
 **Protein is the hard target — hit it consistently even on days calories drift.** Calories are the main lever for the leaning-out goal; carbs/fat are flexible around whatever's left after protein and the calorie target.
 
-**This is a meaningful downward revision (2,200→1,700) and worth watching closely.** 1,700 kcal is low relative to your training volume (lifting 3–5x/week + running). If strength, recovery, or energy noticeably suffer before the next scheduled check-in below, that's itself a signal to nudge calories up ~100–150 — don't wait for the 2–3 week mark if training is clearly degrading.
+**History:** 2,200 (initial formula) → 1,700 (WHOOP-anchored) → 1,840 (WHOOP + your correction that it underestimates). If strength, recovery, or energy noticeably suffer before the next scheduled check-in below, that's itself a signal to nudge calories up further — don't wait for the 2–3 week mark if training is clearly degrading.
 
 ## Why a moderate deficit, not aggressive
 At 10 years of training experience, simultaneous muscle gain + fat loss ("recomposition") is still achievable — research confirms it isn't just a beginner phenomenon — but it's slower and more dependent on execution than it would be for a newer lifter, and requires high protein + a genuine training stimulus + only a mild deficit. An aggressive cut risks losing the muscle you're training hard for. This is set up for **modest, steady change, not a fast cut.**
