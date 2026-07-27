@@ -202,7 +202,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">0</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">3</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">6</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">1</span></div>
     </div>
@@ -449,13 +449,18 @@
     '2026-07-26': [
       { name: "Eggbert's avocado bacon omelet, fruit, buttered wheat toast + apple butter", kcal: 1000, protein: 43, fat: 64, carbs: 70, source: 'estimate' },
       { name: 'Handcrafted Provisions "Protein Provision" box', kcal: 690, protein: 49, fat: 43, carbs: 30, source: 'label' },
-      { name: 'Chicken tortilla soup (1.75 cups) + cheese wheel + brown rice (1/2 cup dry)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' }
+      { name: 'Chicken tortilla soup (1.75 cups) + cheese wheel + brown rice (1/2 cup dry)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' },
+      { name: "Built Bar Puff, Cookies 'N Cream", kcal: 150, protein: 17, fat: 3, carbs: 14, source: 'label' }
+    ],
+    '2026-07-27': [
+      { name: 'fairlife Core Power chocolate protein shake', kcal: 170, protein: 26, fat: 5, carbs: 8, source: 'label' },
+      { name: 'Chicken tortilla soup + cheese wheel + brown rice (repeat of 7/26 meal)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1700, protein: 175, fat: 55, carbs: 125 };
   // Hardcoded to match the rest of this project's internal timeline (see GOALS.md/PROGRESS.md).
   // Update this to the actual latest date whenever the dashboard is regenerated.
-  var TODAY = '2026-07-26';
+  var TODAY = '2026-07-27';
 
   function last14Days() {
     var days = [];
