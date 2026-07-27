@@ -137,13 +137,16 @@
   .trend-chart-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; margin-bottom: 6px; }
   .trend-chart-head .metric-name { font-weight: 600; }
   .trend-chart-head .metric-target { font-family: var(--mono); color: var(--ink-faint); font-size: 0.72rem; }
-  .trend-bars { display: flex; align-items: flex-end; gap: 5px; height: 64px; position: relative; border-bottom: 1px solid var(--line); }
+  .trend-plot { position: relative; height: 64px; border-bottom: 1px solid var(--line); }
+  .trend-bars { display: flex; align-items: flex-end; gap: 5px; height: 100%; }
   .trend-bar-col { flex: 1; min-width: 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
   .trend-bar { width: 100%; max-width: 20px; background: var(--accent); border-radius: 2px 2px 0 0; }
   .trend-bar.is-warn { background: var(--warn); }
-  .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; }
+  .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; align-self: flex-end; }
   .trend-target-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink-soft); pointer-events: none; }
-  .trend-day-label { font-family: var(--mono); font-size: 8.5px; color: var(--ink-faint); margin-top: 4px; white-space: nowrap; }
+  .trend-labels { display: flex; gap: 5px; margin-top: 4px; }
+  .trend-label-col { flex: 1; min-width: 24px; display: flex; justify-content: center; }
+  .trend-day-label { font-family: var(--mono); font-size: 8.5px; color: var(--ink-faint); white-space: nowrap; }
 
   /* routine day cards */
   .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-bottom: 8px; }
@@ -553,6 +556,13 @@
       head.innerHTML = '<span class="metric-name">' + m.label + '</span><span class="metric-target">target ' + TARGETS[m.key] + m.unit + '</span>';
       chart.appendChild(head);
 
+      // Plot area (bars + target line) is a fixed 64px box, kept completely separate
+      // from the labels row below -- otherwise the label text shares the flex column
+      // with the bar and gets flexbox-shrunk together, silently capping bar heights
+      // and breaking their scale relative to the target line.
+      var plot = document.createElement('div');
+      plot.className = 'trend-plot';
+
       var bars = document.createElement('div');
       bars.className = 'trend-bars';
 
@@ -571,19 +581,29 @@
           bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')';
         }
         col.appendChild(bar);
-        var lbl = document.createElement('div');
-        lbl.className = 'trend-day-label';
-        lbl.textContent = d.slice(5).replace('-', '/');
-        col.appendChild(lbl);
         bars.appendChild(col);
       });
+      plot.appendChild(bars);
 
       var targetLine = document.createElement('div');
       targetLine.className = 'trend-target-line';
       targetLine.style.top = (chartHeight - (TARGETS[m.key] / chartMax) * chartHeight) + 'px';
-      bars.appendChild(targetLine);
+      plot.appendChild(targetLine);
 
-      chart.appendChild(bars);
+      chart.appendChild(plot);
+
+      var labels = document.createElement('div');
+      labels.className = 'trend-labels';
+      days.forEach(function (d) {
+        var lcol = document.createElement('div');
+        lcol.className = 'trend-label-col';
+        var lbl = document.createElement('div');
+        lbl.className = 'trend-day-label';
+        lbl.textContent = d.slice(5).replace('-', '/');
+        lcol.appendChild(lbl);
+        labels.appendChild(lcol);
+      });
+      chart.appendChild(labels);
       container.appendChild(chart);
     });
   }
