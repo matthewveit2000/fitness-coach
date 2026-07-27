@@ -6,6 +6,7 @@ _Last updated: 2026-07-26_
 | Date | Weight | Notes |
 |------|--------|-------|
 | 2026-07-26 | 163 lb | Estimated body fat high teens-low 20s %, 5'6" |
+| 2026-07-27 | 164.3 lb | Gym scale, after work, with shoes, on a padded floor — not directly comparable to the 7/26 reading (different conditions/time of day). Use same-conditions weigh-ins for the real trend once a pattern is established. |
 
 ## Lift PRs
 | Lift | Weight x Reps | Date |
@@ -23,15 +24,15 @@ Inferred from logged working sets via the Epley formula (see `ROUTINE.md` → Su
 | Exercise | Est. 1RM | Confidence | Based on (weight x reps, date) |
 |---|---|---|---|
 | Incline DB Press | — | High (≤12-rep range) | |
-| Weighted Dips | — | High (≤12-rep range) | |
+| Weighted Dips | 63 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR not specified, assumed 2 |
 | Pec Deck | — | Low — trend only (12–15 rep range) | |
 | Low Cable Row | — | High (≤12-rep range) | |
-| Weighted Pull-Ups | — | High (≤12-rep range) | |
+| Weighted Pull-Ups | 63 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR not specified, assumed 2 |
 | Lat Pulldown | — | High (≤12-rep range) | |
 | Arnold Press | — | High (≤12-rep range) | |
 | Lateral Raise | — | Low — trend only (12–15 rep range) | |
 | Reverse Pec Deck | — | Low — trend only (12–15 rep range) | |
-| Leg Press | — | Medium (10–15 rep range) | |
+| Leg Press | 768 lb | Medium (10–15 rep range) | 490lb x 15, 7/27 — RIR not specified, assumed 2 |
 | Weighted Lunges | — | High (≤12-rep range) | |
 | Leg Extension | — | Low — trend only (12–15 rep range) | |
 | Leg Curl | — | Low — trend only (12–15 rep range) | |

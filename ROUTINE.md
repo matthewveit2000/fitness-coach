@@ -66,8 +66,8 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained ≥2x/week like everything else, at the same weekly set total as before.
 
 ### Day 1 — Full Body A
-- Superset: weighted dips 3x8–12 @ **—** (chest) ↔ weighted pull-ups 3x6–10 @ **—** (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg press 3x10–15 @ **—** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
+- Superset: weighted dips 3x8–12 @ **~45–50lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~47–52lb added** (back) — _dip/pull-up tower · chest vs back_
+- Superset: leg press 3x10–15 @ **~510–575lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
 - Superset: Arnold press 3x8–12 @ **—** (side delt) ↔ DB curl 3x10–12 @ **—** (biceps) — _same DB rack · press vs curl, push vs pull_
 - Finisher: reverse pec deck 2x12–15 @ **—** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min
