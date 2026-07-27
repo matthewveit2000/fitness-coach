@@ -121,6 +121,30 @@
 
   .empty-state { color: var(--ink-faint); font-size: 0.85rem; font-style: italic; padding: 10px 0; }
 
+  /* day picker + daily log */
+  .day-picker-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  #day-select { font-family: var(--sans); font-size: 0.85rem; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); }
+  #day-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .day-summary-items { margin-top: 4px; }
+  .day-item-row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px dashed var(--line); font-size: 0.84rem; }
+  .day-item-row:first-child { border-top: none; }
+  .day-item-name { flex: 1; }
+  .day-item-macros { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; font-size: 0.76rem; }
+
+  /* 14-day trend charts */
+  .trend-wrap { overflow-x: auto; }
+  .trend-chart { margin-bottom: 20px; min-width: 460px; }
+  .trend-chart-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; margin-bottom: 6px; }
+  .trend-chart-head .metric-name { font-weight: 600; }
+  .trend-chart-head .metric-target { font-family: var(--mono); color: var(--ink-faint); font-size: 0.72rem; }
+  .trend-bars { display: flex; align-items: flex-end; gap: 5px; height: 64px; position: relative; border-bottom: 1px solid var(--line); }
+  .trend-bar-col { flex: 1; min-width: 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .trend-bar { width: 100%; max-width: 20px; background: var(--accent); border-radius: 2px 2px 0 0; }
+  .trend-bar.is-warn { background: var(--warn); }
+  .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; }
+  .trend-target-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink-soft); pointer-events: none; }
+  .trend-day-label { font-family: var(--mono); font-size: 8.5px; color: var(--ink-faint); margin-top: 4px; white-space: nowrap; }
+
   /* routine day cards */
   .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-bottom: 8px; }
   .day-card { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 14px 16px; }
@@ -343,14 +367,16 @@
       <li>Override early if training performance clearly drops before the scheduled check-in</li>
     </ul>
 
-    <h2 class="section-title">Recent Meals</h2>
-    <div class="table-wrap"><table>
-      <tr><th>Date</th><th>Item</th><th>Kcal</th><th>Protein</th><th>Fat</th><th>Carbs</th></tr>
-      <tr><td>2026-07-26</td><td>Eggbert's avocado bacon omelet, fruit, buttered wheat toast + apple butter <span class="faint">(no official nutrition info published — estimated)</span></td><td class="num">~1,000</td><td class="num">~43g</td><td class="num">~64g</td><td class="num">~70g</td></tr>
-      <tr><td>2026-07-26</td><td>Handcrafted Provisions "Protein Provision" box <span class="faint">(from label, exact)</span></td><td class="num">690</td><td class="num">49g</td><td class="num">43g</td><td class="num">30g</td></tr>
-      <tr><td>2026-07-26</td><td>Chicken tortilla soup (1.75 cups) + cheese wheel + brown rice (1/2 cup dry) <span class="faint">(from labels, exact)</span></td><td class="num">488</td><td class="num">30g</td><td class="num">15g</td><td class="num">62g</td></tr>
-    </table></div>
-    <p class="faint">Today so far: ~2,178 kcal &middot; ~122g protein &middot; ~122g fat &middot; ~162g carbs vs. target ~1,700 / 175g / 55g / 125g. Over on calories (+~480), fat is more than 2x target, carbs are over too, and protein is still under target — remaining food today should be very lean and protein-forward if you want to get back toward target, or just note today as a higher day and reset tomorrow.</p>
+    <h2 class="section-title">Daily Log</h2>
+    <div class="day-picker-row">
+      <label for="day-select" class="faint">Day:</label>
+      <select id="day-select"></select>
+    </div>
+    <div id="day-summary"></div>
+
+    <h2 class="section-title">14-Day Trend vs Target</h2>
+    <p class="faint">Hover any bar for the exact value. Dashed line = daily target. Bars past ~15% over target are flagged in the warning color. Empty slots mean nothing was logged that day, not zero intake.</p>
+    <div class="trend-wrap" id="trend-charts"></div>
 
     <h2 class="section-title">Logging</h2>
     <p class="muted">Fully conversational &mdash; describe a meal in chat or send a photo, and it gets estimated and logged to <code>meals/YYYY-MM.md</code>, same pattern as the workout log.</p>
@@ -415,4 +441,147 @@
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
+</script>
+
+<script>
+  // Mirrors meals/YYYY-MM.md. Update this object (and TODAY below) whenever a meal is logged there.
+  var NUTRITION_LOG = {
+    '2026-07-26': [
+      { name: "Eggbert's avocado bacon omelet, fruit, buttered wheat toast + apple butter", kcal: 1000, protein: 43, fat: 64, carbs: 70, source: 'estimate' },
+      { name: 'Handcrafted Provisions "Protein Provision" box', kcal: 690, protein: 49, fat: 43, carbs: 30, source: 'label' },
+      { name: 'Chicken tortilla soup (1.75 cups) + cheese wheel + brown rice (1/2 cup dry)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' }
+    ]
+  };
+  var TARGETS = { kcal: 1700, protein: 175, fat: 55, carbs: 125 };
+  // Hardcoded to match the rest of this project's internal timeline (see GOALS.md/PROGRESS.md).
+  // Update this to the actual latest date whenever the dashboard is regenerated.
+  var TODAY = '2026-07-26';
+
+  function last14Days() {
+    var days = [];
+    var base = new Date(TODAY + 'T00:00:00');
+    for (var i = 13; i >= 0; i--) {
+      var d = new Date(base);
+      d.setDate(d.getDate() - i);
+      days.push(d.toISOString().slice(0, 10));
+    }
+    return days;
+  }
+
+  function dayTotals(dateStr) {
+    var items = NUTRITION_LOG[dateStr];
+    if (!items) return null;
+    return items.reduce(function (acc, it) {
+      acc.kcal += it.kcal; acc.protein += it.protein; acc.fat += it.fat; acc.carbs += it.carbs;
+      return acc;
+    }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+  }
+
+  function statTileHtml(label, value, target, unit) {
+    var over = value > target * 1.1;
+    var style = over ? ' style="color:var(--warn)"' : '';
+    var cls = over ? 'value' : 'value accent';
+    return '<div class="stat"><span class="label">' + label + '</span><span class="' + cls + '"' + style + '>' +
+      Math.round(value) + unit + '</span><span class="sub">target ' + target + unit + '</span></div>';
+  }
+
+  function renderDaySummary(dateStr) {
+    var container = document.getElementById('day-summary');
+    var items = NUTRITION_LOG[dateStr];
+    if (!items || items.length === 0) {
+      container.innerHTML = '<div class="empty-state">No meals logged for ' + dateStr + '.</div>';
+      return;
+    }
+    var t = dayTotals(dateStr);
+    var html = '<div class="stat-grid">' +
+      statTileHtml('Calories', t.kcal, TARGETS.kcal, '') +
+      statTileHtml('Protein', t.protein, TARGETS.protein, 'g') +
+      statTileHtml('Fat', t.fat, TARGETS.fat, 'g') +
+      statTileHtml('Carbs', t.carbs, TARGETS.carbs, 'g') +
+      '</div><div class="day-summary-items">';
+    items.forEach(function (it) {
+      var srcTag = it.source === 'label' ? 'label, exact' : 'estimated';
+      html += '<div class="day-item-row"><span class="day-item-name">' + it.name +
+        ' <span class="faint">(' + srcTag + ')</span></span><span class="day-item-macros">' +
+        it.kcal + ' kcal &middot; ' + it.protein + 'g P &middot; ' + it.fat + 'g F &middot; ' + it.carbs + 'g C</span></div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function initDayPicker() {
+    var select = document.getElementById('day-select');
+    var days = last14Days().slice().reverse();
+    select.innerHTML = days.map(function (d) {
+      return '<option value="' + d + '">' + d + (d === TODAY ? ' (today)' : '') + '</option>';
+    }).join('');
+    select.value = TODAY;
+    select.addEventListener('change', function () { renderDaySummary(select.value); });
+    renderDaySummary(TODAY);
+  }
+
+  function renderTrend() {
+    var days = last14Days();
+    var metrics = [
+      { key: 'kcal', label: 'Calories', unit: '' },
+      { key: 'protein', label: 'Protein', unit: 'g' },
+      { key: 'fat', label: 'Fat', unit: 'g' },
+      { key: 'carbs', label: 'Carbs', unit: 'g' }
+    ];
+    var totalsByDay = days.map(function (d) { return dayTotals(d); });
+    var container = document.getElementById('trend-charts');
+    container.innerHTML = '';
+    var chartHeight = 64;
+
+    metrics.forEach(function (m) {
+      var values = totalsByDay.map(function (t) { return t ? t[m.key] : null; });
+      var loggedValues = values.filter(function (v) { return v !== null; });
+      var maxLogged = loggedValues.length ? Math.max.apply(null, loggedValues) : 0;
+      var chartMax = Math.max(TARGETS[m.key] * 1.3, maxLogged * 1.1, 1);
+
+      var chart = document.createElement('div');
+      chart.className = 'trend-chart';
+
+      var head = document.createElement('div');
+      head.className = 'trend-chart-head';
+      head.innerHTML = '<span class="metric-name">' + m.label + '</span><span class="metric-target">target ' + TARGETS[m.key] + m.unit + '</span>';
+      chart.appendChild(head);
+
+      var bars = document.createElement('div');
+      bars.className = 'trend-bars';
+
+      days.forEach(function (d, i) {
+        var col = document.createElement('div');
+        col.className = 'trend-bar-col';
+        var v = values[i];
+        var bar = document.createElement('div');
+        if (v === null) {
+          bar.className = 'trend-bar is-empty';
+          bar.title = d + ': no data logged';
+        } else {
+          var over = v > TARGETS[m.key] * 1.15;
+          bar.className = 'trend-bar' + (over ? ' is-warn' : '');
+          bar.style.height = Math.max(2, (v / chartMax) * chartHeight) + 'px';
+          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')';
+        }
+        col.appendChild(bar);
+        var lbl = document.createElement('div');
+        lbl.className = 'trend-day-label';
+        lbl.textContent = d.slice(5).replace('-', '/');
+        col.appendChild(lbl);
+        bars.appendChild(col);
+      });
+
+      var targetLine = document.createElement('div');
+      targetLine.className = 'trend-target-line';
+      targetLine.style.top = (chartHeight - (TARGETS[m.key] / chartMax) * chartHeight) + 'px';
+      bars.appendChild(targetLine);
+
+      chart.appendChild(bars);
+      container.appendChild(chart);
+    });
+  }
+
+  initDayPicker();
+  renderTrend();
 </script>
