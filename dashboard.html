@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-28</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-27</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -473,16 +473,15 @@
     '2026-07-27': [
       { name: 'fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
       { name: 'Chicken tortilla soup + cheese wheel + brown rice (repeat of 7/26 meal)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' },
-      { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' }
-    ],
-    '2026-07-28': [
+      { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
       { name: 'PB&J roll-up (tortilla + 1.5 spoons PB + 1 spoon jelly)', kcal: 263, protein: 11, fat: 15.5, carbs: 38, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
   // Hardcoded to match the rest of this project's internal timeline (see GOALS.md/PROGRESS.md).
-  // Update this to the actual latest date whenever the dashboard is regenerated.
-  var TODAY = '2026-07-28';
+  // Update this to the actual latest date whenever the dashboard is regenerated -- confirm with the
+  // user before advancing it; don't infer a day rollover from ambient system context alone.
+  var TODAY = '2026-07-27';
 
   function last14Days() {
     var days = [];
