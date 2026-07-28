@@ -41,6 +41,10 @@ No app, no manual macro lookup required. Just tell me what you ate, in whatever 
 - Estimates are approximate, not lab-precision — that's fine, consistency over weeks matters more than precision on any single meal, and the calibration protocol above corrects for estimation error using real weight-trend data anyway.
 - **Dates: logged under the date the message was received, not inferred from phrasing like "last night" — see `README.md` Workflow for the full policy.**
 
+## Preferred Staples
+Default items to assume when logging, unless a photo or description says otherwise:
+- **Protein shake:** Premier Protein Vanilla, 11 fl oz — 160 kcal, 30g protein, 3g fat, 4g carbs _(replaced the fairlife Nutrition Plan shake as of 2026-07-28)_
+
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
 - Alcohol, sauces/oils, and cooking fats are easy to undercount — mention them when describing a meal rather than assuming they're negligible.
