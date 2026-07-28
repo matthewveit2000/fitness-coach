@@ -478,9 +478,9 @@
     ]
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
-  // Hardcoded to match the rest of this project's internal timeline (see GOALS.md/PROGRESS.md).
-  // Update this to the actual latest date whenever the dashboard is regenerated -- confirm with the
-  // user before advancing it; don't infer a day rollover from ambient system context alone.
+  // Set to the date the most recent logged message was received (see README.md "Date handling
+  // for logs"). Never inferred from the user's phrasing ("last night," "today") and never
+  // advanced from ambient system date-change signals alone -- both have caused real bugs here.
   var TODAY = '2026-07-27';
 
   function last14Days() {

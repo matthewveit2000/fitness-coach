@@ -39,6 +39,7 @@ No app, no manual macro lookup required. Just tell me what you ate, in whatever 
 - **Whenever a restaurant or store/brand name is mentioned, search online for official nutrition info first** (their site, a published nutrition PDF, etc.) before falling back to an estimate. Large chains usually publish full nutrition breakdowns; smaller regional chains often don't — note in the log entry whether the number came from an official source or an estimate either way, so confidence level is always visible at a glance.
 - Entries go in `meals/YYYY-MM.md`, one file per month like the workout logs, with a running daily total against the targets above.
 - Estimates are approximate, not lab-precision — that's fine, consistency over weeks matters more than precision on any single meal, and the calibration protocol above corrects for estimation error using real weight-trend data anyway.
+- **Dates: logged under the date the message was received, not inferred from phrasing like "last night" — see `README.md` Workflow for the full policy.**
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."

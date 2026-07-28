@@ -15,3 +15,5 @@ Personal training log and coaching notes. Training mix: weightlifting, running/c
 ## Workflow
 
 Workouts get logged by telling Claude what happened in a session; Claude records it in the appropriate `workouts/YYYY-MM.md` file and updates `PROGRESS.md` when a PR or notable measurement comes up. Meals get logged the same way — describe what you ate or send a photo, and Claude estimates macros and records it in `meals/YYYY-MM.md`. Whenever any of `GOALS.md`, `ROUTINE.md`, `NUTRITION.md`, or `PROGRESS.md` change, `dashboard.html` gets regenerated to match and republished to the same artifact link.
+
+**Date handling for logs:** every entry gets logged under the date the message describing it was received — never inferred from conversational phrasing ("last night," "this morning," "today") and never changed based on ambient date-change signals without explicit confirmation from the user. Log something under a different date only when explicitly told to (e.g. "log this for yesterday"). If it's unclear what day it currently is, check rather than assume.
