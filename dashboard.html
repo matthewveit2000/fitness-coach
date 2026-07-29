@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-28</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-29</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">2</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">19</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">21</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">2</span></div>
     </div>
@@ -514,6 +514,10 @@
       { name: 'Sartori MontAmoré Cheddar Cheese Bite (1 piece)', kcal: 80, protein: 5, fat: 7, carbs: 0, source: 'label' },
       { name: 'Honey Smoked Fish Co. salmon (2oz serving)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
       { name: '2 cups Frosted Mini-Wheats Original + 4 cups Kirkland lactose-free 2% milk', kcal: 838, protein: 60.5, fat: 20.6, carbs: 111, source: 'label' }
+    ],
+    '2026-07-29': [
+      { name: 'Premier Protein shake (11 fl oz)', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: '1/2 cup dry brown rice + 3.25 servings Greek Lemon Chicken', kcal: 700, protein: 72.25, fat: 21, carbs: 48.75, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
@@ -521,8 +525,9 @@
   // for logs"), checked in Mountain Time (the user's timezone) -- the system clock's raw date
   // is not reliable on its own, confirmed 2026-07-28 after it incorrectly read as the 29th.
   // Never inferred from the user's phrasing ("last night," "today") and never advanced from
-  // ambient date-change signals alone -- both have caused real bugs here.
-  var TODAY = '2026-07-28';
+  // ambient date-change signals alone -- confirmed with the user via AskUserQuestion before
+  // advancing to 7/29.
+  var TODAY = '2026-07-29';
 
   function last14Days() {
     var days = [];
