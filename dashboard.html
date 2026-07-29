@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-29</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-28</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -507,9 +507,7 @@
       { name: 'Premier Protein Vanilla shake (11 fl oz)', kcal: 160, protein: 30, fat: 3, carbs: 4, source: 'label' },
       { name: 'Lactaid 4% cottage cheese (1 cup) + Better Living applesauce (5/3 cup)', kcal: 453, protein: 26, fat: 9, carbs: 61, source: 'label' },
       { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
-      { name: '2 fun size Skittles packs', kcal: 120, protein: 0, fat: 1, carbs: 28, source: 'estimate' }
-    ],
-    '2026-07-29': [
+      { name: '2 fun size Skittles packs', kcal: 120, protein: 0, fat: 1, carbs: 28, source: 'estimate' },
       { name: 'Fresh Additions Chicken Breast Bites (1 pouch, 91g)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
       { name: '3 hard-boiled eggs', kcal: 216, protein: 19.5, fat: 15, carbs: 1.5, source: 'estimate' },
       { name: 'Tillamook Medium Cheddar snack portion (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'estimate' },
@@ -519,10 +517,11 @@
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
   // Set to the date the most recent logged message was received (see README.md "Date handling
-  // for logs"). Never inferred from the user's phrasing ("last night," "today") and never
-  // advanced from ambient system date-change signals alone -- both have caused real bugs here.
-  // Confirmed with the user via AskUserQuestion on 2026-07-29's dinner-photo message before advancing.
-  var TODAY = '2026-07-29';
+  // for logs"), checked in Mountain Time (the user's timezone) -- the system clock's raw date
+  // is not reliable on its own, confirmed 2026-07-28 after it incorrectly read as the 29th.
+  // Never inferred from the user's phrasing ("last night," "today") and never advanced from
+  // ambient date-change signals alone -- both have caused real bugs here.
+  var TODAY = '2026-07-28';
 
   function last14Days() {
     var days = [];
