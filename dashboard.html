@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-28</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-29</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">2</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">11</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">18</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">2</span></div>
     </div>
@@ -508,14 +508,21 @@
       { name: 'Lactaid 4% cottage cheese (1 cup) + Better Living applesauce (5/3 cup)', kcal: 453, protein: 26, fat: 9, carbs: 61, source: 'label' },
       { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
       { name: '2 fun size Skittles packs', kcal: 120, protein: 0, fat: 1, carbs: 28, source: 'estimate' }
+    ],
+    '2026-07-29': [
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch, 91g)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: '3 hard-boiled eggs', kcal: 216, protein: 19.5, fat: 15, carbs: 1.5, source: 'estimate' },
+      { name: 'Tillamook Medium Cheddar snack portion (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'estimate' },
+      { name: 'Sartori MontAmoré Cheddar Cheese Bite (1 piece)', kcal: 80, protein: 5, fat: 7, carbs: 0, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (2oz serving)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
   // Set to the date the most recent logged message was received (see README.md "Date handling
   // for logs"). Never inferred from the user's phrasing ("last night," "today") and never
   // advanced from ambient system date-change signals alone -- both have caused real bugs here.
-  // Confirmed with the user via AskUserQuestion on 2026-07-27's followup message before advancing.
-  var TODAY = '2026-07-28';
+  // Confirmed with the user via AskUserQuestion on 2026-07-29's dinner-photo message before advancing.
+  var TODAY = '2026-07-29';
 
   function last14Days() {
     var days = [];
