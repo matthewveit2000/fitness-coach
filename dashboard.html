@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-29</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-30</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">2</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">23</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">24</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">2</span></div>
     </div>
@@ -520,16 +520,17 @@
       { name: '1/2 cup dry brown rice + 3.25 servings Greek Lemon Chicken', kcal: 700, protein: 72.25, fat: 21, carbs: 48.75, source: 'label' },
       { name: 'fairlife Nutrition Plan chocolate shake + bowl of strawberries (~140g)', kcal: 195, protein: 31, fat: 2.9, carbs: 15, source: 'estimate' },
       { name: 'Nongshim Shin Ramyun + 2 tbsp mayo', kcal: 708, protein: 11.2, fat: 36, carbs: 83.2, source: 'label' }
+    ],
+    '2026-07-30': [
+      { name: 'fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 175, fat: 65, carbs: 140 };
-  // Set to the date the most recent logged message was received (see README.md "Date handling
-  // for logs"), checked in Mountain Time (the user's timezone) -- the system clock's raw date
-  // is not reliable on its own, confirmed 2026-07-28 after it incorrectly read as the 29th.
-  // Never inferred from the user's phrasing ("last night," "today") and never advanced from
-  // ambient date-change signals alone -- confirmed with the user via AskUserQuestion before
-  // advancing to 7/29.
-  var TODAY = '2026-07-29';
+  // Set to the actual current date in Mountain Time (the user's timezone), e.g. via
+  // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
+  // looked up and applied automatically without confirming with the user; only log under a
+  // different date when the user explicitly asks for one.
+  var TODAY = '2026-07-30';
 
   function last14Days() {
     var days = [];
