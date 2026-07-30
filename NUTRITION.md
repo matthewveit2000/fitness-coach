@@ -1,6 +1,6 @@
 # Nutrition
 
-_Last updated: 2026-07-26_
+_Last updated: 2026-07-30_
 
 ## Why this exists
 Training determines the stimulus; body composition change (leaner + hypertrophy) is driven at least as much by intake. This was the single biggest gap found in the last routine audit — there was a body-fat target in `GOALS.md` but nothing about food.
@@ -11,11 +11,11 @@ Training determines the stimulus; body composition change (leaner + hypertrophy)
 | | Target | Basis |
 |---|---|---|
 | Calories | **~1,840/day** (range 1,750–1,950) | Maintenance ~2,000 (WHOOP + your correction) · same mild ~8% deficit as before |
-| Protein | **~175g/day** (range 160–195g) | 1.0–1.2g/lb bodyweight — unchanged; protein needs don't scale with the calorie target either direction |
+| Protein | **~130g/day** (range 120–140g) | **Revised 7/30 per your request** — 0.8g/lb bodyweight (164lb), down from 1.0–1.2g/lb. Still comfortably above the ~0.7g/lb floor most muscle-retention-in-a-deficit research converges on, just less padding above it than before |
 | Fat | **~65g/day** minimum | Restored to the original level now that there's more calorie room — was only trimmed to 55g because the lower ~1,700 ceiling needed the space for carbs |
-| Carbs | **~140g/day** | Fills the remainder — flex this around training days if performance/recovery suffers |
+| Carbs | **~185g/day** | Fills the remainder — the lower protein target freed up ~45g of the calorie budget, which rolls into carbs (helps with the training-fuel issue from the 7/27 under-fueling incident); flex this around training days if performance/recovery suffers |
 
-**Protein is the hard target — hit it consistently even on days calories drift.** Calories are the main lever for the leaning-out goal; carbs/fat are flexible around whatever's left after protein and the calorie target.
+**Calories are still the main lever for the leaning-out goal.** Protein's no longer being held as a hard floor above what's needed for muscle retention — hit ~130g most days, but it's not worth stressing over on a day it comes up short the way it was at 175g.
 
 **History:** 2,200 (initial formula) → 1,700 (WHOOP-anchored) → 1,840 (WHOOP + your correction that it underestimates). If strength, recovery, or energy noticeably suffer before the next scheduled check-in below, that's itself a signal to nudge calories up further — don't wait for the 2–3 week mark if training is clearly degrading.
 
