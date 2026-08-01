@@ -38,6 +38,7 @@ No app, no manual macro lookup required. Just tell me what you ate, in whatever 
 - **Send a photo** of the meal or the nutrition label — I'll read the label directly if there is one (exact, not estimated), or estimate from the photo if not.
 - **Whenever a restaurant or store/brand name is mentioned, search online for official nutrition info first** (their site, a published nutrition PDF, etc.) before falling back to an estimate. Large chains usually publish full nutrition breakdowns; smaller regional chains often don't — note in the log entry whether the number came from an official source or an estimate either way, so confidence level is always visible at a glance.
 - Entries go in `meals/YYYY-MM.md`, one file per month like the workout logs, with a running daily total against the targets above.
+- **When a message describes multiple food items for one meal, log each item as its own line with its own calories/macros — never blended into a single combined line.** They still count toward the same meal (e.g. "Lunch") and the same daily total, but each item's numbers stay visible individually so you can see what any one thing actually cost you.
 - Estimates are approximate, not lab-precision — that's fine, consistency over weeks matters more than precision on any single meal, and the calibration protocol above corrects for estimation error using real weight-trend data anyway.
 - **Dates: logged under the date the message was received, not inferred from phrasing like "last night" — see `README.md` Workflow for the full policy.**
 
