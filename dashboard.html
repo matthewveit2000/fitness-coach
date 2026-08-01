@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-31</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-01</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">4</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">31</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">32</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">2</span></div>
     </div>
@@ -570,6 +570,9 @@
       { name: "Sukhi's Chicken Coconut Curry (3.5 servings) + 1/2 cup dry brown rice", kcal: 810, protein: 81, fat: 22.5, carbs: 77.5, source: 'label' },
       { name: 'Premier Protein shake (11 fl oz, caramel-style)', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
       { name: 'Shin Ramyun + 1 tbsp mayo + 2 pouches Chicken Breast Bites', kcal: 894, protein: 59.1, fat: 33, carbs: 89.1, source: 'label' }
+    ],
+    '2026-08-01': [
+      { name: '1/2 cup fairlife 2% Ultra-Filtered milk', kcal: 60, protein: 6.5, fat: 2.5, carbs: 3, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -577,7 +580,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-07-31';
+  var TODAY = '2026-08-01';
 
   function last14Days() {
     var days = [];
