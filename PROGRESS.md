@@ -29,17 +29,18 @@ Inferred from logged working sets via the Epley formula (see `ROUTINE.md` → Su
 | Incline DB Press | 82 lb | High (≤12-rep range) | 70lb x 5, failed 6th rep, 7/30 — a failed rep is direct/true failure data, not a RIR assumption |
 | Weighted Dips | 60 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR corrected to 0 (was 2); "struggling" + light-headed/nauseous partway through the session are direct evidence of near-failure effort, not 2 in reserve |
 | Pec Deck | 240 lb | High (10-rep set) | 180lb x 10 (x2 sets), 7/30 — RIR=0 default; actual reps performed (8-10) are within the reliable ≤12 range even though the exercise is normally programmed at 12-15, so confidence is High for this entry specifically |
-| Low Cable Row | 253 lb | High (≤12-rep range) | 190lb x 10 (x2 sets), 7/28 — RIR corrected to 0 (was 1); user reported struggling with the whole session |
+| Low Cable Row | 262.5 lb | High (12-15 rep range) | 175lb x 15, 7/31 — RIR=0 default; new PR, up from 253lb (7/28) |
 | Weighted Pull-Ups | 60 lb added | High (≤12-rep range) | 45lb x 10 (x2 sets), 7/27 — RIR corrected to 0 (was 2); same reasoning as Weighted Dips above |
 | Lat Pulldown | 233 lb | High (10-rep set) | 175lb x 10, 7/30 — RIR=0 default |
 | Arnold Press | — | High (≤12-rep range) | |
 | Lateral Raise | 37.5 lb | Low — trend only (12–15 rep range) | 25lb x 15 (x2 sets), 7/28 — RIR corrected to 0 (was 1); 15-rep sets are past the formula's reliable range so treat as directional only |
 | Reverse Pec Deck | 190 lb | High (8-rep set) | 150lb x 8, failed 9th rep, 7/30 — a failed rep is direct/true failure data; the 8-rep set beat the 15-rep set (120lb) that would otherwise have been the low-confidence entry |
 | Leg Press | 735 lb | Medium (10–15 rep range) | 490lb x 15, 7/27 — RIR corrected to 0 (was 2); reported "struggling with the weight," which is direct evidence the set was near failure, not 2 reps shy |
-| Weighted Lunges | — | High (≤12-rep range) | |
+| Weighted Lunges | 202.5 lb | Low — trend only (15-rep set) | 135lb x 15 (x3 sets), 7/31 — RIR=0 default; reps assumed per-leg to match the routine's prescription, flag if that's wrong |
 | Leg Extension | 322.5 lb | Low — trend only (12–15 rep range) | 215lb x 15 (x3 sets), 7/28 — RIR corrected to 0 (was 1); all sets at 15 reps, treat as directional only |
 | Leg Curl | 322.5 lb | Low — trend only (12–15 rep range) | 215lb x 15, 7/28 — RIR corrected to 0 (was 1); best set at 15 reps, treat as directional only |
-| DB Curl | — | High (≤12-rep range) | |
+| DB Curl | 49 lb | High (≤12-rep range) | 35lb x 12, 7/31 — RIR=0 default |
+| Bench Press _(not in current routine — see Notes)_ | 233 lb | High (≤12-rep range) | 175lb x 10 (x2 sets), 7/31 — 2nd set explicitly "couldn't have done another," true failure |
 | Hammer Curl | 60 lb | Medium (mix of ≤12 and 13–15 rep sets) | 40lb x 15 (best set), 7/28 — RIR corrected to 0 (was 1, though the math barely moves at 15 reps); the top set was at 15 reps (past the ≤12 reliable zone) even though the prescribed range is 10–12, so confidence is downgraded from the usual "High" for this exercise |
 | Triceps Pushdown | 176 lb | High (≤12-rep range) | 135lb x 9, 7/28 — RIR corrected to 0 (was 1); user reported struggling with the whole session. (7/30 session best was 135lb x7 failed 8th, e1RM ~166.5 — didn't beat the recorded PR, so no change; a single lower day doesn't lower an e1RM.) |
 | Overhead Triceps Ext. | — | High (≤12-rep range) | |
