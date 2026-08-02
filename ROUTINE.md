@@ -102,6 +102,7 @@ Repeats the exercises that are still below the optimal zone after Days 1–3 —
 - Cardio: longer zone 2 run
 
 ## Notes
+- **Weekly volume is evaluated Monday–Sunday**, added 2026-08-02 per the user's own training calendar — not a rolling "last 7 days" or "last N sessions" window. When auditing volume against the MEV/optimal thresholds above, only count sessions from the most recent Monday through the current day, and treat each Monday as a hard reset rather than carrying a running tally forward. (7/27–8/2, the block used in every volume audit so far, happens to line up exactly with one full Mon–Sun week — 8/3 is the first day of a fresh week.)
 - Update this file whenever the plan changes; keep workout logs in `workouts/` matching what's actually done, even when it deviates from plan.
 - Exercise swaps are fine — keep the muscle-group balance above and stay back-friendly.
 - **Lateral raise is new** — nothing in the original preferred-exercise list trained side delts directly, so it was added to close that gap. Swap it out if there's a reason to avoid it, but something needs to fill that slot.
