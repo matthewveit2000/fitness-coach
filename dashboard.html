@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-03</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-04</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">9</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">64</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">65</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">2</span></div>
     </div>
@@ -660,6 +660,9 @@
       { name: '1 medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
       { name: 'Santera Carne Asada, half plate', kcal: 683.5, protein: 43.8, fat: 32.5, carbs: 58, source: 'estimate' },
       { name: 'Chips, salsa, and crema, half tray', kcal: 417.5, protein: 6, fat: 22.5, carbs: 50, source: 'estimate' }
+    ],
+    '2026-08-04': [
+      { name: '1 cup Kirkland Signature lactose-free 2% Ultra-Filtered milk', kcal: 120, protein: 13, fat: 4.5, carbs: 6, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -667,7 +670,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-03';
+  var TODAY = '2026-08-04';
 
   function last14Days() {
     var days = [];
