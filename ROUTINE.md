@@ -84,7 +84,7 @@ Leg Press and Weighted Lunges — the two heaviest leg movements — are deliber
 
 ### Day 3 — Full Body C
 - Superset: pec deck 3x12–15 @ **~144–154lb** (chest) ↔ reverse pec deck 2x12–15 @ **~136–146lb** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
-- Superset: lat pulldown 3x10–12 @ **~150–157.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **—** (triceps) — _same cable stack · elbow-joint antagonist_
+- Superset: lat pulldown 3x10–12 @ **~157.5–165.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) — _same cable stack · elbow-joint antagonist_
 - Superset: incline DB press 3x8–12 @ **~52.5–58lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
 - Finisher: leg curl 2x12–15 @ **~194–207lb** (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
 - Cardio: zone 2 run, 20–30 min
