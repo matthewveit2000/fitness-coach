@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-07</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-08</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -759,8 +759,10 @@
       { name: '2 Kirkland 100 Calorie granola bars', kcal: 200, protein: 2, fat: 6, carbs: 36, source: 'label' },
       { name: 'Frosted Mini Wheats, 159g', kcal: 556.5, protein: 13.3, fat: 4, carbs: 135.2, source: 'label' },
       { name: 'Kirkland reduced fat ultra-filtered milk, 531g', kcal: 265.5, protein: 28.8, fat: 10, carbs: 13.3, source: 'label' },
-      { name: 'Kirkland reduced fat ultra-filtered milk, 202g more', kcal: 101, protein: 10.9, fat: 3.8, carbs: 5.1, source: 'label' },
-      { name: 'Kirkland reduced fat ultra-filtered milk, 107g more', kcal: 53.5, protein: 5.8, fat: 2, carbs: 2.7, source: 'label' }
+      { name: 'Kirkland reduced fat ultra-filtered milk, 202g more', kcal: 101, protein: 10.9, fat: 3.8, carbs: 5.1, source: 'label' }
+    ],
+    '2026-08-08': [
+      { name: 'Kirkland reduced fat ultra-filtered milk, 107g', kcal: 53.5, protein: 5.8, fat: 2, carbs: 2.7, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -768,7 +770,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-07';
+  var TODAY = '2026-08-08';
 
   function last14Days() {
     var days = [];
