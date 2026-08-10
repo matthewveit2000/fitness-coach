@@ -170,7 +170,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-09</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-10</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -205,7 +205,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">14</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">115</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">116</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">5</span></div>
     </div>
@@ -809,6 +809,9 @@
       { name: 'fairlife protein shake (2nd today)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
       { name: '2 slices whole wheat bread', kcal: 160, protein: 8, fat: 2, carbs: 28, source: 'estimate' },
       { name: 'jelly, ~2 tbsp', kcal: 100, protein: 0, fat: 0, carbs: 26, source: 'estimate' }
+    ],
+    '2026-08-10': [
+      { name: 'Premier Protein Vanilla shake', kcal: 160, protein: 30, fat: 3, carbs: 3, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -816,7 +819,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-09';
+  var TODAY = '2026-08-10';
 
   function last14Days() {
     var days = [];
