@@ -49,3 +49,4 @@ Default items to assume when logging, unless a photo or description says otherwi
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
 - Alcohol, sauces/oils, and cooking fats are easy to undercount — mention them when describing a meal rather than assuming they're negligible.
+- **Standing habit, not logged:** Metamucil (sugar-free orange, 2 heaping tbsp) every morning — added 2026-08-11. Calories are negligible so it's not added to the daily meal log or totals, but it's a real daily fiber source (~6g soluble fiber/dose) and should factor into any fiber/nutrition-quality assessment — the diet isn't as fiber-deficient as the raw food log alone would suggest.
