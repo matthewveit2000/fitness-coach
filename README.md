@@ -18,4 +18,25 @@ Workouts get logged by telling Claude what happened in a session; Claude records
 
 **Dashboard republishing is not optional and not batched.** `dashboard.html` mirrors the markdown source files, so *every* edit to `GOALS.md`, `ROUTINE.md`, `NUTRITION.md`, `PROGRESS.md`, `workouts/YYYY-MM.md`, or `meals/YYYY-MM.md` — including a single logged meal or a single logged set — requires updating `dashboard.html` to match, then calling the `Artifact` tool to republish it to the same artifact link (same URL, `force: true` if a conflict is reported), in that same turn. `git push`ing the markdown/HTML changes is necessary but **not sufficient** — a git push alone does not update the live dashboard link the user actually looks at. Never say "dashboard's synced/updated/pushed" unless the `Artifact` tool was actually called that turn. If a turn only touches `dashboard.html`'s data (no markdown changes needed), still republish — the artifact step is keyed to "did dashboard.html's content change," not "did a markdown file change."
 
+## Logging coverage and gaps
+
+Not every day gets logged — vacations, travel, events, forgotten meals. Days are classified so that a gap costs the analysis **coverage** without costing it **correctness**. Every day is one of:
+
+| Status | Meaning | How analysis must treat it |
+|---|---|---|
+| **complete** _(default)_ | Everything eaten/trained that day was logged | Counts normally in every average, total, and trend |
+| **partial** | Logged, but with a known unlogged gap (an event, a skipped meal) | Totals are a **floor, not a total**. Excluded from intake averages and from all calorie-balance math. Still counts as a training day if a session was logged |
+| **untracked** | Deliberately not logged at all (vacation, travel) | Excluded entirely. **Never treated as a zero-calorie or zero-training day** |
+
+Statuses live inline in `meals/YYYY-MM.md` / `workouts/YYYY-MM.md` and in `dashboard.html`'s `DAY_STATUS` object. Anything absent from `DAY_STATUS` is complete.
+
+### Rules that follow from the labels
+
+1. **Never average a partial or untracked day into intake.** Report averages as _"X kcal/day across N complete days"_ and always name N — an average whose denominator is unstated is how a gap silently becomes a fake deficit.
+2. **Calorie-balance reconciliation (intake vs. weight change) requires a contiguous run of complete days.** If the window contains a partial or untracked day, the reconciliation is invalid — say so and narrow the window instead of running it anyway. Weight change across untracked days cannot be attributed to logged intake in either direction.
+3. **A weigh-in within ~3 days of returning from an untracked stretch is not a trend point.** Travel food, sodium, and disrupted routine inflate it with water weight. Record it, annotate it, and wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating targets.
+4. **A week containing an untracked stretch is an off-week, not a volume miss.** Report that Mon–Sun audit as "off-week (vacation)" rather than flagging every muscle group as under-MEV — the prescription wasn't missed, it wasn't in effect.
+5. **Don't re-baseline off the first session back.** Performance after a layoff is often down slightly from rhythm and fatigue rather than lost strength. The "PR only moves up" rule already protects the e1RMs; the same restraint applies to suggested weights — leave them where they are and let the second or third session back set the direction.
+6. **State coverage whenever it's degraded.** Any analysis touching a window with gaps says so up front, rather than presenting a clean-looking number built on a partial denominator.
+
 **Date handling for logs:** every entry gets logged under the date the message describing it was received. **Determine that date by checking the actual current date/time in Mountain Time (the user's timezone) — e.g. `TZ=America/Denver date` — and log under that date automatically, without confirming with the user.** (This replaces an earlier version of this policy that required confirming every date; as of 2026-07-30 the user asked to stop being asked and have dates just looked up in Mountain Time instead.) Never infer a date from conversational phrasing ("last night," "this morning," "today") when it conflicts with the actual Mountain Time date. Log something under a different date only when the user explicitly asks for it (e.g. "log this for yesterday") — otherwise always use today's actual Mountain Time date.

@@ -12,6 +12,8 @@ _Last updated: 2026-07-26_
 | 2026-08-07 | 165.8 lb | Same conditions as 7/27/7/28/8/5 (gym scale, after work, shoes, padded floor) — comparable to those readings, up 2lb from 8/5. Still not comparable to the 7/26 baseline. |
 | 2026-08-10 | 165.4 lb | Same conditions as 7/27/7/28/8/5/8/7 (gym scale, after work, shoes, padded floor) — comparable to those readings, down 0.4lb from 8/7. Still not comparable to the 7/26 baseline. |
 
+**Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window.
+
 ## Lift PRs
 | Lift | Weight x Reps | Date |
 |------|---------------|------|

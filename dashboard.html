@@ -143,6 +143,10 @@
   .trend-bar { width: 100%; max-width: 20px; background: var(--accent); border-radius: 2px 2px 0 0; }
   .trend-bar.is-warn { background: var(--warn); }
   .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; align-self: flex-end; }
+  /* Coverage gaps: untracked days get a full-height hatched column so a vacation reads as
+     "no data" rather than as a run of zero-calorie days; partial days stay visible but muted. */
+  .trend-bar.is-untracked { background: repeating-linear-gradient(45deg, var(--line) 0 3px, transparent 3px 6px); border: 1px dashed var(--line-strong); height: 100% !important; border-radius: 2px; }
+  .trend-bar.is-partial { opacity: 0.45; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0 3px, transparent 3px 6px); }
   .trend-target-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink-soft); pointer-events: none; }
   .trend-labels { display: flex; gap: 5px; margin-top: 4px; }
   .trend-label-col { flex: 1; min-width: 24px; display: flex; justify-content: center; }
@@ -860,10 +864,21 @@
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
-  // Days flagged as incomplete (e.g. an unlogged event) -- totals shown are a partial floor, exclude from trend/average analysis.
-  var INCOMPLETE_DAYS = {
-    '2026-08-11': 'Work happy hour not logged — totals below are a partial floor, not the real daily total. Excluded from trend/average analysis.'
+  // Logging-coverage ledger. Any day NOT listed here is 'complete' and counts normally.
+  //   partial   = logged, but with a known unlogged gap. Totals are a FLOOR, not a total.
+  //   untracked = deliberately not logged at all (vacation/travel). NOT a zero-calorie day.
+  // Both are excluded from intake averages and from calorie-balance math -- see README.md
+  // "Logging coverage and gaps" for the full rules.
+  var DAY_STATUS = {
+    '2026-08-11': { status: 'partial',   note: 'Work happy hour not logged — the totals below are a partial floor, not the real daily total.' },
+    '2026-08-12': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-13': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-14': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-15': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-16': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-17': { status: 'untracked', note: 'Vacation — not logged (window closes as soon as logging resumes).' }
   };
+  function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
   // Set to the actual current date in Mountain Time (the user's timezone), e.g. via
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
@@ -901,14 +916,24 @@
   function renderDaySummary(dateStr) {
     var container = document.getElementById('day-summary');
     var items = NUTRITION_LOG[dateStr];
+    var st = DAY_STATUS[dateStr];
     if (!items || items.length === 0) {
-      container.innerHTML = '<div class="empty-state">No meals logged for ' + dateStr + '.</div>';
+      if (st && st.status === 'untracked') {
+        container.innerHTML = '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
+          ' This is not a zero-calorie day; it is excluded from averages and calorie-balance math entirely.</div>';
+      } else {
+        container.innerHTML = '<div class="empty-state">No meals logged for ' + dateStr + '.</div>';
+      }
       return;
     }
     var t = dayTotals(dateStr);
     var html = '';
-    if (INCOMPLETE_DAYS[dateStr]) {
-      html += '<div class="callout warn">&#9888; Incomplete day: ' + INCOMPLETE_DAYS[dateStr] + '</div>';
+    if (st && st.status === 'partial') {
+      html += '<div class="callout">&#9888; <strong>Partial day</strong> &mdash; ' + st.note +
+        ' Treat these numbers as a floor; excluded from averages and calorie-balance math.</div>';
+    } else if (st && st.status === 'untracked') {
+      html += '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
+        ' Excluded from averages and calorie-balance math.</div>';
     }
     html += '<div class="stat-grid">' +
       statTileHtml('Calories', t.kcal, TARGETS.kcal, '') +
@@ -978,15 +1003,21 @@
         var col = document.createElement('div');
         col.className = 'trend-bar-col';
         var v = values[i];
+        var stat = dayStatus(d);
         var bar = document.createElement('div');
         if (v === null) {
-          bar.className = 'trend-bar is-empty';
-          bar.title = d + ': no data logged';
+          bar.className = 'trend-bar ' + (stat === 'untracked' ? 'is-untracked' : 'is-empty');
+          bar.title = stat === 'untracked'
+            ? d + ': untracked (vacation) — excluded from analysis, not a zero'
+            : d + ': no data logged';
         } else {
           var over = v > TARGETS[m.key] * 1.15;
-          bar.className = 'trend-bar' + (over ? ' is-warn' : '');
+          // A partial day's bar is real but incomplete -- render it muted so it is never
+          // read as a genuine low day (that misread is exactly what corrupts the averages).
+          bar.className = 'trend-bar' + (over ? ' is-warn' : '') + (stat === 'partial' ? ' is-partial' : '');
           bar.style.height = Math.max(2, (v / chartMax) * chartHeight) + 'px';
-          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')';
+          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')' +
+            (stat === 'partial' ? ' — PARTIAL, floor only, excluded from averages' : '');
         }
         col.appendChild(bar);
         bars.appendChild(col);
