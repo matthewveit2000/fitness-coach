@@ -860,6 +860,10 @@
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
+  // Days flagged as incomplete (e.g. an unlogged event) -- totals shown are a partial floor, exclude from trend/average analysis.
+  var INCOMPLETE_DAYS = {
+    '2026-08-11': 'Work happy hour not logged — totals below are a partial floor, not the real daily total. Excluded from trend/average analysis.'
+  };
   // Set to the actual current date in Mountain Time (the user's timezone), e.g. via
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
@@ -902,7 +906,11 @@
       return;
     }
     var t = dayTotals(dateStr);
-    var html = '<div class="stat-grid">' +
+    var html = '';
+    if (INCOMPLETE_DAYS[dateStr]) {
+      html += '<div class="callout warn">&#9888; Incomplete day: ' + INCOMPLETE_DAYS[dateStr] + '</div>';
+    }
+    html += '<div class="stat-grid">' +
       statTileHtml('Calories', t.kcal, TARGETS.kcal, '') +
       statTileHtml('Protein', t.protein, TARGETS.protein, 'g') +
       statTileHtml('Fat', t.fat, TARGETS.fat, 'g') +
