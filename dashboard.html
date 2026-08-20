@@ -174,7 +174,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-19</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-20</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -209,7 +209,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">17</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">145</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">147</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">7</span></div>
     </div>
@@ -913,6 +913,10 @@
       { name: 'strawberries, 201g', kcal: 64.3, protein: 1.3, fat: 0.6, carbs: 15.4, source: 'label' },
       { name: 'Kirkland reduced fat ultra-filtered milk, 418mL', kcal: 209, protein: 22.6, fat: 7.8, carbs: 10.4, source: 'label' },
       { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' }
+    ],
+    '2026-08-20': [
+      { name: 'Premier Protein shake', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: 'Real Good Foods burrito x2', kcal: 900, protein: 74, fat: 56, carbs: 66, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -935,7 +939,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-19';
+  var TODAY = '2026-08-20';
 
   function last14Days() {
     var days = [];
