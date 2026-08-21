@@ -174,7 +174,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-20</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-21</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -209,7 +209,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">18</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">151</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">156</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">8</span></div>
     </div>
@@ -947,6 +947,13 @@
       { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
       { name: 'frozen veggie blend, 261g', kcal: 74.9, protein: 6.4, fat: 0, carbs: 15, source: 'label' },
       { name: 'banana, 198g whole (~127g flesh)', kcal: 112.8, protein: 1.4, fat: 0.4, carbs: 28.9, source: 'label' }
+    ],
+    '2026-08-21': [
+      { name: 'Kirkland ultra-filtered lactose-free milk, 458mL', kcal: 229, protein: 24.8, fat: 8.6, carbs: 11.4, source: 'label' },
+      { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Kirkland Chicken Tortilla Soup, 450g', kcal: 238.8, protein: 16.5, fat: 5.5, carbs: 29.4, source: 'estimate' },
+      { name: 'Kirkland organic Normandy vegetables, 203g', kcal: 58.2, protein: 5, fat: 0, carbs: 11.6, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -969,7 +976,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-20';
+  var TODAY = '2026-08-21';
 
   function last14Days() {
     var days = [];
