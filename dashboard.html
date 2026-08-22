@@ -121,6 +121,37 @@
 
   .empty-state { color: var(--ink-faint); font-size: 0.85rem; font-style: italic; padding: 10px 0; }
 
+  /* day picker + daily log */
+  .day-picker-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  #day-select { font-family: var(--sans); font-size: 0.85rem; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); }
+  #day-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .day-summary-items { margin-top: 4px; }
+  .day-item-row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px dashed var(--line); font-size: 0.84rem; }
+  .day-item-row:first-child { border-top: none; }
+  .day-item-name { flex: 1; }
+  .day-item-macros { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; font-size: 0.76rem; }
+
+  /* 14-day trend charts */
+  .trend-wrap { overflow-x: auto; }
+  .trend-chart { margin-bottom: 20px; min-width: 460px; }
+  .trend-chart-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8rem; margin-bottom: 6px; }
+  .trend-chart-head .metric-name { font-weight: 600; }
+  .trend-chart-head .metric-target { font-family: var(--mono); color: var(--ink-faint); font-size: 0.72rem; }
+  .trend-plot { position: relative; height: 64px; border-bottom: 1px solid var(--line); }
+  .trend-bars { display: flex; align-items: flex-end; gap: 5px; height: 100%; }
+  .trend-bar-col { flex: 1; min-width: 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .trend-bar { width: 100%; max-width: 20px; background: var(--accent); border-radius: 2px 2px 0 0; }
+  .trend-bar.is-warn { background: var(--warn); }
+  .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; align-self: flex-end; }
+  /* Coverage gaps: untracked days get a full-height hatched column so a vacation reads as
+     "no data" rather than as a run of zero-calorie days; partial days stay visible but muted. */
+  .trend-bar.is-untracked { background: repeating-linear-gradient(45deg, var(--line) 0 3px, transparent 3px 6px); border: 1px dashed var(--line-strong); height: 100% !important; border-radius: 2px; }
+  .trend-bar.is-partial { opacity: 0.45; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0 3px, transparent 3px 6px); }
+  .trend-target-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink-soft); pointer-events: none; }
+  .trend-labels { display: flex; gap: 5px; margin-top: 4px; }
+  .trend-label-col { flex: 1; min-width: 24px; display: flex; justify-content: center; }
+  .trend-day-label { font-family: var(--mono); font-size: 8.5px; color: var(--ink-faint); white-space: nowrap; }
+
   /* routine day cards */
   .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-bottom: 8px; }
   .day-card { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 14px 16px; }
@@ -143,7 +174,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-07-26</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-21</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -157,10 +188,10 @@
   <!-- ============ OVERVIEW ============ -->
   <section class="tab-panel active" id="overview">
     <div class="stat-grid">
-      <div class="stat"><span class="label">Weight</span><span class="value">163 lb</span></div>
+      <div class="stat"><span class="label">Weight</span><span class="value">162.8 lb</span><span class="sub">8/20 &mdash; post-vacation, not yet confirmed</span></div>
       <div class="stat"><span class="label">Body Fat</span><span class="value">~high&ndash;teens&ndash;20%</span><span class="sub">target 15%</span></div>
-      <div class="stat"><span class="label">Calorie Target</span><span class="value accent">~1,700/day</span></div>
-      <div class="stat"><span class="label">Protein Target</span><span class="value accent">~175g/day</span></div>
+      <div class="stat"><span class="label">Calorie Target</span><span class="value accent">~1,840/day</span></div>
+      <div class="stat"><span class="label">Protein Target</span><span class="value accent">~130g/day</span></div>
       <div class="stat"><span class="label">Training Days</span><span class="value">3&ndash;5/week</span></div>
       <div class="stat"><span class="label">Hyrox</span><span class="value">Sep 20</span><span class="sub">secondary goal</span></div>
     </div>
@@ -177,10 +208,10 @@
 
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
-      <div class="stat"><span class="label">Workout Entries</span><span class="value">0</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">0</span></div>
+      <div class="stat"><span class="label">Workout Entries</span><span class="value">18</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">158</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
-      <div class="stat"><span class="label">Weigh-ins</span><span class="value">1</span></div>
+      <div class="stat"><span class="label">Weigh-ins</span><span class="value">8</span></div>
     </div>
     <p class="faint">Log a workout or a meal (describe it or send a photo) any time &mdash; it'll show up here on the next sync.</p>
   </section>
@@ -213,7 +244,7 @@
     <h2 class="section-title">Targets</h2>
     <div class="table-wrap"><table>
       <tr><th>Body fat</th><td>15% <span class="faint">(from current estimated high teens&ndash;low 20s%)</span></td></tr>
-      <tr><th>Nutrition</th><td>~1,700 kcal/day, ~175g protein/day &mdash; see Nutrition tab</td></tr>
+      <tr><th>Nutrition</th><td>~1,840 kcal/day, ~130g protein/day &mdash; see Nutrition tab</td></tr>
     </table></div>
   </section>
 
@@ -250,46 +281,46 @@
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 1 &mdash; Full Body A</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">3&times;6&ndash;10</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~43.5&ndash;48</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">3&times;6&ndash;10</span><span class="ex-weight">@ ~40.5&ndash;45</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ ~445.5&ndash;501</span></div>
         <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;15&ndash;20</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Arnold Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Arnold Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~38.5&ndash;42.5</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~31.5&ndash;33</span></div>
         <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
       </div>
 
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 2 &mdash; Full Body B</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ ~169&ndash;177</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~113&ndash;119</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~235&ndash;252</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~38.5&ndash;40.5</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 <span class="faint">&mdash; lightest leg day, best fit for the hardest interval</span></div>
       </div>
 
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 3 &mdash; Full Body C</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~144&ndash;154</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~157.5&ndash;165.5</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~54&ndash;57</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Weighted Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~52.5&ndash;58</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Weighted Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span><span class="ex-weight">@ ~130&ndash;137</span></div>
         <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
       </div>
 
@@ -297,14 +328,14 @@
         <div class="day-head"><span class="name">Day 4 &mdash; Extra Volume</span><span class="pill">Optional</span></div>
         <p class="faint" style="margin:0 0 8px;">Pushes chest/back/delts/hamstrings/quads into the optimal zone. Skips biceps/triceps/abs &mdash; already at target.</p>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~235&ndash;252</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~52.5&ndash;58</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~169&ndash;177</span></div>
         <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
+        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 or zone 2</div>
       </div>
 
@@ -324,13 +355,13 @@
   <section class="tab-panel" id="nutrition">
     <h2 class="section-title">Daily Targets</h2>
     <div class="stat-grid">
-      <div class="stat"><span class="label">Calories</span><span class="value accent">~1,700</span><span class="sub">range 1,600&ndash;1,800</span></div>
-      <div class="stat"><span class="label">Protein</span><span class="value accent">~175g</span><span class="sub">range 160&ndash;195g &mdash; the hard target</span></div>
-      <div class="stat"><span class="label">Fat</span><span class="value">~55g</span><span class="sub">minimum</span></div>
-      <div class="stat"><span class="label">Carbs</span><span class="value">~125g</span><span class="sub">fills remainder</span></div>
+      <div class="stat"><span class="label">Calories</span><span class="value accent">~1,840</span><span class="sub">range 1,750&ndash;1,950</span></div>
+      <div class="stat"><span class="label">Protein</span><span class="value accent">~130g</span><span class="sub">range 120&ndash;140g &mdash; 0.8g/lb bodyweight</span></div>
+      <div class="stat"><span class="label">Fat</span><span class="value">~65g</span><span class="sub">minimum</span></div>
+      <div class="stat"><span class="label">Carbs</span><span class="value">~185g</span><span class="sub">fills remainder</span></div>
     </div>
 
-    <div class="callout info">Revised down from an initial ~2,200 kcal estimate using WHOOP's measured burn (~1,800 kcal/day average, all days) &mdash; real tracked data over a population formula. This is a meaningful cut relative to training volume; watch strength/recovery/energy and don't wait for the scheduled check-in if training degrades.</div>
+    <div class="callout info">History: ~2,200 (initial formula) &rarr; ~1,700 (WHOOP-anchored) &rarr; ~1,840 (revised 7/27 per your own read that WHOOP underestimates burn). Watch strength/recovery/energy and don't wait for the scheduled check-in if training degrades.</div>
 
     <h2 class="section-title">Why a Moderate Deficit</h2>
     <p class="muted">Body recomposition (simultaneous muscle gain + fat loss) is achievable at 10 years of training experience, but slower and more execution-dependent than for a newer lifter &mdash; high protein + genuine training stimulus + only a mild deficit. This is built for modest, steady change, not a fast cut.</p>
@@ -343,8 +374,16 @@
       <li>Override early if training performance clearly drops before the scheduled check-in</li>
     </ul>
 
-    <h2 class="section-title">Recent Meals</h2>
-    <div class="empty-state">No meals logged yet. Describe what you ate, or send a photo, any time.</div>
+    <h2 class="section-title">Daily Log</h2>
+    <div class="day-picker-row">
+      <label for="day-select" class="faint">Day:</label>
+      <select id="day-select"></select>
+    </div>
+    <div id="day-summary"></div>
+
+    <h2 class="section-title">14-Day Trend vs Target</h2>
+    <p class="faint">Hover any bar for the exact value. Dashed line = daily target. Bars past ~15% over target are flagged in the warning color. Empty slots mean nothing was logged that day, not zero intake.</p>
+    <div class="trend-wrap" id="trend-charts"></div>
 
     <h2 class="section-title">Logging</h2>
     <p class="muted">Fully conversational &mdash; describe a meal in chat or send a photo, and it gets estimated and logged to <code>meals/YYYY-MM.md</code>, same pattern as the workout log.</p>
@@ -355,6 +394,13 @@
     <h2 class="section-title">Bodyweight / Measurements</h2>
     <div class="table-wrap"><table>
       <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-08-20</td><td class="num">162.8 lb</td><td>&#9888; Still inside the post-gap window (day 3), but the <strong>second consecutive reading below</strong> the 165.4 pre-vacation baseline. Confirm ~8/22&ndash;8/24.</td></tr>
+      <tr><td>2026-08-19</td><td class="num">164.2 lb</td><td>&#9888; <strong>Not a trend point</strong> &mdash; day 2 back from the 8/12&ndash;8/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22&ndash;8/24.</td></tr>
+      <tr><td>2026-08-10</td><td class="num">165.4 lb</td><td>Same conditions as 7/27/7/28/8/5/8/7 &mdash; comparable, down 0.4lb from 8/7</td></tr>
+      <tr><td>2026-08-07</td><td class="num">165.8 lb</td><td>Same conditions as 7/27/7/28/8/5 &mdash; comparable, up 2lb from 8/5</td></tr>
+      <tr><td>2026-08-05</td><td class="num">163.8 lb</td><td>Same conditions as 7/27/7/28 &mdash; comparable, essentially flat</td></tr>
+      <tr><td>2026-07-28</td><td class="num">164 lb</td><td>Same conditions as 7/27 &mdash; comparable to that reading, down 0.3lb</td></tr>
+      <tr><td>2026-07-27</td><td class="num">164.3 lb</td><td>Gym scale, after work, with shoes, padded floor &mdash; not directly comparable to 7/26 (different conditions)</td></tr>
       <tr><td>2026-07-26</td><td class="num">163 lb</td><td>Estimated body fat high teens&ndash;low 20s%, 5'6"</td></tr>
     </table></div>
 
@@ -368,23 +414,29 @@
     <p class="faint">Inferred from logged sets via the Epley formula &mdash; never tested directly. Confidence is high for exercises programmed &le;12 reps, and trend-only (not a precise number) for the 12&ndash;20 rep isolation exercises. Drives the suggested weights shown on the Routine tab.</p>
     <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Est. 1RM</th><th>Confidence</th></tr>
-      <tr><td>Incline DB Press</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Weighted Dips</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Pec Deck</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
-      <tr><td>Low Cable Row</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Weighted Pull-Ups</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Lat Pulldown</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Arnold Press</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Lateral Raise</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
-      <tr><td>Reverse Pec Deck</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
-      <tr><td>Leg Press</td><td class="num">&mdash;</td><td class="faint">Medium</td></tr>
-      <tr><td>Weighted Lunges</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Leg Extension</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
-      <tr><td>Leg Curl</td><td class="num">&mdash;</td><td class="faint">Low, trend only</td></tr>
-      <tr><td>DB Curl</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Hammer Curl</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Triceps Pushdown</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
-      <tr><td>Overhead Triceps Ext.</td><td class="num">&mdash;</td><td class="faint">High</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">82 lb</td><td class="faint">High</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">67.5 lb added</td><td class="faint">High</td></tr>
+      <tr><td>Pec Deck</td><td class="num">240 lb</td><td class="faint">High</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">262.5 lb</td><td class="faint">High</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">60 lb added</td><td class="faint">High</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">245 lb</td><td class="faint">High</td></tr>
+      <tr><td>Arnold Press</td><td class="num">60 lb</td><td class="faint">High</td></tr>
+      <tr><td>Lateral Raise (dumbbell)</td><td class="num">37.5 lb</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Lateral Raise <span class="faint">(machine, diff. gym)</span></td><td class="num">135 lb</td><td class="faint">High</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">255 lb</td><td class="faint">Medium</td></tr>
+      <tr><td>Leg Press</td><td class="num">742.5 lb</td><td class="faint">Medium</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">202.5 lb</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Leg Extension <span class="faint">&#9888; diff. gym</span></td><td class="num">392 lb</td><td class="faint">High</td></tr>
+      <tr><td>Leg Curl</td><td class="num">322.5 lb</td><td class="faint">Low, trend only</td></tr>
+      <tr><td>Leg Curl (lying, diff. gym)</td><td class="num">98 lb</td><td class="faint">High</td></tr>
+      <tr><td>Leg Curl <span class="faint">(3rd machine, diff. gym)</span></td><td class="num">177 lb</td><td class="faint">High</td></tr>
+      <tr><td>DB Curl</td><td class="num">49 lb</td><td class="faint">High</td></tr>
+      <tr><td>Bench Press <span class="faint">(not in routine)</span></td><td class="num">233 lb</td><td class="faint">High</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">60 lb</td><td class="faint">High</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">176 lb</td><td class="faint">High</td></tr>
+      <tr><td>Bodyweight Dips <span class="faint">(max reps)</span></td><td class="num">22 reps</td><td class="faint">Reference only</td></tr>
+      <tr><td>Bodyweight Pull-Ups <span class="faint">(max reps)</span></td><td class="num">15 reps</td><td class="faint">Reference only</td></tr>
+      <tr><td>Overhead Cable Triceps Extension</td><td class="num">84 lb</td><td class="faint">High</td></tr>
       <tr><td>Crunches</td><td class="num">n/a</td><td class="faint">Bodyweight, no meaningful 1RM</td></tr>
     </table></div>
 
@@ -393,10 +445,301 @@
       <tr><th>Date</th><th>Calorie Target</th><th>Reasoning</th></tr>
       <tr><td>2026-07-26</td><td class="num">~2,200</td><td>Initial estimate &mdash; Mifflin-St Jeor formula, moderate-activity assumption</td></tr>
       <tr><td>2026-07-26</td><td class="num">~1,700</td><td>Revised same day &mdash; WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority</td></tr>
+      <tr><td>2026-07-27</td><td class="num">~1,840</td><td>Revised again &mdash; user's own judgment that WHOOP underestimates burn; maintenance bumped 1,800&rarr;2,000, same ~8% deficit reapplied</td></tr>
     </table></div>
 
     <h2 class="section-title">Workout Log</h2>
-    <div class="empty-state">No workouts logged yet this month. Tell me what you did after a session and it'll show up here.</div>
+    <p class="muted"><strong>2026-08-20 &mdash; Gym (Day 2)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">160 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">11 (failed 12th)</td><td class="num">110 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">12</td><td class="num">160 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">15</td><td class="num">195 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">9 (failed 10th)</td><td class="num">215 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">10</td><td class="num">45 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">10</td><td class="num">45 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">12</td><td class="num">40 lb</td></tr>
+    </table></div>
+    <div class="callout info">No new PR numbers, but an unusually consistent session &mdash; Low Cable Row (262.5), Leg Curl (322.5), Lateral Raise (37.5), and Hammer Curl (60) all tied their existing e1RMs exactly. <strong>Hammer Curl confidence upgraded Medium &rarr; High:</strong> 45lb is a new top working weight and a 10-rep set lands inside Epley&rsquo;s reliable range, independently confirming the 60lb estimate that previously rested on a 15-rep set.</div>
+
+    <p class="muted"><strong>2026-08-19 &mdash; Gym (Day 1, first session back from vacation)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">13 (failed 14th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">8 (failed 9th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">10 (failed 11th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">7 (failed 8th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Bodyweight Dips</td><td class="num">21</td><td class="num">&mdash;</td></tr>
+      <tr><td>Bodyweight Pull-Ups</td><td class="num">15</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">490 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">30</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">490 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">25</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">490 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">20</td><td class="num">&mdash;</td></tr>
+      <tr><td>Arnold Press</td><td class="num">15</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">12</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">15</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">12</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">10 (failed 11th)</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">150 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">170 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">170 lb</td></tr>
+    </table></div>
+    <div class="callout info">First session back after a week off, and nothing was lost. <strong>New PRs: Reverse Pec Deck</strong> (170lb x15, e1RM 255lb, up from 226.7) and <strong>Bodyweight Pull-Ups</strong> (15 reps, up from 13). Weighted Dips, Weighted Pull-Ups, Arnold Press, and DB Curl all tied their existing e1RMs exactly. &#9888; The Reverse Pec Deck jump is 12.5% in one session off a full week of rest &mdash; some of it is likely dissipated fatigue rather than pure strength, and a 15-rep set is past Epley's reliable range. The PR stands, but treat 255 as directional.</div>
+
+    <p class="muted"><strong>2026-08-10 &mdash; Gym (Day 1)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">12</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">8 (failed 9th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">8 (failed 9th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">5 (failed 6th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Bodyweight Dips</td><td class="num">15</td><td class="num">&mdash;</td></tr>
+      <tr><td>Bodyweight Pull-Ups</td><td class="num">13</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">14</td><td class="num">495 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">30</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">495 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">25</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">12</td><td class="num">495 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">20</td><td class="num">&mdash;</td></tr>
+      <tr><td>Arnold Press</td><td class="num">15</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">12</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">12</td><td class="num">40 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">150 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">150 lb</td></tr>
+    </table></div>
+    <div class="callout info">New PRs: Leg Press (495lb x15, e1RM 742.5lb, up from 735lb) and Bodyweight Pull-Ups (13 reps, up from 9). Weighted Dips, Weighted Pull-Ups, and Arnold Press's e1RM all tied 8/5's exactly &mdash; strong confirmation this was the usual gym, not Yellowstone.</div>
+
+    <p class="muted"><strong>2026-08-10 &mdash; Zone 2 Run (Cardio)</strong></p>
+    <div class="callout info">1:00:13 total, Activity Strain 13.2, 7,433 steps. Zone 2 59:12 (99%), Zone 1 1:01 (1%), Zones 0/3/4/5 0% &mdash; near-perfect zone 2 execution for the full hour, longer than the usual 20-30min prescription. Paired with today's Day 1 lifting session as active recovery.</div>
+
+    <p class="muted"><strong>2026-08-08 &mdash; Gym (Day 3)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Pec Deck</td><td class="num">12</td><td class="num">150 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">130 lb</td></tr>
+      <tr><td>Pec Deck</td><td class="num">12</td><td class="num">150 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">130 lb</td></tr>
+      <tr><td>Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">160 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">140 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">12</td><td class="num">175 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">12</td><td class="num">175 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">8 (failed 9th)</td><td class="num">175 lb</td></tr>
+      <tr><td>Overhead Cable Triceps Extension</td><td class="num">12</td><td class="num">60 lb</td></tr>
+      <tr><td>Overhead Cable Triceps Extension</td><td class="num">3 (failed 4th)</td><td class="num">70 lb</td></tr>
+      <tr><td>Overhead Cable Triceps Extension</td><td class="num">20</td><td class="num">50 lb</td></tr>
+      <tr><td>Overhead Cable Triceps Extension</td><td class="num">7 (failed 8th)</td><td class="num">60 lb</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">12 (failed 13th)</td><td class="num">55 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">12</td><td class="num">55 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">9</td><td class="num">55 lb</td></tr>
+    </table></div>
+    <div class="callout info">New PR: Lat Pulldown (175lb x12, up from 175lb x10 on 7/30). First estimate logged for Overhead Cable Triceps Extension (84lb e1RM). Weighted Lunges tied exactly with 7/31's numbers &mdash; good confirmation this was the usual gym, not Yellowstone.</div>
+
+    <p class="muted"><strong>2026-08-07 &mdash; Gym (Day 2)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">160 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">11 (failed 12th)</td><td class="num">120 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">12</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">8 (failed 9th)</td><td class="num">110 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10 (failed 11th)</td><td class="num">100 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">160 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">13 (failed 14th)</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">13 (failed 14th)</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">14</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">12</td><td class="num">215 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">15</td><td class="num">40 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">13</td><td class="num">40 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">13</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">10</td><td class="num">40 lb</td></tr>
+    </table></div>
+    <div class="callout info">Leg Extension, Leg Curl, Lateral Raise, and Hammer Curl top sets all exactly matched their 7/28 weight x reps &mdash; good confirmation this session was at the usual gym, not Yellowstone Fitness. No PRs today, but all four held steady.</div>
+
+    <p class="muted"><strong>2026-08-07 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+    <div class="callout info">4 full intervals (7.6 / 7.6 / 7.6 / 7.8 mph) &mdash; all 4 completed this time (8/1's session only got 3 full + a partial 4th). WHOOP: 32:34 total, Activity Strain 12.4, 3,472 steps. Zone 4 13:48 (44%), Zone 3 3:56 (12%), Zone 2 2:50 (8%), Zone 1 11:59 (36%), Zone 5 0%. Solid interval execution, no Zone 5 spikes.</div>
+
+    <p class="muted"><strong>2026-08-05 &mdash; Gym (Day 1)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">8 (failed 9th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">10 (failed 11th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">7 (failed 8th)</td><td class="num">+45 lb</td></tr>
+      <tr><td>Bodyweight Dips</td><td class="num">17 (failed 18th)</td><td class="num">&mdash;</td></tr>
+      <tr><td>Bodyweight Pull-Ups</td><td class="num">9 (failed 10th)</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">400 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">30</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">10</td><td class="num">495 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">24</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">13</td><td class="num">495 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">19</td><td class="num">&mdash;</td></tr>
+      <tr><td>Arnold Press</td><td class="num">10</td><td class="num">45 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">12</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">10</td><td class="num">45 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Arnold Press</td><td class="num">7 (failed 8th)</td><td class="num">45 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">150 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">10</td><td class="num">170 lb</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-08-05 &mdash; Zone 2 Treadmill Run (Cardio)</strong></p>
+    <div class="callout info">30:06 total, Activity Strain 9.9, 3,717 steps. Zone 2 29:30 (99%), Zone 3 0:17 (&lt;1%), Zone 1 0:19 (1%) &mdash; near-perfect zone 2 execution, almost no drift. Paired with today's Day 1 lifting session as active recovery.</div>
+
+    <p class="muted"><strong>2026-08-02 &mdash; Gym (delt/hamstring/tricep gap-filling)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">130 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">120 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">12 (kinda failed)</td><td class="num">120 lb</td></tr>
+      <tr><td>Leg Curl <span class="faint">(Yellowstone machine)</span></td><td class="num">8 (failed 9th)</td><td class="num">140 lb</td></tr>
+      <tr><td>Leg Curl <span class="faint">(Yellowstone machine)</span></td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Leg Curl <span class="faint">(Yellowstone machine)</span></td><td class="num">10</td><td class="num">110 lb</td></tr>
+      <tr><td>Lateral Raise <span class="faint">(Yellowstone machine)</span></td><td class="num">10</td><td class="num">100 lb</td></tr>
+      <tr><td>Lateral Raise <span class="faint">(Yellowstone machine)</span></td><td class="num">15</td><td class="num">90 lb</td></tr>
+      <tr><td>Lateral Raise <span class="faint">(Yellowstone machine)</span></td><td class="num">7 (failed 8th)</td><td class="num">90 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">120 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">110 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">70 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">11</td><td class="num">60 lb</td></tr>
+      <tr><td>Bodyweight Dips</td><td class="num">22</td><td class="num">&mdash;</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-08-02 &mdash; Hike: Mystic Lake, MT (Cardio)</strong></p>
+    <div class="callout info">Mystic Lake via West Rosebud Trail (Absaroka-Beartooth Wilderness) &mdash; ~5.8mi round trip, ~1,410ft elevation gain (trail reference, not GPS-tracked this session). WHOOP: 3:38:58 total, 13,271 steps, Activity Strain 12.6. Zone 0 48%, Zone 1 46%, Zone 2 6% &mdash; steady low-intensity effort, consistent with a long hike rather than a cardio push.</div>
+
+    <p class="muted"><strong>2026-08-02 &mdash; Zone 2 Stairmaster (Cardio)</strong></p>
+    <div class="callout info">29:56 total, Activity Strain 9.7. Zone 2 26:33 (89%), Zone 3 1:31 (5%), Zone 1 1:51 (6%), Zone 4 0:02 (&lt;1%). Clean zone 2 session &mdash; closes the only real gap from this week's volume audit (no zone 2 work logged all week otherwise).</div>
+
+    <p class="muted"><strong>2026-08-01 &mdash; Gym (Yellowstone Fitness, not the usual gym)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Laying Leg Curl</td><td class="num">12 (failed 13th)</td><td class="num">70 lb</td></tr>
+      <tr><td>Laying Leg Curl</td><td class="num">9 (failed 10th)</td><td class="num">70 lb</td></tr>
+      <tr><td>Laying Leg Curl</td><td class="num">10</td><td class="num">70 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">20</td><td class="num">190 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">20</td><td class="num">235 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">12</td><td class="num">280 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">12</td><td class="num">25 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">12</td><td class="num">25 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">13</td><td class="num">25 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">12</td><td class="num">25 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">9 (failed 10th)</td><td class="num">190 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">20</td><td class="num">175 lb</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-08-01 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+    <div class="callout info">3 full intervals (7.6 / 7.5 / 7.2 mph) + a 4th cut short for time. WHOOP: 22:53 total, Zone 5 5:10 (22%), Zone 4 7:06 (34%), Zone 3 2:41 (11%), Zone 2 2:12 (9%), Zone 1 5:43 (24%). ~12:16 combined Zone 4-5 time across 3 rounds &mdash; close to the 12min (3&times;4min) target for intervals completed.</div>
+
+    <p class="muted"><strong>2026-07-31 &mdash; Gym (mixed session)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
+      <tr><td>Bench Press <span class="faint">(not in routine)</span></td><td class="num">10</td><td class="num">155 lb</td></tr>
+      <tr><td>Bench Press <span class="faint">(not in routine)</span></td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Bench Press <span class="faint">(not in routine)</span></td><td class="num">10 (couldn't do another)</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">14 (failed 15th)</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
+      <tr><td>DB Curl</td><td class="num">12</td><td class="num">35 lb</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-07-30 &mdash; Gym (Day 3)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Pec Deck</td><td class="num">10</td><td class="num">180 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">120 lb</td></tr>
+      <tr><td>Pec Deck</td><td class="num">10</td><td class="num">180 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">8 (failed 9th)</td><td class="num">150 lb</td></tr>
+      <tr><td>Pec Deck</td><td class="num">8 (failed 9th)</td><td class="num">165 lb</td></tr>
+      <tr><td>Reverse Pec Deck</td><td class="num">10</td><td class="num">130 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">7 (failed 8th)</td><td class="num">135 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">8 (failed 9th)</td><td class="num">176 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Lat Pulldown</td><td class="num">7 (failed 8th)</td><td class="num">160 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">5 (failed 6th)</td><td class="num">70 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">7 (failed 8th)</td><td class="num">55 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">8</td><td class="num">55 lb</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-07-28 &mdash; Gym (Day 2)</strong></p>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">190 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">190 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">9</td><td class="num">135 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">12</td><td class="num">175 lb</td></tr>
+      <tr><td>Triceps Pushdown</td><td class="num">11</td><td class="num">120 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">9</td><td class="num">175 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">14</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">13</td><td class="num">215 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">15</td><td class="num">40 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">15</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">12</td><td class="num">40 lb</td></tr>
+      <tr><td>Lateral Raise</td><td class="num">13</td><td class="num">25 lb</td></tr>
+      <tr><td>Hammer Curl</td><td class="num">15</td><td class="num">40 lb</td></tr>
+    </table></div>
+
+    <p class="muted"><strong>2026-07-27 &mdash; Gym (cut short)</strong></p>
+    <div class="callout warn">2026-07-27 &mdash; Gym session cut short: light-headed and nauseous after set 10, likely under-fueled (only ~788 kcal logged before training). Stopped early, no cardio completed.</div>
+    <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">490 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">30</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">10</td><td class="num">490 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">30</td><td class="num">&mdash;</td></tr>
+      <tr><td>Leg Press</td><td class="num">15</td><td class="num">400 lb</td></tr>
+      <tr><td>Crunches</td><td class="num">20</td><td class="num">&mdash;</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+      <tr><td>Weighted Dips</td><td class="num">10</td><td class="num">+45 lb</td></tr>
+    </table></div>
   </section>
 </div>
 
@@ -409,4 +752,396 @@
       document.getElementById(btn.dataset.tab).classList.add('active');
     });
   });
+</script>
+
+<script>
+  // Mirrors meals/YYYY-MM.md. Update this object (and TODAY below) whenever a meal is logged there.
+  var NUTRITION_LOG = {
+    '2026-07-26': [
+      { name: "Eggbert's avocado bacon omelet, fruit, buttered wheat toast + apple butter", kcal: 1000, protein: 43, fat: 64, carbs: 70, source: 'estimate' },
+      { name: 'Handcrafted Provisions "Protein Provision" box', kcal: 690, protein: 49, fat: 43, carbs: 30, source: 'label' },
+      { name: 'Chicken tortilla soup (1.75 cups) + cheese wheel + brown rice (1/2 cup dry)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' },
+      { name: "Built Bar Puff, Cookies 'N Cream", kcal: 150, protein: 17, fat: 3, carbs: 14, source: 'label' }
+    ],
+    '2026-07-27': [
+      { name: 'fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Chicken tortilla soup + cheese wheel + brown rice (repeat of 7/26 meal)', kcal: 488, protein: 30, fat: 15, carbs: 62, source: 'label' },
+      { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
+      { name: 'PB&J roll-up (tortilla + 1.5 spoons PB + 1 spoon jelly)', kcal: 263, protein: 11, fat: 15.5, carbs: 38, source: 'label' },
+      { name: '2 boiled eggs + 1 pack Nongshim Shin Ramyun', kcal: 664, protein: 24, fat: 26, carbs: 84, source: 'label' }
+    ],
+    '2026-07-28': [
+      { name: 'Premier Protein Vanilla shake (11 fl oz)', kcal: 160, protein: 30, fat: 3, carbs: 4, source: 'label' },
+      { name: 'Lactaid 4% cottage cheese (1 cup) + Better Living applesauce (5/3 cup)', kcal: 453, protein: 26, fat: 9, carbs: 61, source: 'label' },
+      { name: 'Built Bar Sour Puff, Sweet Peach Punch', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
+      { name: '2 fun size Skittles packs', kcal: 120, protein: 0, fat: 1, carbs: 28, source: 'estimate' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch, 91g)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: '3 hard-boiled eggs', kcal: 216, protein: 19.5, fat: 15, carbs: 1.5, source: 'estimate' },
+      { name: 'Tillamook Medium Cheddar snack portion (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'estimate' },
+      { name: 'Sartori MontAmoré Cheddar Cheese Bite (1 piece)', kcal: 80, protein: 5, fat: 7, carbs: 0, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (2oz serving)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
+      { name: '2 cups Frosted Mini-Wheats Original + 4 cups Kirkland lactose-free 2% milk', kcal: 838, protein: 60.5, fat: 20.6, carbs: 111, source: 'label' }
+    ],
+    '2026-07-29': [
+      { name: 'Premier Protein shake (11 fl oz)', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: '1/2 cup dry brown rice + 3.25 servings Greek Lemon Chicken', kcal: 700, protein: 72.25, fat: 21, carbs: 48.75, source: 'label' },
+      { name: 'fairlife Nutrition Plan chocolate shake + bowl of strawberries (~140g)', kcal: 195, protein: 31, fat: 2.9, carbs: 15, source: 'estimate' },
+      { name: 'Nongshim Shin Ramyun + 2 tbsp mayo', kcal: 708, protein: 11.2, fat: 36, carbs: 83.2, source: 'label' }
+    ],
+    '2026-07-30': [
+      { name: 'fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Fried chicken tenders & half fries basket (local, no restaurant named)', kcal: 1080, protein: 54.85, fat: 64.3, carbs: 69.35, source: 'estimate' },
+      { name: 'Built Bar Sour Puff, Blue Razz Blast', kcal: 150, protein: 16, fat: 2.5, carbs: 15, source: 'label' },
+      { name: 'Kirkland Signature 100 Calorie granola bar', kcal: 100, protein: 1, fat: 3, carbs: 18, source: 'label' },
+      { name: 'Real Good Foods burrito + 2 cups Kirkland lactose-free 2% milk', kcal: 690, protein: 63, fat: 37, carbs: 45, source: 'label' }
+    ],
+    '2026-07-31': [
+      { name: "Sukhi's Chicken Coconut Curry (3.5 servings) + 1/2 cup dry brown rice", kcal: 810, protein: 81, fat: 22.5, carbs: 77.5, source: 'label' },
+      { name: 'Premier Protein shake (11 fl oz, caramel-style)', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: 'Shin Ramyun + 1 tbsp mayo + 2 pouches Chicken Breast Bites', kcal: 894, protein: 59.1, fat: 33, carbs: 89.1, source: 'label' }
+    ],
+    '2026-08-01': [
+      { name: '1/2 cup fairlife 2% Ultra-Filtered milk', kcal: 60, protein: 6.5, fat: 2.5, carbs: 3, source: 'label' },
+      { name: 'Another 1/2 cup fairlife 2% Ultra-Filtered milk', kcal: 60, protein: 6.5, fat: 2.5, carbs: 3, source: 'label' },
+      { name: 'fairlife protein shake, chocolate (340mL)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Half cinnamon roll (Plush, local coffee shop)', kcal: 250, protein: 3.5, fat: 10, carbs: 35, source: 'estimate' },
+      { name: '20oz dirty chia (Plush, local coffee shop)', kcal: 245, protein: 8, fat: 7, carbs: 44, source: 'estimate' },
+      { name: 'Another fairlife protein shake, chocolate (340mL)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Apple Pie Hot Fruit Cone (Crispy Cones)', kcal: 550, protein: 4, fat: 20, carbs: 85, source: 'estimate' },
+      { name: 'Barilla + Chickpeas Farfalle pasta, not a salad (1/4 box)', kcal: 332.5, protein: 17.5, fat: 1.75, carbs: 66.5, source: 'label' },
+      { name: 'Tuscan-style Chicken Piccata (half pack)', kcal: 480, protein: 51, fat: 21, carbs: 12, source: 'label' }
+    ],
+    '2026-08-02': [
+      { name: '1 cup Kirkland Signature lactose-free 2% Ultra-Filtered milk', kcal: 120, protein: 13, fat: 4.5, carbs: 6, source: 'label' },
+      { name: '1 medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
+      { name: 'fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Another medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
+      { name: 'Kirkland Chicken Chili/soup, 2 cups', kcal: 260, protein: 24, fat: 7, carbs: 26, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
+      { name: 'Sartori MontAmoré Cheddar Cheese Bite', kcal: 80, protein: 5, fat: 7, carbs: 0, source: 'label' },
+      { name: "Built Bar Puff, Cookies 'N Cream", kcal: 150, protein: 17, fat: 3, carbs: 14, source: 'label' },
+      { name: 'MET-Rx Big 100 Colossal, Crispy Apple Pie', kcal: 390, protein: 30, fat: 9, carbs: 48, source: 'label' },
+      { name: 'GoGo Squeez applesauce pouch', kcal: 60, protein: 0, fat: 0, carbs: 15, source: 'label' },
+      { name: 'Skittles Gummies, half bag', kcal: 250, protein: 2.5, fat: 0, carbs: 60, source: 'label' },
+      { name: 'Taco Bell Steak Grilled Cheese Burrito', kcal: 700, protein: 28, fat: 34, carbs: 66, source: 'label' },
+      { name: 'Taco Bell Nacho Cheese Doritos Locos Taco', kcal: 170, protein: 7, fat: 10, carbs: 13, source: 'label' },
+      { name: 'Taco Bell Doritos Locos Taco', kcal: 170, protein: 7, fat: 10, carbs: 13, source: 'label' },
+      { name: 'Taco Bell Chips & Cheese', kcal: 310, protein: 3, fat: 17, carbs: 34, source: 'label' }
+    ],
+    '2026-08-03': [
+      { name: 'Breakfast: fairlife Nutrition Plan chocolate protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Lunch (prepped ahead): Kirkland chicken soup, 2 cups', kcal: 260, protein: 24, fat: 7, carbs: 26, source: 'label' },
+      { name: 'Lunch (prepped ahead): 1/2 cup dry brown rice', kcal: 180, protein: 4, fat: 1.5, carbs: 39, source: 'label' },
+      { name: 'Lunch (prepped ahead): Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Lunch (prepped ahead): Sartori MontAmoré Cheddar Cheese Bite', kcal: 80, protein: 5, fat: 7, carbs: 0, source: 'label' },
+      { name: '1 medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
+      { name: 'Santera Carne Asada, half plate', kcal: 683.5, protein: 43.8, fat: 32.5, carbs: 58, source: 'estimate' },
+      { name: 'Chips, salsa, and crema, half tray', kcal: 417.5, protein: 6, fat: 22.5, carbs: 50, source: 'estimate' }
+    ],
+    '2026-08-04': [
+      { name: '1 cup Kirkland Signature lactose-free 2% Ultra-Filtered milk', kcal: 120, protein: 13, fat: 4.5, carbs: 6, source: 'label' },
+      { name: 'Santera Carne Asada, 2nd half (from 8/3)', kcal: 683.5, protein: 43.8, fat: 32.5, carbs: 58, source: 'estimate' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Tillamook Medium Cheddar snack (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'estimate' },
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: '1 medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
+      { name: 'Real Good Foods burrito', kcal: 450, protein: 37, fat: 28, carbs: 33, source: 'label' }
+    ],
+    '2026-08-05': [
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Real Good Foods burrito', kcal: 450, protein: 37, fat: 28, carbs: 33, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
+      { name: 'Tillamook Medium Cheddar snack (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'estimate' },
+      { name: '2 Kirkland Signature 100 Calorie granola bars', kcal: 200, protein: 2, fat: 6, carbs: 36, source: 'label' },
+      { name: 'Idahoan Four Cheese Mashed Potatoes, entire pouch', kcal: 440, protein: 12, fat: 10, carbs: 76, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: '2 cups Kirkland Signature lactose-free 2% Ultra-Filtered milk', kcal: 240, protein: 26, fat: 9, carbs: 12, source: 'label' }
+    ],
+    '2026-08-06': [
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: "Sukhi's Chicken Coconut Curry (3.5 servings)", kcal: 630, protein: 77, fat: 21, carbs: 38.5, source: 'label' },
+      { name: '1/2 cup dry brown rice', kcal: 180, protein: 4, fat: 1.5, carbs: 39, source: 'label' },
+      { name: '1 medium banana', kcal: 105, protein: 1.3, fat: 0.4, carbs: 27, source: 'estimate' },
+      { name: '1 slice whole wheat bread', kcal: 80, protein: 4, fat: 1, carbs: 14, source: 'estimate' },
+      { name: 'jelly, ~1 tbsp', kcal: 50, protein: 0, fat: 0, carbs: 13, source: 'estimate' },
+      { name: 'small hot dog with bun, ketchup & mustard', kcal: 270, protein: 8.5, fat: 13, carbs: 27, source: 'estimate' },
+      { name: 'small hamburger with pepper jack, bun, ketchup & mustard', kcal: 480, protein: 31, fat: 27, carbs: 26, source: 'estimate' },
+      { name: 'small pack of Cheez-Its', kcal: 150, protein: 3, fat: 8, carbs: 17, source: 'estimate' },
+      { name: 'pack of Nutter Butters', kcal: 130, protein: 2, fat: 6, carbs: 19, source: 'estimate' }
+    ],
+    '2026-08-07': [
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: '1/2 cup dry brown rice', kcal: 180, protein: 4, fat: 1.5, carbs: 39, source: 'label' },
+      { name: 'Chicken Tikka Masala (3.5 servings)', kcal: 525, protein: 77, fat: 14, carbs: 21, source: 'label' },
+      { name: '2 Kirkland 100 Calorie granola bars', kcal: 200, protein: 2, fat: 6, carbs: 36, source: 'label' },
+      { name: 'Frosted Mini Wheats, 159g', kcal: 556.5, protein: 13.3, fat: 4, carbs: 135.2, source: 'label' },
+      { name: 'Kirkland reduced fat ultra-filtered milk, 531g', kcal: 265.5, protein: 28.8, fat: 10, carbs: 13.3, source: 'label' },
+      { name: 'Kirkland reduced fat ultra-filtered milk, 202g more', kcal: 101, protein: 10.9, fat: 3.8, carbs: 5.1, source: 'label' }
+    ],
+    '2026-08-08': [
+      { name: 'Kirkland reduced fat ultra-filtered milk, 107g', kcal: 53.5, protein: 5.8, fat: 2, carbs: 2.7, source: 'label' },
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Chicken Pad Thai, 2 servings', kcal: 660, protein: 40, fat: 22, carbs: 74, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Tillamook Medium Cheddar (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'label' },
+      { name: 'Nongshim Shin Ramyun (1 pack)', kcal: 520, protein: 11, fat: 16, carbs: 83, source: 'label' },
+      { name: 'mayo, 2 tbsp', kcal: 188, protein: 0.2, fat: 20, carbs: 0.2, source: 'estimate' },
+      { name: '2 boiled eggs', kcal: 144, protein: 13, fat: 10, carbs: 1, source: 'estimate' },
+      { name: '1 more boiled egg', kcal: 72, protein: 6.5, fat: 5, carbs: 0.5, source: 'estimate' }
+    ],
+    '2026-08-09': [
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
+      { name: 'Tillamook Medium Cheddar (3/4oz)', kcal: 90, protein: 5.5, fat: 7, carbs: 0.5, source: 'label' },
+      { name: 'Nongshim Shin Ramyun (1 pack)', kcal: 520, protein: 11, fat: 16, carbs: 83, source: 'label' },
+      { name: 'mayo, 2 tbsp', kcal: 188, protein: 0.2, fat: 20, carbs: 0.2, source: 'estimate' },
+      { name: '2 boiled eggs', kcal: 144, protein: 13, fat: 10, carbs: 1, source: 'estimate' },
+      { name: '1 more (3rd) boiled egg', kcal: 72, protein: 6.5, fat: 5, carbs: 0.5, source: 'estimate' },
+      { name: 'fairlife protein shake (2nd today)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: '2 slices whole wheat bread', kcal: 160, protein: 8, fat: 2, carbs: 28, source: 'estimate' },
+      { name: 'jelly, ~2 tbsp', kcal: 100, protein: 0, fat: 0, carbs: 26, source: 'estimate' }
+    ],
+    '2026-08-10': [
+      { name: 'Premier Protein Vanilla shake', kcal: 160, protein: 30, fat: 3, carbs: 3, source: 'label' },
+      { name: 'Chicken Pad Thai, 2 servings', kcal: 660, protein: 40, fat: 22, carbs: 74, source: 'label' },
+      { name: 'Nerds Gummy Clusters, small treat pack', kcal: 50, protein: 0.5, fat: 0, carbs: 12.5, source: 'label' },
+      { name: '1 Kirkland 100 Calorie granola bar', kcal: 100, protein: 1, fat: 3, carbs: 18, source: 'label' },
+      { name: '1 more Kirkland 100 Calorie granola bar', kcal: 100, protein: 1, fat: 3, carbs: 18, source: 'label' },
+      { name: 'Idahoan Four Cheese Mashed Potatoes, entire pouch', kcal: 440, protein: 12, fat: 10, carbs: 76, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'fairlife protein shake (2nd today)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' }
+    ],
+    '2026-08-11': [
+      { name: '1/2 cup dry brown rice', kcal: 180, protein: 4, fat: 1.5, carbs: 39, source: 'label' },
+      { name: 'Chicken Tikka Masala (3.5 servings)', kcal: 525, protein: 77, fat: 14, carbs: 21, source: 'label' },
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Trolli Sour Brite Crawlers Minis, treat pack', kcal: 50, protein: 1, fat: 0, carbs: 12, source: 'estimate' }
+    ],
+    '2026-08-18': [
+      { name: 'Premier Protein shake', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: 'Steak & blue cheese salad wrap, 12" garlic herb tortilla', kcal: 770, protein: 50, fat: 38, carbs: 54, source: 'estimate' },
+      { name: 'tortilla chips, a handful (~1oz)', kcal: 140, protein: 2, fat: 7, carbs: 19, source: 'estimate' },
+      { name: '1/2 chocolate chip cookie (~palm-sized whole)', kcal: 80, protein: 1, fat: 4, carbs: 10, source: 'estimate' },
+      { name: 'Oikos Triple Zero Vanilla, 2 cups', kcal: 240, protein: 30, fat: 0, carbs: 30, source: 'label' },
+      { name: 'raspberries, 81g', kcal: 42, protein: 1, fat: 0.5, carbs: 9.7, source: 'label' },
+      { name: 'strawberries, 164g', kcal: 52.5, protein: 1.1, fat: 0.5, carbs: 12.6, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' },
+      { name: 'banana, 180g whole (~115g flesh)', kcal: 102.5, protein: 1.3, fat: 0.4, carbs: 26.3, source: 'label' }
+    ],
+    '2026-08-19': [
+      { name: '50g dry brown rice', kcal: 180, protein: 4, fat: 1.5, carbs: 39, source: 'label' },
+      { name: 'Thai-style coconut chicken, 3.25 servings', kcal: 585, protein: 65, fat: 26, carbs: 19.5, source: 'label' },
+      { name: 'fairlife protein shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: '2 Kirkland 100 Calorie granola bars', kcal: 200, protein: 2, fat: 6, carbs: 36, source: 'label' },
+      { name: 'Oikos Triple Zero Strawberry, 2 cups', kcal: 240, protein: 30, fat: 0, carbs: 30, source: 'label' },
+      { name: 'raspberries, 100g', kcal: 52, protein: 1.2, fat: 0.7, carbs: 11.9, source: 'label' },
+      { name: 'strawberries, 201g', kcal: 64.3, protein: 1.3, fat: 0.6, carbs: 15.4, source: 'label' },
+      { name: 'Kirkland reduced fat ultra-filtered milk, 418mL', kcal: 209, protein: 22.6, fat: 7.8, carbs: 10.4, source: 'label' },
+      { name: 'Honey Smoked Fish Co. salmon (1 piece)', kcal: 180, protein: 13, fat: 14, carbs: 0, source: 'label' }
+    ],
+    '2026-08-20': [
+      { name: 'Premier Protein shake', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: 'Real Good Foods burrito x2', kcal: 900, protein: 74, fat: 56, carbs: 66, source: 'label' },
+      { name: "Chef Hak's chicken bowl", kcal: 370, protein: 31, fat: 6, carbs: 49, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'frozen veggie blend, 261g', kcal: 74.9, protein: 6.4, fat: 0, carbs: 15, source: 'label' },
+      { name: 'banana, 198g whole (~127g flesh)', kcal: 112.8, protein: 1.4, fat: 0.4, carbs: 28.9, source: 'label' }
+    ],
+    '2026-08-21': [
+      { name: 'Kirkland ultra-filtered lactose-free milk, 458mL', kcal: 229, protein: 24.8, fat: 8.6, carbs: 11.4, source: 'label' },
+      { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Fresh Additions Chicken Breast Bites (1 pouch)', kcal: 140, protein: 24, fat: 3.5, carbs: 3, source: 'label' },
+      { name: 'Kirkland Chicken Tortilla Soup, 450g', kcal: 238.8, protein: 16.5, fat: 5.5, carbs: 29.4, source: 'estimate' },
+      { name: 'Kirkland organic Normandy vegetables, 203g', kcal: 58.2, protein: 5, fat: 0, carbs: 11.6, source: 'label' },
+      { name: 'Frosted Mini Wheats, 158g', kcal: 553, protein: 13.2, fat: 4, carbs: 134.3, source: 'label' },
+      { name: 'Kirkland ultra-filtered lactose-free milk, 433g', kcal: 216.5, protein: 23.5, fat: 8.1, carbs: 10.8, source: 'label' }
+    ]
+  };
+  var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
+  // Logging-coverage ledger. Any day NOT listed here is 'complete' and counts normally.
+  //   partial   = logged, but with a known unlogged gap. Totals are a FLOOR, not a total.
+  //   untracked = deliberately not logged at all (vacation/travel). NOT a zero-calorie day.
+  // Both are excluded from intake averages and from calorie-balance math -- see README.md
+  // "Logging coverage and gaps" for the full rules.
+  var DAY_STATUS = {
+    '2026-08-11': { status: 'partial',   note: 'Work happy hour not logged — the totals below are a partial floor, not the real daily total.' },
+    '2026-08-12': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-13': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-14': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-15': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-16': { status: 'untracked', note: 'Vacation — not logged.' },
+    '2026-08-17': { status: 'untracked', note: 'Vacation — not logged (window closes as soon as logging resumes).' }
+  };
+  function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
+  // Set to the actual current date in Mountain Time (the user's timezone), e.g. via
+  // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
+  // looked up and applied automatically without confirming with the user; only log under a
+  // different date when the user explicitly asks for one.
+  var TODAY = '2026-08-21';
+
+  function last14Days() {
+    var days = [];
+    var base = new Date(TODAY + 'T00:00:00');
+    for (var i = 13; i >= 0; i--) {
+      var d = new Date(base);
+      d.setDate(d.getDate() - i);
+      days.push(d.toISOString().slice(0, 10));
+    }
+    return days;
+  }
+
+  function dayTotals(dateStr) {
+    var items = NUTRITION_LOG[dateStr];
+    if (!items) return null;
+    return items.reduce(function (acc, it) {
+      acc.kcal += it.kcal; acc.protein += it.protein; acc.fat += it.fat; acc.carbs += it.carbs;
+      return acc;
+    }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+  }
+
+  function statTileHtml(label, value, target, unit) {
+    var over = value > target * 1.1;
+    var style = over ? ' style="color:var(--warn)"' : '';
+    var cls = over ? 'value' : 'value accent';
+    return '<div class="stat"><span class="label">' + label + '</span><span class="' + cls + '"' + style + '>' +
+      Math.round(value) + unit + '</span><span class="sub">target ' + target + unit + '</span></div>';
+  }
+
+  function renderDaySummary(dateStr) {
+    var container = document.getElementById('day-summary');
+    var items = NUTRITION_LOG[dateStr];
+    var st = DAY_STATUS[dateStr];
+    if (!items || items.length === 0) {
+      if (st && st.status === 'untracked') {
+        container.innerHTML = '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
+          ' This is not a zero-calorie day; it is excluded from averages and calorie-balance math entirely.</div>';
+      } else {
+        container.innerHTML = '<div class="empty-state">No meals logged for ' + dateStr + '.</div>';
+      }
+      return;
+    }
+    var t = dayTotals(dateStr);
+    var html = '';
+    if (st && st.status === 'partial') {
+      html += '<div class="callout">&#9888; <strong>Partial day</strong> &mdash; ' + st.note +
+        ' Treat these numbers as a floor; excluded from averages and calorie-balance math.</div>';
+    } else if (st && st.status === 'untracked') {
+      html += '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
+        ' Excluded from averages and calorie-balance math.</div>';
+    }
+    html += '<div class="stat-grid">' +
+      statTileHtml('Calories', t.kcal, TARGETS.kcal, '') +
+      statTileHtml('Protein', t.protein, TARGETS.protein, 'g') +
+      statTileHtml('Fat', t.fat, TARGETS.fat, 'g') +
+      statTileHtml('Carbs', t.carbs, TARGETS.carbs, 'g') +
+      '</div><div class="day-summary-items">';
+    items.forEach(function (it) {
+      var srcTag = it.source === 'label' ? 'label, exact' : 'estimated';
+      html += '<div class="day-item-row"><span class="day-item-name">' + it.name +
+        ' <span class="faint">(' + srcTag + ')</span></span><span class="day-item-macros">' +
+        it.kcal + ' kcal &middot; ' + it.protein + 'g P &middot; ' + it.fat + 'g F &middot; ' + it.carbs + 'g C</span></div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function initDayPicker() {
+    var select = document.getElementById('day-select');
+    var days = last14Days().slice().reverse();
+    select.innerHTML = days.map(function (d) {
+      return '<option value="' + d + '">' + d + (d === TODAY ? ' (today)' : '') + '</option>';
+    }).join('');
+    select.value = TODAY;
+    select.addEventListener('change', function () { renderDaySummary(select.value); });
+    renderDaySummary(TODAY);
+  }
+
+  function renderTrend() {
+    var days = last14Days();
+    var metrics = [
+      { key: 'kcal', label: 'Calories', unit: '' },
+      { key: 'protein', label: 'Protein', unit: 'g' },
+      { key: 'fat', label: 'Fat', unit: 'g' },
+      { key: 'carbs', label: 'Carbs', unit: 'g' }
+    ];
+    var totalsByDay = days.map(function (d) { return dayTotals(d); });
+    var container = document.getElementById('trend-charts');
+    container.innerHTML = '';
+    var chartHeight = 64;
+
+    metrics.forEach(function (m) {
+      var values = totalsByDay.map(function (t) { return t ? t[m.key] : null; });
+      var loggedValues = values.filter(function (v) { return v !== null; });
+      var maxLogged = loggedValues.length ? Math.max.apply(null, loggedValues) : 0;
+      var chartMax = Math.max(TARGETS[m.key] * 1.3, maxLogged * 1.1, 1);
+
+      var chart = document.createElement('div');
+      chart.className = 'trend-chart';
+
+      var head = document.createElement('div');
+      head.className = 'trend-chart-head';
+      head.innerHTML = '<span class="metric-name">' + m.label + '</span><span class="metric-target">target ' + TARGETS[m.key] + m.unit + '</span>';
+      chart.appendChild(head);
+
+      // Plot area (bars + target line) is a fixed 64px box, kept completely separate
+      // from the labels row below -- otherwise the label text shares the flex column
+      // with the bar and gets flexbox-shrunk together, silently capping bar heights
+      // and breaking their scale relative to the target line.
+      var plot = document.createElement('div');
+      plot.className = 'trend-plot';
+
+      var bars = document.createElement('div');
+      bars.className = 'trend-bars';
+
+      days.forEach(function (d, i) {
+        var col = document.createElement('div');
+        col.className = 'trend-bar-col';
+        var v = values[i];
+        var stat = dayStatus(d);
+        var bar = document.createElement('div');
+        if (v === null) {
+          bar.className = 'trend-bar ' + (stat === 'untracked' ? 'is-untracked' : 'is-empty');
+          bar.title = stat === 'untracked'
+            ? d + ': untracked (vacation) — excluded from analysis, not a zero'
+            : d + ': no data logged';
+        } else {
+          var over = v > TARGETS[m.key] * 1.15;
+          // A partial day's bar is real but incomplete -- render it muted so it is never
+          // read as a genuine low day (that misread is exactly what corrupts the averages).
+          bar.className = 'trend-bar' + (over ? ' is-warn' : '') + (stat === 'partial' ? ' is-partial' : '');
+          bar.style.height = Math.max(2, (v / chartMax) * chartHeight) + 'px';
+          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')' +
+            (stat === 'partial' ? ' — PARTIAL, floor only, excluded from averages' : '');
+        }
+        col.appendChild(bar);
+        bars.appendChild(col);
+      });
+      plot.appendChild(bars);
+
+      var targetLine = document.createElement('div');
+      targetLine.className = 'trend-target-line';
+      targetLine.style.top = (chartHeight - (TARGETS[m.key] / chartMax) * chartHeight) + 'px';
+      plot.appendChild(targetLine);
+
+      chart.appendChild(plot);
+
+      var labels = document.createElement('div');
+      labels.className = 'trend-labels';
+      days.forEach(function (d) {
+        var lcol = document.createElement('div');
+        lcol.className = 'trend-label-col';
+        var lbl = document.createElement('div');
+        lbl.className = 'trend-day-label';
+        lbl.textContent = d.slice(5).replace('-', '/');
+        lcol.appendChild(lbl);
+        labels.appendChild(lcol);
+      });
+      chart.appendChild(labels);
+      container.appendChild(chart);
+    });
+  }
+
+  initDayPicker();
+  renderTrend();
 </script>

@@ -44,8 +44,12 @@ _*Includes ~50%/25% synergist credit from compound lifts (e.g. rows count half t
 No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred from logged working sets instead, and used to suggest a working weight for each exercise's prescribed rep range below.
 
 - **Formula: Epley** — `e1RM = weight × (1 + reps/30)`. Validated to within ~2–10% error for 1–10 rep sets; accuracy drops noticeably beyond ~12 reps, and past ~15 the number is a rough trend indicator only, not a precise prescription. Several exercises here (pec deck, leg extension/curl, lateral raise, reverse pec deck, crunches) are programmed at 12–20 reps — treat their e1RM and suggested weight as directional, not exact.
-- **Reps-to-failure, not reps-performed** — sets here are trained at 1–3 RIR, not to failure, so e1RM is estimated from (reps performed + RIR), not the raw rep count. Mention how a set felt when logging it ("135×10, 2 left in the tank") for an accurate number. If RIR isn't mentioned, 2 RIR is assumed by default — a conservative floor, not an overestimate.
-- **Suggested weight for the prescribed range** — same formula solved for weight: `weight = e1RM / (1 + reps/30)`, computed at both ends of the rep range and rounded to a practical increment (2.5–5 lb for dumbbells/machines).
+- **Reps-to-failure, not reps-performed** — sets here are trained close to failure, so e1RM is estimated from (reps performed + RIR), not the raw rep count. Mention how a set felt when logging it ("135×10, 2 left in the tank") for an accurate number.
+  - **Assuming a higher RIR than reality *inflates* the estimate — that's the opposite of conservative.** An earlier version of this note claimed the default was "a conservative floor," which was backwards: assuming 2 RIR when a set was actually near failure overstates the true 1RM and pushes the suggested weight above what's actually achievable. Corrected 2026-07-27 after exactly this happened.
+  - **Blind default is now 0 RIR, not 1.** Corrected again 2026-07-28: the 1 RIR default (set the day before) still overshot, because it assumed a comfortable-effort baseline that doesn't match how this athlete actually trains. Direct quote: *"I normally fail a rep at least once during one of my sets per workout."* That means near-failure effort is this athlete's normal, not the exception worth calling out — so silence about how a set felt is no longer neutral information, it's the default case, and the default case is ~0 RIR. Only use a nonzero RIR when a set is explicitly described as easy/had room left.
+  - **Context still overrides the default either direction.** Explicit language like "struggling," "to failure," or overexertion symptoms confirms 0 RIR directly; explicit language like "had 2-3 left" moves it up from the 0 default. Absent either, use 0.
+- **Suggested weight uses a 90% training max, not the raw e1RM.** This is a second, independent fix, added 2026-07-28 alongside the RIR default change: even with an accurate e1RM, solving `weight = e1RM / (1 + reps/30)` directly assumes fresh, single-set conditions. Every exercise here is actually done for 3–4 *consecutive* working sets, superset with another exercise, inside an hour-plus full-body session — fatigue accumulates in a way a single-set formula doesn't model, which is part of why straight-from-e1RM suggestions kept landing above what was actually achievable across a whole exercise's working sets, not just its hardest one. Fix: compute a **training max = 90% of e1RM** first, then solve for weight at each end of the rep range from *that* number — the same style of safety margin used in established programs like 5/3/1's training max. The e1RM itself (in `PROGRESS.md`) stays the honest, undiscounted estimate; only the number used to generate a suggested working weight gets the 90% haircut.
+- **Suggested weight for the prescribed range** — `weight = training_max / (1 + reps/30)`, computed at both ends of the rep range and rounded to a practical increment (2.5–5 lb for dumbbells/machines).
 - **Updates like a PR** — e1RM only moves up when a logged set implies a higher number than what's on file; a single off day doesn't lower it. Current estimates live in `PROGRESS.md`.
 - **No history yet** — every exercise below shows `—` until a set is logged for it. Log a workout any time and the suggested weights populate automatically here and on the dashboard.
 
@@ -66,30 +70,30 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained ≥2x/week like everything else, at the same weekly set total as before.
 
 ### Day 1 — Full Body A
-- Superset: weighted dips 3x8–12 @ **—** (chest) ↔ weighted pull-ups 3x6–10 @ **—** (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg press 3x10–15 @ **—** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
-- Superset: Arnold press 3x8–12 @ **—** (side delt) ↔ DB curl 3x10–12 @ **—** (biceps) — _same DB rack · press vs curl, push vs pull_
-- Finisher: reverse pec deck 2x12–15 @ **—** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
+- Superset: weighted dips 3x8–12 @ **~43.5–48lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
+- Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
+- Superset: Arnold press 3x8–12 @ **~38.5–42.5lb** (side delt) ↔ DB curl 3x10–12 @ **~31.5–33lb** (biceps) — _same DB rack · press vs curl, push vs pull_
+- Finisher: reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B
-- Superset: low cable row 4x10–12 @ **—** (back) ↔ triceps pushdown 3x10–12 @ **—** (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
-- Superset: leg extension 3x12–15 @ **—** (quads) ↔ leg curl 3x12–15 @ **—** (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
-- Superset: lateral raise 3x12–15 @ **—** (side delt) ↔ hammer curl 3x10–12 @ **—** (biceps) — _same DB rack · raise vs curl, push vs pull_
+- Superset: low cable row 4x10–12 @ **~169–177lb** (back) ↔ triceps pushdown 3x10–12 @ **~113–119lb** (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
+- Superset: leg extension 3x12–15 @ **~235–252lb** _(⚠️ from a Yellowstone Fitness session — may not transfer to the usual gym's machine, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
+- Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ hammer curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Cardio: Norwegian 4x4 — _this is now the lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
 ### Day 3 — Full Body C
-- Superset: pec deck 3x12–15 @ **—** (chest) ↔ reverse pec deck 2x12–15 @ **—** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
-- Superset: lat pulldown 3x10–12 @ **—** (back) ↔ overhead triceps extension 3x10–12 @ **—** (triceps) — _same cable stack · elbow-joint antagonist_
-- Superset: incline DB press 3x8–12 @ **—** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **—** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
-- Finisher: leg curl 2x12–15 @ **—** (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
+- Superset: pec deck 3x12–15 @ **~144–154lb** (chest) ↔ reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
+- Superset: lat pulldown 3x10–12 @ **~157.5–165.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) — _same cable stack · elbow-joint antagonist_
+- Superset: incline DB press 3x8–12 @ **~52.5–58lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
+- Finisher: leg curl 2x12–15 @ **~194–207lb** (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 4 — Optional: Extra Volume
 Repeats the exercises that are still below the optimal zone after Days 1–3 — chest, back, both delt heads, hamstrings, and quads. Skips biceps/triceps and abs since they're already at/near target.
-- Superset: leg extension 3x12–15 @ **—** (quads) ↔ leg curl 3x12–15 @ **—** (hamstrings) — _same leg machine_
-- Superset: incline DB press 3x8–12 @ **—** (chest) ↔ low cable row 3x10–12 @ **—** (back) — _adjacent zones · chest vs back_
-- Superset: lateral raise 3x12–15 @ **—** (side delt) ↔ reverse pec deck 3x12–15 @ **—** (rear delt) — _cross-zone (DB rack vs pec-deck machine), the one pair here that isn't equipment-adjacent — but still push vs pull_
+- Superset: leg extension 3x12–15 @ **~235–252lb** _(⚠️ from a Yellowstone Fitness session — may not transfer to the usual gym's machine, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine_
+- Superset: incline DB press 3x8–12 @ **~52.5–58lb** (chest) ↔ low cable row 3x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back_
+- Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _cross-zone (DB rack vs pec-deck machine), the one pair here that isn't equipment-adjacent — but still push vs pull_
 - Cardio: Norwegian 4x4 or zone 2
 
 ### Day 5 — Optional: Hyrox Station Practice
@@ -98,6 +102,8 @@ Repeats the exercises that are still below the optimal zone after Days 1–3 —
 - Cardio: longer zone 2 run
 
 ## Notes
+- **Weekly volume is evaluated Monday–Sunday**, added 2026-08-02 per the user's own training calendar — not a rolling "last 7 days" or "last N sessions" window. When auditing volume against the MEV/optimal thresholds above, only count sessions from the most recent Monday through the current day, and treat each Monday as a hard reset rather than carrying a running tally forward. (7/27–8/2, the block used in every volume audit so far, happens to line up exactly with one full Mon–Sun week — 8/3 is the first day of a fresh week.)
+- **Weeks containing an untracked stretch are off-weeks, not volume misses**, added 2026-08-11. When a Mon–Sun week overlaps a vacation/travel block (see `README.md` → Logging coverage and gaps), report the audit as "off-week (vacation)" rather than flagging every muscle group as under-MEV — the prescription wasn't missed, it wasn't in effect. Detraining over 1–2 weeks off is negligible for strength, so no programming changes are needed on return, and the first session back must **not** be used to re-baseline suggested weights (a slightly lower session after a layoff is rhythm, not lost strength — let the 2nd/3rd session back set direction).
 - Update this file whenever the plan changes; keep workout logs in `workouts/` matching what's actually done, even when it deviates from plan.
 - Exercise swaps are fine — keep the muscle-group balance above and stay back-friendly.
 - **Lateral raise is new** — nothing in the original preferred-exercise list trained side delts directly, so it was added to close that gap. Swap it out if there's a reason to avoid it, but something needs to fill that slot.

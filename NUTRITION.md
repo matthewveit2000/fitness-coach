@@ -1,23 +1,23 @@
 # Nutrition
 
-_Last updated: 2026-07-26_
+_Last updated: 2026-07-30_
 
 ## Why this exists
 Training determines the stimulus; body composition change (leaner + hypertrophy) is driven at least as much by intake. This was the single biggest gap found in the last routine audit — there was a body-fat target in `GOALS.md` but nothing about food.
 
 ## Targets (starting point — see Calibration below)
-Revised using WHOOP's measured burn (~1,800 kcal/day average across all days, including training) as the primary signal, in place of the initial Mifflin-St Jeor formula estimate (~2,600) — real tracked data beats a population-average formula. Nudged slightly above the raw WHOOP number because wearables tend to underestimate resting energy for higher-lean-mass/muscular individuals, so 1,800 is likely a slight floor rather than the true number.
+**Revised again 7/27**: maintenance bumped to ~2,000 kcal/day per your own judgment that WHOOP underestimates — consistent with the known bias (wearables tend to underestimate resting energy for higher-lean-mass/muscular individuals), just a larger correction than the ~1,850 estimate first applied. Your read on your own body's response is a legitimate input here, on top of the device data.
 
 | | Target | Basis |
 |---|---|---|
-| Calories | **~1,700/day** (range 1,600–1,800) | Revised maintenance estimate ~1,850 (WHOOP-anchored) · ~8% deficit — kept mild since the maintenance estimate itself already carries uncertainty |
-| Protein | **~175g/day** (range 160–195g) | 1.0–1.2g/lb bodyweight — unchanged even though calories dropped; protein needs stay high (or go up) in a deficit specifically to protect muscle, they don't scale down with calories |
-| Fat | **~55g/day** minimum | Trimmed from the original 65g to leave more room for carbs at this lower calorie ceiling; still comfortably above the ~50g hormonal-health floor |
-| Carbs | **~125g/day** | Fills the remainder — flex this around training days if performance/recovery suffers |
+| Calories | **~1,840/day** (range 1,750–1,950) | Maintenance ~2,000 (WHOOP + your correction) · same mild ~8% deficit as before |
+| Protein | **~130g/day** (range 120–140g) | **Revised 7/30 per your request** — 0.8g/lb bodyweight (164lb), down from 1.0–1.2g/lb. Still comfortably above the ~0.7g/lb floor most muscle-retention-in-a-deficit research converges on, just less padding above it than before |
+| Fat | **~65g/day** minimum | Restored to the original level now that there's more calorie room — was only trimmed to 55g because the lower ~1,700 ceiling needed the space for carbs |
+| Carbs | **~185g/day** | Fills the remainder — the lower protein target freed up ~45g of the calorie budget, which rolls into carbs (helps with the training-fuel issue from the 7/27 under-fueling incident); flex this around training days if performance/recovery suffers |
 
-**Protein is the hard target — hit it consistently even on days calories drift.** Calories are the main lever for the leaning-out goal; carbs/fat are flexible around whatever's left after protein and the calorie target.
+**Calories are still the main lever for the leaning-out goal.** Protein's no longer being held as a hard floor above what's needed for muscle retention — hit ~130g most days, but it's not worth stressing over on a day it comes up short the way it was at 175g.
 
-**This is a meaningful downward revision (2,200→1,700) and worth watching closely.** 1,700 kcal is low relative to your training volume (lifting 3–5x/week + running). If strength, recovery, or energy noticeably suffer before the next scheduled check-in below, that's itself a signal to nudge calories up ~100–150 — don't wait for the 2–3 week mark if training is clearly degrading.
+**History:** 2,200 (initial formula) → 1,700 (WHOOP-anchored) → 1,840 (WHOOP + your correction that it underestimates). If strength, recovery, or energy noticeably suffer before the next scheduled check-in below, that's itself a signal to nudge calories up further — don't wait for the 2–3 week mark if training is clearly degrading.
 
 ## Why a moderate deficit, not aggressive
 At 10 years of training experience, simultaneous muscle gain + fat loss ("recomposition") is still achievable — research confirms it isn't just a beginner phenomenon — but it's slower and more dependent on execution than it would be for a newer lifter, and requires high protein + a genuine training stimulus + only a mild deficit. An aggressive cut risks losing the muscle you're training hard for. This is set up for **modest, steady change, not a fast cut.**
@@ -35,10 +35,18 @@ The numbers above are still a *starting estimate* — WHOOP's burn number is bet
 ## Logging — flexible, conversational
 No app, no manual macro lookup required. Just tell me what you ate, in whatever form is easiest:
 - **Describe it in chat** ("had 2 eggs, toast, and a protein shake for breakfast") — I'll estimate calories/protein/fat/carbs and log it.
-- **Send a photo** of the meal or the nutrition label — I'll estimate from that.
+- **Send a photo** of the meal or the nutrition label — I'll read the label directly if there is one (exact, not estimated), or estimate from the photo if not.
+- **Whenever a restaurant or store/brand name is mentioned, search online for official nutrition info first** (their site, a published nutrition PDF, etc.) before falling back to an estimate. Large chains usually publish full nutrition breakdowns; smaller regional chains often don't — note in the log entry whether the number came from an official source or an estimate either way, so confidence level is always visible at a glance.
 - Entries go in `meals/YYYY-MM.md`, one file per month like the workout logs, with a running daily total against the targets above.
+- **When a message describes multiple food items for one meal, log each item as its own line with its own calories/macros — never blended into a single combined line.** They still count toward the same meal (e.g. "Lunch") and the same daily total, but each item's numbers stay visible individually so you can see what any one thing actually cost you.
 - Estimates are approximate, not lab-precision — that's fine, consistency over weeks matters more than precision on any single meal, and the calibration protocol above corrects for estimation error using real weight-trend data anyway.
+- **Dates: logged under the date the message was received, not inferred from phrasing like "last night" — see `README.md` Workflow for the full policy.**
+
+## Preferred Staples
+Default items to assume when logging, unless a photo or description says otherwise:
+- **Protein shake:** Premier Protein Vanilla, 11 fl oz — 160 kcal, 30g protein, 3g fat, 4g carbs _(replaced the fairlife Nutrition Plan shake as of 2026-07-28)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
 - Alcohol, sauces/oils, and cooking fats are easy to undercount — mention them when describing a meal rather than assuming they're negligible.
+- **Standing habit, not logged:** Metamucil (sugar-free orange, 2 heaping tbsp) every morning — added 2026-08-11. Calories are negligible so it's not added to the daily meal log or totals, but it's a real daily fiber source (~6g soluble fiber/dose) and should factor into any fiber/nutrition-quality assessment — the diet isn't as fiber-deficient as the raw food log alone would suggest.
