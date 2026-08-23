@@ -2,6 +2,8 @@
 
 Personal training log and coaching notes. Training mix: weightlifting, running/cardio, and bodyweight/calisthenics. Primary goals: hypertrophy, staying lean, general athleticism and health.
 
+**AI agents working in this repo (Claude, Google Jules, or others): read [`AGENTS.md`](AGENTS.md) first.** More than one agent maintains this repo, sometimes in the same day — it's the procedural checklist (dashboard sync, gym-comparability rule for PRs, date/format conventions) that keeps them from silently contradicting each other or corrupting the log.
+
 ## Structure
 
 - `GOALS.md` — current goals and target metrics, updated as they evolve
@@ -14,9 +16,9 @@ Personal training log and coaching notes. Training mix: weightlifting, running/c
 
 ## Workflow
 
-Workouts get logged by telling Claude what happened in a session; Claude records it in the appropriate `workouts/YYYY-MM.md` file and updates `PROGRESS.md` when a PR or notable measurement comes up. Meals get logged the same way — describe what you ate or send a photo, and Claude estimates macros and records it in `meals/YYYY-MM.md`.
+Workouts get logged by telling the agent what happened in a session; it records the entry in the appropriate `workouts/YYYY-MM.md` file and updates `PROGRESS.md` when a PR or notable measurement comes up. Meals get logged the same way — describe what you ate or send a photo, and the agent estimates macros and records it in `meals/YYYY-MM.md`. See `AGENTS.md` for the exact format and PR-verification rules this depends on.
 
-**Dashboard republishing is not optional and not batched.** `dashboard.html` mirrors the markdown source files, so *every* edit to `GOALS.md`, `ROUTINE.md`, `NUTRITION.md`, `PROGRESS.md`, `workouts/YYYY-MM.md`, or `meals/YYYY-MM.md` — including a single logged meal or a single logged set — requires updating `dashboard.html` to match, then calling the `Artifact` tool to republish it to the same artifact link (same URL, `force: true` if a conflict is reported), in that same turn. `git push`ing the markdown/HTML changes is necessary but **not sufficient** — a git push alone does not update the live dashboard link the user actually looks at. Never say "dashboard's synced/updated/pushed" unless the `Artifact` tool was actually called that turn. If a turn only touches `dashboard.html`'s data (no markdown changes needed), still republish — the artifact step is keyed to "did dashboard.html's content change," not "did a markdown file change."
+**Dashboard republishing is not optional and not batched.** `dashboard.html` mirrors the markdown source files, so *every* edit to `GOALS.md`, `ROUTINE.md`, `NUTRITION.md`, `PROGRESS.md`, `workouts/YYYY-MM.md`, or `meals/YYYY-MM.md` — including a single logged meal or a single logged set — requires updating `dashboard.html` to match **completely**, not partially (see `AGENTS.md` → §5 for the full sync checklist; a partial sync is worse than none). `dashboard.html` is also mirrored to [GitHub Pages](https://matthewveit2000.github.io/fitness-coach/dashboard.html), which updates automatically on push — any agent that can commit to `main` keeps that copy current just by committing correctly. A Claude session additionally has to call the `Artifact` tool to republish to the same artifact link (same URL, `force: true` if a conflict is reported), in that same turn, since `git push` alone doesn't update that separate live link — never say "dashboard's synced/updated/pushed" unless the `Artifact` tool was actually called that turn. Agents without Artifact access (e.g. Jules) aren't expected to do this step, but should still leave `dashboard.html` itself fully correct so the next Claude session can catch the artifact up without also having to fix the underlying data.
 
 ## Logging coverage and gaps
 
