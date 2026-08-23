@@ -78,21 +78,21 @@ Leg Press and Weighted Lunges — the two heaviest leg movements — are deliber
 
 ### Day 2 — Full Body B
 - Superset: low cable row 4x10–12 @ **~169–177lb** (back) ↔ triceps pushdown 3x10–12 @ **~113–119lb** (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
-- Superset: leg extension 3x12–15 @ **~235–252lb** _(⚠️ from a Yellowstone Fitness session — may not transfer to the usual gym's machine, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
+- Superset: leg extension 3x12–15 @ **~288–309lb** (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
 - Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ hammer curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Cardio: Norwegian 4x4 — _this is now the lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
 ### Day 3 — Full Body C
 - Superset: pec deck 3x12–15 @ **~144–154lb** (chest) ↔ reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
 - Superset: lat pulldown 3x10–12 @ **~168.8–177.2lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) — _same cable stack · elbow-joint antagonist_
-- Superset: incline DB press 3x8–12 @ **~52.5–58lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
+- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
 - Finisher: leg curl 2x12–15 @ **~194–207lb** (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 4 — Optional: Extra Volume
 Repeats the exercises that are still below the optimal zone after Days 1–3 — chest, back, both delt heads, hamstrings, and quads. Skips biceps/triceps and abs since they're already at/near target.
-- Superset: leg extension 3x12–15 @ **~235–252lb** _(⚠️ from a Yellowstone Fitness session — may not transfer to the usual gym's machine, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine_
-- Superset: incline DB press 3x8–12 @ **~52.5–58lb** (chest) ↔ low cable row 3x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back_
+- Superset: leg extension 3x12–15 @ **~288–309lb** (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine_
+- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ low cable row 3x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back_
 - Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _cross-zone (DB rack vs pec-deck machine), the one pair here that isn't equipment-adjacent — but still push vs pull_
 - Cardio: Norwegian 4x4 or zone 2
 
