@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-08-24_
+_Last updated: 2026-08-25_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -77,9 +77,9 @@ Leg Press and Weighted Lunges — the two heaviest leg movements — are deliber
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B
-- Superset: low cable row 4x10–12 @ **~169–177lb** (back) ↔ triceps pushdown 3x10–12 @ **~113–119lb** (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
+- Superset: low cable row 4x10–12 @ **~169–177lb** (back) ↔ triceps pushdown 3x10–12 @ **~127.3–133.7lb** (triceps) — _same cable stack · elbow-joint antagonist (row's pull vs pushdown's extension)_
 - Superset: leg extension 3x12–15 @ **~288–309lb** _(⚠️ unconfirmed — one 8/22 session, 56% above the repeatedly-confirmed 215lb baseline with no gym/machine noted; verify this holds before trusting it, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee-joint antagonist; this is hamstrings' 1st weekly touch_
-- Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ hammer curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
+- Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ hammer curl 3x10–12 @ **~43.4–45.6lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Cardio: Norwegian 4x4 — _this is now the lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
 ### Day 3 — Full Body C
