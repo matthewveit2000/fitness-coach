@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-08-23_
+_Last updated: 2026-08-24_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -72,7 +72,7 @@ Leg Press and Weighted Lunges — the two heaviest leg movements — are deliber
 ### Day 1 — Full Body A
 - Superset: weighted dips 3x8–12 @ **~43.5–48lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
-- Superset: Arnold press 3x8–12 @ **~38.5–42.5lb** (side delt) ↔ DB curl 3x10–12 @ **~31.5–33lb** (biceps) — _same DB rack · press vs curl, push vs pull_
+- Superset: Arnold press 3x8–12 @ **~38.5–42.5lb** (side delt) ↔ DB curl 3x10–12 @ **~33.75–35.5lb** (biceps) — _same DB rack · press vs curl, push vs pull_
 - Finisher: reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min
 
