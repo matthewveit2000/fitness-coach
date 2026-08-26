@@ -174,7 +174,7 @@
 <div class="wrap">
   <header class="top">
     <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-25</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-26</span>
   </header>
 
   <nav class="tabs" role="tablist">
@@ -209,7 +209,7 @@
     <h2 class="section-title">What's Logged So Far</h2>
     <div class="stat-grid">
       <div class="stat"><span class="label">Workout Entries</span><span class="value">25</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">195</span></div>
+      <div class="stat"><span class="label">Meal Entries</span><span class="value">198</span></div>
       <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">10</span></div>
     </div>
@@ -1123,6 +1123,11 @@
       { name: 'Oikos Triple Zero Vanilla, 2 cups', kcal: 240, protein: 30, fat: 0, carbs: 30, source: 'label' },
       { name: 'Boiled eggs, 3', kcal: 216, protein: 19.5, fat: 15, carbs: 1.5, source: 'usda' },
       { name: 'Kirkland ultra-filtered lactose-free milk, 200g', kcal: 100, protein: 10.8, fat: 3.75, carbs: 5, source: 'label' }
+    ],
+    '2026-08-26': [
+      { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Riviana brown rice, 60g dry', kcal: 216, protein: 4.8, fat: 1.8, carbs: 46.8, source: 'label' },
+      { name: "Kevin's Thai-style coconut chicken, 3.25 servings", kcal: 585, protein: 65, fat: 26, carbs: 19.5, source: 'label' }
     ]
   };
   var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
@@ -1145,7 +1150,7 @@
   // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
   // looked up and applied automatically without confirming with the user; only log under a
   // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-25';
+  var TODAY = '2026-08-26';
 
   function last14Days() {
     var days = [];
