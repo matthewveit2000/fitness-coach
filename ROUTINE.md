@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-08-25_
+_Last updated: 2026-08-26_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -83,9 +83,9 @@ Leg Press and Weighted Lunges — the two heaviest leg movements — are deliber
 - Cardio: Norwegian 4x4 — _this is now the lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
 ### Day 3 — Full Body C
-- Superset: pec deck 3x12–15 @ **~144–154lb** (chest) ↔ reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
-- Superset: lat pulldown 3x10–12 @ **~168.8–177.2lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) — _same cable stack · elbow-joint antagonist_
-- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
+- Superset: pec deck 3x12–15 @ **~176.4–189lb** (chest) ↔ reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest vs rear delt; this is rear delt's 2nd weekly touch (2+2 = same 4 sets/week as before)_
+- Superset: lat pulldown 3x10–12 @ **~168.8–177.2lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) _(⚠️ unconfirmed higher number — one 8/26 session, 141% above this confirmed baseline with no gym/machine noted; verify this holds before trusting it, see PROGRESS.md)_ — _same cable stack · elbow-joint antagonist_
+- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ weighted lunges (smith machine) 3x10–12/leg @ **~130–137lb** _(⚠️ unconfirmed higher number — one 8/26 session jumped to 205lb within the session itself; wants next-session confirmation before trusting it, see PROGRESS.md)_ (quads/glute-hamstring-leaning) — _cross-zone but push vs pull under the broad framework (see Notes); the other heavy leg movement, kept off Day 1 on purpose_
 - Finisher: leg curl 2x12–15 @ **~194–207lb** (hamstrings) — _quick add-on near the lunges/leg-area zone; this is hamstrings' 2nd weekly touch (3+2 = same 5 sets/week as before)_
 - Cardio: zone 2 run, 20–30 min
 
