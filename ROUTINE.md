@@ -43,6 +43,26 @@ Based directly on Dr. Mike Israetel's Renaissance Periodization (RP) research an
 
 _Note: Per Dr. Mike Israetel / RP methodology, sets reflect direct isolation/primary compound work only. Indirect carryover (e.g. rows stimulating biceps or dips stimulating triceps) is factored into exercise sequencing and fatigue management, but is not counted as fractional sets toward volume landmarks._
 
+### Deviations from Strict RP Research & Rationale
+While our volume thresholds and direct-set counting methodology align directly with Dr. Mike Israetel's Renaissance Periodization (RP) research, our program deliberately deviates in four specific areas:
+
+1. **Consistent Weekly Template vs. Ramping Mesocycle Progression:**
+   * _Strict RP Framework:_ Advocates 4–6 week mesocycles that start at MEV in Week 1, systematically ramp by +1–2 sets per muscle each week toward MRV, and conclude with a scheduled deload at MV.
+   * _Our System & Rationale:_ **The user maintains a consistent week-to-week routine rather than changing set counts weekly.** This prioritizes habit consistency, schedule predictability, and sustainable lifestyle adherence. Progressive overload is achieved through load (weight) and reps rather than continuous weekly set manipulation.
+2. **Proximity to Failure: Continuous ~0 RIR vs. Periodized RIR (3 RIR &rarr; 0 RIR):**
+   * _Strict RP Framework:_ Periodizes intensity from moderate effort (3 RIR) in Week 1 down to true failure (0 RIR) only in the final week before deloading.
+   * _Our System & Rationale:_ Matches the user's natural high-intensity baseline (*"I normally fail a rep at least once during one of my sets per workout"*). To safely manage accumulated fatigue without forcing artificial 3 RIR sets, our system computes suggested working weights from a **90% training max haircut** on inferred 1RMs.
+3. **Excluded Muscle Categories (Front Delts, Glutes, Traps, Forearms):**
+   * _Strict RP Framework:_ Categorizes 13–14 separate muscle groups.
+   * _Our System & Rationale:_ Guided by our **80/20 efficiency rule** (`GOALS.md`) and lower back protection:
+     * **Front Delts:** Reclassified from Side Delts to Front Delts per RP research, and excluded from direct set requirements because MEV = 0 sets/week (fully stimulated by incline DB press and dips).
+     * **Glutes:** Excluded from dedicated isolation tracking because deep leg press, Bulgarian split squats, and lunges already train glutes well above MEV, avoiding spinal shear from heavy hip thrusts.
+     * **Traps:** Excluded because low cable rows and pull-ups provide complete isometric trap stimulus; heavy shrugs add unwanted axial spinal compression and detract from V-taper shoulder width.
+     * **Forearms:** Excluded from direct wrist curls (which risk tendonitis); hammer curls directly train the brachioradialis while heavy gripping covers the rest.
+4. **Spinal-Friendly Exercise Selection:**
+   * _Strict RP Framework:_ Regularly programs heavy axial loading (barbell back squats, conventional/Romanian deadlifts, bent-over rows).
+   * _Our System & Rationale:_ Strictly adapted for the user's **lower back bulging disc** (`GOALS.md`). High-axial free-weight movements are replaced with chest-supported cable rows, leg press, and machine knee flexion/extension.
+
 ## Suggested Weights from Estimated 1RM
 No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred from logged working sets instead, and used to suggest a working weight for each exercise's prescribed rep range below.
 
@@ -60,7 +80,7 @@ No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred
 Machine/cable-leaning selection — works well with the back constraint since these load the spine less than free-weight squats/deadlifts.
 - **Chest:** incline DB press, weighted dips, pec deck
 - **Back:** low cable row, weighted pull-ups, lat pulldown
-- **Delts:** Arnold press (side delt), lateral raise (side delt — added to cover the gap above), reverse pec deck (rear delt)
+- **Delts:** lateral raise (dumbbell/cable/machine — side delt), reverse pec deck (rear delt). Overhead pressing (Arnold press) targets front delts, which are excluded from direct volume targets since chest pressing already satisfies front delt growth.
 - **Legs:** leg press, weighted lunges (barbell/smith machine), leg extension, leg curl
 - **Arms:** DB curl, hammer curl (biceps), triceps pushdown, overhead triceps extension (triceps)
 - **Core:** crunches — ⚠️ loaded/repeated spinal flexion can aggravate a bulging disc; watch for any tweak or pain and swap to a flexion-free alternative (e.g. Pallof press, plank) if it flares up
@@ -68,14 +88,14 @@ Machine/cable-leaning selection — works well with the back constraint since th
 
 ## Weekly Structure
 
-Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, and quads into the optimal zone; biceps/triceps are already there from synergist credit alone, so Day 4 doesn't need extra arm work. **Day 5 is Hyrox-specific conditioning** — optional, low priority given Hyrox is a secondary goal; skip it freely if the week's short on time. Rotate Day 1 → 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
+Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, and quads into the optimal zone; biceps/triceps are already there from synergist credit alone, so Day 4 doesn't need extra arm work. **Day 5 is Hyrox-specific conditioning** — optional, low priority given Hyrox is a secondary goal; skip it freely if the week's short on time. Rotate Day 1 &rarr; 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
 
-Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained ≥2x/week like everything else, at the same weekly set total as before.
+Leg Press and Weighted Lunges — the two heaviest leg movements — are deliberately on different days (Day 1 and Day 3) rather than stacked together. Reverse Pec Deck and Leg Curl are each split into two smaller doses across two different days instead of one session, so rear delt and hamstrings get trained &ge;2x/week like everything else, at the same weekly set total as before.
 
 ### Day 1 — Full Body A
 - Superset: weighted dips 3x8–12 @ **~43.5–48lb added** (chest) ↔ weighted pull-ups 3x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x15–20 @ **—** (abs) — _leg-press area / no equipment for crunches_
-- Superset: Arnold press 3x8–12 @ **~38.5–42.5lb** (side delt) ↔ DB curl 3x10–12 @ **~33.75–35.5lb** (biceps) — _same DB rack · press vs curl, push vs pull_
+- Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~33.75–35.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 2x12–15 @ **~153–164lb** (rear delt) — _quick add-on, same pec-deck machine used on Day 3; this is rear delt's 1st weekly touch_
 - Cardio: zone 2 run, 20–30 min
 
