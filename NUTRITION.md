@@ -1,6 +1,6 @@
 # Nutrition
 
-_Last updated: 2026-07-30_
+_Last updated: 2026-08-29_
 
 ## Why this exists
 Training determines the stimulus; body composition change (leaner + hypertrophy) is driven at least as much by intake. This was the single biggest gap found in the last routine audit — there was a body-fat target in `GOALS.md` but nothing about food.
@@ -41,6 +41,8 @@ No app, no manual macro lookup required. Just tell me what you ate, in whatever 
 - **When a message describes multiple food items for one meal, log each item as its own line with its own calories/macros — never blended into a single combined line.** They still count toward the same meal (e.g. "Lunch") and the same daily total, but each item's numbers stay visible individually so you can see what any one thing actually cost you.
 - Estimates are approximate, not lab-precision — that's fine, consistency over weeks matters more than precision on any single meal, and the calibration protocol above corrects for estimation error using real weight-trend data anyway.
 - **Dates: logged under the date the message was received, not inferred from phrasing like "last night" — see `README.md` Workflow for the full policy.**
+- **Context from past history & staples:** When an item is mentioned without specific brand or variant details (e.g. "milk", "fairlife shake", "burrito"), check recent history in `meals/` and Preferred Staples below to determine the established product/portion before falling back to generic estimates or picking a random brand variant.
+- **Explicitly state all assumptions in responses:** Every logging response must clearly state any assumptions made (e.g. which product variant was assumed from history, estimated portion or gram weights, cooking fats) so that catching and correcting any differences is frictionless.
 
 ## Preferred Staples
 Default items to assume when logging, unless a photo or description says otherwise:

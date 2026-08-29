@@ -64,6 +64,12 @@ later entry can still land on that same date.
 See `NUTRITION.md` for targets, staple-product defaults, and portion
 conventions (e.g. banana peel discounted at USDA's 36% refuse figure).
 
+### 3a. Past meal history context & explicit assumptions
+
+- **Check previous meal logs for unstated context:** When a user logs a food or beverage with incomplete product details (e.g., "milk", "fairlife shake", "burrito", "chicken bites"), **do not** guess generic USDA items or pick an arbitrary brand SKU. Check `NUTRITION.md` ("Preferred Staples") and recent entries in `meals/` (especially the current month) to see what exact product, brand, or serving basis the user normally consumes, and use that established baseline.
+- **Clearly state all assumptions in the response:** In the final response to the user after logging, **always explicitly state any assumptions made** (e.g., which brand/product variant was assumed from past history, estimated portion/volume, cooking oils/butter, etc.). This ensures full transparency and allows the user to immediately catch and correct anything that differed.
+
+
 ## 4. Workout entries — required format
 
 - Heading format: `## YYYY-MM-DD — <Session Type>` — always include the
