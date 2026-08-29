@@ -20,25 +20,28 @@ _Last updated: 2026-08-26_
 "Push"/"pull"/"arms" are movement categories, not muscles — each has its own recovery capacity and volume landmark, so volume gets tracked at this granularity instead:
 - **Chest, Back, Quads, Hamstrings** — standard, each with distinct landmarks
 - **Delts split into three:** front, side, and rear respond differently and need separate direct volume. Front delts are the exception — they get so much indirect work from every pressing movement (incline press, Arnold press, dips) that direct front-delt training is rarely needed and can push past their (small) recoverable volume. Side and rear delts get comparatively little indirect carryover, so they need dedicated isolation work — hence adding **lateral raise** below to cover side delt, which nothing in the original exercise list trained directly.
-- **Biceps and triceps are tracked separately**, not as one "arms" bucket — different exercises, different landmarks. Pulling movements (rows, pull-ups, pulldowns) count for ~50% synergist credit toward biceps; pressing movements (bench/incline press, dips) count ~50% toward triceps. "Pull" itself isn't tracked as a group — it resolves into Back (primary) + Biceps (secondary) + a little Rear Delt (secondary).
+- **Biceps and triceps are tracked separately by direct sets**, not as one "arms" bucket — different exercises, different landmarks. Per Dr. Mike Israetel's Renaissance Periodization (RP) research, volume landmarks are counted as **direct working sets only** (e.g. curls for biceps, extensions/pushdowns for triceps). While pulling and pressing movements contribute fatigue, Dr. Israetel's system does not apply fractional synergist credit when auditing volume landmarks.
 - **Abs/core** — intentionally under-dosed here relative to textbook volume; ab visibility is driven far more by the 15% body-fat target than by extra crunch volume, and the back constraint argues against piling on loaded flexion work.
 
 ## Volume Thresholds by Muscle Group
-Based on RP-style volume landmarks (MEV = minimum effective volume, the floor below which growth stalls; a conservative mid-MAV figure for "optimal" given concurrent Hyrox conditioning eating into recovery).
+Based directly on Dr. Mike Israetel's Renaissance Periodization (RP) research and volume landmarks. Per Dr. Israetel's framework, volume is evaluated strictly by **direct working sets** for the target muscle group (no fractional synergist credit applied):
+- **MEV (Minimum Effective Volume):** The lowest weekly direct volume to stimulate measurable hypertrophy.
+- **MAV (Maximum Adaptive Volume / "Optimal"):** The weekly volume range yielding optimal hypertrophy.
 
-| Muscle | 3-Day Floor (MEV) | Achieved, Days 1–3 | 5-Day Optimal | Achieved, Days 1–4 |
+| Muscle | Dr. Israetel MEV | Achieved, Days 1–3 (Direct) | Dr. Israetel MAV (Optimal) | Achieved, Days 1–4 (Direct) |
 |---|---|---|---|---|
-| Chest | 8–10 | 9 | 12–14 | 12 |
-| Back | 10–12 | 10 | 13–15 | 13 |
-| Side delt | 6–8 | 6 | 9–10 | 9 |
-| Rear delt | 6–8 | ~6.5* | 9–10 | ~9.5* |
-| Biceps | 6–8 | ~11* | 12–14 | ~11* (already there) |
-| Triceps | 6–8 | ~10.5* | 12–14 | ~10.5* (already there) |
-| Quads | 8–12 | 9 | 12–13 | 12 |
-| Hamstrings | 6–10 | ~6* | 9–10 | ~9* |
-| Abs | (secondary priority) | 3 | — | — |
+| Chest | 8–10 | 9 | 12–20 | 12 |
+| Back | 10–12 | 10 | 14–22 | 13 |
+| Quads | 8–10 | 9 | 12–18 | 12 |
+| Hamstrings | 6 | 5 | 10–16 | 8 |
+| Side delt | 6–8 | 6 | 16–22 | 9 |
+| Rear delt | 6–8 | 4 | 12–18 | 7 |
+| Biceps | 6–8 | 6 | 14–20 | 6 |
+| Triceps | 4–6 | 6 | 10–14 | 6 |
+| Calves | 6–8 | 0 | 12–16 | 0 |
+| Abs | 0–4 | 3 | 8–16 | 3 |
 
-_*Includes ~50%/25% synergist credit from compound lifts (e.g. rows count half toward biceps), per Menno Henselmans' volume-counting method — not just the isolation exercise alone._
+_Note: Per Dr. Mike Israetel / RP methodology, sets reflect direct isolation/primary compound work only. Indirect carryover (e.g. rows stimulating biceps or dips stimulating triceps) is factored into exercise sequencing and fatigue management, but is not counted as fractional sets toward volume landmarks._
 
 ## Suggested Weights from Estimated 1RM
 No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred from logged working sets instead, and used to suggest a working weight for each exercise's prescribed rep range below.

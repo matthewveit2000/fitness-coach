@@ -288,7 +288,7 @@
     <div class="card" style="margin-top: 18px;">
       <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
         <h3 style="margin:0; font-size:1.05rem;">🏋️ Hypertrophy Volume vs. MEV & Optimal (MAV)</h3>
-        <span class="faint">RP volume landmarks per ROUTINE.md</span>
+        <span class="faint">Dr. Mike Israetel / RP Research &middot; Direct Sets Only</span>
       </div>
       <div id="week-volume-callouts"></div>
       <div class="table-wrap" style="margin-top:12px;">
@@ -296,7 +296,7 @@
           <thead>
             <tr>
               <th>Muscle Group</th>
-              <th>Sets Done <span class="faint">(Direct + Syn)</span></th>
+              <th>Direct Sets Done</th>
               <th>MEV Floor</th>
               <th>Optimal (MAV)</th>
               <th>Progress to Optimal</th>
@@ -396,17 +396,19 @@
     </ul>
 
     <h2 class="section-title">Volume Thresholds by Muscle</h2>
+    <p class="faint">Based directly on Dr. Mike Israetel / Renaissance Periodization (RP) research. Volume is measured strictly in <strong>direct working sets</strong> (no fractional synergist credit applied).</p>
     <div class="table-wrap"><table>
-      <tr><th>Muscle</th><th>3-Day Floor (MEV)</th><th>Achieved D1&ndash;3</th><th>5-Day Optimal</th><th>Achieved D1&ndash;4</th></tr>
-      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;14</td><td class="num">12</td></tr>
-      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">10</td><td class="num">13&ndash;15</td><td class="num">13</td></tr>
-      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">9&ndash;10</td><td class="num">9</td></tr>
-      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">~6.5</td><td class="num">9&ndash;10</td><td class="num">~9.5</td></tr>
-      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">~11</td><td class="num">12&ndash;14</td><td class="num">~11</td></tr>
-      <tr><td>Triceps</td><td class="num">6&ndash;8</td><td class="num">~10.5</td><td class="num">12&ndash;14</td><td class="num">~10.5</td></tr>
-      <tr><td>Quads</td><td class="num">8&ndash;12</td><td class="num">9</td><td class="num">12&ndash;13</td><td class="num">12</td></tr>
-      <tr><td>Hamstrings</td><td class="num">6&ndash;10</td><td class="num">~6</td><td class="num">9&ndash;10</td><td class="num">~9</td></tr>
-      <tr><td>Abs</td><td class="num">&mdash;</td><td class="num">3</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+      <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
+      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
+      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">10</td><td class="num">14&ndash;22</td><td class="num">13</td></tr>
+      <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+      <tr><td>Hamstrings</td><td class="num">6</td><td class="num">5</td><td class="num">10&ndash;16</td><td class="num">8</td></tr>
+      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">16&ndash;22</td><td class="num">9</td></tr>
+      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">4</td><td class="num">12&ndash;18</td><td class="num">7</td></tr>
+      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">14&ndash;20</td><td class="num">6</td></tr>
+      <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">6</td></tr>
+      <tr><td>Calves</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
+      <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">3</td><td class="num">8&ndash;16</td><td class="num">3</td></tr>
     </table></div>
     <p class="faint">Frequency-fixed as of last update: rear delt and hamstrings now trained 2x/week (split across two days) instead of 1x, same weekly totals.</p>
 
@@ -1561,16 +1563,16 @@
   };
 
   var VOLUME_LANDMARKS = [
-    { muscle: 'Chest', mevMin: 8, mevTarget: 10, optMin: 12, optMax: 14, exercises: 'Incline DB Press, Dips, Pec Deck' },
-    { muscle: 'Back', mevMin: 10, mevTarget: 12, optMin: 13, optMax: 15, exercises: 'Rows, Pull-Ups, Pulldowns' },
-    { muscle: 'Quads', mevMin: 8, mevTarget: 12, optMin: 12, optMax: 13, exercises: 'Leg Press, Leg Extension, Lunges / BSS' },
-    { muscle: 'Hamstrings', mevMin: 6, mevTarget: 10, optMin: 9, optMax: 10, exercises: 'Leg Curl (seated/lying)' },
-    { muscle: 'Side Delt', mevMin: 6, mevTarget: 8, optMin: 9, optMax: 10, exercises: 'Lateral Raise, Arnold Press' },
-    { muscle: 'Rear Delt', mevMin: 6, mevTarget: 8, optMin: 9, optMax: 10, exercises: 'Reverse Pec Deck (+25% pull credit)' },
-    { muscle: 'Biceps', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 14, exercises: 'Curls (+50% pull credit)' },
-    { muscle: 'Triceps', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 14, exercises: 'Pushdowns, Extensions (+50% press credit)' },
-    { muscle: 'Calves', mevMin: 3, mevTarget: 6, optMin: 6, optMax: 8, exercises: 'Standing Calf Raise' },
-    { muscle: 'Abs', mevMin: 3, mevTarget: 6, optMin: 6, optMax: 8, exercises: 'Crunches / Core' }
+    { muscle: 'Chest', mevMin: 8, mevTarget: 10, optMin: 12, optMax: 20, exercises: 'Incline DB Press, Dips, Pec Deck' },
+    { muscle: 'Back', mevMin: 10, mevTarget: 12, optMin: 14, optMax: 22, exercises: 'Rows, Pull-Ups, Pulldowns' },
+    { muscle: 'Quads', mevMin: 8, mevTarget: 10, optMin: 12, optMax: 18, exercises: 'Leg Press, Leg Extension, Lunges / BSS' },
+    { muscle: 'Hamstrings', mevMin: 6, mevTarget: 8, optMin: 10, optMax: 16, exercises: 'Leg Curl (seated/lying)' },
+    { muscle: 'Side Delt', mevMin: 6, mevTarget: 8, optMin: 16, optMax: 22, exercises: 'Lateral Raise, Arnold Press' },
+    { muscle: 'Rear Delt', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 18, exercises: 'Reverse Pec Deck' },
+    { muscle: 'Biceps', mevMin: 6, mevTarget: 8, optMin: 14, optMax: 20, exercises: 'DB Curl, Hammer Curl (direct)' },
+    { muscle: 'Triceps', mevMin: 4, mevTarget: 6, optMin: 10, optMax: 14, exercises: 'Pushdowns, Extensions (direct)' },
+    { muscle: 'Calves', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 16, exercises: 'Standing Calf Raise' },
+    { muscle: 'Abs', mevMin: 0, mevTarget: 4, optMin: 8, optMax: 16, exercises: 'Crunches / Core' }
   ];
 
   function getWeekRangeDays(anchorDateStr) {
@@ -1652,13 +1654,11 @@
         (isCurrentWeek ? '<span class="pill good" style="margin-left:6px;">Current Week</span>' : '<span class="pill" style="margin-left:6px;">Archived Week</span>');
     }
 
-    // 1. Workouts
+    // 1. Workouts - direct sets only per Dr. Mike Israetel / RP research
     var allSessions = parseWorkoutsFromDOM();
     var weekSessions = allSessions.filter(function (s) { return days.includes(s.date); });
     
     var directCounts = {};
-    var pullingSets = 0;
-    var pressingSets = 0;
     var cardioSessions = [];
     var gymSessionsCount = 0;
 
@@ -1687,13 +1687,11 @@
         }
         if (rule) {
           directCounts[rule.muscle] = (directCounts[rule.muscle] || 0) + 1;
-          if (rule.pulling) pullingSets += rule.pulling;
-          if (rule.pressing) pressingSets += rule.pressing;
         }
       });
     });
 
-    // Hypertrophy volume table & blind spots
+    // Hypertrophy volume table & blind spots (Direct sets only)
     var blindSpots = [];
     var atFloor = [];
     var optimalList = [];
@@ -1701,12 +1699,7 @@
     if (volTbody) {
       volTbody.innerHTML = '';
       VOLUME_LANDMARKS.forEach(function (l) {
-        var direct = directCounts[l.muscle] || 0;
-        var syn = 0;
-        if (l.muscle === 'Biceps') syn = pullingSets * 0.5;
-        if (l.muscle === 'Rear Delt') syn = pullingSets * 0.25;
-        if (l.muscle === 'Triceps') syn = pressingSets * 0.5;
-        var total = direct + syn;
+        var total = directCounts[l.muscle] || 0;
 
         var statusClass = 'pill';
         var fillClass = 'on-track';
@@ -1717,12 +1710,12 @@
           statusClass = 'pill alert';
           fillClass = 'warn';
           statusLabel = '⚠️ Blind Spot (0 sets)';
-          blindSpots.push(l.muscle + ' (0 sets &mdash; under MEV floor ' + l.mevMin + '&ndash;' + l.mevTarget + ')');
+          blindSpots.push(l.muscle + ' (0 direct sets &mdash; under MEV floor ' + l.mevMin + '&ndash;' + l.mevTarget + ')');
         } else if (total < l.mevMin) {
           statusClass = 'pill alert';
           fillClass = 'warn';
           statusLabel = '⚠️ Under MEV Floor';
-          blindSpots.push(l.muscle + ' (' + total + ' sets &mdash; below MEV floor of ' + l.mevMin + ')');
+          blindSpots.push(l.muscle + ' (' + total + ' direct sets &mdash; below MEV floor of ' + l.mevMin + ')');
         } else if (total >= l.optMin) {
           statusClass = 'pill good';
           fillClass = 'opt';
@@ -1742,7 +1735,7 @@
 
         var tr = document.createElement('tr');
         tr.innerHTML = '<td><strong>' + l.muscle + '</strong><br><span class="faint" style="font-size:11px;">' + l.exercises + '</span></td>' +
-          '<td class="num"><strong>' + (Number.isInteger(total) ? total : total.toFixed(1)) + '</strong> <span class="faint" style="font-size:11px;">(' + direct + (syn > 0 ? ' + ' + syn.toFixed(1) + ' syn' : '') + ')</span></td>' +
+          '<td class="num"><strong>' + total + '</strong> <span class="faint" style="font-size:11px;">direct sets</span></td>' +
           '<td class="num">' + l.mevMin + '&ndash;' + l.mevTarget + '</td>' +
           '<td class="num">' + l.optMin + '&ndash;' + l.optMax + '</td>' +
           '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="faint" style="font-size:11px; margin-left:4px;">' + pct + '%</span></td>' +
@@ -1757,12 +1750,12 @@
       var calloutHtml = '';
       if (blindSpots.length > 0) {
         calloutHtml += '<div class="callout" style="border-left:3px solid var(--warn); background:color-mix(in srgb, var(--warn) 10%, transparent); margin-bottom:10px;">' +
-          '<strong>⚠️ Hypertrophy Volume Blind Spot' + (blindSpots.length > 1 ? 's' : '') + ':</strong><ul style="margin:4px 0 0 18px; padding:0;">' +
+          '<strong>⚠️ Hypertrophy Volume Blind Spot' + (blindSpots.length > 1 ? 's' : '') + ' (Direct Sets &lt; MEV):</strong><ul style="margin:4px 0 0 18px; padding:0;">' +
           blindSpots.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul></div>';
       }
       if (atFloor.length > 0) {
         calloutHtml += '<div class="callout" style="border-left:3px solid var(--tag-delts); background:color-mix(in srgb, var(--tag-delts) 8%, transparent); margin-bottom:10px;">' +
-          '<strong>ℹ️ Reached MEV Floor (Stimulus Threshold Met):</strong> ' + atFloor.join(', ') + '. Baseline hypertrophy maintained. Adding Day 4 (Extra Volume) would push these into optimal growth (10&ndash;14 sets).</div>';
+          '<strong>ℹ️ Reached MEV Floor (Direct Stimulus Met):</strong> ' + atFloor.join(', ') + '. Baseline hypertrophy maintained per Dr. Israetel\'s RP guidelines. Adding Day 4 (Extra Volume) or arm isolation touches pushes these toward the optimal MAV range.</div>';
       }
       if (blindSpots.length === 0 && atFloor.length === 0) {
         calloutHtml += '<div class="callout info" style="margin-bottom:10px;"><strong>✅ Peak Hypertrophy Stimulus:</strong> All muscle groups have reached optimal volume (MAV) thresholds for this week!</div>';
