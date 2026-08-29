@@ -11,13 +11,24 @@ project works the way it does. This file is the procedural checklist for *how*
 to make an edit without breaking something — read it before touching any file,
 every session, even if you've edited this repo before.
 
-## 0. Before you write anything
+## 0. Git workflow & branching (MANDATORY BEFORE & AFTER EDITS)
 
-- **Fetch/pull `main` first.** Another agent may have committed since your
-  context was built. Never assume the files you have in context are current —
-  re-read a file if there's any chance it changed underneath you.
-- **Read the exact section you're about to edit, fresh**, not from memory of
-  an earlier turn.
+This repository is maintained across multiple environments and agents (e.g., Claude Code directly on GitHub, Antigravity or local agents in a local clone). To prevent split-brain states and lost data:
+
+### 0a. Branch policy: Always `main`, never branch
+- **Never create or switch to feature branches.** All edits belong directly on `main`.
+- Ensure you are on `main`:
+  ```bash
+  git checkout main
+  ```
+
+### 0b. Before you read or write anything (Pre-flight sync)
+- **Pull latest changes from GitHub immediately:**
+  ```bash
+  git pull origin main
+  ```
+  Another agent (e.g., Claude Code) may have committed since your session started or since your context was built. Never assume local files are current without pulling first.
+- **Read the exact section you're about to edit, fresh**, not from memory of an earlier turn or cached context.
 
 ## 1. Repeated items are normal — don't "fix" them
 
@@ -145,8 +156,23 @@ See `README.md` → "Logging coverage and gaps" for the partial/untracked-day
 rules (a day can be `partial`, `untracked`, or default `complete`) — get this
 right before computing any average, total, or trend across multiple days.
 
-## 8. Commit messages
+## 8. Commit messages & post-flight push (MANDATORY AFTER EDITS)
 
-Describe what was logged/changed in the first line (e.g. `Log 8/22 dinner:
-pasta, chicken bites, sauce`), not a generic message. If you touched
-`PROGRESS.md`/`ROUTINE.md` because of a PR or a flagged anomaly, say so.
+- **Commit message format:** Describe what was logged/changed in the first line (e.g. `Log 8/22 dinner: pasta, chicken bites, sauce`), not a generic message. If you touched `PROGRESS.md`/`ROUTINE.md` because of a PR or a flagged anomaly, say so.
+- **Stage and commit only relevant files:**
+  ```bash
+  git add <modified-files>
+  git commit -m "<descriptive message>"
+  ```
+- **Push immediately before ending turn:**
+  Every local agent must push to `origin main` before concluding the turn:
+  ```bash
+  git push origin main
+  ```
+- **If push is rejected (concurrent remote commit):**
+  Another agent (e.g., Claude Code) pushed to GitHub while you were working. Run:
+  ```bash
+  git pull --rebase origin main
+  git push origin main
+  ```
+  Never force push (`--force`). If there is a merge conflict during rebase, resolve it cleanly (e.g., keep both meals or workout entries if both are valid) and complete the rebase and push.
