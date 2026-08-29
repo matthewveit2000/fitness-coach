@@ -188,3 +188,26 @@ right before computing any average, total, or trend across multiple days.
 Whenever you log anything (meals, workouts, weigh-ins, measurements, routine updates, etc.) or touch any source files, **always provide the direct link to the GitHub Pages dashboard in your final response**:
 
 🔗 **Dashboard:** [https://matthewveit2000.github.io/fitness-coach/dashboard.html](https://matthewveit2000.github.io/fitness-coach/dashboard.html)
+
+## 10. Post-logging coaching feedback (concise, proportional & actionable)
+
+After logging any entry (meal, workout, weigh-in, etc.), provide a short, high-value coaching response. **Keep it concise, actionable, and proportionate to the size of the log** — never generic cheerleader fluff, and never mechanically forcing comments on things that don't warrant them. Use agent judgment to highlight what is actually useful for the user right now.
+
+### 10a. Scale feedback proportionally to the log
+- **Small log (e.g., protein shake, piece of fruit, single snack):**
+  - Keep it very brief (1–2 punchy sentences).
+  - Focus on immediate pacing (e.g., how it contributes to protein/calorie targets so far, or what remains for upcoming meals).
+- **Medium log (e.g., a full meal like lunch or dinner):**
+  - Slightly more detailed (a short paragraph or bulleted takeaways).
+  - Address current macro balance and give forward-looking guidance for the rest of the day (e.g., calorie budget remaining, what macro to prioritize at dinner or evening snacks, hydration/activity balance).
+- **Large log (e.g., full workout session, weigh-in + measurements, major multi-meal day):**
+  - More thorough coaching breakdown.
+  - Highlight trends, compare to prior sessions or baselines (e.g., PRs, volume progression, weight stability/fluctuations), reflect on execution across the past few days, and suggest recovery or fueling strategies for the rest of the day.
+
+### 10b. Core coaching dimensions (use judgment, don't force all of them)
+Select only the most relevant dimensions for the situation:
+- **Trends & historical comparisons:** Connect new data points to recent history (e.g., "Third time matching 175lb on cable rows," "Weigh-in continues the flat ~165lb trend," "Protein is pacing ahead of schedule today").
+- **Encouragement & reflection:** Acknowledge genuine consistency, progress, or solid execution (e.g., clean recovery after a high-calorie event or travel) with a grounded, coach-like tone rather than hollow cheerleading.
+- **Actionable advice for the rest of the day:** Provide practical next steps (e.g., "You have ~850 kcal and 45g protein left — aim for a lean protein dinner with plenty of fiber and carbs," or "Heavy leg session completed; prioritize post-workout hydration and keep evening carbs high to replenish glycogen").
+- **Agent judgment over robotic checklists:** Do not output a rigid template for every log. Tailor the feedback to what genuinely matters based on current time of day, remaining budget, and recent training.
+
