@@ -52,13 +52,14 @@ While our volume thresholds and direct-set counting methodology align directly w
 2. **Proximity to Failure: Continuous ~0 RIR vs. Periodized RIR (3 RIR &rarr; 0 RIR):**
    * _Strict RP Framework:_ Periodizes intensity from moderate effort (3 RIR) in Week 1 down to true failure (0 RIR) only in the final week before deloading.
    * _Our System & Rationale:_ Matches the user's natural high-intensity baseline (*"I normally fail a rep at least once during one of my sets per workout"*). To safely manage accumulated fatigue without forcing artificial 3 RIR sets, our system computes suggested working weights from a **90% training max haircut** on inferred 1RMs.
-3. **Excluded Muscle Categories (Front Delts, Glutes, Traps, Forearms):**
+3. **Excluded Muscle Categories (Front Delts, Glutes, Traps, Forearms, Calves):**
    * _Strict RP Framework:_ Categorizes 13–14 separate muscle groups.
-   * _Our System & Rationale:_ Guided by our **80/20 efficiency rule** (`GOALS.md`) and lower back protection:
+   * _Our System & Rationale:_ Guided by our **80/20 efficiency rule** (`GOALS.md`) and lower back / recovery protection:
      * **Front Delts:** Reclassified from Side Delts to Front Delts per RP research, and excluded from direct set requirements because MEV = 0 sets/week (fully stimulated by incline DB press and dips).
      * **Glutes:** Excluded from dedicated isolation tracking because deep leg press, Bulgarian split squats, and lunges already train glutes well above MEV, avoiding spinal shear from heavy hip thrusts.
      * **Traps:** Excluded because low cable rows and pull-ups provide complete isometric trap stimulus; heavy shrugs add unwanted axial spinal compression and detract from V-taper shoulder width.
      * **Forearms:** Excluded from direct wrist curls (which risk tendonitis); hammer curls directly train the brachioradialis while heavy gripping covers the rest.
+     * **Calves:** Excluded from direct isolation sets (0 sets/week) per our **80/20 efficiency rule** and **running/Hyrox recovery**. The athlete performs frequent Zone 2 runs and high-intensity Norwegian 4x4 intervals, subjecting the gastrocnemius, soleus, and Achilles tendon to thousands of high-velocity stretch-shortening cycles weekly. Adding heavy loaded eccentric calf raises yields low aesthetic ROI relative to upper-body and thigh development, while sharply increasing the risk of Achilles tendinopathy, tightness, and running interference. Direct sets are omitted to keep sessions within ~50–60 minutes and preserve lower-leg recovery for Hyrox conditioning.
 4. **Spinal-Friendly Exercise Selection:**
    * _Strict RP Framework:_ Regularly programs heavy axial loading (barbell back squats, conventional/Romanian deadlifts, bent-over rows).
    * _Our System & Rationale:_ Strictly adapted for the user's **lower back bulging disc** (`GOALS.md`). High-axial free-weight movements are replaced with chest-supported cable rows, leg press, and machine knee flexion/extension.
