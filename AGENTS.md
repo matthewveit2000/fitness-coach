@@ -176,3 +176,9 @@ right before computing any average, total, or trend across multiple days.
   git push origin main
   ```
   Never force push (`--force`). If there is a merge conflict during rebase, resolve it cleanly (e.g., keep both meals or workout entries if both are valid) and complete the rebase and push.
+
+## 9. Always provide the Dashboard link
+
+Whenever you log anything (meals, workouts, weigh-ins, measurements, routine updates, etc.) or touch any source files, **always provide the direct link to the GitHub Pages dashboard in your final response**:
+
+🔗 **Dashboard:** [https://matthewveit2000.github.io/fitness-coach/dashboard.html](https://matthewveit2000.github.io/fitness-coach/dashboard.html)
