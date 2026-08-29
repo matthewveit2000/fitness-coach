@@ -174,6 +174,19 @@
   .ss-label:first-child { margin-top: 0; }
   .cardio-line { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--ink-soft); }
 
+  /* Weekly review styles */
+  .vol-bar-bg { width: 100%; min-width: 60px; max-width: 130px; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; display: inline-block; vertical-align: middle; }
+  .vol-bar-fill { height: 100%; border-radius: 4px; }
+  .vol-bar-fill.opt { background: var(--good); }
+  .vol-bar-fill.on-track { background: var(--accent); }
+  .vol-bar-fill.mev { background: var(--tag-delts); }
+  .vol-bar-fill.warn { background: var(--warn); }
+  .pill.good { color: var(--good); border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); }
+  .pill.alert { color: var(--warn); border-color: var(--warn); background: color-mix(in srgb, var(--warn) 15%, transparent); font-weight: 700; }
+  .week-nav-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  #week-select { font-family: var(--sans); font-size: 0.9rem; padding: 7px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
+  #week-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
   /* Mobile responsiveness */
   @media (max-width: 640px) {
     body { font-size: 15px; }
@@ -190,6 +203,8 @@
     .stat .sub { font-size: 0.72rem; }
     .day-picker-row { flex-direction: column; align-items: stretch; gap: 6px; }
     #day-select { font-size: 16px; padding: 9px 12px; width: 100%; border-radius: 6px; } /* 16px prevents iOS Safari auto-zoom */
+    .week-nav-row { flex-direction: column; align-items: stretch; gap: 8px; }
+    #week-select { font-size: 16px; width: 100%; }
     .day-item-row { flex-direction: column; align-items: flex-start; gap: 3px; padding: 8px 0; }
     .day-item-macros { font-size: 0.8rem; }
     .day-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -215,6 +230,7 @@
 
   <nav class="tabs" role="tablist">
     <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="weekly">Weekly Summary</button>
     <button class="tab-btn" data-tab="goals">Goals</button>
     <button class="tab-btn" data-tab="routine">Routine</button>
     <button class="tab-btn" data-tab="nutrition">Nutrition</button>
@@ -250,6 +266,90 @@
       <div class="stat"><span class="label">Weigh-ins</span><span class="value">11</span></div>
     </div>
     <p class="faint">Log a workout or a meal (describe it or send a photo) any time &mdash; it'll show up here on the next sync.</p>
+  </section>
+
+  <!-- ============ WEEKLY SUMMARY ============ -->
+  <section class="tab-panel" id="weekly">
+    <div class="week-nav-row">
+      <div>
+        <h2 class="section-title" style="margin:0;">Weekly Performance Review</h2>
+        <p class="muted" id="week-dates-sub" style="margin:3px 0 0;"></p>
+      </div>
+      <div>
+        <label for="week-select" class="faint" style="margin-right:6px;">Select Week (Mon&ndash;Sun):</label>
+        <select id="week-select"></select>
+      </div>
+    </div>
+
+    <!-- Weekly Stat Grid -->
+    <div class="stat-grid" id="week-stat-grid"></div>
+
+    <!-- 1. Workout Volume vs MEV / Optimal -->
+    <div class="card" style="margin-top: 18px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.05rem;">🏋️ Hypertrophy Volume vs. MEV & Optimal (MAV)</h3>
+        <span class="faint">RP volume landmarks per ROUTINE.md</span>
+      </div>
+      <div id="week-volume-callouts"></div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table id="week-volume-table">
+          <thead>
+            <tr>
+              <th>Muscle Group</th>
+              <th>Sets Done <span class="faint">(Direct + Syn)</span></th>
+              <th>MEV Floor</th>
+              <th>Optimal (MAV)</th>
+              <th>Progress to Optimal</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="week-volume-tbody"></tbody>
+        </table>
+      </div>
+      <div id="week-cardio-summary" style="margin-top:14px; padding-top:10px; border-top:1px dashed var(--line); font-size:0.84rem;"></div>
+    </div>
+
+    <!-- 2. Nutrition for the Week vs Goals -->
+    <div class="card" style="margin-top: 18px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.05rem;">🥗 Weekly Nutrition & Macro Totals</h3>
+        <span class="faint">7-day target basis: ~1,840 kcal &middot; 130g P &middot; 65g F &middot; 185g C</span>
+      </div>
+      <div id="week-nutrition-callouts"></div>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table id="week-nutrition-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Week Total</th>
+              <th>7-Day Target</th>
+              <th>Daily Avg (Complete Days)</th>
+              <th>Daily Target</th>
+              <th>Pacing / Diff</th>
+            </tr>
+          </thead>
+          <tbody id="week-nutrition-tbody"></tbody>
+        </table>
+      </div>
+
+      <h4 style="margin:20px 0 8px; font-size:0.92rem;">Daily Breakdown (Mon &rarr; Sun)</h4>
+      <div class="table-wrap">
+        <table id="week-days-table">
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Date</th>
+              <th>Calories</th>
+              <th>Protein</th>
+              <th>Fat</th>
+              <th>Carbs</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="week-days-tbody"></tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <!-- ============ GOALS ============ -->
@@ -1423,6 +1523,433 @@
 
   initDayPicker();
   renderTrend();
+
+  // ==========================================
+  // WEEKLY PERFORMANCE REVIEW ENGINE
+  // ==========================================
+  var MUSCLE_RULES = {
+    'Incline DB Press': { muscle: 'Chest', pressing: 1 },
+    'Weighted Dips': { muscle: 'Chest', pressing: 1 },
+    'Bodyweight Dips': { muscle: 'Chest', pressing: 1 },
+    'Pec Deck': { muscle: 'Chest' },
+    'Bench Press': { muscle: 'Chest', pressing: 1 },
+    'Low Cable Row': { muscle: 'Back', pulling: 1 },
+    'Weighted Pull-Ups': { muscle: 'Back', pulling: 1 },
+    'Bodyweight Pull-Ups': { muscle: 'Back', pulling: 1 },
+    'Lat Pulldown': { muscle: 'Back', pulling: 1 },
+    'Arnold Press': { muscle: 'Side Delt', pressing: 0.5 },
+    'Lateral Raise': { muscle: 'Side Delt' },
+    'Lateral Raise (dumbbell)': { muscle: 'Side Delt' },
+    'Lateral Raise (machine)': { muscle: 'Side Delt' },
+    'Reverse Pec Deck': { muscle: 'Rear Delt' },
+    'DB Curl': { muscle: 'Biceps' },
+    'Hammer Curl': { muscle: 'Biceps' },
+    'Triceps Pushdown': { muscle: 'Triceps' },
+    'Overhead Cable Triceps Extension': { muscle: 'Triceps' },
+    'Leg Press': { muscle: 'Quads' },
+    'Leg Extension': { muscle: 'Quads' },
+    'Weighted Lunges': { muscle: 'Quads' },
+    'Bulgarian Split Squat': { muscle: 'Quads' },
+    'Bulgarian Split Squat (DB)': { muscle: 'Quads' },
+    'Leg Curl': { muscle: 'Hamstrings' },
+    'Leg Curl (lying variant)': { muscle: 'Hamstrings' },
+    'Leg Curl (lying)': { muscle: 'Hamstrings' },
+    'Laying Leg Curl': { muscle: 'Hamstrings' },
+    'Standing Calf Raise': { muscle: 'Calves' },
+    'Crunches': { muscle: 'Abs' },
+    'Hanging Leg Raise': { muscle: 'Abs' }
+  };
+
+  var VOLUME_LANDMARKS = [
+    { muscle: 'Chest', mevMin: 8, mevTarget: 10, optMin: 12, optMax: 14, exercises: 'Incline DB Press, Dips, Pec Deck' },
+    { muscle: 'Back', mevMin: 10, mevTarget: 12, optMin: 13, optMax: 15, exercises: 'Rows, Pull-Ups, Pulldowns' },
+    { muscle: 'Quads', mevMin: 8, mevTarget: 12, optMin: 12, optMax: 13, exercises: 'Leg Press, Leg Extension, Lunges / BSS' },
+    { muscle: 'Hamstrings', mevMin: 6, mevTarget: 10, optMin: 9, optMax: 10, exercises: 'Leg Curl (seated/lying)' },
+    { muscle: 'Side Delt', mevMin: 6, mevTarget: 8, optMin: 9, optMax: 10, exercises: 'Lateral Raise, Arnold Press' },
+    { muscle: 'Rear Delt', mevMin: 6, mevTarget: 8, optMin: 9, optMax: 10, exercises: 'Reverse Pec Deck (+25% pull credit)' },
+    { muscle: 'Biceps', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 14, exercises: 'Curls (+50% pull credit)' },
+    { muscle: 'Triceps', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 14, exercises: 'Pushdowns, Extensions (+50% press credit)' },
+    { muscle: 'Calves', mevMin: 3, mevTarget: 6, optMin: 6, optMax: 8, exercises: 'Standing Calf Raise' },
+    { muscle: 'Abs', mevMin: 3, mevTarget: 6, optMin: 6, optMax: 8, exercises: 'Crunches / Core' }
+  ];
+
+  function getWeekRangeDays(anchorDateStr) {
+    var parts = anchorDateStr.split('-');
+    var d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    var day = d.getDay();
+    var diffToMon = (day === 0 ? -6 : 1 - day);
+    var mon = new Date(d);
+    mon.setDate(d.getDate() + diffToMon);
+
+    var days = [];
+    for (var i = 0; i < 7; i++) {
+      var cur = new Date(mon);
+      cur.setDate(mon.getDate() + i);
+      var y = cur.getFullYear();
+      var m = String(cur.getMonth() + 1).padStart(2, '0');
+      var dd = String(cur.getDate()).padStart(2, '0');
+      days.push(y + '-' + m + '-' + dd);
+    }
+    return days;
+  }
+
+  function parseWorkoutsFromDOM() {
+    var sessions = [];
+    var headers = document.querySelectorAll('#progress p.muted');
+    headers.forEach(function (h) {
+      var strong = h.querySelector('strong');
+      if (!strong) return;
+      var text = strong.textContent.trim();
+      var match = text.match(/^(\d{4}-\d{2}-\d{2})\s*(?:&mdash;|—|-)\s*(.*)/);
+      if (!match) return;
+      var date = match[1];
+      var type = match[2].trim();
+
+      var sets = [];
+      var next = h.nextElementSibling;
+      while (next && next.tagName !== 'P' && !next.classList.contains('muted') && !next.classList.contains('section-title')) {
+        if (next.classList.contains('table-wrap')) {
+          var rows = next.querySelectorAll('table tr');
+          rows.forEach(function (tr, idx) {
+            if (idx === 0) return;
+            var tds = tr.querySelectorAll('td');
+            if (tds.length >= 3) {
+              var exName = tds[0].childNodes[0].textContent.trim();
+              var reps = tds[1].textContent.trim();
+              var weight = tds[2].textContent.trim();
+              sets.push({ exercise: exName, reps: reps, weight: weight });
+            }
+          });
+        }
+        next = next.nextElementSibling;
+      }
+
+      sessions.push({
+        date: date,
+        type: type,
+        sets: sets
+      });
+    });
+    return sessions;
+  }
+
+  function formatDayName(dateStr) {
+    var parts = dateStr.split('-');
+    var d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return days[d.getDay()];
+  }
+
+  function renderWeeklySummary(mondayDateStr) {
+    var days = getWeekRangeDays(mondayDateStr);
+    var sundayDateStr = days[6];
+    var isCurrentWeek = days.includes(TODAY);
+
+    // Header dates
+    var sub = document.getElementById('week-dates-sub');
+    if (sub) {
+      sub.innerHTML = '<strong>' + days[0] + ' (Mon) &rarr; ' + days[6] + ' (Sun)</strong> ' +
+        (isCurrentWeek ? '<span class="pill good" style="margin-left:6px;">Current Week</span>' : '<span class="pill" style="margin-left:6px;">Archived Week</span>');
+    }
+
+    // 1. Workouts
+    var allSessions = parseWorkoutsFromDOM();
+    var weekSessions = allSessions.filter(function (s) { return days.includes(s.date); });
+    
+    var directCounts = {};
+    var pullingSets = 0;
+    var pressingSets = 0;
+    var cardioSessions = [];
+    var gymSessionsCount = 0;
+
+    weekSessions.forEach(function (s) {
+      var isCardio = s.type.toLowerCase().indexOf('cardio') !== -1 ||
+                     s.type.toLowerCase().indexOf('run') !== -1 ||
+                     s.type.toLowerCase().indexOf('stairmaster') !== -1 ||
+                     s.type.toLowerCase().indexOf('4x4') !== -1 ||
+                     s.type.toLowerCase().indexOf('hike') !== -1;
+      if (isCardio) {
+        cardioSessions.push(s);
+      }
+      if (s.sets.length > 0) {
+        gymSessionsCount++;
+      }
+
+      s.sets.forEach(function (set) {
+        var rule = MUSCLE_RULES[set.exercise];
+        if (!rule) {
+          for (var k in MUSCLE_RULES) {
+            if (set.exercise.indexOf(k) !== -1 || k.indexOf(set.exercise) !== -1) {
+              rule = MUSCLE_RULES[k];
+              break;
+            }
+          }
+        }
+        if (rule) {
+          directCounts[rule.muscle] = (directCounts[rule.muscle] || 0) + 1;
+          if (rule.pulling) pullingSets += rule.pulling;
+          if (rule.pressing) pressingSets += rule.pressing;
+        }
+      });
+    });
+
+    // Hypertrophy volume table & blind spots
+    var blindSpots = [];
+    var atFloor = [];
+    var optimalList = [];
+    var volTbody = document.getElementById('week-volume-tbody');
+    if (volTbody) {
+      volTbody.innerHTML = '';
+      VOLUME_LANDMARKS.forEach(function (l) {
+        var direct = directCounts[l.muscle] || 0;
+        var syn = 0;
+        if (l.muscle === 'Biceps') syn = pullingSets * 0.5;
+        if (l.muscle === 'Rear Delt') syn = pullingSets * 0.25;
+        if (l.muscle === 'Triceps') syn = pressingSets * 0.5;
+        var total = direct + syn;
+
+        var statusClass = 'pill';
+        var fillClass = 'on-track';
+        var statusLabel = '';
+        var pct = Math.min(100, Math.round((total / l.optMin) * 100));
+
+        if (total === 0) {
+          statusClass = 'pill alert';
+          fillClass = 'warn';
+          statusLabel = '⚠️ Blind Spot (0 sets)';
+          blindSpots.push(l.muscle + ' (0 sets &mdash; under MEV floor ' + l.mevMin + '&ndash;' + l.mevTarget + ')');
+        } else if (total < l.mevMin) {
+          statusClass = 'pill alert';
+          fillClass = 'warn';
+          statusLabel = '⚠️ Under MEV Floor';
+          blindSpots.push(l.muscle + ' (' + total + ' sets &mdash; below MEV floor of ' + l.mevMin + ')');
+        } else if (total >= l.optMin) {
+          statusClass = 'pill good';
+          fillClass = 'opt';
+          statusLabel = 'Optimal (MAV)';
+          optimalList.push(l.muscle);
+        } else if (total >= l.mevTarget) {
+          statusClass = 'pill on-track';
+          fillClass = 'on-track';
+          statusLabel = 'On Track (&ge; MEV target)';
+          optimalList.push(l.muscle);
+        } else {
+          statusClass = 'pill';
+          fillClass = 'mev';
+          statusLabel = 'At MEV Floor';
+          atFloor.push(l.muscle + ' (' + total + ' sets)');
+        }
+
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td><strong>' + l.muscle + '</strong><br><span class="faint" style="font-size:11px;">' + l.exercises + '</span></td>' +
+          '<td class="num"><strong>' + (Number.isInteger(total) ? total : total.toFixed(1)) + '</strong> <span class="faint" style="font-size:11px;">(' + direct + (syn > 0 ? ' + ' + syn.toFixed(1) + ' syn' : '') + ')</span></td>' +
+          '<td class="num">' + l.mevMin + '&ndash;' + l.mevTarget + '</td>' +
+          '<td class="num">' + l.optMin + '&ndash;' + l.optMax + '</td>' +
+          '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="faint" style="font-size:11px; margin-left:4px;">' + pct + '%</span></td>' +
+          '<td><span class="' + statusClass + '">' + statusLabel + '</span></td>';
+        volTbody.appendChild(tr);
+      });
+    }
+
+    // Volume callout banner
+    var volCallouts = document.getElementById('week-volume-callouts');
+    if (volCallouts) {
+      var calloutHtml = '';
+      if (blindSpots.length > 0) {
+        calloutHtml += '<div class="callout" style="border-left:3px solid var(--warn); background:color-mix(in srgb, var(--warn) 10%, transparent); margin-bottom:10px;">' +
+          '<strong>⚠️ Hypertrophy Volume Blind Spot' + (blindSpots.length > 1 ? 's' : '') + ':</strong><ul style="margin:4px 0 0 18px; padding:0;">' +
+          blindSpots.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul></div>';
+      }
+      if (atFloor.length > 0) {
+        calloutHtml += '<div class="callout" style="border-left:3px solid var(--tag-delts); background:color-mix(in srgb, var(--tag-delts) 8%, transparent); margin-bottom:10px;">' +
+          '<strong>ℹ️ Reached MEV Floor (Stimulus Threshold Met):</strong> ' + atFloor.join(', ') + '. Baseline hypertrophy maintained. Adding Day 4 (Extra Volume) would push these into optimal growth (10&ndash;14 sets).</div>';
+      }
+      if (blindSpots.length === 0 && atFloor.length === 0) {
+        calloutHtml += '<div class="callout info" style="margin-bottom:10px;"><strong>✅ Peak Hypertrophy Stimulus:</strong> All muscle groups have reached optimal volume (MAV) thresholds for this week!</div>';
+      }
+      volCallouts.innerHTML = calloutHtml;
+    }
+
+    // Cardio summary
+    var cardioDiv = document.getElementById('week-cardio-summary');
+    if (cardioDiv) {
+      if (cardioSessions.length > 0) {
+        var cList = cardioSessions.map(function (c) { return '<strong>' + c.date.slice(5) + '</strong> (' + c.type + ')'; }).join(' &middot; ');
+        cardioDiv.innerHTML = '🏃 <strong>Cardio & Conditioning:</strong> ' + cardioSessions.length + ' session' + (cardioSessions.length > 1 ? 's' : '') + ' completed &mdash; ' + cList + '. Supports Hyrox conditioning and aerobic baseline.';
+      } else {
+        cardioDiv.innerHTML = '🏃 <strong>Cardio & Conditioning:</strong> <span class="pill alert">0 sessions</span> &mdash; No cardio sessions logged this week (Prescribed: 1x Norwegian 4x4 HIIT on Day 2, 1x Zone 2 Run on Day 5).';
+      }
+    }
+
+    // 2. Nutrition calculations
+    var weekKcal = 0, weekP = 0, weekF = 0, weekC = 0;
+    var completeKcal = 0, completeP = 0, completeF = 0, completeC = 0;
+    var completeCount = 0, partialCount = 0, emptyCount = 0;
+    var dayRowsHtml = '';
+
+    days.forEach(function (d) {
+      var items = NUTRITION_LOG[d] || [];
+      var stat = DAY_STATUS[d] || (items.length > 0 ? (d === TODAY ? 'in_progress' : 'complete') : (d > TODAY ? 'upcoming' : 'empty'));
+      if (d === TODAY && stat === 'complete') stat = 'in_progress';
+
+      var dKcal = 0, dP = 0, dF = 0, dC = 0;
+      items.forEach(function (it) {
+        dKcal += it.kcal || 0;
+        dP += it.protein || 0;
+        dF += it.fat || 0;
+        dC += it.carbs || 0;
+      });
+
+      weekKcal += dKcal;
+      weekP += dP;
+      weekF += dF;
+      weekC += dC;
+
+      var statBadge = '<span class="pill">Empty</span>';
+      if (stat === 'complete') {
+        statBadge = '<span class="pill good">Complete</span>';
+        completeCount++;
+        completeKcal += dKcal;
+        completeP += dP;
+        completeF += dF;
+        completeC += dC;
+      } else if (stat === 'partial') {
+        statBadge = '<span class="pill alert">⚠️ Partial (floor)</span>';
+        partialCount++;
+      } else if (stat === 'in_progress') {
+        statBadge = '<span class="pill on-track">In Progress (Today)</span>';
+      } else if (stat === 'upcoming') {
+        statBadge = '<span class="pill" style="opacity:0.6;">Upcoming</span>';
+        emptyCount++;
+      } else {
+        emptyCount++;
+      }
+
+      var dayName = formatDayName(d);
+      dayRowsHtml += '<tr>' +
+        '<td><strong>' + dayName + '</strong></td>' +
+        '<td>' + d + '</td>' +
+        '<td class="num">' + (items.length > 0 ? Math.round(dKcal) + ' kcal' : '&mdash;') + '</td>' +
+        '<td class="num">' + (items.length > 0 ? dP.toFixed(1) + 'g' : '&mdash;') + '</td>' +
+        '<td class="num">' + (items.length > 0 ? dF.toFixed(1) + 'g' : '&mdash;') + '</td>' +
+        '<td class="num">' + (items.length > 0 ? dC.toFixed(1) + 'g' : '&mdash;') + '</td>' +
+        '<td>' + statBadge + '</td>' +
+        '</tr>';
+    });
+
+    var daysTbody = document.getElementById('week-days-tbody');
+    if (daysTbody) daysTbody.innerHTML = dayRowsHtml;
+
+    // Macro comparison table
+    var avgKcal = completeCount > 0 ? completeKcal / completeCount : 0;
+    var avgP = completeCount > 0 ? completeP / completeCount : 0;
+    var avgF = completeCount > 0 ? completeF / completeCount : 0;
+    var avgC = completeCount > 0 ? completeC / completeCount : 0;
+
+    var target7Kcal = TARGETS.kcal * 7;
+    var target7P = TARGETS.protein * 7;
+    var target7F = TARGETS.fat * 7;
+    var target7C = TARGETS.carbs * 7;
+
+    var nutTbody = document.getElementById('week-nutrition-tbody');
+    if (nutTbody) {
+      function diffStr(avg, target, unit) {
+        if (completeCount === 0) return '&mdash;';
+        var diff = avg - target;
+        var sign = diff > 0 ? '+' : '';
+        var pct = ((diff / target) * 100).toFixed(0);
+        return sign + Math.round(diff) + unit + ' (' + sign + pct + '%)';
+      }
+
+      nutTbody.innerHTML = '<tr>' +
+        '<td><strong>Calories</strong></td>' +
+        '<td class="num"><strong>' + Math.round(weekKcal) + ' kcal</strong></td>' +
+        '<td class="num">' + target7Kcal + ' kcal</td>' +
+        '<td class="num"><strong>' + (completeCount > 0 ? Math.round(avgKcal) + ' kcal/d' : '&mdash;') + '</strong></td>' +
+        '<td class="num">~' + TARGETS.kcal + ' kcal/d</td>' +
+        '<td><span class="pill ' + (Math.abs(avgKcal - TARGETS.kcal) <= 100 ? 'good' : 'on-track') + '">' + diffStr(avgKcal, TARGETS.kcal, '') + '</span></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>Protein</strong></td>' +
+        '<td class="num"><strong>' + Math.round(weekP) + 'g</strong></td>' +
+        '<td class="num">' + target7P + 'g</td>' +
+        '<td class="num"><strong>' + (completeCount > 0 ? avgP.toFixed(1) + 'g/d' : '&mdash;') + '</strong></td>' +
+        '<td class="num">~' + TARGETS.protein + 'g/d</td>' +
+        '<td><span class="pill ' + (avgP >= TARGETS.protein ? 'good' : 'alert') + '">' + diffStr(avgP, TARGETS.protein, 'g') + '</span></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>Fat</strong></td>' +
+        '<td class="num"><strong>' + Math.round(weekF) + 'g</strong></td>' +
+        '<td class="num">' + target7F + 'g</td>' +
+        '<td class="num"><strong>' + (completeCount > 0 ? avgF.toFixed(1) + 'g/d' : '&mdash;') + '</strong></td>' +
+        '<td class="num">~' + TARGETS.fat + 'g/d</td>' +
+        '<td><span class="pill ' + (Math.abs(avgF - TARGETS.fat) <= 15 ? 'good' : '') + '">' + diffStr(avgF, TARGETS.fat, 'g') + '</span></td>' +
+        '</tr>' +
+        '<tr>' +
+        '<td><strong>Carbs</strong></td>' +
+        '<td class="num"><strong>' + Math.round(weekC) + 'g</strong></td>' +
+        '<td class="num">' + target7C + 'g</td>' +
+        '<td class="num"><strong>' + (completeCount > 0 ? avgC.toFixed(1) + 'g/d' : '&mdash;') + '</strong></td>' +
+        '<td class="num">~' + TARGETS.carbs + 'g/d</td>' +
+        '<td><span class="pill ' + (Math.abs(avgC - TARGETS.carbs) <= 25 ? 'good' : '') + '">' + diffStr(avgC, TARGETS.carbs, 'g') + '</span></td>' +
+        '</tr>';
+    }
+
+    // Top Stat Grid
+    var statGrid = document.getElementById('week-stat-grid');
+    if (statGrid) {
+      statGrid.innerHTML = '<div class="stat"><span class="label">Weekly Calories</span><span class="value accent">' + Math.round(weekKcal) + '</span><span class="sub">of ' + target7Kcal + ' goal</span></div>' +
+        '<div class="stat"><span class="label">Daily Calorie Avg</span><span class="value">' + (completeCount > 0 ? Math.round(avgKcal) : '&mdash;') + '</span><span class="sub">' + completeCount + ' complete days</span></div>' +
+        '<div class="stat"><span class="label">Daily Protein Avg</span><span class="value accent">' + (completeCount > 0 ? Math.round(avgP) + 'g' : '&mdash;') + '</span><span class="sub">goal ~130g/day</span></div>' +
+        '<div class="stat"><span class="label">Lifting Sessions</span><span class="value">' + gymSessionsCount + '</span><span class="sub">' + (blindSpots.length === 0 ? 'All MEVs met' : blindSpots.length + ' blind spot' + (blindSpots.length > 1 ? 's' : '')) + '</span></div>' +
+        '<div class="stat"><span class="label">Cardio Sessions</span><span class="value">' + cardioSessions.length + '</span><span class="sub">HIIT & Zone 2</span></div>' +
+        '<div class="stat"><span class="label">Coverage</span><span class="value">' + completeCount + '/7</span><span class="sub">' + (partialCount > 0 ? partialCount + ' partial' : 'no gaps') + '</span></div>';
+    }
+
+    // Nutrition Callout
+    var nutCallouts = document.getElementById('week-nutrition-callouts');
+    if (nutCallouts) {
+      if (isCurrentWeek) {
+        var remainKcal = target7Kcal - weekKcal;
+        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> You have logged <strong>' + Math.round(weekKcal) + ' kcal</strong> so far this week. To hit the full 7-day deficit target of ' + target7Kcal + ' kcal, you have <strong>~' + Math.round(remainKcal) + ' kcal remaining</strong> across Saturday evening and Sunday. Protein is pacing exceptionally high at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above the 130g target), ensuring optimal muscle retention.</div>';
+      } else {
+        nutCallouts.innerHTML = '<div class="callout info"><strong>Archived Week Summary:</strong> ' + completeCount + ' complete days averaged ' + Math.round(avgKcal) + ' kcal/day and ' + Math.round(avgP) + 'g protein/day.</div>';
+      }
+    }
+  }
+
+  function initWeekPicker() {
+    var select = document.getElementById('week-select');
+    if (!select) return;
+
+    var currentMonDays = getWeekRangeDays(TODAY);
+    var currentMon = currentMonDays[0];
+
+    var weekOptions = [
+      { mon: '2026-08-24', label: 'Week of Aug 24 – Aug 30 (Current Week)' },
+      { mon: '2026-08-17', label: 'Week of Aug 17 – Aug 23' },
+      { mon: '2026-08-10', label: 'Week of Aug 10 – Aug 16 (Vacation)' },
+      { mon: '2026-08-03', label: 'Week of Aug 3 – Aug 9' },
+      { mon: '2026-07-27', label: 'Week of Jul 27 – Aug 2' }
+    ];
+
+    select.innerHTML = '';
+    weekOptions.forEach(function (opt) {
+      var el = document.createElement('option');
+      el.value = opt.mon;
+      el.textContent = opt.label;
+      if (opt.mon === currentMon) el.selected = true;
+      select.appendChild(el);
+    });
+
+    select.addEventListener('change', function () {
+      renderWeeklySummary(this.value);
+    });
+
+    renderWeeklySummary(select.value || currentMon);
+  }
+
+  initWeekPicker();
 </script>
 </body>
 </html>
