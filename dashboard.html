@@ -1,141 +1,654 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Fitness Dashboard</title>
+  <title>Fitness Coach &mdash; Athlete Hub</title>
 <style>
   :root {
-    --bg: #eeece7;
-    --surface: #fbfaf7;
-    --surface-2: #f2f0ea;
-    --ink: #1c1e22;
-    --ink-soft: #5b5f66;
-    --ink-faint: #8c8f94;
-    --line: #dad6cc;
-    --line-strong: #c7c2b6;
-    --accent: #2e6171;
-    --accent-soft: #dce8ea;
-    --warn: #a6431f;
-    --good: #3f7a34;
-    --tag-chest: #2a78d6;
-    --tag-back: #eb6834;
-    --tag-legs: #1baf7a;
-    --tag-delts: #eda100;
-    --tag-arms: #e87ba4;
-    --tag-cardio: #008300;
-    --tag-abs: #8c8f94;
-    --shadow: 0 1px 2px rgba(28, 30, 34, 0.06), 0 6px 20px -8px rgba(28, 30, 34, 0.12);
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface-2: #21262d;
+    --surface-3: #30363d;
+    --ink: #f0f6fc;
+    --ink-soft: #8b949e;
+    --ink-faint: #6e7681;
+    --border: #30363d;
+    --border-strong: #484f58;
+    --accent: #58a6ff;
+    --accent-soft: rgba(56, 139, 253, 0.15);
+    --good: #3fb950;
+    --good-soft: rgba(63, 185, 80, 0.15);
+    --warn: #d29922;
+    --warn-soft: rgba(210, 153, 34, 0.15);
+    --danger: #f85149;
+    --danger-soft: rgba(248, 81, 73, 0.15);
+    --tag-chest: #58a6ff;
+    --tag-back: #f0883e;
+    --tag-legs: #3fb950;
+    --tag-delts: #d29922;
+    --tag-arms: #db61a2;
+    --tag-cardio: #2ea043;
+    --tag-abs: #8b949e;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --radius: 8px;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
-    --sans: -apple-system, "Segoe UI", system-ui, Roboto, Helvetica, Arial, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14171a;
-      --surface: #1b1f23;
-      --surface-2: #20252a;
-      --ink: #ece9e4;
-      --ink-soft: #a1a7ad;
-      --ink-faint: #71767c;
-      --line: #2c3136;
-      --line-strong: #3a4046;
-      --accent: #7fc1d1;
-      --accent-soft: #1f333b;
-      --warn: #e08a5f;
-      --good: #8fc07a;
-      --tag-chest: #3987e5;
-      --tag-back: #d95926;
-      --tag-legs: #199e70;
-      --tag-delts: #c98500;
-      --tag-arms: #d55181;
-      --tag-cardio: #4bb34b;
-      --tag-abs: #71767c;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -10px rgba(0, 0, 0, 0.5);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #14171a; --surface: #1b1f23; --surface-2: #20252a; --ink: #ece9e4; --ink-soft: #a1a7ad;
-    --ink-faint: #71767c; --line: #2c3136; --line-strong: #3a4046; --accent: #7fc1d1; --accent-soft: #1f333b;
-    --warn: #e08a5f; --good: #8fc07a; --tag-chest: #3987e5; --tag-back: #d95926; --tag-legs: #199e70;
-    --tag-delts: #c98500; --tag-arms: #d55181; --tag-cardio: #4bb34b; --tag-abs: #71767c;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -10px rgba(0, 0, 0, 0.5);
-  }
+
   :root[data-theme="light"] {
-    --bg: #eeece7; --surface: #fbfaf7; --surface-2: #f2f0ea; --ink: #1c1e22; --ink-soft: #5b5f66;
-    --ink-faint: #8c8f94; --line: #dad6cc; --line-strong: #c7c2b6; --accent: #2e6171; --accent-soft: #dce8ea;
-    --warn: #a6431f; --good: #3f7a34; --tag-chest: #2a78d6; --tag-back: #eb6834; --tag-legs: #1baf7a;
-    --tag-delts: #eda100; --tag-arms: #e87ba4; --tag-cardio: #008300; --tag-abs: #8c8f94;
+    --bg: #f6f8fa;
+    --surface: #ffffff;
+    --surface-2: #f3f4f6;
+    --surface-3: #e5e7eb;
+    --ink: #1f2328;
+    --ink-soft: #656d76;
+    --ink-faint: #8c959f;
+    --border: #d0d7de;
+    --border-strong: #afb8c1;
+    --accent: #0969da;
+    --accent-soft: rgba(9, 105, 218, 0.12);
+    --good: #1a7f37;
+    --good-soft: rgba(26, 127, 55, 0.12);
+    --warn: #9a6700;
+    --warn-soft: rgba(154, 103, 0, 0.12);
+    --danger: #cf222e;
+    --danger-soft: rgba(207, 34, 46, 0.12);
+    --tag-chest: #0969da;
+    --tag-back: #bc4c00;
+    --tag-legs: #1a7f37;
+    --tag-delts: #9a6700;
+    --tag-arms: #bf3989;
+    --tag-cardio: #116329;
+    --tag-abs: #6e7781;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: clamp(16px,4vw,32px) clamp(12px,3vw,28px) 60px; }
-  a { color: var(--accent); }
-  button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 80px; /* Space for mobile nav */
+  }
 
-  /* header */
-  header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
-  header.top h1 { font-size: 1.4rem; margin: 0; letter-spacing: -0.01em; }
-  .sync-note { font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); }
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(14px, 3vw, 28px) clamp(12px, 3vw, 24px) 40px;
+  }
 
-  /* tabs */
-  .tabs { display: flex; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; margin-bottom: 20px; border-bottom: 1px solid var(--line); scrollbar-width: none; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  button, input, select { font-family: inherit; color: inherit; }
+
+  /* Top Navigation & App Bar */
+  header.app-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn-pill:hover {
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+  }
+
+  .sync-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+  .sync-note { font-family: var(--mono); }
+
+  /* Navigation Tabs (Desktop) */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 22px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
   .tabs::-webkit-scrollbar { display: none; }
-  .tab-btn { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; background: none; border: none; padding: 10px 14px; color: var(--ink-faint); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; -webkit-tap-highlight-color: transparent; }
+
+  .tab-btn {
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border: none;
+    background: none;
+    color: var(--ink-soft);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.15s, border-color 0.15s;
+  }
   .tab-btn:hover { color: var(--ink); }
-  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: fade .25s ease; }
-  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { .tab-panel.active { animation: none; } }
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
 
-  /* generic */
-  h2.section-title { font-size: 1.05rem; margin: 28px 0 10px; }
-  h2.section-title:first-child { margin-top: 0; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow); padding: 16px 18px; margin-bottom: 14px; }
-  .muted { color: var(--ink-soft); font-size: 0.86rem; }
-  .faint { color: var(--ink-faint); font-size: 0.78rem; }
+  /* Mobile Bottom Navigation Bar */
+  .mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+  }
+  .mobile-nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .mobile-nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 4px 6px;
+    border: none;
+    background: none;
+    color: var(--ink-faint);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    gap: 3px;
+  }
+  .mobile-nav-btn.active {
+    color: var(--accent);
+  }
+  .mobile-nav-icon {
+    font-size: 1.15rem;
+  }
 
-  /* stat tiles */
-  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-bottom: 18px; }
-  .stat { background: var(--surface); padding: 12px 14px; }
-  .stat .label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 4px; }
-  .stat .value { font-family: var(--mono); font-size: 1.18rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-  .stat .value.accent { color: var(--accent); }
-  .stat .sub { font-size: 0.74rem; color: var(--ink-faint); margin-top: 2px; }
+  @media (max-width: 768px) {
+    .tabs { display: none; }
+    .mobile-bottom-nav { display: block; }
+  }
 
-  /* tables */
-  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
-  th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
-  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* Tab Panels */
+  .tab-panel { display: none; animation: fadeIn 0.2s ease-in-out; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* chips / pills */
-  .chip { display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-  .pill { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; border: 1px solid var(--line-strong); color: var(--ink-faint); }
+  /* Cards & Layout */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .stat-card .value {
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .value.accent { color: var(--accent); }
+  .stat-card .value.good { color: var(--good); }
+  .stat-card .value.warn { color: var(--warn); }
+  .stat-card .sub {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    margin-top: 3px;
+  }
+
+  /* Hero Macro Dashboard (Today Tab) */
+  .today-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 860px) {
+    .today-hero-grid { grid-template-columns: 1fr; }
+  }
+
+  .macro-bars-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .macro-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .macro-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+  .macro-bar-track {
+    height: 10px;
+    background: var(--surface-2);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  .macro-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+  }
+  .fill-cal { background: var(--accent); }
+  .fill-pro { background: var(--good); }
+  .fill-fat { background: var(--warn); }
+  .fill-carb { background: #a371f7; }
+
+  /* Date Navigator */
+  .date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    margin-bottom: 16px;
+  }
+  .date-nav-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .date-nav-btn:hover { background: var(--surface-3); }
+  .date-current {
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  /* Callouts & Pills */
+  .callout {
+    border-left: 4px solid var(--warn);
+    background: var(--surface-2);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 0.86rem;
+    margin-bottom: 14px;
+  }
+  .callout.info {
+    border-left-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .callout.good {
+    border-left-color: var(--good);
+    background: var(--good-soft);
+  }
+  .callout.warn {
+    border-left-color: var(--warn);
+    background: var(--warn-soft);
+  }
+
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+  }
   .pill.core { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
-  .pill.warn { color: var(--warn); border-color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
-  .pill.secondary { opacity: 0.7; }
+  .pill.good { color: var(--good); border-color: var(--good); background: var(--good-soft); }
+  .pill.alert, .pill.warn { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); font-weight: 700; }
+  .pill.badge-gym { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .pill.badge-cardio { color: var(--good); border-color: var(--good); background: var(--good-soft); }
+  .pill.badge-hiit { color: #ec4899; border-color: #ec4899; background: rgba(236, 72, 153, 0.12); }
 
-  ul.plain { margin: 6px 0; padding-left: 18px; }
-  ul.plain li { margin-bottom: 4px; }
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 8px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+    background: var(--surface);
+  }
+  th, td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    background: var(--surface-2);
+    font-weight: 600;
+  }
+  td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  tbody tr:hover { background: var(--surface-2); }
 
-  .callout { border-left: 3px solid var(--warn); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 10px 14px; font-size: 0.86rem; margin-bottom: 14px; }
-  .callout.info { border-left-color: var(--accent); }
+  /* Session Cards & Workout Feed */
+  .session-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .session-summary {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: var(--surface);
+    user-select: none;
+  }
+  .session-summary:hover { background: var(--surface-2); }
+  .session-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .session-date {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+  .session-chevron {
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    transition: transform 0.2s ease;
+  }
+  details[open] .session-chevron {
+    transform: rotate(180deg);
+  }
+  .session-content {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+  }
 
-  .empty-state { color: var(--ink-faint); font-size: 0.85rem; font-style: italic; padding: 10px 0; }
+  /* Filter Toolbar */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .filter-btn {
+    padding: 5px 11px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--ink-soft);
+  }
+  .filter-btn.active {
+    background: var(--accent);
+    color: #ffffff;
+    border-color: var(--accent);
+  }
+  .search-input {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 0.85rem;
+    min-width: 180px;
+  }
+  .search-input:focus {
+    outline: 2px solid var(--accent);
+    border-color: var(--accent);
+  }
 
-  /* day picker + daily log */
-  .day-picker-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-  #day-select { font-family: var(--sans); font-size: 0.88rem; padding: 7px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); }
-  #day-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .day-summary-items { margin-top: 4px; }
-  .day-item-row { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-top: 1px dashed var(--line); font-size: 0.86rem; }
-  .day-item-row:first-child { border-top: none; }
-  .day-item-name { flex: 1; }
-  .day-item-macros { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; font-size: 0.78rem; }
+  /* SVG Chart Container */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+  }
+  .chart-svg {
+    width: 100%;
+    min-width: 550px;
+    height: 240px;
+  }
+  .chart-tooltip {
+    position: absolute;
+    display: none;
+    background: var(--surface-3);
+    color: var(--ink);
+    border: 1px solid var(--border-strong);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: var(--shadow);
+  }
+
+  /* Routine Day Cards */
+  .day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .day-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .day-card.core { border-left: 4px solid var(--accent); }
+  .day-card.optional { border-left: 4px dashed var(--border-strong); background: var(--surface-2); }
+  .day-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .day-head .name { font-weight: 700; font-size: 0.98rem; }
+  .ex-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-top: 1px dashed var(--border);
+  }
+  .ex-row:first-of-type { border-top: none; }
+  .ex-row .ex-name { flex: 1; }
+  .ex-row .ex-load { font-family: var(--mono); font-weight: 600; font-size: 0.8rem; }
+  .ex-row .ex-weight { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-faint); text-align: right; }
+  .ss-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 8px 0 2px;
+  }
+  .cardio-line {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+
+  /* Modal / Drawer */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 16px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+  .modal-close {
+    border: none;
+    background: none;
+    font-size: 1.4rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
 
   /* 14-day trend charts */
   .trend-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -143,155 +656,145 @@
   .trend-chart-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.82rem; margin-bottom: 6px; }
   .trend-chart-head .metric-name { font-weight: 600; }
   .trend-chart-head .metric-target { font-family: var(--mono); color: var(--ink-faint); font-size: 0.74rem; }
-  .trend-plot { position: relative; height: 64px; border-bottom: 1px solid var(--line); }
+  .trend-plot { position: relative; height: 64px; border-bottom: 1px solid var(--border); }
   .trend-bars { display: flex; align-items: flex-end; gap: 5px; height: 100%; }
   .trend-bar-col { flex: 1; min-width: 24px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
   .trend-bar { width: 100%; max-width: 20px; background: var(--accent); border-radius: 2px 2px 0 0; }
   .trend-bar.is-warn { background: var(--warn); }
-  .trend-bar.is-empty { background: none; border: 1px dashed var(--line-strong); height: 4px !important; align-self: flex-end; }
-  /* Coverage gaps: untracked days get a full-height hatched column so a vacation reads as
-     "no data" rather than as a run of zero-calorie days; partial days stay visible but muted. */
-  .trend-bar.is-untracked { background: repeating-linear-gradient(45deg, var(--line) 0 3px, transparent 3px 6px); border: 1px dashed var(--line-strong); height: 100% !important; border-radius: 2px; }
+  .trend-bar.is-empty { background: none; border: 1px dashed var(--border-strong); height: 4px !important; align-self: flex-end; }
+  .trend-bar.is-untracked { background: repeating-linear-gradient(45deg, var(--border) 0 3px, transparent 3px 6px); border: 1px dashed var(--border-strong); height: 100% !important; border-radius: 2px; }
   .trend-bar.is-partial { opacity: 0.45; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0 3px, transparent 3px 6px); }
   .trend-target-line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink-soft); pointer-events: none; }
   .trend-labels { display: flex; gap: 5px; margin-top: 4px; }
   .trend-label-col { flex: 1; min-width: 24px; display: flex; justify-content: center; }
   .trend-day-label { font-family: var(--mono); font-size: 9.5px; color: var(--ink-faint); white-space: nowrap; }
 
-  /* routine day cards */
-  .day-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-bottom: 8px; }
-  .day-card { background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 14px 16px; }
-  .day-card.core { border-left: 3px solid var(--accent); }
-  .day-card.optional { border-left: 3px dashed var(--line-strong); background: var(--surface-2); }
-  .day-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-  .day-head .name { font-weight: 700; font-size: 0.95rem; }
-  .ex-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 0.84rem; border-top: 1px dashed var(--line); }
-  .ex-row:first-of-type { border-top: none; }
-  .ex-row .ex-name { flex: 1; }
-  .ex-row .ex-load { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.8rem; }
-  .ex-row .ex-weight { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.76rem; color: var(--ink-faint); min-width: 46px; text-align: right; }
-  .ss-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 8px; }
-  .ss-label:first-child { margin-top: 0; }
-  .cardio-line { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--ink-soft); }
-
-  /* Weekly review styles */
-  .vol-bar-bg { width: 100%; min-width: 60px; max-width: 130px; height: 7px; background: var(--line); border-radius: 4px; overflow: hidden; display: inline-block; vertical-align: middle; }
+  /* Volume fill bars */
+  .vol-bar-bg { width: 100%; min-width: 60px; max-width: 130px; height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; display: inline-block; vertical-align: middle; }
   .vol-bar-fill { height: 100%; border-radius: 4px; }
   .vol-bar-fill.opt { background: var(--good); }
   .vol-bar-fill.on-track { background: var(--accent); }
-  .vol-bar-fill.mev { background: var(--tag-delts); }
-  .vol-bar-fill.warn { background: var(--warn); }
-  .pill.good { color: var(--good); border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, transparent); }
-  .pill.alert { color: var(--warn); border-color: var(--warn); background: color-mix(in srgb, var(--warn) 15%, transparent); font-weight: 700; }
-  .week-nav-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-  #week-select { font-family: var(--sans); font-size: 0.9rem; padding: 7px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); }
-  #week-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-  /* Mobile responsiveness */
-  @media (max-width: 640px) {
-    body { font-size: 15px; }
-    .wrap { padding: 14px 12px 50px; }
-    header.top { flex-direction: column; align-items: flex-start; gap: 5px; padding-bottom: 10px; margin-bottom: 12px; }
-    header.top h1 { font-size: 1.3rem; }
-    .sync-note { font-size: 11.5px; }
-    .tabs { gap: 2px; }
-    .tab-btn { font-size: 0.88rem; padding: 10px 11px; min-height: 42px; }
-    .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
-    .stat { padding: 10px 12px; }
-    .stat .label { font-size: 10.5px; }
-    .stat .value { font-size: 1.15rem; }
-    .stat .sub { font-size: 0.72rem; }
-    .day-picker-row { flex-direction: column; align-items: stretch; gap: 6px; }
-    #day-select { font-size: 16px; padding: 9px 12px; width: 100%; border-radius: 6px; } /* 16px prevents iOS Safari auto-zoom */
-    .week-nav-row { flex-direction: column; align-items: stretch; gap: 8px; }
-    #week-select { font-size: 16px; width: 100%; }
-    .day-item-row { flex-direction: column; align-items: flex-start; gap: 3px; padding: 8px 0; }
-    .day-item-macros { font-size: 0.8rem; }
-    .day-grid { grid-template-columns: 1fr; gap: 12px; }
-    .day-card { padding: 12px 14px; }
-    .card { padding: 14px; }
-    table { font-size: 0.84rem; }
-    th, td { padding: 7px 7px; }
-    th { font-size: 10.5px; }
-    .callout { padding: 10px 12px; font-size: 0.85rem; }
-    .ex-row { padding: 6px 0; font-size: 0.83rem; }
-    .ex-row .ex-load { font-size: 0.8rem; }
-    .ex-row .ex-weight { font-size: 0.76rem; }
-  }
+  .vol-bar-fill.mev { background: var(--warn); }
+  .vol-bar-fill.warn { background: var(--danger); }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <header class="top">
-    <h1>Fitness Dashboard</h1>
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-29</span>
+  <!-- Top App Header -->
+  <header class="app-bar">
+    <div class="brand">
+      <h1>⚡ Fitness Coach <span class="brand-tag">ATHLETE HUB</span></h1>
+    </div>
+    <div class="header-actions">
+      <span class="btn-pill" id="hyrox-badge">🏃 Hyrox: Sep 20</span>
+      <button class="btn-pill" id="profile-modal-btn">ℹ️ Profile & Constraints</button>
+      <button class="btn-pill" id="theme-toggle-btn">🌓 Theme</button>
+    </div>
   </header>
 
+  <!-- Sync Note Bar (Preserved for AGENTS.md) -->
+  <div class="sync-bar">
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-29</span>
+    <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
+  </div>
+
+  <!-- Desktop Navigation Tabs -->
   <nav class="tabs" role="tablist">
-    <button class="tab-btn active" data-tab="overview">Overview</button>
-    <button class="tab-btn" data-tab="weekly">Weekly Summary</button>
-    <button class="tab-btn" data-tab="goals">Goals</button>
-    <button class="tab-btn" data-tab="routine">Routine</button>
-    <button class="tab-btn" data-tab="nutrition">Nutrition</button>
-    <button class="tab-btn" data-tab="progress">Progress</button>
+    <button class="tab-btn active" data-tab="today">⚡ Today</button>
+    <button class="tab-btn" data-tab="weekly">📊 Weekly Review</button>
+    <button class="tab-btn" data-tab="routine">🏋️ Routine</button>
+    <button class="tab-btn" data-tab="progress">📈 Progress & History</button>
   </nav>
 
-  <!-- ============ OVERVIEW ============ -->
-  <section class="tab-panel active" id="overview">
-    <div class="stat-grid">
-      <div class="stat"><span class="label">Weight</span><span class="value">165.4 lb</span><span class="sub">8/26</span></div>
-      <div class="stat"><span class="label">Body Fat</span><span class="value">~high&ndash;teens&ndash;20%</span><span class="sub">target 15%</span></div>
-      <div class="stat"><span class="label">Calorie Target</span><span class="value accent">~1,840/day</span></div>
-      <div class="stat"><span class="label">Protein Target</span><span class="value accent">~130g/day</span></div>
-      <div class="stat"><span class="label">Training Days</span><span class="value">3&ndash;5/week</span></div>
-      <div class="stat"><span class="label">Hyrox</span><span class="value">Sep 20</span><span class="sub">secondary goal</span></div>
+  <!-- ======================================================== -->
+  <!-- TAB 1: ⚡ TODAY (Daily Command Center) -->
+  <!-- ======================================================== -->
+  <section class="tab-panel active" id="today">
+    <!-- Date Navigator -->
+    <div class="date-nav">
+      <button class="date-nav-btn" id="date-prev-btn">&larr; Prev Day</button>
+      <div class="date-current" id="date-current-label">Loading date...</div>
+      <button class="date-nav-btn" id="date-next-btn">Next Day &rarr;</button>
     </div>
 
-    <div class="callout">Bulging disc (lower back) &mdash; avoid heavy loaded spinal flexion and risky deadlift variations. Flagged on every relevant exercise.</div>
+    <!-- Today Hero Grid -->
+    <div class="today-hero-grid">
+      <!-- Macro Pacing & Runway Card -->
+      <div class="card">
+        <div class="card-head">
+          <h3 class="card-title">🥗 Daily Macro Pacing</h3>
+          <span class="pill good" id="day-status-pill">Complete</span>
+        </div>
+        <div id="day-runway-alert"></div>
+        <div class="macro-bars-wrap" id="day-macro-bars"></div>
+      </div>
 
-    <h2 class="section-title">Primary Goals</h2>
-    <ul class="plain">
-      <li>Look good &mdash; physique-driven</li>
-      <li>Hypertrophy &mdash; build visible muscle size/shape</li>
-      <li>Stay lean / get leaner &mdash; reduce body fat while keeping/building muscle</li>
-      <li>General athleticism and health</li>
-    </ul>
-
-    <h2 class="section-title">What's Logged So Far</h2>
-    <div class="stat-grid">
-      <div class="stat"><span class="label">Workout Entries</span><span class="value">28</span></div>
-      <div class="stat"><span class="label">Meal Entries</span><span class="value">228</span></div>
-      <div class="stat"><span class="label">Lift PRs</span><span class="value">0</span></div>
-      <div class="stat"><span class="label">Weigh-ins</span><span class="value">11</span></div>
+      <!-- Prescribed Training Quick-Glance -->
+      <div class="card">
+        <div class="card-head">
+          <h3 class="card-title">🏋️ Training Quick-Glance</h3>
+          <div class="filter-group">
+            <button class="filter-btn active" onclick="setQuickDay('D1')">D1</button>
+            <button class="filter-btn" onclick="setQuickDay('D2')">D2</button>
+            <button class="filter-btn" onclick="setQuickDay('D3')">D3</button>
+            <button class="filter-btn" onclick="setQuickDay('D4')">D4</button>
+            <button class="filter-btn" onclick="setQuickDay('D5')">D5</button>
+          </div>
+        </div>
+        <div id="quick-day-content"></div>
+      </div>
     </div>
-    <p class="faint">Log a workout or a meal (describe it or send a photo) any time &mdash; it'll show up here on the next sync.</p>
+
+    <!-- Meals Logged for Date -->
+    <div class="card">
+      <div class="card-head">
+        <h3 class="card-title">🍽️ Meals Logged for this Date</h3>
+        <span class="faint">Chat description / photo logging</span>
+      </div>
+      <div id="day-meals-container"></div>
+    </div>
+
+    <!-- 14-Day Trend vs Target -->
+    <div class="card">
+      <div class="card-head">
+        <h3 class="card-title">📈 14-Day Macro Intake Trends</h3>
+        <span class="faint">Hover/tap bars for exact macros</span>
+      </div>
+      <p class="faint" style="margin-bottom: 12px;">Dashed line = daily target. Hatched bars = untracked vacation days (excluded from calorie math). Muted bars = partial days.</p>
+      <div class="trend-wrap" id="trend-charts"></div>
+    </div>
   </section>
 
-  <!-- ============ WEEKLY SUMMARY ============ -->
+  <!-- ======================================================== -->
+  <!-- TAB 2: 📊 WEEKLY REVIEW (RP Hypertrophy Engine) -->
+  <!-- ======================================================== -->
   <section class="tab-panel" id="weekly">
-    <div class="week-nav-row">
-      <div>
-        <h2 class="section-title" style="margin:0;">Weekly Performance Review</h2>
-        <p class="muted" id="week-dates-sub" style="margin:3px 0 0;"></p>
+    <div class="card" style="margin-bottom: 16px;">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">📊 Weekly Performance Review</h2>
+          <p class="faint" id="week-dates-sub" style="margin-top: 4px;"></p>
+        </div>
+        <div>
+          <label for="week-select" class="faint" style="margin-right: 6px;">Select Week:</label>
+          <select id="week-select" class="search-input"></select>
+        </div>
       </div>
-      <div>
-        <label for="week-select" class="faint" style="margin-right:6px;">Select Week (Mon&ndash;Sun):</label>
-        <select id="week-select"></select>
-      </div>
+      <!-- Weekly Stat Grid -->
+      <div class="stat-grid" id="week-stat-grid"></div>
     </div>
 
-    <!-- Weekly Stat Grid -->
-    <div class="stat-grid" id="week-stat-grid"></div>
-
-    <!-- 1. Workout Volume vs MEV / Optimal -->
-    <div class="card" style="margin-top: 18px;">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.05rem;">🏋️ Hypertrophy Volume vs. MEV & Optimal (MAV)</h3>
-        <span class="faint">Dr. Mike Israetel / RP Research &middot; Direct Sets Only</span>
+    <!-- RP Hypertrophy Volume Table -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3 class="card-title">🏋️ Hypertrophy Volume vs. MEV & Optimal (MAV)</h3>
+          <span class="faint">Dr. Mike Israetel / RP Research &middot; Direct Sets Only</span>
+        </div>
       </div>
       <div id="week-volume-callouts"></div>
-      <div class="table-wrap" style="margin-top:12px;">
+      <div class="table-wrap" style="margin-top: 10px;">
         <table id="week-volume-table">
           <thead>
             <tr>
@@ -306,17 +809,19 @@
           <tbody id="week-volume-tbody"></tbody>
         </table>
       </div>
-      <div id="week-cardio-summary" style="margin-top:14px; padding-top:10px; border-top:1px dashed var(--line); font-size:0.84rem;"></div>
+      <div id="week-cardio-summary" style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 0.84rem;"></div>
     </div>
 
-    <!-- 2. Nutrition for the Week vs Goals -->
-    <div class="card" style="margin-top: 18px;">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.05rem;">🥗 Weekly Nutrition & Macro Totals</h3>
-        <span class="faint">7-day target basis: ~1,840 kcal &middot; 130g P &middot; 65g F &middot; 185g C</span>
+    <!-- Weekly Macro Reconciliation -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3 class="card-title">🥗 Weekly Nutrition & Macro Reconciliation</h3>
+          <span class="faint">Basis: ~1,840 kcal &middot; 130g P &middot; 65g F &middot; 185g C</span>
+        </div>
       </div>
       <div id="week-nutrition-callouts"></div>
-      <div class="table-wrap" style="margin-top:12px;">
+      <div class="table-wrap" style="margin-top: 12px;">
         <table id="week-nutrition-table">
           <thead>
             <tr>
@@ -332,7 +837,7 @@
         </table>
       </div>
 
-      <h4 style="margin:20px 0 8px; font-size:0.92rem;">Daily Breakdown (Mon &rarr; Sun)</h4>
+      <h4 style="margin: 20px 0 8px; font-size: 0.92rem;">Daily Intake Breakdown (Mon &rarr; Sun)</h4>
       <div class="table-wrap">
         <table id="week-days-table">
           <thead>
@@ -352,70 +857,43 @@
     </div>
   </section>
 
-  <!-- ============ GOALS ============ -->
-  <section class="tab-panel" id="goals">
-    <h2 class="section-title">Profile</h2>
-    <div class="table-wrap"><table>
-      <tr><th>Age</th><td>25</td></tr>
-      <tr><th>Height</th><td>5'6"</td></tr>
-      <tr><th>Weight</th><td>163 lb</td></tr>
-      <tr><th>Body fat</th><td>high teens&ndash;low 20s %</td></tr>
-      <tr><th>Training experience</th><td>10 years weightlifting</td></tr>
-    </table></div>
-
-    <h2 class="section-title">Training Philosophy: 80/20</h2>
-    <ul class="plain">
-      <li>Full body sessions over single-muscle-group splits</li>
-      <li>Prioritize compound, multi-joint movements over isolation work</li>
-      <li>Cut low-value volume/accessory work that doesn't clearly move the needle</li>
-    </ul>
-
-    <h2 class="section-title">Upcoming Event</h2>
-    <p><strong>Hyrox competition &mdash; September 20, 2026.</strong> <span class="pill secondary">Secondary priority</span><br>
-    General conditioning (zone 2 + Norwegian 4x4) is maintained; the plan isn't optimized around the race, and Day 5 race-specific practice is fully optional.</p>
-
-    <h2 class="section-title">Injury Constraint</h2>
-    <div class="callout">Slight lower back bulging disc. Avoid exercises/loading patterns that aggravate it (heavy loaded spinal flexion, risky deadlift variations). Favor neutral-spine, back-friendly alternatives.</div>
-
-    <h2 class="section-title">Targets</h2>
-    <div class="table-wrap"><table>
-      <tr><th>Body fat</th><td>15% <span class="faint">(from current estimated high teens&ndash;low 20s%)</span></td></tr>
-      <tr><th>Nutrition</th><td>~1,840 kcal/day, ~130g protein/day &mdash; see Nutrition tab</td></tr>
-    </table></div>
-  </section>
-
-  <!-- ============ ROUTINE ============ -->
+  <!-- ======================================================== -->
+  <!-- TAB 3: 🏋️ ROUTINE & GYM COMPANION -->
+  <!-- ======================================================== -->
   <section class="tab-panel" id="routine">
-    <h2 class="section-title">Design Principles</h2>
-    <ul class="plain">
-      <li>Full body days, not body-part splits</li>
-      <li>80/20 efficiency &mdash; compound lifts and Hyrox-relevant conditioning over low-value accessory volume</li>
-      <li>Lower back caution baked into every exercise choice</li>
-      <li>Hyrox is secondary &mdash; maintained, not optimized for</li>
-      <li>Supersets hit opposing muscle groups first, same/adjacent equipment second</li>
-    </ul>
+    <!-- Gym Equipment Toggle Banner -->
+    <div class="card" style="background: var(--surface-2); border-color: var(--accent);">
+      <div class="card-head" style="margin-bottom: 6px;">
+        <div>
+          <h3 class="card-title" style="color: var(--accent);">📍 Gym Equipment Location</h3>
+          <p class="faint">Switches machine pin weights and flags between your primary gym and Yellowstone Fitness.</p>
+        </div>
+        <div class="filter-group">
+          <button class="filter-btn active" id="gym-primary-btn" onclick="setGymLocation('primary')">Primary Gym</button>
+          <button class="filter-btn" id="gym-yellowstone-btn" onclick="setGymLocation('yellowstone')">Yellowstone Fitness</button>
+        </div>
+      </div>
+      <div id="gym-location-note" class="callout info" style="margin: 6px 0 0; display: none;"></div>
+    </div>
 
-    <h2 class="section-title">Volume Thresholds by Muscle</h2>
-    <p class="faint">Based directly on Dr. Mike Israetel / Renaissance Periodization (RP) research. Volume is measured strictly in <strong>direct working sets</strong> (no fractional synergist credit applied).</p>
-    <div class="table-wrap"><table>
-      <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
-      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
-      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">10</td><td class="num">14&ndash;22</td><td class="num">13</td></tr>
-      <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
-      <tr><td>Hamstrings</td><td class="num">6</td><td class="num">5</td><td class="num">10&ndash;16</td><td class="num">8</td></tr>
-      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">16&ndash;22</td><td class="num">9</td></tr>
-      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">4</td><td class="num">12&ndash;18</td><td class="num">7</td></tr>
-      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">14&ndash;20</td><td class="num">6</td></tr>
-      <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">6</td></tr>
-      <tr><td>Calves</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
-      <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">3</td><td class="num">8&ndash;16</td><td class="num">3</td></tr>
-    </table></div>
-    <p class="faint">Frequency-fixed as of last update: rear delt and hamstrings now trained 2x/week (split across two days) instead of 1x, same weekly totals.</p>
+    <!-- Injury & Philosophy Callout -->
+    <div class="callout warn">
+      <strong>⚠️ Lower Back Disc Constraint:</strong> Bulging disc &mdash; avoid heavy loaded spinal flexion and risky deadlifts. Favor neutral-spine alternatives. All flagged exercises are marked below with ⚠️.
+    </div>
 
-    <h2 class="section-title">Weekly Structure</h2>
-    <p class="faint">Suggested weight (@ &mdash;) is inferred from your estimated 1RM per exercise (Epley formula, from logged sets, not tested maxes) &mdash; see Progress tab. Shows &mdash; until a set is logged for that exercise.</p>
+    <!-- Design Principles -->
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">🎯 80/20 Routine Principles</h3></div>
+      <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--ink-soft);">
+        <li><strong>Full body days:</strong> 3 core days hitting opposing muscle groups; far more time-efficient than bro-splits.</li>
+        <li><strong>Antagonist supersets:</strong> Push &harr; Pull pairings share zero equipment and maximize rest between sets.</li>
+        <li><strong>Inferred working weights:</strong> Based on 90% training-max of your estimated 1RM from real logged sets.</li>
+      </ul>
+    </div>
+
+    <!-- Routine Day Cards -->
+    <h2 style="font-size: 1.15rem; margin: 24px 0 12px;">Weekly Routine Templates</h2>
     <div class="day-grid">
-
       <div class="day-card core">
         <div class="day-head"><span class="name">Day 1 &mdash; Full Body A</span><span class="pill core">Core</span></div>
         <div class="ss-label">Superset</div>
@@ -485,53 +963,70 @@
         <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press or Leg Curl</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
         <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Long zone 2 run (&ge;40 min)</div>
       </div>
+    </div>
 
+    <!-- Volume Thresholds Table -->
+    <div class="card" style="margin-top: 24px;">
+      <div class="card-head">
+        <h3 class="card-title">Dr. Mike Israetel Volume Thresholds</h3>
+        <span class="faint">Renaissance Periodization (RP) Standards</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
+      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
+      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">10</td><td class="num">14&ndash;22</td><td class="num">13</td></tr>
+      <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+      <tr><td>Hamstrings</td><td class="num">6</td><td class="num">5</td><td class="num">10&ndash;16</td><td class="num">8</td></tr>
+      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">16&ndash;22</td><td class="num">9</td></tr>
+      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">4</td><td class="num">12&ndash;18</td><td class="num">7</td></tr>
+      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">14&ndash;20</td><td class="num">6</td></tr>
+      <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">6</td></tr>
+      <tr><td>Calves</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
+      <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">3</td><td class="num">8&ndash;16</td><td class="num">3</td></tr>
+        </table>
+      </div>
     </div>
   </section>
 
-  <!-- ============ NUTRITION ============ -->
-  <section class="tab-panel" id="nutrition">
-    <h2 class="section-title">Daily Targets</h2>
-    <div class="stat-grid">
-      <div class="stat"><span class="label">Calories</span><span class="value accent">~1,840</span><span class="sub">range 1,750&ndash;1,950</span></div>
-      <div class="stat"><span class="label">Protein</span><span class="value accent">~130g</span><span class="sub">range 120&ndash;140g &mdash; 0.8g/lb bodyweight</span></div>
-      <div class="stat"><span class="label">Fat</span><span class="value">~65g</span><span class="sub">minimum</span></div>
-      <div class="stat"><span class="label">Carbs</span><span class="value">~185g</span><span class="sub">fills remainder</span></div>
-    </div>
-
-    <div class="callout info">History: ~2,200 (initial formula) &rarr; ~1,700 (WHOOP-anchored) &rarr; ~1,840 (revised 7/27 per your own read that WHOOP underestimates burn). Watch strength/recovery/energy and don't wait for the scheduled check-in if training degrades.</div>
-
-    <h2 class="section-title">Why a Moderate Deficit</h2>
-    <p class="muted">Body recomposition (simultaneous muscle gain + fat loss) is achievable at 10 years of training experience, but slower and more execution-dependent than for a newer lifter &mdash; high protein + genuine training stimulus + only a mild deficit. This is built for modest, steady change, not a fast cut.</p>
-
-    <h2 class="section-title">Calibration Protocol</h2>
-    <ul class="plain">
-      <li>Weigh in regularly (see Progress tab)</li>
-      <li>After 2&ndash;3 weeks: losing ~0.5&ndash;1%/week &rarr; on track; not moving &rarr; drop ~100&ndash;150 kcal; losing &gt;1%/week &rarr; add ~100&ndash;150 back</li>
-      <li>Re-adjust every 2&ndash;3 weeks, not off single-day fluctuations</li>
-      <li>Override early if training performance clearly drops before the scheduled check-in</li>
-    </ul>
-
-    <h2 class="section-title">Daily Log</h2>
-    <div class="day-picker-row">
-      <label for="day-select" class="faint">Day:</label>
-      <select id="day-select"></select>
-    </div>
-    <div id="day-summary"></div>
-
-    <h2 class="section-title">14-Day Trend vs Target</h2>
-    <p class="faint">Hover any bar for the exact value. Dashed line = daily target. Bars past ~15% over target are flagged in the warning color. Empty slots mean nothing was logged that day, not zero intake.</p>
-    <div class="trend-wrap" id="trend-charts"></div>
-
-    <h2 class="section-title">Logging</h2>
-    <p class="muted">Fully conversational &mdash; describe a meal in chat or send a photo, and it gets estimated and logged to <code>meals/YYYY-MM.md</code>, same pattern as the workout log.</p>
-  </section>
-
-  <!-- ============ PROGRESS ============ -->
+  <!-- ======================================================== -->
+  <!-- TAB 4: 📈 PROGRESS & HISTORY -->
+  <!-- ======================================================== -->
   <section class="tab-panel" id="progress">
-    <h2 class="section-title">Bodyweight / Measurements</h2>
-    <div class="table-wrap"><table>
-      <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+    <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
+    <div class="stat-grid">
+      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">28</span><span class="sub">across 2 months</span></div>
+      <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">228</span><span class="sub">individual items</span></div>
+      <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
+      <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">11</span><span class="sub">trend tracked</span></div>
+    </div>
+
+    <!-- Interactive Bodyweight Trend Chart -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3 class="card-title">⚖️ Bodyweight Trend & Moving Average</h3>
+          <span class="faint">Gym scale readings with post-travel caution windows</span>
+        </div>
+        <span class="pill good">Current: 165.4 lb</span>
+      </div>
+      <div class="chart-container">
+        <div class="chart-tooltip" id="bw-tooltip"></div>
+        <svg class="chart-svg" id="bw-chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
+      </div>
+      <p class="faint" style="margin-top: 8px;">
+        <span style="color:#f59e0b;">■</span> Shaded amber zone = 8/12&ndash;8/17 Vacation (untracked) + post-travel caution window. Dotted cyan line = 165.4 lb baseline.
+      </p>
+    </div>
+
+    <!-- Bodyweight / Measurements Table -->
+    <div class="card">
+      <div class="card-head">
+        <h3 class="card-title">Weigh-in History Log</h3>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
       <tr><td>2026-08-26</td><td class="num">165.4 lb</td><td>Same conditions, +0.2lb from 8/25 &mdash; ordinary day-to-day noise, on trend.</td></tr>
       <tr><td>2026-08-25</td><td class="num">165.2 lb</td><td>Same conditions, +0.6lb from 8/24 &mdash; ordinary day-to-day noise, on trend.</td></tr>
       <tr><td>2026-08-24</td><td class="num">164.6 lb</td><td><strong>Confirming reading</strong> for the 8/22&ndash;8/24 post-gap window &mdash; lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed.</td></tr>
@@ -543,18 +1038,22 @@
       <tr><td>2026-07-28</td><td class="num">164 lb</td><td>Same conditions as 7/27 &mdash; comparable to that reading, down 0.3lb</td></tr>
       <tr><td>2026-07-27</td><td class="num">164.3 lb</td><td>Gym scale, after work, with shoes, padded floor &mdash; not directly comparable to 7/26 (different conditions)</td></tr>
       <tr><td>2026-07-26</td><td class="num">163 lb</td><td>Estimated body fat high teens&ndash;low 20s%, 5'6"</td></tr>
-    </table></div>
+        </table>
+      </div>
+    </div>
 
-    <h2 class="section-title">Lift PRs</h2>
-    <div class="empty-state">No PRs logged yet.</div>
-
-    <h2 class="section-title">Run PRs</h2>
-    <div class="empty-state">No PRs logged yet.</div>
-
-    <h2 class="section-title">Estimated 1RMs</h2>
-    <p class="faint">Inferred from logged sets via the Epley formula &mdash; never tested directly. Confidence is high for exercises programmed &le;12 reps, and trend-only (not a precise number) for the 12&ndash;20 rep isolation exercises. Drives the suggested weights shown on the Routine tab.</p>
-    <div class="table-wrap"><table>
-      <tr><th>Exercise</th><th>Est. 1RM</th><th>Confidence</th></tr>
+    <!-- Estimated 1RMs Table -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h3 class="card-title">🏆 Estimated 1RMs Leaderboard</h3>
+          <p class="faint">Calculated via Epley formula (90% training max drives Routine suggested weights).</p>
+        </div>
+        <input type="text" class="search-input" id="onerm-search" placeholder="Search exercises..." onkeyup="filterOneRMs()">
+      </div>
+      <div class="table-wrap">
+        <table id="onerm-table">
+          <tr><th>Exercise</th><th>Est. 1RM</th><th>Confidence</th></tr>
       <tr><td>Incline DB Press</td><td class="num">91 lb</td><td class="faint">High</td></tr>
       <tr><td>Weighted Dips</td><td class="num">67.5 lb added</td><td class="faint">High</td></tr>
       <tr><td>Pec Deck</td><td class="num">294 lb</td><td class="faint">High</td></tr>
@@ -580,26 +1079,75 @@
       <tr><td>Bodyweight Pull-Ups <span class="faint">(max reps)</span></td><td class="num">15 reps</td><td class="faint">Reference only</td></tr>
       <tr><td>Overhead Cable Triceps Extension <span class="faint">&#9888; unconfirmed</span></td><td class="num">202.5 lb</td><td class="faint">Low</td></tr>
       <tr><td>Crunches</td><td class="num">n/a</td><td class="faint">Bodyweight, no meaningful 1RM</td></tr>
-    </table></div>
+        </table>
+      </div>
+    </div>
 
-    <h2 class="section-title">Nutrition Calibration Log</h2>
-    <div class="table-wrap"><table>
-      <tr><th>Date</th><th>Calorie Target</th><th>Reasoning</th></tr>
-      <tr><td>2026-07-26</td><td class="num">~2,200</td><td>Initial estimate &mdash; Mifflin-St Jeor formula, moderate-activity assumption</td></tr>
-      <tr><td>2026-07-26</td><td class="num">~1,700</td><td>Revised same day &mdash; WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority</td></tr>
-      <tr><td>2026-07-27</td><td class="num">~1,840</td><td>Revised again &mdash; user's own judgment that WHOOP underestimates burn; maintenance bumped 1,800&rarr;2,000, same ~8% deficit reapplied</td></tr>
-    </table></div>
+    <!-- Workout History Archive -->
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="section-title" style="margin:0; font-size:1.15rem;">Workout Log</h2>
+          <span class="faint">28 completed sessions logged with coach feedback</span>
+        </div>
+        <div class="filter-group">
+          <button class="filter-btn active" onclick="filterSessions('all')">All (28)</button>
+          <button class="filter-btn" onclick="filterSessions('gym')">🏋️ Gym (17)</button>
+          <button class="filter-btn" onclick="filterSessions('cardio')">🏃 Cardio (11)</button>
+          <button class="filter-btn" onclick="filterSessions('pr')">⭐ PRs</button>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input type="text" class="search-input" id="workout-search" placeholder="Search workouts, exercises, or notes..." onkeyup="searchWorkouts()" style="width: 100%; max-width: 320px;">
+        <button class="btn-pill" onclick="toggleAllSessions()">Toggle All Details</button>
+      </div>
+      <!-- Session Cards Container -->
+      <div id="workout-sessions-container">
+        
+    <details class="session-card" open data-date="2026-08-28" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-28</span>
+          <span class="pill badge-cardio">Zone 2 Run</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-28 &mdash; Zone 2 Run (Cardio)</strong></p>
+        <div class="callout info">0:30:00 total, self-reported. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
+      </div>
+    </details>
+    
 
+    <details class="session-card" open data-date="2026-08-28" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-28</span>
+          <span class="pill badge-cardio">Stairmaster</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-28 &mdash; Stairmaster (Cardio)</strong></p>
+        <div class="callout info">0:10:00 total, self-reported, immediately following the zone 2 run above. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
+      </div>
+    </details>
+    
 
-    <h2 class="section-title">Workout Log</h2>
-    <p class="muted"><strong>2026-08-28 &mdash; Zone 2 Run (Cardio)</strong></p>
-    <div class="callout info">0:30:00 total, self-reported. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
-
-    <p class="muted"><strong>2026-08-28 &mdash; Stairmaster (Cardio)</strong></p>
-    <div class="callout info">0:10:00 total, self-reported, immediately following the zone 2 run above. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
-
-    <p class="muted"><strong>2026-08-25 &mdash; Gym (Day 2)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" open data-date="2026-08-25" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-25</span>
+          <span class="pill badge-gym">Day 2</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-25 &mdash; Gym (Day 2)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
       <tr><td>Low Cable Row</td><td class="num">12</td><td class="num">175 lb</td></tr>
@@ -622,9 +1170,22 @@
       <tr><td>Hammer Curl</td><td class="num">11</td><td class="num">45 lb</td></tr>
     </table></div>
     <div class="callout info">50min session, weigh-in 165.2lb (+0.6 from 8/24, ordinary noise). <strong>New PR: Triceps Pushdown</strong> (135lb x14, e1RM 198.0lb, up from 176lb) &mdash; &#9888; 14-rep set past Epley's reliable range, Medium confidence; two identical 135lb x14 sets is decent evidence. Unusual set structure: weight increased set-to-set (120&rarr;135&rarr;135) rather than the typical fatigue decline &mdash; atypical, worth double-checking next time. <strong>New PR: Hammer Curl</strong> (45lb x15, e1RM 67.5lb, up from 60lb) &mdash; also past the reliable range, Medium confidence; the same session's 45lb x12 (63.0) and 45lb x11 (61.5) both independently beat the old PR from more reliable rep counts. Low Cable Row and Lateral Raise both tied their existing PRs exactly, and today's leg work used the familiar 215lb (not the flagged 335lb from 8/22) &mdash; a strong multi-exercise signature this was the usual gym. Leg Extension (215lb x20, e1RM 358.3, rough trend only) and Leg Curl (215lb x13, e1RM 308.2) both stayed under their recorded bests &mdash; no change, but further evidence 215lb is what's actually available at the usual gym.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-26 &mdash; Gym (Day 3)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-26" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-26</span>
+          <span class="pill badge-gym">Day 3</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-26 &mdash; Gym (Day 3)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Pec Deck</td><td class="num">12</td><td class="num">210 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">170 lb</td></tr>
@@ -649,12 +1210,38 @@
       <tr><td>Leg Curl</td><td class="num">8 (failed 9th)</td><td class="num">215 lb</td></tr>
     </table></div>
     <div class="callout info">1hr 4min session, weigh-in 165.4lb (+0.2 from 8/25, ordinary noise). <strong>New PR: Pec Deck</strong> (210lb x12, e1RM 294lb, up from 240lb) &mdash; clean 12-rep set, High confidence; the descending weight/reps across the session is a normal fatigue pattern. Reverse Pec Deck and Lat Pulldown both tied their existing PRs exactly &mdash; the Reverse Pec Deck tie is useful since that PR was originally flagged as possibly freshness-inflated, and reproducing it well past that window is good evidence it's real. &#9888; <strong>Overhead Cable Triceps Extension</strong> logged a huge outlier (135lb x15, e1RM 202.5 vs. the 84lb PR, +141%) with no gym/machine noted &mdash; not treated as confirmed, flagged pending same-equipment confirmation; the rest of the session's exact PR ties suggest this was the usual gym overall, so the anomaly likely points to a different machine for this one exercise. &#9888; <strong>Weighted Lunges</strong> also escalated within the session (135lb x15 tying the old PR exactly, then 185lb, then 205lb x10, e1RM 273.3) &mdash; the first-set tie argues against an equipment mixup, but this wants next-session confirmation before fully trusting it. Leg Curl and Incline DB Press (60lb x12, weaker due to triceps fatigue per your own note) both stayed under their recorded bests &mdash; no change.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-25 &mdash; Norwegian 4x4 (Cardio)</strong></p>
-    <div class="callout info">5:49&ndash;6:20 PM, 0:30:56 total, Activity Strain 11.5, 3,072 steps. Intervals: 7.6, 7.6/8 split, 8, 8.3 mph &mdash; a clear speed progression each round, the fastest 4x4 logged so far (previous top speed 7.8 mph on 8/7). Zone 4 10:02 (32%), Zone 3 6:26 (20%), Zone 1 11:07 (39%), Zone 2 2:26 (7%), negligible Zone 5. Same day as the Day 2 gym session.</div>
+    <details class="session-card" data-date="2026-08-25" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-25</span>
+          <span class="pill badge-hiit">Norwegian 4x4</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-25 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+        <div class="callout info">5:49&ndash;6:20 PM, 0:30:56 total, Activity Strain 11.5, 3,072 steps. Intervals: 7.6, 7.6/8 split, 8, 8.3 mph &mdash; a clear speed progression each round, the fastest 4x4 logged so far (previous top speed 7.8 mph on 8/7). Zone 4 10:02 (32%), Zone 3 6:26 (20%), Zone 1 11:07 (39%), Zone 2 2:26 (7%), negligible Zone 5. Same day as the Day 2 gym session.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-24 &mdash; Gym (Day 1)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-24" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-24</span>
+          <span class="pill badge-gym">Day 1</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-24 &mdash; Gym (Day 1)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
       <tr><td>Weighted Pull-Ups</td><td class="num">8 (failed 9th)</td><td class="num">+45 lb</td></tr>
@@ -681,15 +1268,54 @@
       <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">170 lb</td></tr>
     </table></div>
     <div class="callout info">1hr 15min session. <strong>New PR: DB Curl</strong> (35lb x15, e1RM 52.5lb, up from 49lb) &mdash; &#9888; a 15-rep set is past Epley's reliable range, so directional; the same session's two 35lb x12 sets (e1RM 49lb) tie the old PR exactly as a conservative cross-check. Arnold Press and Weighted Dips both tied their existing PRs exactly. <strong>Weighted Pull-Ups came in below the established 60lb PR</strong> (best set e1RM 57lb) after four straight sessions tying it exactly &mdash; an ordinary off day, not a regression, PR unchanged. Leg Press and Reverse Pec Deck both came in under their recorded bests. Weigh-in 164.6lb closes the post-vacation caution window &mdash; back on the established trend.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-23 &mdash; Running (Cardio)</strong></p>
-    <div class="callout info">8:38&ndash;9:38 PM, 1:00:18 total, 670 kcal, avg HR 146 bpm. Zone 2 55:30 (93%), Zone 3 1:51 (3%), Zone 1 2:16 (3%), Zone 0 0:41 (1%). Clean zone 2 execution, on top of this week's full Day 1&ndash;4 lifting block.</div>
+    <details class="session-card" data-date="2026-08-23" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-23</span>
+          <span class="pill badge-cardio">Zone 2 Run</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-23 &mdash; Running (Cardio)</strong></p>
+        <div class="callout info">8:38&ndash;9:38 PM, 1:00:18 total, 670 kcal, avg HR 146 bpm. Zone 2 55:30 (93%), Zone 3 1:51 (3%), Zone 1 2:16 (3%), Zone 0 0:41 (1%). Clean zone 2 execution, on top of this week's full Day 1&ndash;4 lifting block.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-22 &mdash; Zone 2 Run (Cardio)</strong></p>
-    <div class="callout info">1:00:00 total, self-reported. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
+    <details class="session-card" data-date="2026-08-22" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-22</span>
+          <span class="pill badge-cardio">Zone 2 Run</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-22 &mdash; Zone 2 Run (Cardio)</strong></p>
+        <div class="callout info">1:00:00 total, self-reported. &#9888; No WHOOP zone/strain/heart-rate breakdown available for this session, unlike every other cardio entry in this log &mdash; add it if it's available.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-22 &mdash; Gym (Day 4 &mdash; Extra Volume)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-22" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-22</span>
+          <span class="pill badge-gym">Day 4 &mdash; Extra Volume</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-22 &mdash; Gym (Day 4 &mdash; Extra Volume)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Leg Extension</td><td class="num">15</td><td class="num">290 lb</td></tr>
       <tr><td>Leg Extension</td><td class="num">10</td><td class="num">335 lb</td></tr>
@@ -717,9 +1343,22 @@
       <tr><td>Reverse Pec Deck</td><td class="num">8 (failed 9th)</td><td class="num">130 lb</td></tr>
     </table></div>
     <div class="callout info"><strong>New PR: Incline DB Press</strong> (65lb x 12, e1RM 91.0lb) &mdash; standard dumbbell, no equipment-calibration risk. <strong>Leg Extension</strong> (335lb x 13, e1RM 480.2lb) and <strong>Leg Curl, lying</strong> (110lb x 10, e1RM 146.7lb) are logged but &#9888; unconfirmed &mdash; no gym/machine noted, and Leg Extension is 56% above the repeatedly-confirmed 215lb usual-gym baseline. Flagged in Progress/Routine until a follow-up session confirms.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-21 &mdash; Gym (Day 3, BSS substituted for Weighted Lunges)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-21" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-21</span>
+          <span class="pill badge-gym">Day 3, BSS substituted for Weighted Lunges</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-21 &mdash; Gym (Day 3, BSS substituted for Weighted Lunges)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Pec Deck</td><td class="num">12</td><td class="num">160 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">13</td><td class="num">140 lb</td></tr>
@@ -741,9 +1380,22 @@
       <tr><td>Bulgarian Split Squat (DB)</td><td class="num">10/leg</td><td class="num">55 lb/hand</td></tr>
     </table></div>
     <div class="callout info">Session length: ~1 hour (self-reported). <strong>New PR: Lat Pulldown</strong> (175lb x15, e1RM 262.5lb, up from 245lb) &mdash; &#9888; a 15-rep set is past Epley's reliable range, so treat as directional; the same session's 175lb x10 (e1RM 233lb) is a more conservative read. Pec Deck, Reverse Pec Deck, and Overhead Cable Triceps Extension all came in under their recorded PRs &mdash; no change. Incline DB Press's best set (55lb x15, e1RM 82.5) essentially ties the recorded 82lb estimate, but from a much less reliable 15-rep set &mdash; treated as confirming, not a new PR. <strong>First data logged for Bulgarian Split Squat</strong> (DB, subbed in for Weighted Lunges): 55lb/hand x10/leg, identical across all three sets with no failure reported &mdash; well above the ~30&ndash;35lb/hand starting suggestion, and the lack of any strain signal suggests room to go heavier next time.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-20 &mdash; Gym (Day 2)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-20" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-20</span>
+          <span class="pill badge-gym">Day 2</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-20 &mdash; Gym (Day 2)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">175 lb</td></tr>
       <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
@@ -766,9 +1418,22 @@
       <tr><td>Hammer Curl</td><td class="num">12</td><td class="num">40 lb</td></tr>
     </table></div>
     <div class="callout info">No new PR numbers, but an unusually consistent session &mdash; Low Cable Row (262.5), Leg Curl (322.5), Lateral Raise (37.5), and Hammer Curl (60) all tied their existing e1RMs exactly. <strong>Hammer Curl confidence upgraded Medium &rarr; High:</strong> 45lb is a new top working weight and a 10-rep set lands inside Epley&rsquo;s reliable range, independently confirming the 60lb estimate that previously rested on a 15-rep set.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-19 &mdash; Gym (Day 1, first session back from vacation)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-19" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-19</span>
+          <span class="pill badge-gym">Day 1, first session back from vacation</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-19 &mdash; Gym (Day 1, first session back from vacation)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
       <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
@@ -795,9 +1460,22 @@
       <tr><td>Reverse Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">170 lb</td></tr>
     </table></div>
     <div class="callout info">First session back after a week off, and nothing was lost. <strong>New PRs: Reverse Pec Deck</strong> (170lb x15, e1RM 255lb, up from 226.7) and <strong>Bodyweight Pull-Ups</strong> (15 reps, up from 13). Weighted Dips, Weighted Pull-Ups, Arnold Press, and DB Curl all tied their existing e1RMs exactly. &#9888; The Reverse Pec Deck jump is 12.5% in one session off a full week of rest &mdash; some of it is likely dissipated fatigue rather than pure strength, and a 15-rep set is past Epley's reliable range. The PR stands, but treat 255 as directional.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-10 &mdash; Gym (Day 1)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-10" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-10</span>
+          <span class="pill badge-gym">Day 1</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-10 &mdash; Gym (Day 1)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
       <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
@@ -823,12 +1501,38 @@
       <tr><td>Reverse Pec Deck</td><td class="num">9 (failed 10th)</td><td class="num">150 lb</td></tr>
     </table></div>
     <div class="callout info">New PRs: Leg Press (495lb x15, e1RM 742.5lb, up from 735lb) and Bodyweight Pull-Ups (13 reps, up from 9). Weighted Dips, Weighted Pull-Ups, and Arnold Press's e1RM all tied 8/5's exactly &mdash; strong confirmation this was the usual gym, not Yellowstone.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-10 &mdash; Zone 2 Run (Cardio)</strong></p>
-    <div class="callout info">1:00:13 total, Activity Strain 13.2, 7,433 steps. Zone 2 59:12 (99%), Zone 1 1:01 (1%), Zones 0/3/4/5 0% &mdash; near-perfect zone 2 execution for the full hour, longer than the usual 20-30min prescription. Paired with today's Day 1 lifting session as active recovery.</div>
+    <details class="session-card" data-date="2026-08-10" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-10</span>
+          <span class="pill badge-cardio">Zone 2 Run</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-10 &mdash; Zone 2 Run (Cardio)</strong></p>
+        <div class="callout info">1:00:13 total, Activity Strain 13.2, 7,433 steps. Zone 2 59:12 (99%), Zone 1 1:01 (1%), Zones 0/3/4/5 0% &mdash; near-perfect zone 2 execution for the full hour, longer than the usual 20-30min prescription. Paired with today's Day 1 lifting session as active recovery.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-08 &mdash; Gym (Day 3)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-08" data-cat="gym" data-pr="true">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-08</span>
+          <span class="pill badge-gym">Day 3</span>
+          <span class="pill good" style="font-size:10px;">⭐ PR</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-08 &mdash; Gym (Day 3)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Pec Deck</td><td class="num">12</td><td class="num">150 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">130 lb</td></tr>
@@ -851,9 +1555,22 @@
       <tr><td>Incline DB Press</td><td class="num">9</td><td class="num">55 lb</td></tr>
     </table></div>
     <div class="callout info">New PR: Lat Pulldown (175lb x12, up from 175lb x10 on 7/30). First estimate logged for Overhead Cable Triceps Extension (84lb e1RM). Weighted Lunges tied exactly with 7/31's numbers &mdash; good confirmation this was the usual gym, not Yellowstone.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-07 &mdash; Gym (Day 2)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-07" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-07</span>
+          <span class="pill badge-gym">Day 2</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-07 &mdash; Gym (Day 2)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Low Cable Row</td><td class="num">15</td><td class="num">160 lb</td></tr>
       <tr><td>Triceps Pushdown</td><td class="num">11 (failed 12th)</td><td class="num">120 lb</td></tr>
@@ -876,12 +1593,38 @@
       <tr><td>Hammer Curl</td><td class="num">10</td><td class="num">40 lb</td></tr>
     </table></div>
     <div class="callout info">Leg Extension, Leg Curl, Lateral Raise, and Hammer Curl top sets all exactly matched their 7/28 weight x reps &mdash; good confirmation this session was at the usual gym, not Yellowstone Fitness. No PRs today, but all four held steady.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-07 &mdash; Norwegian 4x4 (Cardio)</strong></p>
-    <div class="callout info">4 full intervals (7.6 / 7.6 / 7.6 / 7.8 mph) &mdash; all 4 completed this time (8/1's session only got 3 full + a partial 4th). WHOOP: 32:34 total, Activity Strain 12.4, 3,472 steps. Zone 4 13:48 (44%), Zone 3 3:56 (12%), Zone 2 2:50 (8%), Zone 1 11:59 (36%), Zone 5 0%. Solid interval execution, no Zone 5 spikes.</div>
+    <details class="session-card" data-date="2026-08-07" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-07</span>
+          <span class="pill badge-hiit">Norwegian 4x4</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-07 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+        <div class="callout info">4 full intervals (7.6 / 7.6 / 7.6 / 7.8 mph) &mdash; all 4 completed this time (8/1's session only got 3 full + a partial 4th). WHOOP: 32:34 total, Activity Strain 12.4, 3,472 steps. Zone 4 13:48 (44%), Zone 3 3:56 (12%), Zone 2 2:50 (8%), Zone 1 11:59 (36%), Zone 5 0%. Solid interval execution, no Zone 5 spikes.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-05 &mdash; Gym (Day 1)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-05" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-05</span>
+          <span class="pill badge-gym">Day 1</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-05 &mdash; Gym (Day 1)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Weighted Dips</td><td class="num">15</td><td class="num">+45 lb</td></tr>
       <tr><td>Weighted Pull-Ups</td><td class="num">10</td><td class="num">+45 lb</td></tr>
@@ -906,12 +1649,38 @@
       <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">150 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">10</td><td class="num">170 lb</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-05 &mdash; Zone 2 Treadmill Run (Cardio)</strong></p>
-    <div class="callout info">30:06 total, Activity Strain 9.9, 3,717 steps. Zone 2 29:30 (99%), Zone 3 0:17 (&lt;1%), Zone 1 0:19 (1%) &mdash; near-perfect zone 2 execution, almost no drift. Paired with today's Day 1 lifting session as active recovery.</div>
+    <details class="session-card" data-date="2026-08-05" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-05</span>
+          <span class="pill badge-cardio">Zone 2 Run</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-05 &mdash; Zone 2 Treadmill Run (Cardio)</strong></p>
+        <div class="callout info">30:06 total, Activity Strain 9.9, 3,717 steps. Zone 2 29:30 (99%), Zone 3 0:17 (&lt;1%), Zone 1 0:19 (1%) &mdash; near-perfect zone 2 execution, almost no drift. Paired with today's Day 1 lifting session as active recovery.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-02 &mdash; Gym (delt/hamstring/tricep gap-filling)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-02" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-02</span>
+          <span class="pill badge-gym">delt/hamstring/tricep gap-filling</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-02 &mdash; Gym (delt/hamstring/tricep gap-filling)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">12</td><td class="num">130 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">120 lb</td></tr>
@@ -929,15 +1698,54 @@
       <tr><td>Triceps Pushdown</td><td class="num">11</td><td class="num">60 lb</td></tr>
       <tr><td>Bodyweight Dips</td><td class="num">22</td><td class="num">&mdash;</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-02 &mdash; Hike: Mystic Lake, MT (Cardio)</strong></p>
-    <div class="callout info">Mystic Lake via West Rosebud Trail (Absaroka-Beartooth Wilderness) &mdash; ~5.8mi round trip, ~1,410ft elevation gain (trail reference, not GPS-tracked this session). WHOOP: 3:38:58 total, 13,271 steps, Activity Strain 12.6. Zone 0 48%, Zone 1 46%, Zone 2 6% &mdash; steady low-intensity effort, consistent with a long hike rather than a cardio push.</div>
+    <details class="session-card" data-date="2026-08-02" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-02</span>
+          <span class="pill badge-cardio">Hike</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-02 &mdash; Hike: Mystic Lake, MT (Cardio)</strong></p>
+        <div class="callout info">Mystic Lake via West Rosebud Trail (Absaroka-Beartooth Wilderness) &mdash; ~5.8mi round trip, ~1,410ft elevation gain (trail reference, not GPS-tracked this session). WHOOP: 3:38:58 total, 13,271 steps, Activity Strain 12.6. Zone 0 48%, Zone 1 46%, Zone 2 6% &mdash; steady low-intensity effort, consistent with a long hike rather than a cardio push.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-02 &mdash; Zone 2 Stairmaster (Cardio)</strong></p>
-    <div class="callout info">29:56 total, Activity Strain 9.7. Zone 2 26:33 (89%), Zone 3 1:31 (5%), Zone 1 1:51 (6%), Zone 4 0:02 (&lt;1%). Clean zone 2 session &mdash; closes the only real gap from this week's volume audit (no zone 2 work logged all week otherwise).</div>
+    <details class="session-card" data-date="2026-08-02" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-02</span>
+          <span class="pill badge-cardio">Stairmaster</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-02 &mdash; Zone 2 Stairmaster (Cardio)</strong></p>
+        <div class="callout info">29:56 total, Activity Strain 9.7. Zone 2 26:33 (89%), Zone 3 1:31 (5%), Zone 1 1:51 (6%), Zone 4 0:02 (&lt;1%). Clean zone 2 session &mdash; closes the only real gap from this week's volume audit (no zone 2 work logged all week otherwise).</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-01 &mdash; Gym (Yellowstone Fitness, not the usual gym)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-08-01" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-01</span>
+          <span class="pill badge-gym">Yellowstone Fitness, not the usual gym</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-01 &mdash; Gym (Yellowstone Fitness, not the usual gym)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Laying Leg Curl</td><td class="num">12 (failed 13th)</td><td class="num">70 lb</td></tr>
       <tr><td>Laying Leg Curl</td><td class="num">9 (failed 10th)</td><td class="num">70 lb</td></tr>
@@ -953,12 +1761,38 @@
       <tr><td>Low Cable Row</td><td class="num">9 (failed 10th)</td><td class="num">190 lb</td></tr>
       <tr><td>Low Cable Row</td><td class="num">20</td><td class="num">175 lb</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-08-01 &mdash; Norwegian 4x4 (Cardio)</strong></p>
-    <div class="callout info">3 full intervals (7.6 / 7.5 / 7.2 mph) + a 4th cut short for time. WHOOP: 22:53 total, Zone 5 5:10 (22%), Zone 4 7:06 (34%), Zone 3 2:41 (11%), Zone 2 2:12 (9%), Zone 1 5:43 (24%). ~12:16 combined Zone 4-5 time across 3 rounds &mdash; close to the 12min (3&times;4min) target for intervals completed.</div>
+    <details class="session-card" data-date="2026-08-01" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-08-01</span>
+          <span class="pill badge-hiit">Norwegian 4x4</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-08-01 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+        <div class="callout info">3 full intervals (7.6 / 7.5 / 7.2 mph) + a 4th cut short for time. WHOOP: 22:53 total, Zone 5 5:10 (22%), Zone 4 7:06 (34%), Zone 3 2:41 (11%), Zone 2 2:12 (9%), Zone 1 5:43 (24%). ~12:16 combined Zone 4-5 time across 3 rounds &mdash; close to the 12min (3&times;4min) target for intervals completed.</div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-07-31 &mdash; Gym (mixed session)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-07-31" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-07-31</span>
+          <span class="pill badge-gym">mixed session</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-07-31 &mdash; Gym (mixed session)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
       <tr><td>Weighted Lunges</td><td class="num">15</td><td class="num">135 lb</td></tr>
@@ -973,9 +1807,22 @@
       <tr><td>DB Curl</td><td class="num">10</td><td class="num">35 lb</td></tr>
       <tr><td>DB Curl</td><td class="num">12</td><td class="num">35 lb</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-07-30 &mdash; Gym (Day 3)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-07-30" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-07-30</span>
+          <span class="pill badge-gym">Day 3</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-07-30 &mdash; Gym (Day 3)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Pec Deck</td><td class="num">10</td><td class="num">180 lb</td></tr>
       <tr><td>Reverse Pec Deck</td><td class="num">15</td><td class="num">120 lb</td></tr>
@@ -993,9 +1840,22 @@
       <tr><td>Incline DB Press</td><td class="num">7 (failed 8th)</td><td class="num">55 lb</td></tr>
       <tr><td>Incline DB Press</td><td class="num">8</td><td class="num">55 lb</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-07-28 &mdash; Gym (Day 2)</strong></p>
-    <div class="table-wrap"><table>
+    <details class="session-card" data-date="2026-07-28" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-07-28</span>
+          <span class="pill badge-gym">Day 2</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-07-28 &mdash; Gym (Day 2)</strong></p>
+        <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">190 lb</td></tr>
       <tr><td>Triceps Pushdown</td><td class="num">10</td><td class="num">120 lb</td></tr>
@@ -1017,9 +1877,22 @@
       <tr><td>Lateral Raise</td><td class="num">13</td><td class="num">25 lb</td></tr>
       <tr><td>Hammer Curl</td><td class="num">15</td><td class="num">40 lb</td></tr>
     </table></div>
+      </div>
+    </details>
+    
 
-    <p class="muted"><strong>2026-07-27 &mdash; Gym (cut short)</strong></p>
-    <div class="callout warn">2026-07-27 &mdash; Gym session cut short: light-headed and nauseous after set 10, likely under-fueled (only ~788 kcal logged before training). Stopped early, no cardio completed.</div>
+    <details class="session-card" data-date="2026-07-27" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-07-27</span>
+          <span class="pill badge-gym">cut short</span>
+          
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-07-27 &mdash; Gym (cut short)</strong></p>
+        <div class="callout warn">2026-07-27 &mdash; Gym session cut short: light-headed and nauseous after set 10, likely under-fueled (only ~788 kcal logged before training). Stopped early, no cardio completed.</div>
     <div class="table-wrap"><table>
       <tr><th>Exercise</th><th>Sets x Reps</th><th>Weight</th></tr>
       <tr><td>Leg Press</td><td class="num">15</td><td class="num">490 lb</td></tr>
@@ -1034,22 +1907,85 @@
       <tr><td>Weighted Dips</td><td class="num">10</td><td class="num">+45 lb</td></tr>
     </table>
     </div>
+      </div>
+    </details>
+    
+      </div>
+    </div>
+
+    <!-- Nutrition Calibration Log -->
+    <div class="card">
+      <div class="card-head"><h3 class="card-title">Nutrition Target History</h3></div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Date</th><th>Calorie Target</th><th>Reasoning</th></tr>
+      <tr><td>2026-07-26</td><td class="num">~2,200</td><td>Initial estimate &mdash; Mifflin-St Jeor formula, moderate-activity assumption</td></tr>
+      <tr><td>2026-07-26</td><td class="num">~1,700</td><td>Revised same day &mdash; WHOOP measured ~1,800 kcal/day average burn (all days), notably lower than the formula estimate; real tracked data takes priority</td></tr>
+      <tr><td>2026-07-27</td><td class="num">~1,840</td><td>Revised again &mdash; user's own judgment that WHOOP underestimates burn; maintenance bumped 1,800&rarr;2,000, same ~8% deficit reapplied</td></tr>
+        </table>
+      </div>
+    </div>
   </section>
-</div>
 
-<script>
-  document.querySelectorAll('.tab-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
-      document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
-</script>
+  <!-- Athlete Profile Modal -->
+  <div class="modal-overlay" id="profile-modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 style="font-size:1.15rem; font-weight:700;">Athlete Profile & Constraints</h3>
+        <button class="modal-close" onclick="closeProfileModal()">&times;</button>
+      </div>
+      <div class="table-wrap" style="margin-bottom: 16px;">
+        <table>
+          <tr><th>Age</th><td>25</td></tr>
+          <tr><th>Height</th><td>5'6"</td></tr>
+          <tr><th>Baseline Weight</th><td>163 lb &middot; Current ~165.4 lb</td></tr>
+          <tr><th>Body Fat</th><td>~high-teens&ndash;20% &rarr; <strong>Goal: 15%</strong></td></tr>
+          <tr><th>Experience</th><td>10 years weightlifting</td></tr>
+          <tr><th>Event</th><td><strong>Hyrox Competition &mdash; Sep 20, 2026</strong></td></tr>
+        </table>
+      </div>
+      <h4 style="font-size:0.95rem; margin-bottom: 6px;">Injury Guardrails</h4>
+      <div class="callout warn" style="margin-bottom: 16px;">
+        <strong>Bulging Disc (Lower Back):</strong> Avoid heavy loaded spinal flexion and risky deadlift variations. Favor neutral-spine, back-friendly alternatives.
+      </div>
+      <h4 style="font-size:0.95rem; margin-bottom: 6px;">Training Philosophy</h4>
+      <p class="faint" style="color:var(--ink-soft); font-size:0.86rem;">
+        80/20 efficiency: Compound, multi-joint movements over isolation work. Full body sessions over single-muscle splits. Moderate deficit (~1,840 kcal) for muscle-preserving recomp.
+      </p>
+    </div>
+  </div>
 
+</div> <!-- .wrap -->
+
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="mobile-bottom-nav">
+  <div class="mobile-nav-items">
+    <button class="mobile-nav-btn active" data-tab="today">
+      <span class="mobile-nav-icon">⚡</span>
+      <span>Today</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="weekly">
+      <span class="mobile-nav-icon">📊</span>
+      <span>Weekly</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="routine">
+      <span class="mobile-nav-icon">🏋️</span>
+      <span>Routine</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="progress">
+      <span class="mobile-nav-icon">📈</span>
+      <span>Progress</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ======================================================== -->
+<!-- JAVASCRIPT LOGIC ENGINES (AGENTS.MD COMPLIANT) -->
+<!-- ======================================================== -->
 <script>
-  // Mirrors meals/YYYY-MM.md. Update this object (and TODAY below) whenever a meal is logged there.
+  // Targets basis
+  var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
+
   var NUTRITION_LOG = {
     '2026-07-26': [
       { name: "Eggbert's avocado bacon omelet, fruit, buttered wheat toast + apple butter", kcal: 1000, protein: 43, fat: 64, carbs: 70, source: 'estimate' },
@@ -1338,12 +2274,7 @@
       { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' }
     ]
   };
-  var TARGETS = { kcal: 1840, protein: 130, fat: 65, carbs: 185 };
-  // Logging-coverage ledger. Any day NOT listed here is 'complete' and counts normally.
-  //   partial   = logged, but with a known unlogged gap. Totals are a FLOOR, not a total.
-  //   untracked = deliberately not logged at all (vacation/travel). NOT a zero-calorie day.
-  // Both are excluded from intake averages and from calorie-balance math -- see README.md
-  // "Logging coverage and gaps" for the full rules.
+
   var DAY_STATUS = {
     '2026-08-11': { status: 'partial',   note: 'Work happy hour not logged — the totals below are a partial floor, not the real daily total.' },
     '2026-08-12': { status: 'untracked', note: 'Vacation — not logged.' },
@@ -1354,13 +2285,250 @@
     '2026-08-17': { status: 'untracked', note: 'Vacation — not logged (window closes as soon as logging resumes).' },
     '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' }
   };
-  function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
-  // Set to the actual current date in Mountain Time (the user's timezone), e.g. via
-  // `TZ=America/Denver date` -- see README.md "Date handling for logs". As of 2026-07-30 this is
-  // looked up and applied automatically without confirming with the user; only log under a
-  // different date when the user explicitly asks for one.
-  var TODAY = '2026-08-29';
 
+  var TODAY = '2026-08-29';
+  var selectedDate = TODAY;
+  var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}];
+
+  function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
+
+  // Theme Management
+  var themeToggleBtn = document.getElementById('theme-toggle-btn');
+  function initTheme() {
+    var saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+  }
+  themeToggleBtn.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+  initTheme();
+
+  // Profile Modal
+  var modal = document.getElementById('profile-modal');
+  document.getElementById('profile-modal-btn').addEventListener('click', function() {
+    modal.classList.add('active');
+  });
+  function closeProfileModal() { modal.classList.remove('active'); }
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeProfileModal();
+  });
+
+  // Tab Switching (Desktop & Mobile Sync)
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.tab === tabId);
+    });
+    document.querySelectorAll('.mobile-nav-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.tab === tabId);
+    });
+    document.querySelectorAll('.tab-panel').forEach(function(p) {
+      p.classList.toggle('active', p.id === tabId);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('.tab-btn, .mobile-nav-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchTab(btn.dataset.tab);
+    });
+  });
+
+  // Today Date Navigator
+  function changeDate(delta) {
+    var d = new Date(selectedDate + 'T00:00:00');
+    d.setDate(d.getDate() + delta);
+    selectedDate = d.toISOString().slice(0, 10);
+    renderTodayTab();
+  }
+  document.getElementById('date-prev-btn').addEventListener('click', function() { changeDate(-1); });
+  document.getElementById('date-next-btn').addEventListener('click', function() { changeDate(1); });
+
+  function dayTotals(dateStr) {
+    var items = NUTRITION_LOG[dateStr];
+    if (!items) return null;
+    return items.reduce(function (acc, it) {
+      acc.kcal += it.kcal || 0; acc.protein += it.protein || 0; acc.fat += it.fat || 0; acc.carbs += it.carbs || 0;
+      return acc;
+    }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
+  }
+
+  function renderTodayTab() {
+    var label = document.getElementById('date-current-label');
+    var isToday = selectedDate === TODAY;
+    label.innerHTML = selectedDate + (isToday ? ' <span class="brand-tag">TODAY</span>' : '');
+
+    var items = NUTRITION_LOG[selectedDate] || [];
+    var t = dayTotals(selectedDate) || { kcal: 0, protein: 0, fat: 0, carbs: 0 };
+    var st = DAY_STATUS[selectedDate];
+    var statusPill = document.getElementById('day-status-pill');
+
+    if (st && st.status === 'untracked') {
+      statusPill.className = 'pill alert';
+      statusPill.textContent = 'Untracked Vacation';
+    } else if (st && st.status === 'partial') {
+      statusPill.className = 'pill alert';
+      statusPill.textContent = '⚠️ Partial Day';
+    } else if (isToday) {
+      statusPill.className = 'pill good';
+      statusPill.textContent = 'In Progress (Today)';
+    } else if (items.length > 0) {
+      statusPill.className = 'pill good';
+      statusPill.textContent = 'Complete';
+    } else {
+      statusPill.className = 'pill';
+      statusPill.textContent = 'Empty';
+    }
+
+    // Runway Alert
+    var runwayAlert = document.getElementById('day-runway-alert');
+    var diffKcal = TARGETS.kcal - t.kcal;
+    var diffPro = TARGETS.protein - t.protein;
+    if (st && st.status === 'untracked') {
+      runwayAlert.innerHTML = '<div class="callout">✈️ <strong>Vacation Day:</strong> Deliberately untracked. Excluded from averages and calorie-balance math.</div>';
+    } else if (st && st.status === 'partial') {
+      runwayAlert.innerHTML = '<div class="callout warn">⚠️ <strong>Partial Floor:</strong> ' + st.note + '</div>';
+    } else if (isToday) {
+      if (diffKcal > 0) {
+        runwayAlert.innerHTML = '<div class="callout info">💡 <strong>Remaining for Dinner/Evening:</strong> <strong>' + Math.round(diffKcal) + ' kcal</strong> and <strong>' + Math.max(0, Math.round(diffPro)) + 'g protein</strong> to hit today&rsquo;s recomposition targets.</div>';
+      } else {
+        runwayAlert.innerHTML = '<div class="callout good">✅ <strong>Calorie Target Met:</strong> ' + Math.round(t.kcal) + ' kcal logged (+' + Math.round(-diffKcal) + ' kcal over target). Protein at ' + Math.round(t.protein) + 'g.</div>';
+      }
+    } else {
+      runwayAlert.innerHTML = '';
+    }
+
+    // Macro Progress Bars
+    var macroBars = document.getElementById('day-macro-bars');
+    function makeBar(label, val, target, unit, cls) {
+      var pct = Math.min(100, Math.round((val / target) * 100));
+      return '<div class="macro-bar-item">' +
+        '<div class="macro-bar-label">' +
+          '<span>' + label + '</span>' +
+          '<span class="num">' + Math.round(val) + ' / ' + target + unit + ' (' + pct + '%)</span>' +
+        '</div>' +
+        '<div class="macro-bar-track"><div class="macro-bar-fill ' + cls + '" style="width:' + pct + '%;"></div></div>' +
+      '</div>';
+    }
+    macroBars.innerHTML =
+      makeBar('Calories', t.kcal, TARGETS.kcal, ' kcal', 'fill-cal') +
+      makeBar('Protein', t.protein, TARGETS.protein, 'g', 'fill-pro') +
+      makeBar('Fat', t.fat, TARGETS.fat, 'g', 'fill-fat') +
+      makeBar('Carbs', t.carbs, TARGETS.carbs, 'g', 'fill-carb');
+
+    // Meals List
+    var mealsContainer = document.getElementById('day-meals-container');
+    if (items.length === 0) {
+      mealsContainer.innerHTML = '<div style="color:var(--ink-faint); font-style:italic; padding:12px 0;">No food logged for ' + selectedDate + '. Describe what you ate in chat or send a photo to log it!</div>';
+    } else {
+      var html = '<div style="display:flex; flex-direction:column; gap:8px;">';
+      items.forEach(function(it) {
+        var srcTag = it.source === 'label' ? 'exact, label' : 'estimated';
+        html += '<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:8px 0; border-bottom:1px dashed var(--border); font-size:0.86rem;">' +
+          '<div style="flex:1; min-width:200px;">' +
+            '<strong>' + it.name + '</strong> ' +
+            '<span class="pill" style="font-size:10px;">' + srcTag + '</span>' +
+          '</div>' +
+          '<div class="num" style="color:var(--ink-soft); font-size:0.82rem;">' +
+            '<strong>' + it.kcal + ' kcal</strong> &middot; ' + it.protein + 'g P &middot; ' + it.fat + 'g F &middot; ' + it.carbs + 'g C' +
+          '</div>' +
+        '</div>';
+      });
+      html += '<div style="display:flex; justify-content:space-between; font-weight:700; padding-top:8px; font-size:0.9rem;">' +
+        '<span>Daily Total:</span>' +
+        '<span class="num">' + Math.round(t.kcal) + ' kcal &middot; ' + Math.round(t.protein) + 'g P &middot; ' + Math.round(t.fat) + 'g F &middot; ' + Math.round(t.carbs) + 'g C</span>' +
+      '</div></div>';
+      mealsContainer.innerHTML = html;
+    }
+  }
+
+  // Quick Day Prescriptions for Today Tab
+  var QUICK_ROUTINE = {
+    'D1': {
+      title: 'Day 1 &mdash; Full Body A (Core)',
+      cardio: 'Zone 2 run, 20&ndash;30 min',
+      pairs: [
+        { name: 'Weighted Dips &harr; Weighted Pull-Ups', reps: '3x8-12 & 3x6-10', load: '@ ~43.5&ndash;48 lb / +40.5&ndash;45 lb' },
+        { name: 'Leg Press &harr; Crunches ⚠️', reps: '3x10-15 & 3x15-20', load: '@ ~445.5&ndash;501 lb' },
+        { name: 'Lateral Raise &harr; DB Curl', reps: '3x12-15 & 3x10-12', load: '@ ~22.5&ndash;24 lb / 33.75&ndash;35.5 lb' },
+        { name: 'Reverse Pec Deck (Finisher)', reps: '2x12-15', load: '@ ~153&ndash;164 lb' }
+      ]
+    },
+    'D2': {
+      title: 'Day 2 &mdash; Full Body B (Core)',
+      cardio: 'Norwegian 4x4 HIIT (lightest leg day fit)',
+      pairs: [
+        { name: 'Low Cable Row &harr; Triceps Pushdown', reps: '4x10-12 & 3x10-12', load: '@ ~169&ndash;177 lb / 127.3&ndash;133.7 lb' },
+        { name: 'Leg Extension ⚠️ &harr; Leg Curl', reps: '3x12-15 & 3x12-15', load: '@ ~288&ndash;309 lb / 194&ndash;207 lb' },
+        { name: 'Lateral Raise &harr; Hammer Curl', reps: '3x12-15 & 3x10-12', load: '@ ~22.5&ndash;24 lb / 43.4&ndash;45.6 lb' }
+      ]
+    },
+    'D3': {
+      title: 'Day 3 &mdash; Full Body C (Core)',
+      cardio: 'Zone 2 run, 20&ndash;30 min',
+      pairs: [
+        { name: 'Pec Deck &harr; Reverse Pec Deck', reps: '3x12-15 & 2x12-15', load: '@ ~176.4&ndash;189 lb / 153&ndash;164 lb' },
+        { name: 'Lat Pulldown &harr; Overhead Triceps Ext ⚠️', reps: '3x10-12 & 3x10-12', load: '@ ~157.5&ndash;165.5 lb / 54&ndash;57 lb' },
+        { name: 'Incline DB Press &harr; Weighted Lunges ⚠️', reps: '3x8-12 & 3x10-12/leg', load: '@ ~58.5&ndash;64.5 lb / 130&ndash;137 lb' },
+        { name: 'Leg Curl (Finisher)', reps: '2x12-15', load: '@ ~194&ndash;207 lb' }
+      ]
+    },
+    'D4': {
+      title: 'Day 4 &mdash; Extra Volume (Optional)',
+      cardio: 'Norwegian 4x4 or Zone 2',
+      pairs: [
+        { name: 'Leg Extension ⚠️ &harr; Leg Curl', reps: '3x12-15 & 3x12-15', load: '@ ~288&ndash;309 lb / 194&ndash;207 lb' },
+        { name: 'Incline DB Press &harr; Low Cable Row', reps: '3x8-12 & 3x10-12', load: '@ ~58.5&ndash;64.5 lb / 169&ndash;177 lb' },
+        { name: 'Lateral Raise &harr; Reverse Pec Deck', reps: '3x12-15 & 3x12-15', load: '@ ~22.5&ndash;24 lb / 153&ndash;164 lb' }
+      ]
+    },
+    'D5': {
+      title: 'Day 5 &mdash; Hyrox Station Practice (Optional)',
+      cardio: 'Long Zone 2 run (&ge;40 min)',
+      pairs: [
+        { name: 'Hyrox Stations', reps: 'Sled, wall balls, burpees, ergs', load: 'Race paces' },
+        { name: 'Leg Press or Leg Curl', reps: '3x10-15', load: 'Extra leg volume' }
+      ]
+    }
+  };
+
+  function setQuickDay(dayKey) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.toggle('active', b.textContent === dayKey);
+    });
+    var d = QUICK_ROUTINE[dayKey];
+    var html = '<h4 style="font-size:0.95rem; margin-bottom:8px;">' + d.title + '</h4><div style="display:flex; flex-direction:column; gap:6px;">';
+    d.pairs.forEach(function(p) {
+      html += '<div style="display:flex; justify-content:space-between; align-items:center; font-size:0.84rem; padding:4px 0; border-bottom:1px dashed var(--border);">' +
+        '<span>' + p.name + '</span>' +
+        '<span class="num" style="color:var(--accent); font-weight:600;">' + p.load + '</span>' +
+      '</div>';
+    });
+    html += '<div class="cardio-line">🏃 ' + d.cardio + '</div></div>';
+    document.getElementById('quick-day-content').innerHTML = html;
+  }
+  setQuickDay('D1');
+
+  // Gym Location Switcher
+  function setGymLocation(loc) {
+    var note = document.getElementById('gym-location-note');
+    var pBtn = document.getElementById('gym-primary-btn');
+    var yBtn = document.getElementById('gym-yellowstone-btn');
+    if (loc === 'yellowstone') {
+      yBtn.classList.add('active');
+      pBtn.classList.remove('active');
+      note.style.display = 'block';
+      note.innerHTML = '⚠️ <strong>Yellowstone Fitness active:</strong> Machine cable pin ratios differ significantly. Suggested Lateral Raise Machine: <strong>81&ndash;87 lb</strong> (vs 22.5&ndash;24 lb DBs). Seated Leg Curl: <strong>106&ndash;114 lb</strong>.';
+    } else {
+      pBtn.classList.add('active');
+      yBtn.classList.remove('active');
+      note.style.display = 'none';
+    }
+  }
+
+  // 14-Day Trend Render
   function last14Days() {
     var days = [];
     var base = new Date(TODAY + 'T00:00:00');
@@ -1370,72 +2538,6 @@
       days.push(d.toISOString().slice(0, 10));
     }
     return days;
-  }
-
-  function dayTotals(dateStr) {
-    var items = NUTRITION_LOG[dateStr];
-    if (!items) return null;
-    return items.reduce(function (acc, it) {
-      acc.kcal += it.kcal; acc.protein += it.protein; acc.fat += it.fat; acc.carbs += it.carbs;
-      return acc;
-    }, { kcal: 0, protein: 0, fat: 0, carbs: 0 });
-  }
-
-  function statTileHtml(label, value, target, unit) {
-    var over = value > target * 1.1;
-    var style = over ? ' style="color:var(--warn)"' : '';
-    var cls = over ? 'value' : 'value accent';
-    return '<div class="stat"><span class="label">' + label + '</span><span class="' + cls + '"' + style + '>' +
-      Math.round(value) + unit + '</span><span class="sub">target ' + target + unit + '</span></div>';
-  }
-
-  function renderDaySummary(dateStr) {
-    var container = document.getElementById('day-summary');
-    var items = NUTRITION_LOG[dateStr];
-    var st = DAY_STATUS[dateStr];
-    if (!items || items.length === 0) {
-      if (st && st.status === 'untracked') {
-        container.innerHTML = '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
-          ' This is not a zero-calorie day; it is excluded from averages and calorie-balance math entirely.</div>';
-      } else {
-        container.innerHTML = '<div class="empty-state">No meals logged for ' + dateStr + '.</div>';
-      }
-      return;
-    }
-    var t = dayTotals(dateStr);
-    var html = '';
-    if (st && st.status === 'partial') {
-      html += '<div class="callout">&#9888; <strong>Partial day</strong> &mdash; ' + st.note +
-        ' Treat these numbers as a floor; excluded from averages and calorie-balance math.</div>';
-    } else if (st && st.status === 'untracked') {
-      html += '<div class="callout">&#9992; <strong>Untracked day</strong> &mdash; ' + st.note +
-        ' Excluded from averages and calorie-balance math.</div>';
-    }
-    html += '<div class="stat-grid">' +
-      statTileHtml('Calories', t.kcal, TARGETS.kcal, '') +
-      statTileHtml('Protein', t.protein, TARGETS.protein, 'g') +
-      statTileHtml('Fat', t.fat, TARGETS.fat, 'g') +
-      statTileHtml('Carbs', t.carbs, TARGETS.carbs, 'g') +
-      '</div><div class="day-summary-items">';
-    items.forEach(function (it) {
-      var srcTag = it.source === 'label' ? 'label, exact' : 'estimated';
-      html += '<div class="day-item-row"><span class="day-item-name">' + it.name +
-        ' <span class="faint">(' + srcTag + ')</span></span><span class="day-item-macros">' +
-        it.kcal + ' kcal &middot; ' + it.protein + 'g P &middot; ' + it.fat + 'g F &middot; ' + it.carbs + 'g C</span></div>';
-    });
-    html += '</div>';
-    container.innerHTML = html;
-  }
-
-  function initDayPicker() {
-    var select = document.getElementById('day-select');
-    var days = last14Days().slice().reverse();
-    select.innerHTML = days.map(function (d) {
-      return '<option value="' + d + '">' + d + (d === TODAY ? ' (today)' : '') + '</option>';
-    }).join('');
-    select.value = TODAY;
-    select.addEventListener('change', function () { renderDaySummary(select.value); });
-    renderDaySummary(TODAY);
   }
 
   function renderTrend() {
@@ -1465,10 +2567,6 @@
       head.innerHTML = '<span class="metric-name">' + m.label + '</span><span class="metric-target">target ' + TARGETS[m.key] + m.unit + '</span>';
       chart.appendChild(head);
 
-      // Plot area (bars + target line) is a fixed 64px box, kept completely separate
-      // from the labels row below -- otherwise the label text shares the flex column
-      // with the bar and gets flexbox-shrunk together, silently capping bar heights
-      // and breaking their scale relative to the target line.
       var plot = document.createElement('div');
       plot.className = 'trend-plot';
 
@@ -1483,17 +2581,12 @@
         var bar = document.createElement('div');
         if (v === null) {
           bar.className = 'trend-bar ' + (stat === 'untracked' ? 'is-untracked' : 'is-empty');
-          bar.title = stat === 'untracked'
-            ? d + ': untracked (vacation) — excluded from analysis, not a zero'
-            : d + ': no data logged';
+          bar.title = stat === 'untracked' ? d + ': untracked (vacation)' : d + ': no data logged';
         } else {
           var over = v > TARGETS[m.key] * 1.15;
-          // A partial day's bar is real but incomplete -- render it muted so it is never
-          // read as a genuine low day (that misread is exactly what corrupts the averages).
           bar.className = 'trend-bar' + (over ? ' is-warn' : '') + (stat === 'partial' ? ' is-partial' : '');
           bar.style.height = Math.max(2, (v / chartMax) * chartHeight) + 'px';
-          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')' +
-            (stat === 'partial' ? ' — PARTIAL, floor only, excluded from averages' : '');
+          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')';
         }
         col.appendChild(bar);
         bars.appendChild(col);
@@ -1523,11 +2616,144 @@
     });
   }
 
-  initDayPicker();
-  renderTrend();
+  // ==========================================
+  // SVG BODYWEIGHT CHART ENGINE
+  // ==========================================
+  function renderBodyweightChart() {
+    var svg = document.getElementById('bw-chart-svg');
+    if (!svg || WEIGH_INS.length === 0) return;
+
+    var width = 700;
+    var height = 240;
+    var padLeft = 45;
+    var padRight = 20;
+    var padTop = 20;
+    var padBottom = 30;
+
+    var minW = 161.0;
+    var maxW = 168.0;
+
+    var dates = WEIGH_INS.map(function(w) { return new Date(w.date + 'T00:00:00').getTime(); });
+    var minT = new Date('2026-07-25T00:00:00').getTime();
+    var maxT = new Date('2026-08-28T00:00:00').getTime();
+
+    function getX(t) {
+      return padLeft + ((t - minT) / (maxT - minT)) * (width - padLeft - padRight);
+    }
+    function getY(w) {
+      return padTop + ((maxW - w) / (maxW - minW)) * (height - padTop - padBottom);
+    }
+
+    var svgHtml = '';
+
+    // Vacation Shaded Box (Aug 12 to Aug 22 caution window)
+    var vacStart = getX(new Date('2026-08-12T00:00:00').getTime());
+    var vacEnd = getX(new Date('2026-08-23T00:00:00').getTime());
+    svgHtml += '<rect x="' + vacStart + '" y="' + padTop + '" width="' + (vacEnd - vacStart) + '" height="' + (height - padTop - padBottom) + '" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.4)" stroke-dasharray="3 3"/>';
+    svgHtml += '<text x="' + (vacStart + 6) + '" y="' + (padTop + 16) + '" fill="#d29922" font-size="10" font-family="monospace">✈️ Vacation & Caution Window</text>';
+
+    // Horizontal Grid Lines
+    [162, 164, 165.4, 166, 168].forEach(function(gw) {
+      var y = getY(gw);
+      var isBase = gw === 165.4;
+      svgHtml += '<line x1="' + padLeft + '" y1="' + y + '" x2="' + (width - padRight) + '" y2="' + y + '" stroke="' + (isBase ? '#58a6ff' : 'var(--border)') + '" stroke-dasharray="' + (isBase ? '4 4' : '2 2') + '" stroke-width="' + (isBase ? '1.5' : '1') + '"/>';
+      svgHtml += '<text x="' + (padLeft - 6) + '" y="' + (y + 4) + '" fill="' + (isBase ? '#58a6ff' : 'var(--ink-faint)') + '" font-size="10" font-family="monospace" text-anchor="end">' + gw + '</text>';
+    });
+
+    // Draw Line
+    var pts = WEIGH_INS.map(function(w) {
+      var t = new Date(w.date + 'T00:00:00').getTime();
+      return getX(t) + ',' + getY(w.weight);
+    }).join(' ');
+    svgHtml += '<polyline points="' + pts + '" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+
+    // Draw Dots
+    WEIGH_INS.forEach(function(w) {
+      var t = new Date(w.date + 'T00:00:00').getTime();
+      var cx = getX(t);
+      var cy = getY(w.weight);
+      var isCaution = w.date === '2026-08-19' || w.date === '2026-08-20';
+      var color = isCaution ? '#f59e0b' : 'var(--good)';
+
+      svgHtml += '<circle cx="' + cx + '" cy="' + cy + '" r="5" fill="' + color + '" stroke="var(--surface)" stroke-width="2" style="cursor:pointer;" data-tip="' + w.date + ': ' + w.weight + ' lb &mdash; ' + (isCaution ? 'Post-gap caution point' : 'Confirmed trend point') + '"/>';
+    });
+
+    // X-axis Dates
+    [
+      { d: '2026-07-26', l: '7/26' },
+      { d: '2026-08-01', l: '8/01' },
+      { d: '2026-08-10', l: '8/10' },
+      { d: '2026-08-19', l: '8/19' },
+      { d: '2026-08-26', l: '8/26' }
+    ].forEach(function(lbl) {
+      var t = new Date(lbl.d + 'T00:00:00').getTime();
+      var x = getX(t);
+      svgHtml += '<text x="' + x + '" y="' + (height - 8) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="middle">' + lbl.l + '</text>';
+    });
+
+    svg.innerHTML = svgHtml;
+
+    // Tooltip handler
+    var tooltip = document.getElementById('bw-tooltip');
+    svg.querySelectorAll('circle').forEach(function(c) {
+      c.addEventListener('mouseenter', function(e) {
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = c.dataset.tip;
+        tooltip.style.left = (c.cx.baseVal.value - 40) + 'px';
+        tooltip.style.top = (c.cy.baseVal.value - 34) + 'px';
+      });
+      c.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+      });
+    });
+  }
+
+  // Workout History Filters
+  function filterSessions(cat) {
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.toggle('active', b.getAttribute('onclick') && b.getAttribute('onclick').includes(cat));
+    });
+    document.querySelectorAll('.session-card').forEach(function(card) {
+      if (cat === 'all') {
+        card.style.display = 'block';
+      } else if (cat === 'gym') {
+        card.style.display = card.dataset.cat === 'gym' ? 'block' : 'none';
+      } else if (cat === 'cardio') {
+        card.style.display = card.dataset.cat === 'cardio' ? 'block' : 'none';
+      } else if (cat === 'pr') {
+        card.style.display = card.dataset.pr === 'true' ? 'block' : 'none';
+      }
+    });
+  }
+
+  function searchWorkouts() {
+    var q = document.getElementById('workout-search').value.toLowerCase();
+    document.querySelectorAll('.session-card').forEach(function(card) {
+      var text = card.textContent.toLowerCase();
+      card.style.display = text.includes(q) ? 'block' : 'none';
+    });
+  }
+
+  var allOpen = false;
+  function toggleAllSessions() {
+    allOpen = !allOpen;
+    document.querySelectorAll('.session-card').forEach(function(card) {
+      if (allOpen) card.setAttribute('open', '');
+      else card.removeAttribute('open');
+    });
+  }
+
+  function filterOneRMs() {
+    var q = document.getElementById('onerm-search').value.toLowerCase();
+    document.querySelectorAll('#onerm-table tbody tr').forEach(function(tr, idx) {
+      if (idx === 0) return;
+      var text = tr.textContent.toLowerCase();
+      tr.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
 
   // ==========================================
-  // WEEKLY PERFORMANCE REVIEW ENGINE
+  // WEEKLY REVIEW ENGINE (Israetel RP Logic)
   // ==========================================
   var MUSCLE_RULES = {
     'Incline DB Press': { muscle: 'Chest', pressing: 1 },
@@ -1626,11 +2852,7 @@
         next = next.nextElementSibling;
       }
 
-      sessions.push({
-        date: date,
-        type: type,
-        sets: sets
-      });
+      sessions.push({ date: date, type: type, sets: sets });
     });
     return sessions;
   }
@@ -1644,20 +2866,17 @@
 
   function renderWeeklySummary(mondayDateStr) {
     var days = getWeekRangeDays(mondayDateStr);
-    var sundayDateStr = days[6];
     var isCurrentWeek = days.includes(TODAY);
 
-    // Header dates
     var sub = document.getElementById('week-dates-sub');
     if (sub) {
       sub.innerHTML = '<strong>' + days[0] + ' (Mon) &rarr; ' + days[6] + ' (Sun)</strong> ' +
         (isCurrentWeek ? '<span class="pill good" style="margin-left:6px;">Current Week</span>' : '<span class="pill" style="margin-left:6px;">Archived Week</span>');
     }
 
-    // 1. Workouts - direct sets only per Dr. Mike Israetel / RP research
     var allSessions = parseWorkoutsFromDOM();
     var weekSessions = allSessions.filter(function (s) { return days.includes(s.date); });
-    
+
     var directCounts = {};
     var cardioSessions = [];
     var gymSessionsCount = 0;
@@ -1668,12 +2887,8 @@
                      s.type.toLowerCase().indexOf('stairmaster') !== -1 ||
                      s.type.toLowerCase().indexOf('4x4') !== -1 ||
                      s.type.toLowerCase().indexOf('hike') !== -1;
-      if (isCardio) {
-        cardioSessions.push(s);
-      }
-      if (s.sets.length > 0) {
-        gymSessionsCount++;
-      }
+      if (isCardio) cardioSessions.push(s);
+      if (s.sets.length > 0) gymSessionsCount++;
 
       s.sets.forEach(function (set) {
         var rule = MUSCLE_RULES[set.exercise];
@@ -1691,16 +2906,13 @@
       });
     });
 
-    // Hypertrophy volume table & blind spots (Direct sets only)
     var blindSpots = [];
     var atFloor = [];
-    var optimalList = [];
     var volTbody = document.getElementById('week-volume-tbody');
     if (volTbody) {
       volTbody.innerHTML = '';
       VOLUME_LANDMARKS.forEach(function (l) {
         var total = directCounts[l.muscle] || 0;
-
         var statusClass = 'pill';
         var fillClass = 'on-track';
         var statusLabel = '';
@@ -1710,118 +2922,95 @@
           statusClass = 'pill alert';
           fillClass = 'warn';
           statusLabel = '⚠️ Blind Spot (0 sets)';
-          blindSpots.push(l.muscle + ' (0 direct sets &mdash; under MEV floor ' + l.mevMin + '&ndash;' + l.mevTarget + ')');
+          blindSpots.push(l.muscle + ' (0 direct sets)');
         } else if (total < l.mevMin) {
           statusClass = 'pill alert';
           fillClass = 'warn';
-          statusLabel = '⚠️ Under MEV Floor';
-          blindSpots.push(l.muscle + ' (' + total + ' direct sets &mdash; below MEV floor of ' + l.mevMin + ')');
+          statusLabel = '⚠️ Under MEV';
+          blindSpots.push(l.muscle + ' (' + total + ' sets)');
         } else if (total >= l.optMin) {
           statusClass = 'pill good';
           fillClass = 'opt';
           statusLabel = 'Optimal (MAV)';
-          optimalList.push(l.muscle);
         } else if (total >= l.mevTarget) {
-          statusClass = 'pill on-track';
+          statusClass = 'pill core';
           fillClass = 'on-track';
           statusLabel = 'On Track (&ge; MEV target)';
-          optimalList.push(l.muscle);
         } else {
-          statusClass = 'pill';
+          statusClass = 'pill warn';
           fillClass = 'mev';
           statusLabel = 'At MEV Floor';
-          atFloor.push(l.muscle + ' (' + total + ' sets)');
+          atFloor.push(l.muscle);
         }
 
         var tr = document.createElement('tr');
         tr.innerHTML = '<td><strong>' + l.muscle + '</strong><br><span class="faint" style="font-size:11px;">' + l.exercises + '</span></td>' +
-          '<td class="num"><strong>' + total + '</strong> <span class="faint" style="font-size:11px;">direct sets</span></td>' +
+          '<td class="num"><strong>' + total + '</strong> <span class="faint">direct sets</span></td>' +
           '<td class="num">' + l.mevMin + '&ndash;' + l.mevTarget + '</td>' +
           '<td class="num">' + l.optMin + '&ndash;' + l.optMax + '</td>' +
-          '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="faint" style="font-size:11px; margin-left:4px;">' + pct + '%</span></td>' +
+          '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="num faint" style="font-size:11px; margin-left:4px;">' + pct + '%</span></td>' +
           '<td><span class="' + statusClass + '">' + statusLabel + '</span></td>';
         volTbody.appendChild(tr);
       });
     }
 
-    // Volume callout banner
     var volCallouts = document.getElementById('week-volume-callouts');
     if (volCallouts) {
       var calloutHtml = '';
       if (blindSpots.length > 0) {
-        calloutHtml += '<div class="callout" style="border-left:3px solid var(--warn); background:color-mix(in srgb, var(--warn) 10%, transparent); margin-bottom:10px;">' +
-          '<strong>⚠️ Hypertrophy Volume Blind Spot' + (blindSpots.length > 1 ? 's' : '') + ' (Direct Sets &lt; MEV):</strong><ul style="margin:4px 0 0 18px; padding:0;">' +
-          blindSpots.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul></div>';
-      }
-      if (atFloor.length > 0) {
-        calloutHtml += '<div class="callout" style="border-left:3px solid var(--tag-delts); background:color-mix(in srgb, var(--tag-delts) 8%, transparent); margin-bottom:10px;">' +
-          '<strong>ℹ️ Reached MEV Floor (Direct Stimulus Met):</strong> ' + atFloor.join(', ') + '. Baseline hypertrophy maintained per Dr. Israetel\'s RP guidelines. Adding Day 4 (Extra Volume) or arm isolation touches pushes these toward the optimal MAV range.</div>';
-      }
-      if (blindSpots.length === 0 && atFloor.length === 0) {
-        calloutHtml += '<div class="callout info" style="margin-bottom:10px;"><strong>✅ Peak Hypertrophy Stimulus:</strong> All muscle groups have reached optimal volume (MAV) thresholds for this week!</div>';
+        calloutHtml += '<div class="callout warn"><strong>⚠️ Hypertrophy Volume Blind Spot' + (blindSpots.length > 1 ? 's' : '') + ':</strong> ' + blindSpots.join(', ') + '. Baseline MEV not met yet.</div>';
+      } else {
+        calloutHtml += '<div class="callout good">✅ <strong>Optimal Hypertrophy Stimulus:</strong> All muscle group minimums reached for this week!</div>';
       }
       volCallouts.innerHTML = calloutHtml;
     }
 
-    // Cardio summary
     var cardioDiv = document.getElementById('week-cardio-summary');
     if (cardioDiv) {
       if (cardioSessions.length > 0) {
         var cList = cardioSessions.map(function (c) { return '<strong>' + c.date.slice(5) + '</strong> (' + c.type + ')'; }).join(' &middot; ');
-        cardioDiv.innerHTML = '🏃 <strong>Cardio & Conditioning:</strong> ' + cardioSessions.length + ' session' + (cardioSessions.length > 1 ? 's' : '') + ' completed &mdash; ' + cList + '. Supports Hyrox conditioning and aerobic baseline.';
+        cardioDiv.innerHTML = '🏃 <strong>Cardio & Conditioning:</strong> ' + cardioSessions.length + ' session' + (cardioSessions.length > 1 ? 's' : '') + ' completed &mdash; ' + cList;
       } else {
-        cardioDiv.innerHTML = '🏃 <strong>Cardio & Conditioning:</strong> <span class="pill alert">0 sessions</span> &mdash; No cardio sessions logged this week (Prescribed: 1x Norwegian 4x4 HIIT on Day 2, 1x Zone 2 Run on Day 5).';
+        cardioDiv.innerHTML = '🏃 <strong>Cardio:</strong> <span class="pill alert">0 sessions</span> &mdash; No cardio sessions logged this week.';
       }
     }
 
-    // 2. Nutrition calculations
+    // Nutrition Reconciliation
     var weekKcal = 0, weekP = 0, weekF = 0, weekC = 0;
     var completeKcal = 0, completeP = 0, completeF = 0, completeC = 0;
-    var completeCount = 0, partialCount = 0, emptyCount = 0;
+    var completeCount = 0, partialCount = 0;
     var dayRowsHtml = '';
 
     days.forEach(function (d) {
       var items = NUTRITION_LOG[d] || [];
-      var stat = DAY_STATUS[d] || (items.length > 0 ? (d === TODAY ? 'in_progress' : 'complete') : (d > TODAY ? 'upcoming' : 'empty'));
+      var stat = DAY_STATUS[d] ? DAY_STATUS[d].status : (items.length > 0 ? (d === TODAY ? 'in_progress' : 'complete') : (d > TODAY ? 'upcoming' : 'empty'));
       if (d === TODAY && stat === 'complete') stat = 'in_progress';
 
       var dKcal = 0, dP = 0, dF = 0, dC = 0;
       items.forEach(function (it) {
-        dKcal += it.kcal || 0;
-        dP += it.protein || 0;
-        dF += it.fat || 0;
-        dC += it.carbs || 0;
+        dKcal += it.kcal || 0; dP += it.protein || 0; dF += it.fat || 0; dC += it.carbs || 0;
       });
 
-      weekKcal += dKcal;
-      weekP += dP;
-      weekF += dF;
-      weekC += dC;
+      weekKcal += dKcal; weekP += dP; weekF += dF; weekC += dC;
 
       var statBadge = '<span class="pill">Empty</span>';
       if (stat === 'complete') {
         statBadge = '<span class="pill good">Complete</span>';
         completeCount++;
-        completeKcal += dKcal;
-        completeP += dP;
-        completeF += dF;
-        completeC += dC;
+        completeKcal += dKcal; completeP += dP; completeF += dF; completeC += dC;
       } else if (stat === 'partial') {
         statBadge = '<span class="pill alert">⚠️ Partial (floor)</span>';
         partialCount++;
       } else if (stat === 'in_progress') {
-        statBadge = '<span class="pill on-track">In Progress (Today)</span>';
+        statBadge = '<span class="pill core">In Progress (Today)</span>';
       } else if (stat === 'upcoming') {
         statBadge = '<span class="pill" style="opacity:0.6;">Upcoming</span>';
-        emptyCount++;
-      } else {
-        emptyCount++;
       }
 
       var dayName = formatDayName(d);
       dayRowsHtml += '<tr>' +
         '<td><strong>' + dayName + '</strong></td>' +
-        '<td>' + d + '</td>' +
+        '<td class="num">' + d + '</td>' +
         '<td class="num">' + (items.length > 0 ? Math.round(dKcal) + ' kcal' : '&mdash;') + '</td>' +
         '<td class="num">' + (items.length > 0 ? dP.toFixed(1) + 'g' : '&mdash;') + '</td>' +
         '<td class="num">' + (items.length > 0 ? dF.toFixed(1) + 'g' : '&mdash;') + '</td>' +
@@ -1833,7 +3022,6 @@
     var daysTbody = document.getElementById('week-days-tbody');
     if (daysTbody) daysTbody.innerHTML = dayRowsHtml;
 
-    // Macro comparison table
     var avgKcal = completeCount > 0 ? completeKcal / completeCount : 0;
     var avgP = completeCount > 0 ? completeP / completeCount : 0;
     var avgF = completeCount > 0 ? completeF / completeCount : 0;
@@ -1860,7 +3048,7 @@
         '<td class="num">' + target7Kcal + ' kcal</td>' +
         '<td class="num"><strong>' + (completeCount > 0 ? Math.round(avgKcal) + ' kcal/d' : '&mdash;') + '</strong></td>' +
         '<td class="num">~' + TARGETS.kcal + ' kcal/d</td>' +
-        '<td><span class="pill ' + (Math.abs(avgKcal - TARGETS.kcal) <= 100 ? 'good' : 'on-track') + '">' + diffStr(avgKcal, TARGETS.kcal, '') + '</span></td>' +
+        '<td><span class="pill ' + (Math.abs(avgKcal - TARGETS.kcal) <= 100 ? 'good' : 'core') + '">' + diffStr(avgKcal, TARGETS.kcal, '') + '</span></td>' +
         '</tr>' +
         '<tr>' +
         '<td><strong>Protein</strong></td>' +
@@ -1876,7 +3064,7 @@
         '<td class="num">' + target7F + 'g</td>' +
         '<td class="num"><strong>' + (completeCount > 0 ? avgF.toFixed(1) + 'g/d' : '&mdash;') + '</strong></td>' +
         '<td class="num">~' + TARGETS.fat + 'g/d</td>' +
-        '<td><span class="pill ' + (Math.abs(avgF - TARGETS.fat) <= 15 ? 'good' : '') + '">' + diffStr(avgF, TARGETS.fat, 'g') + '</span></td>' +
+        '<td><span class="pill">' + diffStr(avgF, TARGETS.fat, 'g') + '</span></td>' +
         '</tr>' +
         '<tr>' +
         '<td><strong>Carbs</strong></td>' +
@@ -1884,27 +3072,26 @@
         '<td class="num">' + target7C + 'g</td>' +
         '<td class="num"><strong>' + (completeCount > 0 ? avgC.toFixed(1) + 'g/d' : '&mdash;') + '</strong></td>' +
         '<td class="num">~' + TARGETS.carbs + 'g/d</td>' +
-        '<td><span class="pill ' + (Math.abs(avgC - TARGETS.carbs) <= 25 ? 'good' : '') + '">' + diffStr(avgC, TARGETS.carbs, 'g') + '</span></td>' +
+        '<td><span class="pill">' + diffStr(avgC, TARGETS.carbs, 'g') + '</span></td>' +
         '</tr>';
     }
 
-    // Top Stat Grid
     var statGrid = document.getElementById('week-stat-grid');
     if (statGrid) {
-      statGrid.innerHTML = '<div class="stat"><span class="label">Weekly Calories</span><span class="value accent">' + Math.round(weekKcal) + '</span><span class="sub">of ' + target7Kcal + ' goal</span></div>' +
-        '<div class="stat"><span class="label">Daily Calorie Avg</span><span class="value">' + (completeCount > 0 ? Math.round(avgKcal) : '&mdash;') + '</span><span class="sub">' + completeCount + ' complete days</span></div>' +
-        '<div class="stat"><span class="label">Daily Protein Avg</span><span class="value accent">' + (completeCount > 0 ? Math.round(avgP) + 'g' : '&mdash;') + '</span><span class="sub">goal ~130g/day</span></div>' +
-        '<div class="stat"><span class="label">Lifting Sessions</span><span class="value">' + gymSessionsCount + '</span><span class="sub">' + (blindSpots.length === 0 ? 'All MEVs met' : blindSpots.length + ' blind spot' + (blindSpots.length > 1 ? 's' : '')) + '</span></div>' +
-        '<div class="stat"><span class="label">Cardio Sessions</span><span class="value">' + cardioSessions.length + '</span><span class="sub">HIIT & Zone 2</span></div>' +
-        '<div class="stat"><span class="label">Coverage</span><span class="value">' + completeCount + '/7</span><span class="sub">' + (partialCount > 0 ? partialCount + ' partial' : 'no gaps') + '</span></div>';
+      statGrid.innerHTML =
+        '<div class="stat-card"><span class="label">Weekly Calories</span><span class="value accent">' + Math.round(weekKcal) + '</span><span class="sub">of ' + target7Kcal + ' target</span></div>' +
+        '<div class="stat-card"><span class="label">Daily Calorie Avg</span><span class="value">' + (completeCount > 0 ? Math.round(avgKcal) : '&mdash;') + '</span><span class="sub">' + completeCount + ' complete days</span></div>' +
+        '<div class="stat-card"><span class="label">Daily Protein Avg</span><span class="value good">' + (completeCount > 0 ? Math.round(avgP) + 'g' : '&mdash;') + '</span><span class="sub">target ~130g/day</span></div>' +
+        '<div class="stat-card"><span class="label">Lifting Sessions</span><span class="value">' + gymSessionsCount + '</span><span class="sub">' + (blindSpots.length === 0 ? 'All MEVs met' : blindSpots.length + ' under MEV') + '</span></div>' +
+        '<div class="stat-card"><span class="label">Cardio Sessions</span><span class="value">' + cardioSessions.length + '</span><span class="sub">HIIT & Zone 2</span></div>' +
+        '<div class="stat-card"><span class="label">Coverage</span><span class="value">' + completeCount + '/7</span><span class="sub">' + (partialCount > 0 ? partialCount + ' partial' : 'no gaps') + '</span></div>';
     }
 
-    // Nutrition Callout
     var nutCallouts = document.getElementById('week-nutrition-callouts');
     if (nutCallouts) {
       if (isCurrentWeek) {
         var remainKcal = target7Kcal - weekKcal;
-        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> You have logged <strong>' + Math.round(weekKcal) + ' kcal</strong> so far this week. To hit the full 7-day deficit target of ' + target7Kcal + ' kcal, you have <strong>~' + Math.round(remainKcal) + ' kcal remaining</strong> across Saturday evening and Sunday. Protein is pacing exceptionally high at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above the 130g target), ensuring optimal muscle retention.</div>';
+        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> Logged <strong>' + Math.round(weekKcal) + ' kcal</strong> so far this week. <strong>~' + Math.round(remainKcal) + ' kcal remaining</strong> across the weekend. Protein is pacing at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above target).</div>';
       } else {
         nutCallouts.innerHTML = '<div class="callout info"><strong>Archived Week Summary:</strong> ' + completeCount + ' complete days averaged ' + Math.round(avgKcal) + ' kcal/day and ' + Math.round(avgP) + 'g protein/day.</div>';
       }
@@ -1942,7 +3129,11 @@
     renderWeeklySummary(select.value || currentMon);
   }
 
+  // Initialize Everything on Load
+  renderTodayTab();
+  renderTrend();
   initWeekPicker();
+  renderBodyweightChart();
 </script>
 </body>
 </html>
