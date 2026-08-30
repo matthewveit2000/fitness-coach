@@ -711,8 +711,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
     font-size: 0.7rem;
-    padding-bottom: 3px;
+    padding-bottom: 4px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
   [data-theme="light"] .pair-header {
@@ -724,6 +726,7 @@
     color: var(--accent);
     letter-spacing: 0.06em;
     font-size: 0.68rem;
+    white-space: nowrap;
   }
   .pair-card.finisher .pair-tag {
     color: var(--warn);
@@ -736,8 +739,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
-    gap: 6px;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    gap: 6px 12px;
   }
   .pair-exercise:not(:last-child) {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
@@ -747,24 +751,29 @@
   }
   .ex-info {
     display: flex;
-    align-items: center;
-    gap: 6px;
-    min-width: 0;
-    flex: 1;
+    align-items: flex-start;
+    gap: 7px;
+    min-width: 140px;
+    flex: 1 1 auto;
+  }
+  .ex-info .dot {
+    margin-top: 4px;
   }
   .ex-title {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     font-weight: 600;
     color: var(--ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+    line-height: 1.35;
   }
   .ex-metrics {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
+    margin-left: auto;
   }
   .badge-sets {
     font-family: var(--mono);
@@ -775,6 +784,7 @@
     color: var(--ink-soft);
     padding: 2px 6px;
     border-radius: 4px;
+    white-space: nowrap;
   }
   .badge-weight {
     font-family: var(--mono);
@@ -782,13 +792,14 @@
     font-weight: 700;
     color: var(--accent);
     text-align: right;
-    min-width: 70px;
+    white-space: nowrap;
   }
 
   /* Cardio Bar */
   .cardio-bar {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -811,6 +822,8 @@
   }
   .cardio-desc {
     flex: 1;
+    white-space: normal;
+    line-height: 1.35;
   }
   .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
   .cardio-line {
