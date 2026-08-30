@@ -558,12 +558,76 @@
     box-shadow: var(--shadow);
   }
 
-  /* Routine Day Cards */
+  /* ======================================================== */
+  /* REWORKED ROUTINE TAB STYLING */
+  /* ======================================================== */
+  .routine-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .routine-accordion {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  .routine-accordion[open] {
+    border-color: var(--border-strong);
+  }
+  .routine-accordion summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    list-style: none;
+    background: var(--surface);
+    transition: background 0.15s ease;
+  }
+  .routine-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+  .routine-accordion summary:hover {
+    background: var(--surface-2);
+  }
+  .routine-summary-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .routine-summary-icon {
+    font-size: 1rem;
+  }
+  .routine-summary-chevron {
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    transition: transform 0.2s ease;
+  }
+  .routine-accordion[open] .routine-summary-chevron {
+    transform: rotate(180deg);
+  }
+  .routine-accordion-body {
+    padding: 12px 14px 14px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Routine Day Grid & Cleaner Cards */
   .day-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 14px;
-    margin-bottom: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
   }
   .day-card {
     background: var(--surface);
@@ -571,37 +635,184 @@
     border-radius: var(--radius);
     padding: 16px;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .day-card.core { border-left: 4px solid var(--accent); }
-  .day-card.optional { border-left: 4px dashed var(--border-strong); background: var(--surface-2); }
-  .day-head {
+  .day-card.core {
+    border-top: 3px solid var(--accent);
+  }
+  .day-card.optional {
+    border-top: 3px dashed var(--border-strong);
+    background: var(--surface);
+  }
+  .day-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 10px;
+    align-items: flex-start;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
   }
-  .day-head .name { font-weight: 700; font-size: 0.98rem; }
-  .ex-row {
+  .day-card-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .day-card-title {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .day-card-meta {
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+  }
+  .day-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-family: var(--mono);
+  }
+  .day-badge.core {
+    background: rgba(88, 166, 255, 0.15);
+    color: var(--accent);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+  }
+  .day-badge.optional {
+    background: var(--surface-2);
+    color: var(--ink-faint);
+    border: 1px solid var(--border);
+  }
+
+  /* Pairs & Supersets Containers */
+  .pairs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pair-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pair-card.finisher {
+    background: transparent;
+    border-style: dashed;
+  }
+  .pair-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  [data-theme="light"] .pair-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .pair-tag {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    font-size: 0.68rem;
+  }
+  .pair-card.finisher .pair-tag {
+    color: var(--warn);
+  }
+  .pair-focus {
+    color: var(--ink-faint);
+    font-size: 0.72rem;
+  }
+  .pair-exercise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    gap: 6px;
+  }
+  .pair-exercise:not(:last-child) {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+  }
+  [data-theme="light"] .pair-exercise:not(:last-child) {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+  }
+  .ex-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    flex: 1;
+  }
+  .ex-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ex-metrics {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .badge-sets {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    font-weight: 600;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .badge-weight {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: right;
+    min-width: 70px;
+  }
+
+  /* Cardio Bar */
+  .cardio-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 0;
-    font-size: 0.85rem;
-    border-top: 1px dashed var(--border);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 2px;
   }
-  .ex-row:first-of-type { border-top: none; }
-  .ex-row .ex-name { flex: 1; }
-  .ex-row .ex-load { font-family: var(--mono); font-weight: 600; font-size: 0.8rem; }
-  .ex-row .ex-weight { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-faint); text-align: right; }
-  .ss-label {
+  .cardio-badge {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
+    font-size: 0.68rem;
     font-weight: 700;
-    margin: 8px 0 2px;
+    color: var(--tag-cardio);
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    padding: 2px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
   }
+  .cardio-desc {
+    flex: 1;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
   .cardio-line {
     margin-top: 8px;
     padding-top: 6px;
@@ -609,7 +820,6 @@
     font-size: 0.82rem;
     color: var(--ink-soft);
   }
-  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
 
   /* Modal / Drawer */
   .modal-overlay {
@@ -695,7 +905,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-29</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-08-30</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -861,140 +1071,614 @@
   <!-- TAB 3: 🏋️ ROUTINE & GYM COMPANION -->
   <!-- ======================================================== -->
   <section class="tab-panel" id="routine">
-    <!-- Gym Equipment Toggle Banner -->
-    <div class="card" style="background: var(--surface-2); border-color: var(--accent);">
-      <div class="card-head" style="margin-bottom: 6px;">
-        <div>
-          <h3 class="card-title" style="color: var(--accent);">📍 Gym Equipment Location</h3>
-          <p class="faint">Switches machine pin weights and flags between your primary gym and Yellowstone Fitness.</p>
+    <!-- Routine Dropdowns Up Top -->
+    <div class="routine-accordion-group">
+      <!-- Dropdown 1: Lower Back Constraint -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">⚠️</span>
+            <span>Lower Back Disc Constraints &amp; Form Rules</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <div class="callout warn" style="margin-bottom: 10px;">
+            <strong>Bulging Disc Constraint:</strong> Avoid heavy loaded spinal flexion, risky conventional deadlifts, and weighted spinal flexion (e.g. weighted sit-ups, Roman chairs). Favor neutral-spine, back-friendly alternatives. Flagged exercises are marked below with ⚠️.
+          </div>
+          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
+            <li><strong>Neutral Spine Compounds:</strong> Heavy axial free-weight lifts are replaced with chest-supported/cable rows, leg press, and machine knee flexion/extension.</li>
+            <li><strong>Core Safeguards:</strong> Crunches are performed unweighted on a mat; if any disc tightness occurs, swap immediately to isometric anti-extension/anti-rotation movements (e.g. planks, Pallof press).</li>
+            <li><strong>Machine Calibration:</strong> Always check machine feel before loading top working weights on unfamiliar equipment.</li>
+          </ul>
         </div>
-        <div class="filter-group">
-          <button class="filter-btn active" id="gym-primary-btn" onclick="setGymLocation('primary')">Primary Gym</button>
-          <button class="filter-btn" id="gym-yellowstone-btn" onclick="setGymLocation('yellowstone')">Yellowstone Fitness</button>
+      </details>
+
+      <!-- Dropdown 2: 80/20 Principles -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">🎯</span>
+            <span>80/20 Routine Principles &amp; Hypertrophy Logic</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
+            <li><strong>Full Body Frequency:</strong> 3 core days hitting opposing muscle groups 2&ndash;3&times; weekly; far more time-efficient and anabolic than single-muscle bro-splits.</li>
+            <li><strong>Antagonist Supersets:</strong> Push &harr; Pull pairings share zero equipment and maximize muscular rest between working sets without adding gym downtime.</li>
+            <li><strong>Inferred Working Weights:</strong> Programmed from a 90% training-max haircut on your estimated 1RM from real logged sets to safely account for intra-session fatigue.</li>
+            <li><strong>Baseline Effort:</strong> Unstated sets default to ~0 RIR (near-failure), matching your real gym baseline.</li>
+            <li><strong>Hyrox Conditioning:</strong> General conditioning (Zone 2 + Norwegian 4&times;4) is baked into the routine; Day 5 station practice is fully optional.</li>
+          </ul>
         </div>
-      </div>
-      <div id="gym-location-note" class="callout info" style="margin: 6px 0 0; display: none;"></div>
-    </div>
+      </details>
 
-    <!-- Injury & Philosophy Callout -->
-    <div class="callout warn">
-      <strong>⚠️ Lower Back Disc Constraint:</strong> Bulging disc &mdash; avoid heavy loaded spinal flexion and risky deadlifts. Favor neutral-spine alternatives. All flagged exercises are marked below with ⚠️.
-    </div>
-
-    <!-- Design Principles -->
-    <div class="card">
-      <div class="card-head"><h3 class="card-title">🎯 80/20 Routine Principles</h3></div>
-      <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--ink-soft);">
-        <li><strong>Full body days:</strong> 3 core days hitting opposing muscle groups; far more time-efficient than bro-splits.</li>
-        <li><strong>Antagonist supersets:</strong> Push &harr; Pull pairings share zero equipment and maximize rest between sets.</li>
-        <li><strong>Inferred working weights:</strong> Based on 90% training-max of your estimated 1RM from real logged sets.</li>
-      </ul>
+      <!-- Dropdown 3: Israetel Volume Landmarks -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">📊</span>
+            <span>Dr. Mike Israetel Volume Thresholds (RP Standards)</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <p style="margin: 0 0 10px; font-size: 0.84rem;">Direct working sets only &mdash; indirect synergist credit is omitted per Dr. Mike Israetel / Renaissance Periodization (RP) methodology.</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
+              <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
+              <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">12</td><td class="num">14&ndash;22</td><td class="num">15</td></tr>
+              <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+              <tr><td>Hamstrings</td><td class="num">6</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">8</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+              <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">10</td></tr>
+              <tr><td>Calves *</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
+              <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">6</td><td class="num">6&ndash;10</td><td class="num">6&ndash;8</td></tr>
+            </table>
+          </div>
+          <p class="faint" style="margin-top: 10px; font-size: 0.82rem; line-height: 1.4;">
+            * <strong>Calves excluded (0 sets):</strong> Direct isolation is intentionally omitted per our 80/20 efficiency rule and running/Hyrox recovery. Frequent Zone 2 runs and high-intensity Norwegian 4&times;4 intervals already subject the calves and Achilles tendon to thousands of high-velocity stretch-shortening cycles weekly; direct calf loading adds high tendon overuse/DOMS risk for minimal aesthetic ROI relative to upper-body and thigh development.
+          </p>
+        </div>
+      </details>
     </div>
 
     <!-- Routine Day Cards -->
-    <h2 style="font-size: 1.15rem; margin: 24px 0 12px;">Weekly Routine Templates</h2>
     <div class="day-grid">
+      <!-- DAY 1 -->
       <div class="day-card core">
-        <div class="day-head"><span class="name">Day 1 &mdash; Full Body A</span><span class="pill core">Core</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Weighted Dips</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~43.5&ndash;48</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Weighted Pull-Ups</span><span class="ex-load">4&times;6&ndash;10</span><span class="ex-weight">@ ~40.5&ndash;45</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ ~445.5&ndash;501</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;20&ndash;30</span><span class="ex-weight">@ bodyweight</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise (DB/cable)</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">DB Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~33.75&ndash;35.5</span></div>
-        <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
-        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
+        <div class="day-card-header">
+          <div class="day-card-title-group">
+            <h3 class="day-card-title">Day 1 &mdash; Full Body A</h3>
+            <span class="day-card-meta">Tower &amp; Leg Press Focus &middot; ~19 sets</span>
+          </div>
+          <span class="day-badge core">Core</span>
+        </div>
+
+        <div class="pairs-container">
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 1</span>
+              <span class="pair-focus">Chest &harr; Back &middot; Dip / Pull-Up Tower</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-chest)"></span>
+                <span class="ex-title">Weighted Dips</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 8&ndash;12</span>
+                <span class="badge-weight">@ ~43.5&ndash;48</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-back)"></span>
+                <span class="ex-title">Weighted Pull-Ups</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 6&ndash;10</span>
+                <span class="badge-weight">@ ~40.5&ndash;45</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 2</span>
+              <span class="pair-focus">Quads &harr; Abs</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Press</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;15</span>
+                <span class="badge-weight">@ ~445.5&ndash;501</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-abs)"></span>
+                <span class="ex-title">Crunches <span class="warn-tag" title="Bulging disc caution: avoid spinal flexion flare-ups">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 20&ndash;30</span>
+                <span class="badge-weight">bodyweight</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 3</span>
+              <span class="pair-focus">Side Delts &harr; Biceps &middot; DB Rack</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Lateral Raise (DB/cable)</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~22.5&ndash;24</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">DB Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~33.75&ndash;35.5</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card finisher">
+            <div class="pair-header">
+              <span class="pair-tag">FINISHER</span>
+              <span class="pair-focus">Rear Delts &middot; Pec Deck Machine</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Reverse Pec Deck</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~153&ndash;164</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardio-bar">
+          <span class="cardio-badge">🏃 RUN</span>
+          <span class="cardio-desc"><strong>Zone 2 Run:</strong> 20&ndash;30 min easy aerobic base</span>
+        </div>
       </div>
 
+      <!-- DAY 2 -->
       <div class="day-card core">
-        <div class="day-head"><span class="name">Day 2 &mdash; Full Body B</span><span class="pill core">Core</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~58.5&ndash;64.5</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ ~169&ndash;177</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~288&ndash;309 &#9888;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Hammer Curl</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~43.4&ndash;45.6</span></div>
-        <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~127.3&ndash;133.7</span></div>
-        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 <span class="faint">&mdash; lightest leg day, best fit for the hardest interval</span></div>
+        <div class="day-card-header">
+          <div class="day-card-title-group">
+            <h3 class="day-card-title">Day 2 &mdash; Full Body B</h3>
+            <span class="day-card-meta">Incline Compound &amp; Cables &middot; ~19 sets</span>
+          </div>
+          <span class="day-badge core">Core</span>
+        </div>
+
+        <div class="pairs-container">
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 1</span>
+              <span class="pair-focus">Chest &harr; Back &middot; Pressing Lead</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-chest)"></span>
+                <span class="ex-title">Incline DB Press</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 8&ndash;12</span>
+                <span class="badge-weight">@ ~58.5&ndash;64.5</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-back)"></span>
+                <span class="ex-title">Low Cable Row</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~169&ndash;177</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 2</span>
+              <span class="pair-focus">Quads &harr; Hamstrings &middot; Machine Antagonist</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Extension <span class="warn-tag" title="⚠️ Unconfirmed higher weight (8/22) — verify at usual gym">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~288&ndash;309 ⚠️</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~194&ndash;207</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 3</span>
+              <span class="pair-focus">Side Delts &harr; Biceps &middot; DB Rack</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Lateral Raise</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~22.5&ndash;24</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">Hammer Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~43.4&ndash;45.6</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card finisher">
+            <div class="pair-header">
+              <span class="pair-tag">FINISHER</span>
+              <span class="pair-focus">Triceps &middot; Cable Stack</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">Triceps Pushdown</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~127.3&ndash;133.7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardio-bar">
+          <span class="cardio-badge" style="color:#ec4899; background:rgba(236,72,153,0.12); border-color:rgba(236,72,153,0.3);">⚡ HIIT</span>
+          <span class="cardio-desc"><strong>Norwegian 4&times;4:</strong> Lightest leg day &mdash; optimal fit for hardest interval</span>
+        </div>
       </div>
 
+      <!-- DAY 3 -->
       <div class="day-card core">
-        <div class="day-head"><span class="name">Day 3 &mdash; Full Body C</span><span class="pill core">Core</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~176.4&ndash;189</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Lat Pulldown</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ ~157.5&ndash;165.5</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Overhead Triceps Ext.</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~54&ndash;57 &#9888;</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Bulgarian Split Squats / Lunges</span><span class="ex-load">3&times;10&ndash;12/leg</span><span class="ex-weight">@ ~47&ndash;49.5/hand &#9888;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
-        <div class="ss-label">Finisher</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">2&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-abs)"></span><span class="ex-name">Crunches &#9888;</span><span class="ex-load">3&times;20&ndash;30</span><span class="ex-weight">@ bodyweight</span></div>
-        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Zone 2 run, 20&ndash;30 min</div>
+        <div class="day-card-header">
+          <div class="day-card-title-group">
+            <h3 class="day-card-title">Day 3 &mdash; Full Body C</h3>
+            <span class="day-card-meta">Pec Deck &amp; Unilateral Legs &middot; ~21 sets</span>
+          </div>
+          <span class="day-badge core">Core</span>
+        </div>
+
+        <div class="pairs-container">
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 1</span>
+              <span class="pair-focus">Chest &harr; Rear Delts &middot; Machine Turnaround</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-chest)"></span>
+                <span class="ex-title">Pec Deck</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~176.4&ndash;189</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Reverse Pec Deck</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~153&ndash;164</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 2</span>
+              <span class="pair-focus">Back &harr; Triceps &middot; Cable Tower</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-back)"></span>
+                <span class="ex-title">Lat Pulldown</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~157.5&ndash;165.5</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">Overhead Triceps Ext. <span class="warn-tag" title="⚠️ Unconfirmed higher weight (8/26) — verify at usual gym">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~54&ndash;57 ⚠️</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 3</span>
+              <span class="pair-focus">Quads/Glutes &harr; Hamstrings &middot; Unilateral</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Bulgarian Split Squats / Lunges <span class="warn-tag" title="⚠️ Watch disc alignment on unilateral knee hinge">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12/leg</span>
+                <span class="badge-weight">@ ~47&ndash;49.5/hand ⚠️</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~194&ndash;207</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card finisher">
+            <div class="pair-header">
+              <span class="pair-tag">FINISHER PAIR</span>
+              <span class="pair-focus">Side Delts &harr; Abs</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Lateral Raise</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">2 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~22.5&ndash;24</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-abs)"></span>
+                <span class="ex-title">Crunches <span class="warn-tag" title="Bulging disc caution: avoid spinal flexion flare-ups">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 20&ndash;30</span>
+                <span class="badge-weight">bodyweight</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardio-bar">
+          <span class="cardio-badge">🏃 RUN</span>
+          <span class="cardio-desc"><strong>Zone 2 Run:</strong> 20&ndash;30 min easy aerobic base</span>
+        </div>
       </div>
 
+      <!-- DAY 4 -->
       <div class="day-card optional">
-        <div class="day-head"><span class="name">Day 4 &mdash; Extra Volume</span><span class="pill">Optional</span></div>
-        <p class="faint" style="margin:0 0 8px;">Pushes chest, back, delts, hamstrings, quads, and arms into the optimal (MAV) zone.</p>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-chest)"></span><span class="ex-name">Incline DB Press</span><span class="ex-load">3&times;8&ndash;12</span><span class="ex-weight">@ ~58.5&ndash;64.5</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-back)"></span><span class="ex-name">Low Cable Row</span><span class="ex-load">3&times;10&ndash;12</span><span class="ex-weight">@ ~169&ndash;177</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Extension</span><span class="ex-load">3&times;12&ndash;15</span><span class="ex-weight">@ ~288&ndash;309 &#9888;</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Curl</span><span class="ex-load">4&times;12&ndash;15</span><span class="ex-weight">@ ~194&ndash;207</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Lateral Raise</span><span class="ex-load">4&times;12&ndash;15</span><span class="ex-weight">@ ~22.5&ndash;24</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-delts)"></span><span class="ex-name">Reverse Pec Deck</span><span class="ex-load">4&times;12&ndash;15</span><span class="ex-weight">@ ~153&ndash;164</span></div>
-        <div class="ss-label">Superset</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Cable / DB Curl</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ ~35</span></div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-arms)"></span><span class="ex-name">Triceps Pushdown</span><span class="ex-load">4&times;10&ndash;12</span><span class="ex-weight">@ ~130&ndash;135</span></div>
-        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Norwegian 4&times;4 or zone 2</div>
+        <div class="day-card-header">
+          <div class="day-card-title-group">
+            <h3 class="day-card-title">Day 4 &mdash; Extra Volume</h3>
+            <span class="day-card-meta">Optimal (MAV) Booster &middot; Pushes all muscles to optimal</span>
+          </div>
+          <span class="day-badge optional">Optional</span>
+        </div>
+
+        <div class="pairs-container">
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 1</span>
+              <span class="pair-focus">Chest &harr; Back (Brings Chest to 12, Back to 15)</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-chest)"></span>
+                <span class="ex-title">Incline DB Press</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 8&ndash;12</span>
+                <span class="badge-weight">@ ~58.5&ndash;64.5</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-back)"></span>
+                <span class="ex-title">Low Cable Row</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~169&ndash;177</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 2</span>
+              <span class="pair-focus">Quads &harr; Hamstrings (Quads 12, Hamstrings 10)</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Extension <span class="warn-tag" title="⚠️ Unconfirmed higher weight (8/22) — verify at usual gym">⚠️</span></span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~288&ndash;309 ⚠️</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~194&ndash;207</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 3</span>
+              <span class="pair-focus">Side Delts &harr; Rear Delts (Side 12, Rear 10)</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Lateral Raise</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~22.5&ndash;24</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-delts)"></span>
+                <span class="ex-title">Reverse Pec Deck</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 12&ndash;15</span>
+                <span class="badge-weight">@ ~153&ndash;164</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">SUPERSET 4</span>
+              <span class="pair-focus">Biceps &harr; Triceps (Arms 10 sets each)</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">Cable / DB Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~35</span>
+              </div>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-arms)"></span>
+                <span class="ex-title">Triceps Pushdown</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">4 &times; 10&ndash;12</span>
+                <span class="badge-weight">@ ~130&ndash;135</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardio-bar">
+          <span class="cardio-badge" style="color:var(--good); background:rgba(63,185,80,0.12); border-color:rgba(63,185,80,0.3);">🏃 RUN</span>
+          <span class="cardio-desc"><strong>Norwegian 4&times;4 or Zone 2:</strong> Match recovery status</span>
+        </div>
       </div>
 
+      <!-- DAY 5 -->
       <div class="day-card optional">
-        <div class="day-head"><span class="name">Day 5 &mdash; Hyrox Station Practice</span><span class="pill">Optional</span></div>
-        <p class="faint" style="margin:0 0 8px;">Race-specific, not tracked toward hypertrophy volume. Fully skippable &mdash; Hyrox is a secondary goal.</p>
-        <div class="ex-row"><span class="ex-name">Sled push/pull, wall balls, burpee broad jumps, farmer carry, ski erg/row, sandbag lunges</span></div>
-        <div class="ss-label">Extra leg volume</div>
-        <div class="ex-row"><span class="dot" style="background:var(--tag-legs)"></span><span class="ex-name">Leg Press or Leg Curl</span><span class="ex-load">3&times;10&ndash;15</span><span class="ex-weight">@ &mdash;</span></div>
-        <div class="cardio-line"><span class="dot" style="background:var(--tag-cardio)"></span> Long zone 2 run (&ge;40 min)</div>
-      </div>
-    </div>
+        <div class="day-card-header">
+          <div class="day-card-title-group">
+            <h3 class="day-card-title">Day 5 &mdash; Hyrox Station Practice</h3>
+            <span class="day-card-meta">Race-Specific Conditioning &middot; Optional / Skippable</span>
+          </div>
+          <span class="day-badge optional">Optional</span>
+        </div>
 
-    <!-- Volume Thresholds Table -->
-    <div class="card" style="margin-top: 24px;">
-      <div class="card-head">
-        <h3 class="card-title">Dr. Mike Israetel Volume Thresholds</h3>
-        <span class="faint">Renaissance Periodization (RP) Standards</span>
+        <div class="pairs-container">
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">HYROX STATIONS</span>
+              <span class="pair-focus">Compromised Running Circuit</span>
+            </div>
+            <div class="pair-exercise" style="padding: 6px 0;">
+              <span style="font-size: 0.82rem; color: var(--ink); line-height: 1.4;">
+                Sled push/pull, wall balls, burpee broad jumps, farmer carry, ski erg/row, sandbag lunges
+              </span>
+            </div>
+          </div>
+
+          <div class="pair-card">
+            <div class="pair-header">
+              <span class="pair-tag">EXTRA VOLUME</span>
+              <span class="pair-focus">Leg Density (Optional)</span>
+            </div>
+            <div class="pair-exercise">
+              <div class="ex-info">
+                <span class="dot" style="background:var(--tag-legs)"></span>
+                <span class="ex-title">Leg Press or Leg Curl</span>
+              </div>
+              <div class="ex-metrics">
+                <span class="badge-sets">3 &times; 10&ndash;15</span>
+                <span class="badge-weight">@ load to suit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardio-bar">
+          <span class="cardio-badge">🏃 ENDURANCE</span>
+          <span class="cardio-desc"><strong>Long Zone 2 Run:</strong> &ge;40 min sustained aerobic capacity</span>
+        </div>
       </div>
-      <div class="table-wrap">
-        <table>
-          <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
-      <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
-      <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">12</td><td class="num">14&ndash;22</td><td class="num">15</td></tr>
-      <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
-      <tr><td>Hamstrings</td><td class="num">6</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-      <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">8</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
-      <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-      <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-      <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">10</td></tr>
-      <tr><td>Calves *</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
-      <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">6</td><td class="num">6&ndash;10</td><td class="num">6&ndash;8</td></tr>
-        </table>
-      </div>
-      <p class="faint" style="margin-top:10px; font-size:0.82rem; line-height:1.4;">
-        * <strong>Calves excluded (0 sets):</strong> Direct isolation is intentionally omitted per our 80/20 efficiency rule and running/Hyrox recovery. Frequent Zone 2 runs and high-intensity Norwegian 4&times;4 intervals already subject the calves and Achilles tendon to thousands of high-velocity stretch-shortening cycles weekly; direct calf loading adds high tendon overuse/DOMS risk for minimal aesthetic ROI relative to upper-body and thigh development.
-      </p>
     </div>
   </section>
 
@@ -2288,7 +2972,8 @@
       { name: 'Broccoli, 53g', kcal: 18, protein: 1.5, fat: 0.2, carbs: 3.5, source: 'usda' },
       { name: 'pineapple, 144g', kcal: 72, protein: 0.8, fat: 0.2, carbs: 18.9, source: 'usda' },
       { name: 'Kirkland ultra-filtered lactose-free milk, 165g', kcal: 82.5, protein: 8.9, fat: 3.1, carbs: 4.1, source: 'label' }
-    ]
+    ],
+    '2026-08-30': []
   };
 
   var DAY_STATUS = {
@@ -2302,7 +2987,7 @@
     '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' }
   };
 
-  var TODAY = '2026-08-29';
+  var TODAY = '2026-08-30';
   var selectedDate = TODAY;
   var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}];
 
@@ -2528,23 +3213,6 @@
     document.getElementById('quick-day-content').innerHTML = html;
   }
   setQuickDay('D1');
-
-  // Gym Location Switcher
-  function setGymLocation(loc) {
-    var note = document.getElementById('gym-location-note');
-    var pBtn = document.getElementById('gym-primary-btn');
-    var yBtn = document.getElementById('gym-yellowstone-btn');
-    if (loc === 'yellowstone') {
-      yBtn.classList.add('active');
-      pBtn.classList.remove('active');
-      note.style.display = 'block';
-      note.innerHTML = '⚠️ <strong>Yellowstone Fitness active:</strong> Machine cable pin ratios differ significantly. Suggested Lateral Raise Machine: <strong>81&ndash;87 lb</strong> (vs 22.5&ndash;24 lb DBs). Seated Leg Curl: <strong>106&ndash;114 lb</strong>.';
-    } else {
-      pBtn.classList.add('active');
-      yBtn.classList.remove('active');
-      note.style.display = 'none';
-    }
-  }
 
   // 14-Day Trend Render
   function last14Days() {
