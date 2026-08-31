@@ -140,6 +140,10 @@ touches any source file, update **all** of the following in `dashboard.html`:
       counts (count real `## ` session headings in `workouts/*.md`,
       excluding the format-template header and untracked/vacation
       placeholders; count `NUTRITION_LOG` array items for meals)
+- [ ] Weekly Review tab — after the first log of every week (or whenever `TODAY`
+      crosses into a new Monday–Sunday week), verify the Weekly Review tab
+      selects and evaluates the new week, and that `#week-select` includes the
+      current week
 - [ ] Header `sync-note` "last updated" date
 
 **Before ending your turn**, grep the file(s) you just edited for the

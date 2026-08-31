@@ -3825,6 +3825,13 @@
     }
   }
 
+  function formatWeekDateLabel(dateStr) {
+    var parts = dateStr.split('-');
+    var d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months[d.getMonth()] + ' ' + d.getDate();
+  }
+
   function initWeekPicker() {
     var select = document.getElementById('week-select');
     if (!select) return;
@@ -3832,13 +3839,31 @@
     var currentMonDays = getWeekRangeDays(TODAY);
     var currentMon = currentMonDays[0];
 
-    var weekOptions = [
-      { mon: '2026-08-24', label: 'Week of Aug 24 – Aug 30 (Current Week)' },
-      { mon: '2026-08-17', label: 'Week of Aug 17 – Aug 23' },
-      { mon: '2026-08-10', label: 'Week of Aug 10 – Aug 16 (Vacation)' },
-      { mon: '2026-08-03', label: 'Week of Aug 3 – Aug 9' },
-      { mon: '2026-07-27', label: 'Week of Jul 27 – Aug 2' }
-    ];
+    var weekSpecialNotes = {
+      '2026-08-10': 'Vacation'
+    };
+
+    var cur = new Date(2026, 6, 27); // 2026-07-27 (Monday)
+    var endParts = currentMon.split('-');
+    var end = new Date(parseInt(endParts[0], 10), parseInt(endParts[1], 10) - 1, parseInt(endParts[2], 10));
+
+    var weekOptions = [];
+    while (cur <= end) {
+      var y = cur.getFullYear();
+      var m = String(cur.getMonth() + 1).padStart(2, '0');
+      var d = String(cur.getDate()).padStart(2, '0');
+      var monStr = y + '-' + m + '-' + d;
+      var wDays = getWeekRangeDays(monStr);
+
+      var label = 'Week of ' + formatWeekDateLabel(wDays[0]) + ' \u2013 ' + formatWeekDateLabel(wDays[6]);
+      if (weekSpecialNotes[monStr]) {
+        label += ' (' + weekSpecialNotes[monStr] + ')';
+      } else if (monStr === currentMon) {
+        label += ' (Current Week)';
+      }
+      weekOptions.unshift({ mon: monStr, label: label });
+      cur.setDate(cur.getDate() + 7);
+    }
 
     select.innerHTML = '';
     weekOptions.forEach(function (opt) {
