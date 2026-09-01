@@ -94,7 +94,7 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Workload is distributed evenly across days (~21–25 sets per session). Incline DB Press is programmed on Day 2 as the lead compound to ensure triceps freshness, avoiding the fatigue conflict of pairing it after triceps isolation. Leg Press and Unilateral Leg work (Bulgarian Split Squats / Lunges) are separated on Day 1 and Day 3, with Day 2 featuring knee-joint isolation (extension/curl) alongside Norwegian 4x4 HIIT.
 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
-- Superset: weighted dips 3x8–12 @ **~43.5–48lb added** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
+- Superset: weighted dips 3x8–12 @ **~45–50lb added** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press area / no equipment for crunches_
 - Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~33.75–35.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
