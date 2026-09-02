@@ -96,12 +96,12 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
 - Superset: weighted dips 3x8–12 @ **~45–50lb added** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press area / no equipment for crunches_
-- Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~33.75–35.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
+- Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B (Incline Compound, Knee Flexion/Extension & Cables)
-- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ low cable row 4x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back; fresh pressing with zero prior triceps fatigue_
+- Superset: incline DB press 3x8–12 @ **~61.5–68lb** (chest) ↔ low cable row 4x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back; fresh pressing with zero prior triceps fatigue_
 - Superset: leg extension 3x12–15 @ **~288–309lb** _(⚠️ unconfirmed — one 8/22 session, 56% above the repeatedly-confirmed 215lb baseline with no gym/machine noted; verify this holds before trusting it, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee-joint antagonist; hamstrings 1st weekly touch (3 sets)_
 - Superset: lateral raise 3x12–15 @ **~22.5–24lb** (side delt) ↔ hammer curl 3x10–12 @ **~43.4–45.6lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: triceps pushdown 3x10–12 @ **~127.3–133.7lb** (triceps) — _cable stack · triceps 1st weekly touch (3 sets); performed after pressing compound is complete_
@@ -116,10 +116,10 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 
 ### Day 4 — Optimal / MAV Booster (Extra Volume)
 Additive 4th day that pushes every tracked muscle group from MEV to Optimal (MAV).
-- Superset: incline DB press 3x8–12 @ **~58.5–64.5lb** (chest) ↔ low cable row 3x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back (brings chest to 12 sets, back to 15 sets)_
+- Superset: incline DB press 3x8–12 @ **~61.5–68lb** (chest) ↔ low cable row 3x10–12 @ **~169–177lb** (back) — _adjacent zones · chest vs back (brings chest to 12 sets, back to 15 sets)_
 - Superset: leg extension 3x12–15 @ **~288–309lb** _(⚠️ unconfirmed, see PROGRESS.md)_ (quads) ↔ leg curl 4x12–15 @ **~194–207lb** (hamstrings) — _same leg machine · knee antagonist (brings quads to 12 sets, hamstrings to 10 sets)_
 - Superset: lateral raise 4x12–15 @ **~22.5–24lb** (side delt) ↔ reverse pec deck 4x12–15 @ **~153–164lb** (rear delt) — _DB rack vs pec deck machine · delts push vs pull (brings side delts to 12 sets, rear delts to 10 sets)_
-- Superset: cable curl / DB curl 4x10–12 @ **~35lb** (biceps) ↔ triceps pushdown 4x10–12 @ **~130–135lb** (triceps) — _same cable stack / DB rack · elbow flexion vs extension (brings biceps to 10 sets, triceps to 10 sets)_
+- Superset: cable curl / DB curl 4x10–12 @ **~38.5–40.5lb** (biceps) ↔ triceps pushdown 4x10–12 @ **~130–135lb** (triceps) — _same cable stack / DB rack · elbow flexion vs extension (brings biceps to 10 sets, triceps to 10 sets)_
 - Cardio: Norwegian 4x4 or zone 2 (optional)
 
 ### Day 5 — Optional: Hyrox Station Practice
