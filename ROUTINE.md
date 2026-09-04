@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-08-29_
+_Last updated: 2026-09-03_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -109,8 +109,8 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 
 ### Day 3 — Full Body C (Pec Deck, Unilateral Legs & Vertical Cables)
 - Superset: pec deck 3x12–15 @ **~176.4–189lb** (chest) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest flye vs rear delt; rear delt 2nd weekly touch (3+3 = 6 sets MEV)_
-- Superset: lat pulldown 4x10–12 @ **~157.5–165.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~54–57lb** (triceps) _(⚠️ unconfirmed higher number — one 8/26 session, 141% above this confirmed baseline with no gym/machine noted; verify this holds before trusting it, see PROGRESS.md)_ — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
-- Superset: Bulgarian split squats (DB) or weighted lunges 3x10–12/leg @ **~47–49.5lb/hand** (quads/glutes) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _DB area to leg curl · unilateral leg compound vs knee flexion; hamstrings 2nd weekly touch (3+3 = 6 sets MEV)_
+- Superset: lat pulldown 4x10–12 @ **~171–179.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
+- Superset: Bulgarian split squats (DB) or weighted lunges 3x10–12/leg @ **~193–202.5lb (barbell/smith)** or **~47–49.5lb/hand (DB)** (quads/glutes) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _DB area to leg curl · unilateral leg compound vs knee flexion; hamstrings 2nd weekly touch (3+3 = 6 sets MEV)_
 - Finisher: lateral raise 2x12–15 @ **~22.5–24lb** (side delt) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _DB rack / mat · side delt 3rd touch (3+3+2 = 8 sets MEV)_
 - Cardio: zone 2 run, 20–30 min
 
