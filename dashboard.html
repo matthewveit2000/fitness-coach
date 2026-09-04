@@ -538,11 +538,13 @@
     position: relative;
     width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .chart-svg {
     width: 100%;
-    min-width: 550px;
+    min-width: 750px;
     height: 240px;
+    display: block;
   }
   .chart-tooltip {
     position: absolute;
@@ -1711,7 +1713,7 @@
           <h3 class="card-title">⚖️ Bodyweight Trend & Moving Average</h3>
           <span class="faint">Gym scale readings with post-travel caution windows</span>
         </div>
-        <span class="pill good">Current: 165.4 lb</span>
+        <span class="pill good">Current: 162.4 lb</span>
       </div>
       <div class="chart-container">
         <div class="chart-tooltip" id="bw-tooltip"></div>
@@ -1730,6 +1732,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-09-03</td><td class="num">162.4 lb</td><td>Same conditions as 7/27&ndash;8/26 (gym scale, after work, shoes, padded floor) &mdash; new low under these conditions, down 3.0lb from 8/26 (165.4lb).</td></tr>
       <tr><td>2026-08-26</td><td class="num">165.4 lb</td><td>Same conditions, +0.2lb from 8/25 &mdash; ordinary day-to-day noise, on trend.</td></tr>
       <tr><td>2026-08-25</td><td class="num">165.2 lb</td><td>Same conditions, +0.6lb from 8/24 &mdash; ordinary day-to-day noise, on trend.</td></tr>
       <tr><td>2026-08-24</td><td class="num">164.6 lb</td><td><strong>Confirming reading</strong> for the 8/22&ndash;8/24 post-gap window &mdash; lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed.</td></tr>
@@ -3249,6 +3252,11 @@
       p.classList.toggle('active', p.id === tabId);
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (tabId === 'progress') {
+      requestAnimationFrame(function() {
+        scrollWeightChartToRight();
+      });
+    }
   }
 
   document.querySelectorAll('.tab-btn, .mobile-nav-btn').forEach(function(btn) {
@@ -3522,6 +3530,17 @@
     });
   }
 
+  // Helper to scroll the bodyweight chart container to the far right
+  function scrollWeightChartToRight() {
+    var container = document.querySelector('.chart-container');
+    if (container) {
+      container.scrollLeft = container.scrollWidth;
+      requestAnimationFrame(function() {
+        container.scrollLeft = container.scrollWidth;
+      });
+    }
+  }
+
   // ==========================================
   // SVG BODYWEIGHT CHART ENGINE
   // ==========================================
@@ -3529,19 +3548,38 @@
     var svg = document.getElementById('bw-chart-svg');
     if (!svg || WEIGH_INS.length === 0) return;
 
-    var width = 700;
+    var container = svg.parentElement;
+    var dates = WEIGH_INS.map(function(w) { return new Date(w.date + 'T00:00:00').getTime(); });
+    var minT = new Date('2026-07-25T00:00:00').getTime();
+
+    // Determine latest date to include (at least TODAY and the latest weigh-in)
+    var lastDateT = Math.max.apply(null, dates);
+    if (typeof TODAY !== 'undefined' && TODAY) {
+      var todayT = new Date(TODAY + 'T00:00:00').getTime();
+      if (todayT > lastDateT) lastDateT = todayT;
+    }
+
+    // Align maxT to the next weekly tick past lastDateT (+ at least 2 days buffer)
+    var endTick = new Date('2026-07-26T00:00:00');
+    while (endTick.getTime() <= lastDateT + (2 * 86400000)) {
+      endTick.setDate(endTick.getDate() + 7);
+    }
+    var maxT = endTick.getTime();
+
+    var totalDays = Math.max(35, Math.round((maxT - minT) / 86400000));
+    var width = Math.max(750, totalDays * 18);
     var height = 240;
     var padLeft = 45;
-    var padRight = 20;
+    var padRight = 30;
     var padTop = 20;
     var padBottom = 30;
 
-    var minW = 161.0;
-    var maxW = 168.0;
+    svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+    svg.style.minWidth = width + 'px';
 
-    var dates = WEIGH_INS.map(function(w) { return new Date(w.date + 'T00:00:00').getTime(); });
-    var minT = new Date('2026-07-25T00:00:00').getTime();
-    var maxT = new Date('2026-08-28T00:00:00').getTime();
+    var weights = WEIGH_INS.map(function(w) { return w.weight; });
+    var minW = Math.min(161.0, Math.floor(Math.min.apply(null, weights) - 0.5));
+    var maxW = Math.max(168.0, Math.ceil(Math.max.apply(null, weights) + 0.5));
 
     function getX(t) {
       return padLeft + ((t - minT) / (maxT - minT)) * (width - padLeft - padRight);
@@ -3584,34 +3622,38 @@
       svgHtml += '<circle cx="' + cx + '" cy="' + cy + '" r="5" fill="' + color + '" stroke="var(--surface)" stroke-width="2" style="cursor:pointer;" data-tip="' + w.date + ': ' + w.weight + ' lb &mdash; ' + (isCaution ? 'Post-gap caution point' : 'Confirmed trend point') + '"/>';
     });
 
-    // X-axis Dates
-    [
-      { d: '2026-07-26', l: '7/26' },
-      { d: '2026-08-01', l: '8/01' },
-      { d: '2026-08-10', l: '8/10' },
-      { d: '2026-08-19', l: '8/19' },
-      { d: '2026-08-26', l: '8/26' }
-    ].forEach(function(lbl) {
-      var t = new Date(lbl.d + 'T00:00:00').getTime();
-      var x = getX(t);
-      svgHtml += '<text x="' + x + '" y="' + (height - 8) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="middle">' + lbl.l + '</text>';
-    });
+    // X-axis Dates (every 7 days from first Sunday 7/26 up to maxT)
+    var tick = new Date('2026-07-26T00:00:00');
+    while (tick.getTime() <= maxT) {
+      var x = getX(tick.getTime());
+      var m = tick.getMonth() + 1;
+      var d = tick.getDate();
+      var lbl = m + '/' + (d < 10 ? '0' + d : d);
+      svgHtml += '<text x="' + x + '" y="' + (height - 8) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="middle">' + lbl + '</text>';
+      tick.setDate(tick.getDate() + 7);
+    }
 
     svg.innerHTML = svgHtml;
 
-    // Tooltip handler
+    // Tooltip handler with scroll and viewport awareness
     var tooltip = document.getElementById('bw-tooltip');
     svg.querySelectorAll('circle').forEach(function(c) {
-      c.addEventListener('mouseenter', function(e) {
+      c.addEventListener('mouseenter', function() {
+        if (!tooltip || !container) return;
+        var cRect = c.getBoundingClientRect();
+        var contRect = container.getBoundingClientRect();
         tooltip.style.display = 'block';
         tooltip.innerHTML = c.dataset.tip;
-        tooltip.style.left = (c.cx.baseVal.value - 40) + 'px';
-        tooltip.style.top = (c.cy.baseVal.value - 34) + 'px';
+        var tipW = tooltip.offsetWidth || 140;
+        tooltip.style.left = Math.round(cRect.left - contRect.left + container.scrollLeft - (tipW / 2)) + 'px';
+        tooltip.style.top = Math.round(cRect.top - contRect.top - 38) + 'px';
       });
       c.addEventListener('mouseleave', function() {
-        tooltip.style.display = 'none';
+        if (tooltip) tooltip.style.display = 'none';
       });
     });
+
+    scrollWeightChartToRight();
   }
 
   // Workout History Filters
@@ -4065,6 +4107,26 @@
   renderTrend();
   initWeekPicker();
   renderBodyweightChart();
+
+  // If URL has a tab hash (e.g. #progress), switch to it
+  if (window.location.hash) {
+    var initialTab = window.location.hash.replace('#', '');
+    if (document.getElementById(initialTab) && document.querySelector('.tab-btn[data-tab="' + initialTab + '"]')) {
+      switchTab(initialTab);
+    }
+  }
+
+  // Ensure bodyweight graph scrolls to far right on load and window resize
+  window.addEventListener('load', function() {
+    scrollWeightChartToRight();
+  });
+
+  window.addEventListener('resize', function() {
+    var progressTab = document.getElementById('progress');
+    if (progressTab && progressTab.classList.contains('active')) {
+      scrollWeightChartToRight();
+    }
+  });
 </script>
 </body>
 </html>
