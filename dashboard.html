@@ -917,7 +917,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-04</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-05</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -3255,7 +3255,8 @@
       { name: 'Mini Babybel Original cheese, 0.5 piece', kcal: 35, protein: 2, fat: 2.5, carbs: 0, source: 'label' },
       { name: 'Snapdragon Thai Coconut Curry Noodle Soup, 1 bowl', kcal: 510, protein: 9, fat: 26, carbs: 64, source: 'label' },
       { name: '3 hard-boiled eggs', kcal: 216, protein: 19.5, fat: 15, carbs: 1.5, source: 'usda' }
-    ]
+    ],
+    '2026-09-05': []
   };
 
   var DAY_STATUS = {
@@ -3269,7 +3270,7 @@
     '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' }
   };
 
-  var TODAY = '2026-09-04';
+  var TODAY = '2026-09-05';
   var selectedDate = TODAY;
   var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly to the consistent ~164\u2013165lb baseline."}];
 
@@ -3779,6 +3780,9 @@
     'Reverse Pec Deck': { muscle: 'Rear Delt' },
     'DB Curl': { muscle: 'Biceps' },
     'Hammer Curl': { muscle: 'Biceps' },
+    'Cable Curl': { muscle: 'Biceps' },
+    'Db cable curl': { muscle: 'Biceps' },
+    'Cable Curl (Db cable curl)': { muscle: 'Biceps' },
     'Triceps Pushdown': { muscle: 'Triceps' },
     'Overhead Cable Triceps Extension': { muscle: 'Triceps' },
     'Leg Press': { muscle: 'Quads' },
@@ -3800,12 +3804,12 @@
     { muscle: 'Back', mevMin: 10, mevTarget: 12, optMin: 14, optMax: 22, exercises: 'Rows, Pull-Ups, Pulldowns' },
     { muscle: 'Quads', mevMin: 8, mevTarget: 10, optMin: 12, optMax: 18, exercises: 'Leg Press, Leg Extension, Lunges / BSS' },
     { muscle: 'Hamstrings', mevMin: 6, mevTarget: 8, optMin: 10, optMax: 16, exercises: 'Leg Curl (seated/lying)' },
-    { muscle: 'Side Delt', mevMin: 6, mevTarget: 8, optMin: 16, optMax: 22, exercises: 'Lateral Raise (DB, Cable, Machine)' },
-    { muscle: 'Rear Delt', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 18, exercises: 'Reverse Pec Deck' },
-    { muscle: 'Biceps', mevMin: 6, mevTarget: 8, optMin: 14, optMax: 20, exercises: 'DB Curl, Hammer Curl (direct)' },
+    { muscle: 'Side Delt', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 18, exercises: 'Lateral Raise (DB, Cable, Machine)' },
+    { muscle: 'Rear Delt', mevMin: 6, mevTarget: 8, optMin: 10, optMax: 16, exercises: 'Reverse Pec Deck' },
+    { muscle: 'Biceps', mevMin: 6, mevTarget: 8, optMin: 10, optMax: 16, exercises: 'DB Curl, Hammer Curl, Cable Curl (direct)' },
     { muscle: 'Triceps', mevMin: 4, mevTarget: 6, optMin: 10, optMax: 14, exercises: 'Pushdowns, Extensions (direct)' },
-    { muscle: 'Calves', mevMin: 6, mevTarget: 8, optMin: 12, optMax: 16, exercises: 'Standing Calf Raise' },
-    { muscle: 'Abs', mevMin: 0, mevTarget: 4, optMin: 8, optMax: 16, exercises: 'Crunches / Core' }
+    { muscle: 'Calves', mevMin: 0, mevTarget: 0, optMin: 0, optMax: 0, exercises: 'Excluded (80/20 & Hyrox running)', excluded: true },
+    { muscle: 'Abs', mevMin: 0, mevTarget: 4, optMin: 6, optMax: 10, exercises: 'Crunches / Core' }
   ];
 
   function getWeekRangeDays(anchorDateStr) {
@@ -3900,8 +3904,10 @@
       s.sets.forEach(function (set) {
         var rule = MUSCLE_RULES[set.exercise];
         if (!rule) {
+          var lowerEx = set.exercise.toLowerCase();
           for (var k in MUSCLE_RULES) {
-            if (set.exercise.indexOf(k) !== -1 || k.indexOf(set.exercise) !== -1) {
+            var lowerK = k.toLowerCase();
+            if (lowerEx.indexOf(lowerK) !== -1 || lowerK.indexOf(lowerEx) !== -1) {
               rule = MUSCLE_RULES[k];
               break;
             }
@@ -3923,9 +3929,14 @@
         var statusClass = 'pill';
         var fillClass = 'on-track';
         var statusLabel = '';
-        var pct = Math.min(100, Math.round((total / l.optMin) * 100));
+        var pct = l.optMin > 0 ? Math.min(100, Math.round((total / l.optMin) * 100)) : 100;
 
-        if (total === 0) {
+        if (l.excluded) {
+          statusClass = 'pill faint';
+          fillClass = 'on-track';
+          statusLabel = 'Excluded (0 sets by design)';
+          pct = 100;
+        } else if (total === 0) {
           statusClass = 'pill alert';
           fillClass = 'warn';
           statusLabel = '⚠️ Blind Spot (0 sets)';
@@ -3953,9 +3964,9 @@
         var tr = document.createElement('tr');
         tr.innerHTML = '<td><strong>' + l.muscle + '</strong><br><span class="faint" style="font-size:11px;">' + l.exercises + '</span></td>' +
           '<td class="num"><strong>' + total + '</strong> <span class="faint">direct sets</span></td>' +
-          '<td class="num">' + l.mevMin + '&ndash;' + l.mevTarget + '</td>' +
-          '<td class="num">' + l.optMin + '&ndash;' + l.optMax + '</td>' +
-          '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="num faint" style="font-size:11px; margin-left:4px;">' + pct + '%</span></td>' +
+          '<td class="num">' + (l.excluded ? '0' : (l.mevMin + '&ndash;' + l.mevTarget)) + '</td>' +
+          '<td class="num">' + (l.excluded ? '0' : (l.optMin + '&ndash;' + l.optMax)) + '</td>' +
+          '<td><div class="vol-bar-bg"><div class="vol-bar-fill ' + fillClass + '" style="width:' + pct + '%;"></div></div> <span class="num faint" style="font-size:11px; margin-left:4px;">' + (l.excluded ? '&mdash;' : pct + '%') + '</span></td>' +
           '<td><span class="' + statusClass + '">' + statusLabel + '</span></td>';
         volTbody.appendChild(tr);
       });
