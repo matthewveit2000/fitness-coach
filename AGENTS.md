@@ -145,10 +145,28 @@ touches any source file, update **all** of the following in `dashboard.html`:
       selects and evaluates the new week, and that `#week-select` includes the
       current week
 - [ ] Header `sync-note` "last updated" date
+- [ ] Post-sync review: review the dashboard to verify everything displays correctly (see §5a)
 
 **Before ending your turn**, grep the file(s) you just edited for the
 exercise/date/value you changed and confirm every match was updated — not
 just the first one you found.
+
+### 5a. Post-sync verification: Review the dashboard after logging (MANDATORY)
+
+After making any changes to `dashboard.html` and before concluding your turn, **you must review the dashboard data, logic, and rendering to ensure everything is being displayed correctly**:
+
+- **Weekly Review & volume landmarks:**
+  - Whenever an exercise is logged (especially new exercises, machine variants, or name variations like "Cable Curl" vs "DB Curl"): verify it is explicitly and correctly mapped in `MUSCLE_RULES` (checking casing, alternate names, and substring matching) so the Weekly Review engine accurately tallies every working set to the correct muscle group.
+  - Verify that the resulting direct set counts, progress percentages, and status labels (e.g. `Optimal (MAV)`, `On Track (&ge; MEV target)`, `At MEV Floor`, `⚠️ Under MEV`) match what was actually logged and align with the calibrated volume landmarks in `ROUTINE.md`.
+  - Confirm that intentionally excluded muscle groups (e.g. Calves per Hyrox running / 80/20 rule) do not trigger false blind-spot warnings.
+- **Nutrition & macros:**
+  - Verify that `NUTRITION_LOG` contains the entry under the correct Mountain Time date (`TODAY`), all food items and macros are present, and daily totals calculate accurately.
+- **Visual & structural integrity:**
+  - Confirm that no unclosed HTML tags, syntax errors in JavaScript blocks, or malformed table structures were introduced.
+- **Stat tiles & badges:**
+  - Verify that "Workout Entries", "Meal Entries", and "Weigh-ins" counts in the stat grid match the actual number of logged entries on file.
+
+**Never push or end your turn without verifying that the dashboard accurately reflects and displays the logged data.**
 
 ## 6. Repo hygiene
 
