@@ -1700,7 +1700,7 @@
   <section class="tab-panel" id="progress">
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
-      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">34</span><span class="sub">across 3 months</span></div>
+      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">35</span><span class="sub">across 3 months</span></div>
       <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">295</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
       <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">13</span><span class="sub">trend tracked</span></div>
@@ -1811,6 +1811,29 @@
       </div>
       <!-- Session Cards Container -->
       <div id="workout-sessions-container">
+        
+    <details class="session-card" open data-date="2026-09-05" data-cat="cardio" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-09-05</span>
+          <span class="pill badge-hiit">Norwegian 4x4</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-09-05 &mdash; Norwegian 4x4 (Cardio)</strong></p>
+        <div class="table-wrap"><table>
+      <tr><th>Zone</th><th>Time in Zone</th><th>% of Run</th></tr>
+      <tr><td>Zone 5 (181+ bpm)</td><td class="num">00:47</td><td class="num">2%</td></tr>
+      <tr><td>Zone 4 (167&ndash;180 bpm)</td><td class="num">09:45</td><td class="num">31%</td></tr>
+      <tr><td>Zone 3 (153&ndash;166 bpm)</td><td class="num">05:02</td><td class="num">14%</td></tr>
+      <tr><td>Zone 2 (140&ndash;152 bpm)</td><td class="num">02:44</td><td class="num">7%</td></tr>
+      <tr><td>Zone 1 (111&ndash;139 bpm)</td><td class="num">09:15</td><td class="num">27%</td></tr>
+      <tr><td>Zone 0 (&lt;111 bpm)</td><td class="num">~06:40</td><td class="num">19%</td></tr>
+    </table></div>
+        <div class="callout info">5:46&ndash;6:20 PM, 34:13 total duration, Activity Strain 11.6, 4,226 steps. Norwegian 4x4 interval session completed with 4 distinct progressive intensity peaks reaching Zone 4 and peaking into Zone 5 (181+ bpm, 0:47) on the final interval. 10:32 total in Zone 4/5 plus 5:02 in Zone 3 during interval ascents, with clean active recovery valleys (~110&ndash;125 bpm) between rounds.</div>
+      </div>
+    </details>
         
     <details class="session-card" open data-date="2026-09-04" data-cat="gym" data-pr="true">
       <summary class="session-summary">
@@ -3856,22 +3879,29 @@
       var type = match[2].trim();
 
       var sets = [];
-      var next = h.nextElementSibling;
-      while (next && next.tagName !== 'P' && !next.classList.contains('muted') && !next.classList.contains('section-title')) {
-        if (next.classList.contains('table-wrap')) {
-          var rows = next.querySelectorAll('table tr');
-          rows.forEach(function (tr, idx) {
-            if (idx === 0) return;
-            var tds = tr.querySelectorAll('td');
-            if (tds.length >= 3) {
-              var exName = tds[0].childNodes[0].textContent.trim();
-              var reps = tds[1].textContent.trim();
-              var weight = tds[2].textContent.trim();
-              sets.push({ exercise: exName, reps: reps, weight: weight });
-            }
-          });
+      var isCardioSession = type.toLowerCase().indexOf('cardio') !== -1 ||
+                            type.toLowerCase().indexOf('run') !== -1 ||
+                            type.toLowerCase().indexOf('stairmaster') !== -1 ||
+                            type.toLowerCase().indexOf('4x4') !== -1 ||
+                            type.toLowerCase().indexOf('hike') !== -1;
+      if (!isCardioSession) {
+        var next = h.nextElementSibling;
+        while (next && next.tagName !== 'P' && !next.classList.contains('muted') && !next.classList.contains('section-title')) {
+          if (next.classList.contains('table-wrap')) {
+            var rows = next.querySelectorAll('table tr');
+            rows.forEach(function (tr, idx) {
+              if (idx === 0) return;
+              var tds = tr.querySelectorAll('td');
+              if (tds.length >= 3) {
+                var exName = tds[0].childNodes[0].textContent.trim();
+                var reps = tds[1].textContent.trim();
+                var weight = tds[2].textContent.trim();
+                sets.push({ exercise: exName, reps: reps, weight: weight });
+              }
+            });
+          }
+          next = next.nextElementSibling;
         }
-        next = next.nextElementSibling;
       }
 
       sessions.push({ date: date, type: type, sets: sets });
@@ -3910,7 +3940,7 @@
                      s.type.toLowerCase().indexOf('4x4') !== -1 ||
                      s.type.toLowerCase().indexOf('hike') !== -1;
       if (isCardio) cardioSessions.push(s);
-      if (s.sets.length > 0) gymSessionsCount++;
+      if (s.sets.length > 0 && !isCardio) gymSessionsCount++;
 
       s.sets.forEach(function (set) {
         var rule = MUSCLE_RULES[set.exercise];
