@@ -145,6 +145,27 @@
     background: var(--surface-2);
     border-color: var(--border-strong);
   }
+  #refresh-btn {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 600;
+  }
+  #refresh-btn:hover {
+    background: var(--surface-2);
+    border-color: var(--accent);
+  }
+  #refresh-btn:active {
+    transform: scale(0.96);
+  }
+  #refresh-btn.refreshing .refresh-icon {
+    display: inline-block;
+    animation: spin 0.75s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
   .sync-bar {
     display: flex;
@@ -912,6 +933,7 @@
       <span class="btn-pill" id="hyrox-badge">🏃 Hyrox: Sep 20</span>
       <button class="btn-pill" id="profile-modal-btn">ℹ️ Profile & Constraints</button>
       <button class="btn-pill" id="theme-toggle-btn">🌓 Theme</button>
+      <button class="btn-pill" id="refresh-btn" title="Force refresh and fetch latest data" aria-label="Refresh Dashboard"><span class="refresh-icon">🔄</span> Refresh</button>
     </div>
   </header>
 
@@ -3396,6 +3418,25 @@
   modal.addEventListener('click', function(e) {
     if (e.target === modal) closeProfileModal();
   });
+
+  // Refresh Button (iOS Web App / Standalone PWA Cache Buster)
+  var refreshBtn = document.getElementById('refresh-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', function() {
+      refreshBtn.classList.add('refreshing');
+      refreshBtn.disabled = true;
+      var activeTabBtn = document.querySelector('.tab-btn.active, .mobile-nav-btn.active');
+      var targetTab = (activeTabBtn && activeTabBtn.dataset && activeTabBtn.dataset.tab) ? ('#' + activeTabBtn.dataset.tab) : window.location.hash;
+      var url = new URL(window.location.href);
+      url.searchParams.set('_t', Date.now().toString());
+      if (targetTab) {
+        url.hash = targetTab;
+      }
+      setTimeout(function() {
+        window.location.replace(url.toString());
+      }, 150);
+    });
+  }
 
   // Tab Switching (Desktop & Mobile Sync)
   function switchTab(tabId) {
