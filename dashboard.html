@@ -1722,7 +1722,7 @@
   <section class="tab-panel" id="progress">
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
-      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">35</span><span class="sub">across 3 months</span></div>
+      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">36</span><span class="sub">across 3 months</span></div>
       <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">367</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
       <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">13</span><span class="sub">trend tracked</span></div>
@@ -1818,12 +1818,12 @@
       <div class="card-head">
         <div>
           <h2 class="section-title" style="margin:0; font-size:1.15rem;">Workout Log</h2>
-          <span class="faint">34 completed sessions logged with coach feedback</span>
+          <span class="faint">36 completed sessions logged with coach feedback</span>
         </div>
         <div class="filter-group">
-          <button class="filter-btn active" onclick="filterSessions('all')">All (34)</button>
-          <button class="filter-btn" onclick="filterSessions('gym')">🏋️ Gym (21)</button>
-          <button class="filter-btn" onclick="filterSessions('cardio')">🏃 Cardio (13)</button>
+          <button class="filter-btn active" onclick="filterSessions('all')">All (36)</button>
+          <button class="filter-btn" onclick="filterSessions('gym')">🏋️ Gym (22)</button>
+          <button class="filter-btn" onclick="filterSessions('cardio')">🏃 Cardio (14)</button>
           <button class="filter-btn" onclick="filterSessions('pr')">⭐ PRs</button>
         </div>
       </div>
@@ -1833,6 +1833,32 @@
       </div>
       <!-- Session Cards Container -->
       <div id="workout-sessions-container">
+        
+    <details class="session-card" open data-date="2026-09-13" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-09-13</span>
+          <span class="pill badge-gym">Taper Mix</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-09-13 &mdash; Gym (Pre-Hyrox Taper / Full Body Mix) &mdash; Yellowstone Fitness</strong></p>
+        <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Reps</th><th>Weight</th></tr>
+      <tr><td>Incline DB Press</td><td class="num">10</td><td class="num">60 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">10</td><td class="num">60 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">10</td><td class="num">60 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Low Cable Row</td><td class="num">10</td><td class="num">175 lb</td></tr>
+      <tr><td>Leg Press (Squat Press machine)</td><td class="num">10</td><td class="num">495 lb</td></tr>
+      <tr><td>Leg Press (Squat Press machine)</td><td class="num">10</td><td class="num">495 lb</td></tr>
+      <tr><td>Leg Press (Squat Press machine)</td><td class="num">10</td><td class="num">495 lb</td></tr>
+    </table></div>
+        <div class="callout info">Pre-Hyrox taper session at Yellowstone Fitness (7 days out from race day on Sept 20). Intentionally dialed back intensity and volume (&ldquo;going lite due to hyrox soon&rdquo;) to maintain neural drive and movement patterns while clearing systemic fatigue for race week. <strong>Incline DB Press</strong> (60lb x10 x3 sets, e1RM 80.0lb) kept well below the 70lb x11 / 95.7lb PR. <strong>Low Cable Row</strong> (175lb x10 x3 sets, e1RM 233.3lb) delivered smooth, controlled pulling without testing the 15-rep failure boundary. <strong>Leg Press</strong> on Yellowstone&rsquo;s Squat Press machine (495lb x10 x3 sets, e1RM 660.0lb) provided quad loading with crisp reps safely short of the 495lb x15 PR ceiling, keeping the legs fresh for running mechanics.</div>
+      </div>
+    </details>
         
     <details class="session-card" open data-date="2026-09-05" data-cat="cardio" data-pr="false">
       <summary class="session-summary">
@@ -3949,6 +3975,9 @@
     'Triceps Pushdown': { muscle: 'Triceps' },
     'Overhead Cable Triceps Extension': { muscle: 'Triceps' },
     'Leg Press': { muscle: 'Quads' },
+    'Squat Press': { muscle: 'Quads' },
+    'Leg Press (Squat Press machine)': { muscle: 'Quads' },
+    'Leg Press (Squat Press)': { muscle: 'Quads' },
     'Leg Extension': { muscle: 'Quads' },
     'Weighted Lunges': { muscle: 'Quads' },
     'Bulgarian Split Squat': { muscle: 'Quads' },
