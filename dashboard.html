@@ -939,7 +939,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-19</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-20</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -1754,6 +1754,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-09-19 &rarr; 2026-09-20</td><td class="num">&mdash;</td><td>✈️ Hyrox travel &amp; race day (untracked). No weigh-ins.</td></tr>
       <tr><td>2026-09-04</td><td class="num">164.2 lb</td><td>Same conditions as 7/27&ndash;9/3 (gym scale, after work, shoes, padded floor) &mdash; +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164&ndash;165lb baseline.</td></tr>
       <tr><td>2026-09-03</td><td class="num">162.4 lb</td><td>Same conditions as 7/27&ndash;8/26 (gym scale, after work, shoes, padded floor) &mdash; new low under these conditions, down 3.0lb from 8/26 (165.4lb).</td></tr>
       <tr><td>2026-08-26</td><td class="num">165.4 lb</td><td>Same conditions, +0.2lb from 8/25 &mdash; ordinary day-to-day noise, on trend.</td></tr>
@@ -3532,10 +3533,12 @@
     '2026-08-15': { status: 'untracked', note: 'Vacation — not logged.' },
     '2026-08-16': { status: 'untracked', note: 'Vacation — not logged.' },
     '2026-08-17': { status: 'untracked', note: 'Vacation — not logged (window closes as soon as logging resumes).' },
-    '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' }
+    '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' },
+    '2026-09-19': { status: 'untracked', note: 'Hyrox travel — morning logged (~1,130 kcal floor), afternoon/evening eating out deliberately untracked. Excluded from averages and calorie-balance math.' },
+    '2026-09-20': { status: 'untracked', note: 'Hyrox race day & travel — eating out and evening drinks deliberately untracked. Excluded from averages and calorie-balance math.' }
   };
 
-  var TODAY = '2026-09-19';
+  var TODAY = '2026-09-20';
   var selectedDate = TODAY;
   var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly to the consistent ~164\u2013165lb baseline."}];
 
@@ -3640,7 +3643,7 @@
 
     if (st && st.status === 'untracked') {
       statusPill.className = 'pill alert';
-      statusPill.textContent = 'Untracked Vacation';
+      statusPill.textContent = '✈️ Untracked';
     } else if (st && st.status === 'partial') {
       statusPill.className = 'pill alert';
       statusPill.textContent = '⚠️ Partial Day';
@@ -3660,7 +3663,7 @@
     var diffKcal = TARGETS.kcal - t.kcal;
     var diffPro = TARGETS.protein - t.protein;
     if (st && st.status === 'untracked') {
-      runwayAlert.innerHTML = '<div class="callout">✈️ <strong>Vacation Day:</strong> Deliberately untracked. Excluded from averages and calorie-balance math.</div>';
+      runwayAlert.innerHTML = '<div class="callout">✈️ <strong>Travel / Untracked Day:</strong> ' + (st.note || 'Deliberately untracked.') + ' Excluded from averages and calorie-balance math.</div>';
     } else if (st && st.status === 'partial') {
       runwayAlert.innerHTML = '<div class="callout warn">⚠️ <strong>Partial Floor:</strong> ' + st.note + '</div>';
     } else if (isToday) {
@@ -3694,7 +3697,11 @@
     // Meals List
     var mealsContainer = document.getElementById('day-meals-container');
     if (items.length === 0) {
-      mealsContainer.innerHTML = '<div style="color:var(--ink-faint); font-style:italic; padding:12px 0;">No food logged for ' + selectedDate + '. Describe what you ate in chat or send a photo to log it!</div>';
+      if (st && st.status === 'untracked') {
+        mealsContainer.innerHTML = '<div style="color:var(--ink-faint); font-style:italic; padding:12px 0;">✈️ Deliberately untracked (' + (st.note || 'Hyrox Travel') + ').</div>';
+      } else {
+        mealsContainer.innerHTML = '<div style="color:var(--ink-faint); font-style:italic; padding:12px 0;">No food logged for ' + selectedDate + '. Describe what you ate in chat or send a photo to log it!</div>';
+      }
     } else {
       var html = '<div style="display:flex; flex-direction:column; gap:8px;">';
       items.forEach(function(it) {
@@ -3839,12 +3846,12 @@
         var bar = document.createElement('div');
         if (v === null) {
           bar.className = 'trend-bar ' + (stat === 'untracked' ? 'is-untracked' : 'is-empty');
-          bar.title = stat === 'untracked' ? d + ': untracked (vacation)' : d + ': no data logged';
+          bar.title = stat === 'untracked' ? d + ': untracked (travel/vacation)' : d + ': no data logged';
         } else {
           var over = v > TARGETS[m.key] * 1.15;
-          bar.className = 'trend-bar' + (over ? ' is-warn' : '') + (stat === 'partial' ? ' is-partial' : '');
+          bar.className = 'trend-bar' + (over ? ' is-warn' : '') + (stat === 'partial' || stat === 'untracked' ? ' is-partial' : '');
           bar.style.height = Math.max(2, (v / chartMax) * chartHeight) + 'px';
-          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')';
+          bar.title = d + ': ' + Math.round(v) + m.unit + ' (target ' + TARGETS[m.key] + m.unit + ')' + (stat === 'untracked' || stat === 'partial' ? ' [' + stat + ']' : '');
         }
         col.appendChild(bar);
         bars.appendChild(col);
@@ -4313,6 +4320,8 @@
       } else if (stat === 'partial') {
         statBadge = '<span class="pill alert">⚠️ Partial (floor)</span>';
         partialCount++;
+      } else if (stat === 'untracked') {
+        statBadge = '<span class="pill alert">✈️ Untracked</span>';
       } else if (stat === 'in_progress') {
         statBadge = '<span class="pill core">In Progress (Today)</span>';
       } else if (stat === 'upcoming') {
@@ -4390,20 +4399,23 @@
 
     var statGrid = document.getElementById('week-stat-grid');
     if (statGrid) {
+      var untrackedCount = 7 - completeCount - partialCount;
       statGrid.innerHTML =
         '<div class="stat-card"><span class="label">Weekly Calories</span><span class="value accent">' + Math.round(weekKcal) + '</span><span class="sub">of ' + target7Kcal + ' target</span></div>' +
         '<div class="stat-card"><span class="label">Daily Calorie Avg</span><span class="value">' + (completeCount > 0 ? Math.round(avgKcal) : '&mdash;') + '</span><span class="sub">' + completeCount + ' complete days</span></div>' +
         '<div class="stat-card"><span class="label">Daily Protein Avg</span><span class="value good">' + (completeCount > 0 ? Math.round(avgP) + 'g' : '&mdash;') + '</span><span class="sub">target ~130g/day</span></div>' +
         '<div class="stat-card"><span class="label">Lifting Sessions</span><span class="value">' + gymSessionsCount + '</span><span class="sub">' + (blindSpots.length === 0 ? 'All MEVs met' : blindSpots.length + ' under MEV') + '</span></div>' +
         '<div class="stat-card"><span class="label">Cardio Sessions</span><span class="value">' + cardioSessions.length + '</span><span class="sub">HIIT & Zone 2</span></div>' +
-        '<div class="stat-card"><span class="label">Coverage</span><span class="value">' + completeCount + '/7</span><span class="sub">' + (partialCount > 0 ? partialCount + ' partial' : 'no gaps') + '</span></div>';
+        '<div class="stat-card"><span class="label">Coverage</span><span class="value">' + completeCount + '/7</span><span class="sub">' + (partialCount > 0 ? partialCount + ' partial' : (untrackedCount > 0 ? untrackedCount + ' untracked' : 'no gaps')) + '</span></div>';
     }
 
     var nutCallouts = document.getElementById('week-nutrition-callouts');
     if (nutCallouts) {
       if (isCurrentWeek) {
         var remainKcal = target7Kcal - weekKcal;
-        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> Logged <strong>' + Math.round(weekKcal) + ' kcal</strong> so far this week. <strong>~' + Math.round(remainKcal) + ' kcal remaining</strong> across the weekend. Protein is pacing at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above target).</div>';
+        var untrackedDays = 7 - completeCount - partialCount;
+        var gapNote = (untrackedDays > 0 || partialCount > 0) ? ' (Hyrox travel &mdash; 5 complete days tracked)' : '';
+        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> Logged <strong>' + Math.round(weekKcal) + ' kcal</strong> across ' + completeCount + ' complete days this week' + gapNote + '. Protein is pacing at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above target).</div>';
       } else {
         nutCallouts.innerHTML = '<div class="callout info"><strong>Archived Week Summary:</strong> ' + completeCount + ' complete days averaged ' + Math.round(avgKcal) + ' kcal/day and ' + Math.round(avgP) + 'g protein/day.</div>';
       }
