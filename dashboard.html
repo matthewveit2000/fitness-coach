@@ -939,7 +939,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-20</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-22</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -1723,7 +1723,7 @@
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
       <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">37</span><span class="sub">across 3 months</span></div>
-      <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">428</span><span class="sub">individual items</span></div>
+      <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">431</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
       <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">13</span><span class="sub">trend tracked</span></div>
     </div>
@@ -1754,7 +1754,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
-      <tr><td>2026-09-19 &rarr; 2026-09-20</td><td class="num">&mdash;</td><td>✈️ Hyrox travel &amp; race day (untracked). No weigh-ins.</td></tr>
+      <tr><td>2026-09-19 &rarr; 2026-09-21</td><td class="num">&mdash;</td><td>✈️ Hyrox travel, race day &amp; return (untracked). No weigh-ins.</td></tr>
       <tr><td>2026-09-04</td><td class="num">164.2 lb</td><td>Same conditions as 7/27&ndash;9/3 (gym scale, after work, shoes, padded floor) &mdash; +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164&ndash;165lb baseline.</td></tr>
       <tr><td>2026-09-03</td><td class="num">162.4 lb</td><td>Same conditions as 7/27&ndash;8/26 (gym scale, after work, shoes, padded floor) &mdash; new low under these conditions, down 3.0lb from 8/26 (165.4lb).</td></tr>
       <tr><td>2026-08-26</td><td class="num">165.4 lb</td><td>Same conditions, +0.2lb from 8/25 &mdash; ordinary day-to-day noise, on trend.</td></tr>
@@ -3522,6 +3522,11 @@
       { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
       { name: 'Kirkland ultra-filtered 2% milk, 370g (175g + 195g)', kcal: 185, protein: 20, fat: 6.9, carbs: 9.3, source: 'label' },
       { name: 'Bruges Belgian Bistro Chicken & Waffle (small Liège waffle, 2 tenders, whipped cream cup, syrup)', kcal: 745, protein: 28, fat: 34, carbs: 82, source: 'estimate' }
+    ],
+    '2026-09-22': [
+      { name: 'fairlife Nutrition Plan shake', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
+      { name: 'Creatine gummies', kcal: 50, protein: 0, fat: 0, carbs: 12, source: 'estimate' },
+      { name: 'Chicken Pad Thai, 2 servings', kcal: 660, protein: 40, fat: 22, carbs: 74, source: 'label' }
     ]
   };
 
@@ -3535,10 +3540,11 @@
     '2026-08-17': { status: 'untracked', note: 'Vacation — not logged (window closes as soon as logging resumes).' },
     '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' },
     '2026-09-19': { status: 'untracked', note: 'Hyrox travel — morning logged (~1,130 kcal floor), afternoon/evening eating out deliberately untracked. Excluded from averages and calorie-balance math.' },
-    '2026-09-20': { status: 'untracked', note: 'Hyrox race day & travel — eating out and evening drinks deliberately untracked. Excluded from averages and calorie-balance math.' }
+    '2026-09-20': { status: 'untracked', note: 'Hyrox race day & travel — eating out and evening drinks deliberately untracked. Excluded from averages and calorie-balance math.' },
+    '2026-09-21': { status: 'untracked', note: 'Hyrox travel return — not logged. Excluded from averages and calorie-balance math.' }
   };
 
-  var TODAY = '2026-09-20';
+  var TODAY = '2026-09-22';
   var selectedDate = TODAY;
   var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly to the consistent ~164\u2013165lb baseline."}];
 
@@ -4413,11 +4419,13 @@
     if (nutCallouts) {
       if (isCurrentWeek) {
         var remainKcal = target7Kcal - weekKcal;
-        var untrackedDays = 7 - completeCount - partialCount;
-        var gapNote = (untrackedDays > 0 || partialCount > 0) ? ' (Hyrox travel &mdash; 5 complete days tracked)' : '';
-        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekend Nutrition Runway:</strong> Logged <strong>' + Math.round(weekKcal) + ' kcal</strong> across ' + completeCount + ' complete days this week' + gapNote + '. Protein is pacing at <strong>' + (completeCount > 0 ? Math.round(avgP) : 0) + 'g/day</strong> (+30% above target).</div>';
+        var pPacing = completeCount > 0 ? Math.round(avgP) + 'g/day' : Math.round(weekP) + 'g logged so far';
+        var pPacingPct = completeCount > 0 ? ' (' + (avgP >= TARGETS.protein ? '+' : '') + Math.round(((avgP - TARGETS.protein) / TARGETS.protein) * 100) + '% vs target)' : '';
+        var dayWord = completeCount === 1 ? 'complete day' : 'complete days';
+        nutCallouts.innerHTML = '<div class="callout info"><strong>💡 Weekly Nutrition Runway:</strong> Logged <strong>' + Math.round(weekKcal) + ' kcal</strong> across ' + completeCount + ' ' + dayWord + ' (' + Math.round(remainKcal) + ' kcal remaining in weekly target). Protein is pacing at <strong>' + pPacing + '</strong>' + pPacingPct + '.</div>';
       } else {
-        nutCallouts.innerHTML = '<div class="callout info"><strong>Archived Week Summary:</strong> ' + completeCount + ' complete days averaged ' + Math.round(avgKcal) + ' kcal/day and ' + Math.round(avgP) + 'g protein/day.</div>';
+        var note = (mondayDateStr === '2026-09-14') ? ' (Hyrox travel & race week &mdash; 5 complete days)' : '';
+        nutCallouts.innerHTML = '<div class="callout info"><strong>Archived Week Summary' + note + ':</strong> ' + completeCount + ' complete days averaged ' + Math.round(avgKcal) + ' kcal/day and ' + Math.round(avgP) + 'g protein/day.</div>';
       }
     }
   }
@@ -4437,7 +4445,8 @@
     var currentMon = currentMonDays[0];
 
     var weekSpecialNotes = {
-      '2026-08-10': 'Vacation'
+      '2026-08-10': 'Vacation',
+      '2026-09-14': 'Hyrox Race Week'
     };
 
     var cur = new Date(2026, 6, 27); // 2026-07-27 (Monday)
