@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-09-22_
+_Last updated: 2026-09-26_
 
 ## Bodyweight / Measurements
 | Date | Weight | Notes |
@@ -20,8 +20,9 @@ _Last updated: 2026-09-22_
 | 2026-09-03 | 162.4 lb | Same conditions as 7/27–8/26 (gym scale, after work, shoes, padded floor) — new low under these conditions, down 3.0lb from 8/26 (165.4lb). |
 | 2026-09-04 | 164.2 lb | Same conditions as 7/27–9/3 (gym scale, after work, shoes, padded floor) — +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164–165lb baseline. |
 | 2026-09-19 → 2026-09-21 | — | ✈️ Hyrox travel, race day & return (untracked). No weigh-ins. |
+| 2026-09-26 → 2026-10-01 | — | ✈️ Travel (untracked). No weigh-ins. |
 
-**Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window and 9/19–9/21 Hyrox travel window.
+**Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window, 9/19–9/21 Hyrox travel window, and 9/26–10/01 travel window.
 
 ## Lift PRs
 | Lift | Weight x Reps | Date |

@@ -939,7 +939,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-25</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-09-26</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -1742,7 +1742,7 @@
         <svg class="chart-svg" id="bw-chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
       </div>
       <p class="faint" style="margin-top: 8px;">
-        <span style="color:#f59e0b;">■</span> Shaded amber zone = 8/12&ndash;8/17 Vacation (untracked) + post-travel caution window. Dotted cyan line = 165.4 lb baseline.
+        <span style="color:#f59e0b;">■</span> Shaded amber zones = 8/12&ndash;8/17 Vacation &amp; 9/26&ndash;10/01 Travel (untracked). Dotted cyan line = 165.4 lb baseline.
       </p>
     </div>
 
@@ -1754,6 +1754,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-09-26 &rarr; 2026-10-01</td><td class="num">&mdash;</td><td>✈️ Travel (untracked). No weigh-ins.</td></tr>
       <tr><td>2026-09-19 &rarr; 2026-09-21</td><td class="num">&mdash;</td><td>✈️ Hyrox travel, race day &amp; return (untracked). No weigh-ins.</td></tr>
       <tr><td>2026-09-04</td><td class="num">164.2 lb</td><td>Same conditions as 7/27&ndash;9/3 (gym scale, after work, shoes, padded floor) &mdash; +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164&ndash;165lb baseline.</td></tr>
       <tr><td>2026-09-03</td><td class="num">162.4 lb</td><td>Same conditions as 7/27&ndash;8/26 (gym scale, after work, shoes, padded floor) &mdash; new low under these conditions, down 3.0lb from 8/26 (165.4lb).</td></tr>
@@ -3584,10 +3585,16 @@
     '2026-08-28': { status: 'partial',   note: 'Evening event food/drinks not logged — small plate, roughly half a burger, and a lot of beer, none tracked in detail. The totals below are a partial floor, not the real daily total.' },
     '2026-09-19': { status: 'untracked', note: 'Hyrox travel — morning logged (~1,130 kcal floor), afternoon/evening eating out deliberately untracked. Excluded from averages and calorie-balance math.' },
     '2026-09-20': { status: 'untracked', note: 'Hyrox race day & travel — eating out and evening drinks deliberately untracked. Excluded from averages and calorie-balance math.' },
-    '2026-09-21': { status: 'untracked', note: 'Hyrox travel return — not logged. Excluded from averages and calorie-balance math.' }
+    '2026-09-21': { status: 'untracked', note: 'Hyrox travel return — not logged. Excluded from averages and calorie-balance math.' },
+    '2026-09-26': { status: 'untracked', note: 'Travel — not logged.' },
+    '2026-09-27': { status: 'untracked', note: 'Travel — not logged.' },
+    '2026-09-28': { status: 'untracked', note: 'Travel — not logged.' },
+    '2026-09-29': { status: 'untracked', note: 'Travel — not logged.' },
+    '2026-09-30': { status: 'untracked', note: 'Travel — not logged.' },
+    '2026-10-01': { status: 'untracked', note: 'Travel — not logged (window closes as soon as logging resumes).' }
   };
 
-  var TODAY = '2026-09-25';
+  var TODAY = '2026-09-26';
   var selectedDate = TODAY;
   var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly to the consistent ~164\u2013165lb baseline."}];
 
@@ -3952,11 +3959,15 @@
     var dates = WEIGH_INS.map(function(w) { return new Date(w.date + 'T00:00:00').getTime(); });
     var minT = new Date('2026-07-25T00:00:00').getTime();
 
-    // Determine latest date to include (at least TODAY and the latest weigh-in)
+    // Determine latest date to include (at least TODAY, untracked windows, and latest weigh-in)
     var lastDateT = Math.max.apply(null, dates);
     if (typeof TODAY !== 'undefined' && TODAY) {
       var todayT = new Date(TODAY + 'T00:00:00').getTime();
       if (todayT > lastDateT) lastDateT = todayT;
+    }
+    for (var dStr in DAY_STATUS) {
+      var dT = new Date(dStr + 'T00:00:00').getTime();
+      if (dT > lastDateT) lastDateT = dT;
     }
 
     // Align maxT to the next weekly tick past lastDateT (+ at least 2 days buffer)
@@ -3995,6 +4006,12 @@
     var vacEnd = getX(new Date('2026-08-23T00:00:00').getTime());
     svgHtml += '<rect x="' + vacStart + '" y="' + padTop + '" width="' + (vacEnd - vacStart) + '" height="' + (height - padTop - padBottom) + '" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.4)" stroke-dasharray="3 3"/>';
     svgHtml += '<text x="' + (vacStart + 6) + '" y="' + (padTop + 16) + '" fill="#d29922" font-size="10" font-family="monospace">✈️ Vacation & Caution Window</text>';
+
+    // Travel Shaded Box (Sep 26 to Oct 1 travel window)
+    var trvStart = getX(new Date('2026-09-26T00:00:00').getTime());
+    var trvEnd = getX(new Date('2026-10-02T00:00:00').getTime());
+    svgHtml += '<rect x="' + trvStart + '" y="' + padTop + '" width="' + (trvEnd - trvStart) + '" height="' + (height - padTop - padBottom) + '" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.4)" stroke-dasharray="3 3"/>';
+    svgHtml += '<text x="' + (trvStart + 6) + '" y="' + (padTop + 16) + '" fill="#d29922" font-size="10" font-family="monospace">✈️ Travel Window</text>';
 
     // Horizontal Grid Lines
     [162, 164, 165.4, 166, 168].forEach(function(gw) {
@@ -4489,7 +4506,8 @@
 
     var weekSpecialNotes = {
       '2026-08-10': 'Vacation',
-      '2026-09-14': 'Hyrox Race Week'
+      '2026-09-14': 'Hyrox Race Week',
+      '2026-09-28': 'Travel'
     };
 
     var cur = new Date(2026, 6, 27); // 2026-07-27 (Monday)
