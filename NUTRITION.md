@@ -1,6 +1,6 @@
 # Nutrition
 
-_Last updated: 2026-08-29_
+_Last updated: 2026-10-05_
 
 ## Why this exists
 Training determines the stimulus; body composition change (leaner + hypertrophy) is driven at least as much by intake. This was the single biggest gap found in the last routine audit — there was a body-fat target in `GOALS.md` but nothing about food.
@@ -46,7 +46,7 @@ No app, no manual macro lookup required. Just tell me what you ate, in whatever 
 
 ## Preferred Staples
 Default items to assume when logging, unless a photo or description says otherwise:
-- **Protein shake:** Premier Protein Vanilla, 11 fl oz — 160 kcal, 30g protein, 3g fat, 4g carbs _(replaced the fairlife Nutrition Plan shake as of 2026-07-28)_
+- **Protein shake:** Premier Protein Vanilla, 11 fl oz — 160 kcal, 30g protein, 3g fat, 4g carbs _(replaced the fairlife Nutrition Plan shake as of 2026-07-28)_; **Pumpkin Spice variant:** 11.5 fl oz — 160 kcal, 30g protein, 3g fat, 2g carbs, 230mg sodium _(label confirmed from bottle photo 2026-10-05)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
