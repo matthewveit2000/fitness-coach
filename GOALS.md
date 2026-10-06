@@ -5,7 +5,7 @@ _Last updated: 2026-10-05_
 ## Profile
 - Age: 25
 - Height: 5'6"
-- Weight: 152 lb (new scale standard established 2026-10-05; initial baseline was 163 lb on 2026-07-26)
+- Weight: 163.2 lb (new scale standard established 2026-10-05; initial baseline was 163 lb on 2026-07-26)
 - Estimated body fat: high teens–low 20s %
 - Training experience: 10 years weightlifting
 
