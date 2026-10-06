@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-09-04_
+_Last updated: 2026-10-05_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -82,7 +82,7 @@ Machine/cable-leaning selection — works well with the back constraint since th
 - **Chest:** incline DB press, weighted dips, pec deck
 - **Back:** low cable row, weighted pull-ups, lat pulldown
 - **Delts:** lateral raise (dumbbell/cable/machine — side delt), reverse pec deck (rear delt). Overhead pressing (Arnold press) targets front delts, which are excluded from direct volume targets since chest pressing already satisfies front delt growth.
-- **Legs:** leg press, weighted lunges (barbell/smith machine), leg extension, leg curl
+- **Legs:** leg press, weighted lunges (barbell/smith machine), leg extension, leg curl, Precor super squat (face-out machine squat alternative at Yellowstone Fitness)
 - **Arms:** DB curl, hammer curl (biceps), triceps pushdown, overhead triceps extension (triceps)
 - **Core:** crunches — ⚠️ loaded/repeated spinal flexion can aggravate a bulging disc; watch for any tweak or pain and swap to a flexion-free alternative (e.g. Pallof press, plank) if it flares up
 - **Cardio:** zone 2 runs, Norwegian 4x4 intervals (both directly Hyrox-relevant)
@@ -95,7 +95,7 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
 - Superset: weighted dips 3x8–12 @ **~45–50lb added** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg press 3x10–15 @ **~445.5–501lb** (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press area / no equipment for crunches_
+- Superset: leg press 3x10–15 @ **~445.5–501lb** / Precor super squat (face out) 3x10–15 @ **~215–245lb** (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press / squat machine area · no equipment for crunches_
 - Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
 - Cardio: zone 2 run, 20–30 min
