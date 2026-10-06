@@ -11,7 +11,7 @@ Training determines the stimulus; body composition change (leaner + hypertrophy)
 | | Target | Basis |
 |---|---|---|
 | Calories | **~1,840/day** (range 1,750–1,950) | Maintenance ~2,000 (WHOOP + your correction) · same mild ~8% deficit as before |
-| Protein | **~130g/day** (range 120–140g) | **Revised 7/30 per your request** — ~0.8g/lb bodyweight (~163–164lb baseline), down from 1.0–1.2g/lb. Still comfortably above the ~0.7g/lb floor most muscle-retention-in-a-deficit research converges on, just less padding above it than before |
+| Protein | **~130g/day** (range 120–140g) | **Revised 7/30 per your request** — ~0.8g/lb bodyweight (~159–164lb baseline), down from 1.0–1.2g/lb. Still comfortably above the ~0.7g/lb floor most muscle-retention-in-a-deficit research converges on, just less padding above it than before |
 | Fat | **~65g/day** minimum | Restored to the original level now that there's more calorie room — was only trimmed to 55g because the lower ~1,700 ceiling needed the space for carbs |
 | Carbs | **~185g/day** | Fills the remainder — the lower protein target freed up ~45g of the calorie budget, which rolls into carbs (helps with the training-fuel issue from the 7/27 under-fueling incident); flex this around training days if performance/recovery suffers |
 
