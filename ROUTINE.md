@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-10-05_
+_Last updated: 2026-10-06_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
