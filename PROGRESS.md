@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-10-07_
+_Last updated: 2026-10-08_
 
 ## Bodyweight / Measurements
 | Date | Weight | Notes |
@@ -24,6 +24,7 @@ _Last updated: 2026-10-07_
 | 2026-10-05 | 159.2 lb | 🎯 **New Baseline / New Scale Standard:** New home scale, before bed, minimal clothing. User explicit standard: **this scale is the new standard going forward.** Settled reading with fresh batteries (clarified from initial setup tests). Lands ~4–5 lb below the clothed gym scale readings (~164–165 lb with shoes/work clothes on padded floor), cleanly accounting for footwear, clothing, floor firmness, and device calibration. Serves as the new standard going forward. Also note: day 1 post-travel, so slight hydration/sodium noise may be present. |
 | 2026-10-06 | 156.4 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. Down 2.8 lb from yesterday's bedtime reading (159.2 lb) — consistent with normal overnight respiratory/metabolic drop (~1–2 lb) plus continued shedding of travel-related water retention (day 2 post-travel, within post-gap window). |
 | 2026-10-07 | 157.3 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +0.9 lb from yesterday (156.4 lb) — ordinary daily fluctuation following 10/6 dinner (~1,918 kcal) and normal fluid shifts (day 3 post-travel, within post-gap window). |
+| 2026-10-08 | 156.2 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. Down 1.1 lb from yesterday (157.3 lb), essentially matching the 10/6 reading (156.4 lb) — clustering tightly in the ~156–157 lb zone under consistent morning minimal-clothing conditions (day 4 post-travel). |
 
 **Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window, 9/19–9/21 Hyrox travel window, and 9/26–10/04 travel window.
 

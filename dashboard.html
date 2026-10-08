@@ -939,7 +939,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-10-07</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-10-08</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -1723,9 +1723,9 @@
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
       <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">40</span><span class="sub">across 4 months</span></div>
-      <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">499</span><span class="sub">individual items</span></div>
+      <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">504</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
-      <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">16</span><span class="sub">trend tracked</span></div>
+      <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">17</span><span class="sub">trend tracked</span></div>
     </div>
 
     <!-- Interactive Bodyweight Trend Chart -->
@@ -1735,7 +1735,7 @@
           <h3 class="card-title">⚖️ Bodyweight Trend & Moving Average</h3>
           <span class="faint">Gym scale readings transitioning to new home scale baseline</span>
         </div>
-        <span class="pill good">Current: 157.3 lb (New Scale Standard)</span>
+        <span class="pill good">Current: 156.2 lb (New Scale Standard)</span>
       </div>
       <div class="chart-container">
         <div class="chart-tooltip" id="bw-tooltip"></div>
@@ -1754,6 +1754,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-10-08</td><td class="num">156.2 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.1 lb from yesterday (157.3 lb) &mdash; clustering tightly in the ~156&ndash;157 lb zone under consistent morning minimal-clothing conditions (day 4 post-travel).</td></tr>
       <tr><td>2026-10-07</td><td class="num">157.3 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.9 lb from yesterday (156.4 lb) &mdash; ordinary day-to-day fluctuation following 10/6 dinner (~1,918 kcal) and fluid shifts (day 3 post-travel).</td></tr>
       <tr><td>2026-10-06</td><td class="num">156.4 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. Down 2.8 lb from yesterday's bedtime reading (159.2 lb) &mdash; diurnal morning drop plus continued shedding of travel water retention (day 2 post-travel).</td></tr>
       <tr><td>2026-10-05</td><td class="num">159.2 lb</td><td>🎯 <strong>New Scale Standard:</strong> Home scale, before bed, minimal clothing. Settled reading with fresh batteries. Lands ~4&ndash;5lb under clothed gym scale (shoes/clothes/floor padding). Standard baseline going forward.</td></tr>
@@ -3054,7 +3055,7 @@
         <table>
           <tr><th>Age</th><td>25</td></tr>
           <tr><th>Height</th><td>5'6"</td></tr>
-          <tr><th>Baseline Weight</th><td>163 lb &middot; Current 157.3 lb (New Scale Standard)</td></tr>
+          <tr><th>Baseline Weight</th><td>163 lb &middot; Current 156.2 lb (New Scale Standard)</td></tr>
           <tr><th>Body Fat</th><td>~high-teens&ndash;20% &rarr; <strong>Goal: 15%</strong></td></tr>
           <tr><th>Experience</th><td>10 years weightlifting</td></tr>
           <tr><th>Event</th><td><strong>Hyrox Competition &mdash; Sep 20, 2026</strong></td></tr>
@@ -3715,6 +3716,13 @@
       { name: 'Good & Gather Superfruit Blend frozen berries, 275g', kcal: 157.1, protein: 2, fat: 1, carbs: 37.3, source: 'label' },
       { name: 'fairlife Nutrition Plan shake (11.5 fl oz)', kcal: 150, protein: 30, fat: 2.5, carbs: 4, source: 'label' },
       { name: 'Kirkland ultra-filtered 2% milk, 108g', kcal: 54, protein: 5.9, fat: 2, carbs: 2.7, source: 'label' }
+    ],
+    '2026-10-08': [
+      { name: 'Creatine gummies', kcal: 50, protein: 0, fat: 0, carbs: 12, source: 'estimate' },
+      { name: 'Premier Protein Pumpkin Spice shake (11.5 fl oz)', kcal: 160, protein: 30, fat: 3, carbs: 2, source: 'label' },
+      { name: 'Riviana brown rice, 75g dry', kcal: 270, protein: 6, fat: 2.3, carbs: 58.5, source: 'label' },
+      { name: 'Kirkland organic Normandy frozen vegetables, 250g', kcal: 71.7, protein: 6.1, fat: 0, carbs: 14.3, source: 'label' },
+      { name: "Sukhi's Indian Butter Chicken, 1.75 servings (half pack)", kcal: 280, protein: 35, fat: 8.8, carbs: 10.5, source: 'label' }
     ]
   };
 
@@ -3741,9 +3749,9 @@
     '2026-10-04': { status: 'untracked', note: 'Travel — not logged.' }
   };
 
-  var TODAY = '2026-10-07';
+  var TODAY = '2026-10-08';
   var selectedDate = TODAY;
-  var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164\u2013165lb baseline."}, {"date": "2026-10-05", "weight": 159.2, "notes": "🎯 <strong>New Scale Standard:</strong> Home digital scale with fresh batteries, before bed, minimal clothing. New standardized baseline going forward."}, {"date": "2026-10-06", "weight": 156.4, "notes": "🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. Down 2.8lb from yesterday's bedtime reading (159.2lb) \u2014 diurnal drop + post-travel water normalization."}, {"date": "2026-10-07", "weight": 157.3, "notes": "🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.9lb from yesterday (156.4lb) \u2014 normal daily fluctuation + post-travel stabilization."}];
+  var WEIGH_INS = [{"date": "2026-07-26", "weight": 163.0, "notes": "Estimated body fat high teens\u2013low 20s%, 5'6\""}, {"date": "2026-07-27", "weight": 164.3, "notes": "Gym scale, after work, with shoes, padded floor \u2014 not directly comparable to 7/26 (different conditions)"}, {"date": "2026-07-28", "weight": 164.0, "notes": "Same conditions as 7/27 \u2014 comparable to that reading, down 0.3lb"}, {"date": "2026-08-05", "weight": 163.8, "notes": "Same conditions as 7/27/7/28 \u2014 comparable, essentially flat"}, {"date": "2026-08-07", "weight": 165.8, "notes": "Same conditions as 7/27/7/28/8/5 \u2014 comparable, up 2lb from 8/5"}, {"date": "2026-08-10", "weight": 165.4, "notes": "Same conditions as 7/27/7/28/8/5/8/7 \u2014 comparable, down 0.4lb from 8/7"}, {"date": "2026-08-19", "weight": 164.2, "notes": "&#9888; <strong>Not a trend point</strong> \u2014 day 2 back from the 8/12\u20138/17 vacation, inside the post-gap caution window. Wait for a same-conditions weigh-in ~8/22\u20138/24."}, {"date": "2026-08-20", "weight": 162.8, "notes": "&#9888; Was inside the post-gap window (day 3) at the time \u2014 the second consecutive reading below the 165.4 pre-vacation baseline. Superseded by the 8/24 confirming reading above."}, {"date": "2026-08-24", "weight": 164.6, "notes": "<strong>Confirming reading</strong> for the 8/22\u20138/24 post-gap window \u2014 lands near the 165.4lb pre-vacation baseline, not near either lower in-window reading. Those two were transient post-travel water weight, not a real drop. Window closed."}, {"date": "2026-08-25", "weight": 165.2, "notes": "Same conditions, +0.6lb from 8/24 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-08-26", "weight": 165.4, "notes": "Same conditions, +0.2lb from 8/25 \u2014 ordinary day-to-day noise, on trend."}, {"date": "2026-09-03", "weight": 162.4, "notes": "Same conditions as 7/27\u20138/26 (gym scale, after work, shoes, padded floor) \u2014 new low under these conditions, down 3.0lb from 8/26 (165.4lb)."}, {"date": "2026-09-04", "weight": 164.2, "notes": "Same conditions as 7/27\u20139/3 (gym scale, after work, shoes, padded floor) \u2014 +1.8lb from yesterday's low (162.4lb), returning directly into the consistent ~164\u2013165lb baseline."}, {"date": "2026-10-05", "weight": 159.2, "notes": "🎯 <strong>New Scale Standard:</strong> Home digital scale with fresh batteries, before bed, minimal clothing. New standardized baseline going forward."}, {"date": "2026-10-06", "weight": 156.4, "notes": "🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. Down 2.8lb from yesterday's bedtime reading (159.2lb) \u2014 diurnal drop + post-travel water normalization."}, {"date": "2026-10-07", "weight": 157.3, "notes": "🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.9lb from yesterday (156.4lb) \u2014 normal daily fluctuation + post-travel stabilization."}, {"date": "2026-10-08", "weight": 156.2, "notes": "🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.1lb from yesterday (157.3lb), clustering tightly around ~156\u2013157lb baseline."}];
 
   function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
 
