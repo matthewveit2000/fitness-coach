@@ -1,6 +1,6 @@
 # Goals
 
-_Last updated: 2026-10-11_
+_Last updated: 2026-10-12_
 
 ## Profile
 - Age: 25
@@ -29,7 +29,8 @@ Optimize for the 20% of work that drives 80% of the result. Favor efficient, hig
 
 ## Targets
 - Body fat: 15% (from current estimated high teens–low 20s%)
-- Nutrition: ~1,840 kcal/day, ~130g protein/day — see `NUTRITION.md` for the full breakdown and calibration protocol
+- Nutrition: **~1,700 kcal weekdays / ~1,900 kcal weekends** (from 2026-10-12; was a flat ~1,840), ~130g protein/day floor — see `NUTRITION.md` for the full breakdown and calibration protocol
+- Bodyweight: ~149–151 lb on the home scale (≈15% body fat at current lean mass), losing ~0.8–1.1 lb/week on the 7-day average — see `audits/2026-10-12-diet-training-audit.md`
 - _(fill in as specifics come up — target bodyweight, lift numbers, run paces, etc.)_
 
 ## Notes

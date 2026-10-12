@@ -12,6 +12,7 @@ Personal training log and coaching notes. Training mix: weightlifting, running/c
 - `PROGRESS.md` — bodyweight, measurements, and lift/run PRs over time
 - `workouts/` — one log file per month, individual workout entries go here
 - `meals/` — one log file per month, meals logged from a chat description or photo
+- `audits/` — dated, evidence-backed reviews of diet + training (findings, ranked levers, and which changes were implemented); the latest one's conclusions are summarized on the dashboard's Progress tab
 - `dashboard.html` — tabbed HTML dashboard (Overview/Goals/Routine/Nutrition/Progress) summarizing everything above; published as a Claude artifact and regenerated **every single time** any source file changes (also available on [GitHub Pages](https://matthewveit2000.github.io/fitness-coach/dashboard.html)) — including every individual meal or workout log entry, not just edits to `GOALS.md`/`ROUTINE.md`/`NUTRITION.md`/`PROGRESS.md`
 
 ## Workflow

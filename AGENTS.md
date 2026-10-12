@@ -145,6 +145,8 @@ touches any source file, update **all** of the following in `dashboard.html`:
       selects and evaluates the new week, and that `#week-select` includes the
       current week
 - [ ] Header `sync-note` "last updated" date
+- [ ] **Calorie/macro target changes** go into `TARGET_SCHEDULE` in `dashboard.html` as a **new dated entry** (never edit an old entry — past days must stay judged against the target in effect that day). Targets are split weekday (Mon–Fri) / weekend (Sat–Sun) since 2026-10-12; all target displays read from `targetsFor(date)`, so don't reintroduce a single hard-coded target number. Also add a row to the Nutrition Target History card.
+- [ ] **Weigh-ins on the dashboard are home-scale only (2026-10-05 onward)**, per the user's 2026-10-12 request. Add new home-scale readings to `WEIGH_INS` and the weigh-in table, and bump the Weigh-ins tile; never re-add the older gym-scale rows from `PROGRESS.md`.
 - [ ] Post-sync review: review the dashboard to verify everything displays correctly (see §5a)
 
 **Before ending your turn**, grep the file(s) you just edited for the
