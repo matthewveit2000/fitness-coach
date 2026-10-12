@@ -1758,7 +1758,7 @@
         <svg class="chart-svg" id="bw-chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
       </div>
       <p class="faint" style="margin-top: 8px;">
-        <span style="color:#a371f7;">●</span> Daily home-scale weigh-ins. <span style="color:var(--good);">━</span> Trailing 7-day average (needs &ge;3 readings in the window) &mdash; judge progress on this line, not single days. <span style="color:#f59e0b;">■</span> Amber = untracked/partial days (expect water-weight noise for ~2&ndash;3 days after). Goal pace: &minus;0.8 to &minus;1.1 lb/week.
+        <span style="color:#a371f7;">●</span> Daily home-scale weigh-ins. <span style="color:var(--good);">━</span> Trailing 7-day average (needs &ge;3 readings in the window) &mdash; judge progress on this line, not single days. <span style="color:#f59e0b;">■</span> Amber = untracked/partial days (expect water-weight noise for ~2&ndash;3 days after). <span style="color:var(--good);">┅</span> Goal line 149 lb with shaded 146&ndash;151 lb band = 15% body fat at current lean mass (~124&ndash;129 lb; see GOALS.md). Goal pace: &minus;0.8 to &minus;1.1 lb/week.
       </p>
     </div>
 
@@ -3192,6 +3192,8 @@
           <tr><th>Height</th><td>5'6"</td></tr>
           <tr><th>Bodyweight</th><td>Home-scale baseline 159.2 lb (10/5) &middot; Current 158.6 lb</td></tr>
           <tr><th>Body Fat</th><td>~high-teens&ndash;20% &rarr; <strong>Goal: 15%</strong></td></tr>
+          <tr><th>Lean Mass</th><td>~124&ndash;129 lb now (FFMI ~21) &middot; likely natural max ~138&ndash;145 lb</td></tr>
+          <tr><th>Goal Weight</th><td><strong>149 lb</strong> (146&ndash;151) at 15% BF &middot; long-term ~162&ndash;171 lb at 15% with max lean mass</td></tr>
           <tr><th>Experience</th><td>10 years weightlifting</td></tr>
           <tr><th>Event</th><td><strong>Hyrox Competition &mdash; Sep 20, 2026</strong></td></tr>
         </table>
@@ -3949,6 +3951,8 @@
   };
 
   var TODAY = '2026-10-12';
+  // Bodyweight goal (mirrors GOALS.md → Lean Mass & Goal Weight): 15% BF at ~124–129 lb lean mass
+  var GOAL_WEIGHT = { target: 149, low: 146, high: 151, label: 'Goal 149 lb (15% BF)' };
   var selectedDate = TODAY;
   // Home-scale weigh-ins only (standard from 2026-10-05). Earlier gym-scale readings were removed from the
   // dashboard per user request 2026-10-12 — they remain in PROGRESS.md as raw history but are not comparable.
@@ -4360,7 +4364,7 @@
     });
 
     var weights = WEIGH_INS.map(function(w) { return w.weight; });
-    var minW = Math.floor(Math.min.apply(null, weights) - 1);
+    var minW = Math.floor(Math.min(GOAL_WEIGHT.low, Math.min.apply(null, weights)) - 1);
     var maxW = Math.ceil(Math.max.apply(null, weights) + 1);
 
     function getX(t) { return padLeft + ((t - minT) / (maxT - minT)) * (width - padLeft - padRight); }
@@ -4385,9 +4389,17 @@
     for (var gw = minW; gw <= maxW; gw++) {
       var y = getY(gw);
       svgHtml += '<line x1="' + padLeft + '" y1="' + y + '" x2="' + (width - padRight) + '" y2="' + y + '" stroke="var(--border)" stroke-dasharray="2 2" stroke-width="1"/>';
+      if ((maxW - minW) > 10 && gw % 2 !== 0) continue; // label every 2 lb on tall ranges
       svgHtml += '<text x="' + (padLeft - 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="end">' + gw + '</text>';
       svgHtml += '<text x="' + (width - padRight + 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="start">' + gw + '</text>';
     }
+
+    // Goal band (15% BF range) + goal line
+    var gbTop = getY(GOAL_WEIGHT.high), gbBot = getY(GOAL_WEIGHT.low);
+    svgHtml += '<rect x="' + padLeft + '" y="' + gbTop + '" width="' + (width - padLeft - padRight) + '" height="' + (gbBot - gbTop) + '" fill="rgba(63, 185, 80, 0.08)"><title>15% body-fat range: ' + GOAL_WEIGHT.low + '–' + GOAL_WEIGHT.high + ' lb</title></rect>';
+    var gy = getY(GOAL_WEIGHT.target);
+    svgHtml += '<line x1="' + padLeft + '" y1="' + gy + '" x2="' + (width - padRight) + '" y2="' + gy + '" stroke="var(--good)" stroke-width="2" stroke-dasharray="6 4"/>';
+    svgHtml += '<text x="' + (padLeft + 6) + '" y="' + (gy - 6) + '" fill="var(--good)" font-size="11" font-weight="700" font-family="monospace">🎯 ' + GOAL_WEIGHT.label + '</text>';
 
     // Daily readings (thin purple line)
     var pts = WEIGH_INS.map(function(w) { return getX(tOf(w.date)) + ',' + getY(w.weight); }).join(' ');
