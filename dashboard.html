@@ -942,7 +942,7 @@
 
   <!-- Sync Note Bar (Preserved for AGENTS.md) -->
   <div class="sync-bar">
-    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-10-12</span>
+    <span class="sync-note">Synced from GOALS.md / ROUTINE.md / NUTRITION.md / PROGRESS.md &middot; last updated 2026-10-13</span>
     <span class="pill" id="mt-time-indicator">Mountain Time (User TZ)</span>
   </div>
 
@@ -1729,7 +1729,7 @@
       <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">45</span><span class="sub">across 4 months</span></div>
       <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">557</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
-      <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">8</span><span class="sub">home scale (since 10/5)</span></div>
+      <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">9</span><span class="sub">home scale (since 10/5)</span></div>
     </div>
 
     <!-- Latest Audit Summary (mirrors audits/2026-10-12-diet-training-audit.md) -->
@@ -1751,7 +1751,7 @@
           <h3 class="card-title">⚖️ Bodyweight Trend & Moving Average</h3>
           <span class="faint">Home scale standard only (morning, minimal clothing) &middot; since 2026-10-05</span>
         </div>
-        <span class="pill good" id="bw-current-pill">Current: 158.6 lb (Home Scale Standard)</span>
+        <span class="pill good" id="bw-current-pill">Current: 157.4 lb (Home Scale Standard)</span>
       </div>
       <div class="chart-container">
         <div class="chart-tooltip" id="bw-tooltip"></div>
@@ -1770,6 +1770,7 @@
       <div class="table-wrap">
         <table>
           <tr><th>Date</th><th>Weight</th><th>Notes</th></tr>
+      <tr><td>2026-10-13</td><td class="num">157.4 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.2 lb from yesterday (158.6 lb) &mdash; fluid/glycogen retention from 10/10 social evening continues to shed as expected, returning directly into the established ~156&ndash;157 lb baseline band.</td></tr>
       <tr><td>2026-10-12</td><td class="num">158.6 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;0.8 lb from yesterday (159.4 lb) &mdash; fluid/glycogen retention from 10/10 social evening continues to shed as expected, trending back down toward the ~156&ndash;157 lb baseline band.</td></tr>
       <tr><td>2026-10-11</td><td class="num">159.4 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +2.4 lb from yesterday (157.0 lb) &mdash; expected acute spike reflecting fluid/glycogen retention, sodium, and GI volume following 10/10 untracked social evening / beers. Not true tissue gain; expected to shed over 48&ndash;72 hours.</td></tr>
       <tr><td>2026-10-10</td><td class="num">157.0 lb</td><td>🎯 <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.3 lb from yesterday (156.7 lb) &mdash; solidifies steady clustering in the ~156&ndash;157 lb baseline band across five consecutive morning weigh-ins (day 6 post-travel).</td></tr>
@@ -3230,7 +3231,7 @@
         <table>
           <tr><th>Age</th><td>25</td></tr>
           <tr><th>Height</th><td>5'6"</td></tr>
-          <tr><th>Bodyweight</th><td>Home-scale baseline 159.2 lb (10/5) &middot; Current 158.6 lb</td></tr>
+          <tr><th>Bodyweight</th><td>Home-scale baseline 159.2 lb (10/5) &middot; Current 157.4 lb</td></tr>
           <tr><th>Body Fat</th><td>~high-teens&ndash;20% &rarr; <strong>Goal: 15%</strong></td></tr>
           <tr><th>Lean Mass</th><td>~124&ndash;129 lb now (FFMI ~21) &middot; likely natural max ~138&ndash;145 lb</td></tr>
           <tr><th>Goal Weight</th><td><strong>149 lb</strong> (146&ndash;151) at 15% BF &middot; long-term ~162&ndash;171 lb at 15% with max lean mass</td></tr>
@@ -3995,13 +3996,13 @@
     '2026-10-10': { status: 'partial',   note: 'Not tracking rest of day — drank many beers, afternoon/evening untracked. Totals are a morning floor (210 kcal), excluded from intake averages and calorie-balance math.' }
   };
 
-  var TODAY = '2026-10-12';
+  var TODAY = '2026-10-13';
   // Bodyweight goal (mirrors GOALS.md → Lean Mass & Goal Weight): 15% BF at ~124–129 lb lean mass
   var GOAL_WEIGHT = { target: 149, low: 146, high: 151, label: 'Goal 149 lb (15% BF)' };
   var selectedDate = TODAY;
   // Home-scale weigh-ins only (standard from 2026-10-05). Earlier gym-scale readings were removed from the
   // dashboard per user request 2026-10-12 — they remain in PROGRESS.md as raw history but are not comparable.
-  var WEIGH_INS = [{"date": "2026-10-05", "weight": 159.2, "offStandard": true, "notes": "\ud83c\udfaf <strong>New Scale Standard:</strong> Home digital scale with fresh batteries, before bed, minimal clothing. New standardized baseline going forward."}, {"date": "2026-10-06", "weight": 156.4, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. Down 2.8lb from yesterday's bedtime reading (159.2lb) \u2014 diurnal drop + post-travel water normalization."}, {"date": "2026-10-07", "weight": 157.3, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.9lb from yesterday (156.4lb) \u2014 normal daily fluctuation + post-travel stabilization."}, {"date": "2026-10-08", "weight": 156.2, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.1lb from yesterday (157.3lb), clustering tightly around ~156\u2013157lb baseline."}, {"date": "2026-10-09", "weight": 156.7, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.5lb from yesterday (156.2lb), continuing stable ~156\u2013157lb baseline."}, {"date": "2026-10-10", "weight": 157.0, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.3lb from yesterday (156.7lb) \u2014 solidifies steady clustering in the ~156\u2013157lb baseline band across five consecutive morning weigh-ins."}, {"date": "2026-10-11", "weight": 159.4, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +2.4lb from yesterday (157.0lb) \u2014 acute post-beer/social fluid & glycogen retention."}, {"date": "2026-10-12", "weight": 158.6, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;0.8lb from yesterday (159.4lb) \u2014 fluid/glycogen retention from 10/10 social evening continues to shed as expected, trending back down toward ~156\u2013157lb baseline band."}];
+  var WEIGH_INS = [{"date": "2026-10-05", "weight": 159.2, "offStandard": true, "notes": "\ud83c\udfaf <strong>New Scale Standard:</strong> Home digital scale with fresh batteries, before bed, minimal clothing. New standardized baseline going forward."}, {"date": "2026-10-06", "weight": 156.4, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. Down 2.8lb from yesterday's bedtime reading (159.2lb) \u2014 diurnal drop + post-travel water normalization."}, {"date": "2026-10-07", "weight": 157.3, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.9lb from yesterday (156.4lb) \u2014 normal daily fluctuation + post-travel stabilization."}, {"date": "2026-10-08", "weight": 156.2, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.1lb from yesterday (157.3lb), clustering tightly around ~156\u2013157lb baseline."}, {"date": "2026-10-09", "weight": 156.7, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.5lb from yesterday (156.2lb), continuing stable ~156\u2013157lb baseline."}, {"date": "2026-10-10", "weight": 157.0, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +0.3lb from yesterday (156.7lb) \u2014 solidifies steady clustering in the ~156\u2013157lb baseline band across five consecutive morning weigh-ins."}, {"date": "2026-10-11", "weight": 159.4, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. +2.4lb from yesterday (157.0lb) \u2014 acute post-beer/social fluid & glycogen retention."}, {"date": "2026-10-12", "weight": 158.6, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;0.8lb from yesterday (159.4lb) \u2014 fluid/glycogen retention from 10/10 social evening continues to shed as expected, trending back down toward ~156\u2013157lb baseline band."}, {"date": "2026-10-13", "weight": 157.4, "notes": "\ud83c\udfaf <strong>Home Scale Standard:</strong> Morning weight, minimal clothing. &minus;1.2lb from yesterday (158.6lb) \u2014 fluid/glycogen retention from 10/10 social evening continues to shed as expected, returning directly into the established ~156\u2013157lb baseline band."}];
 
   function dayStatus(d) { return (DAY_STATUS[d] && DAY_STATUS[d].status) || 'complete'; }
 
