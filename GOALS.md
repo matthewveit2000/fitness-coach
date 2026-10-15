@@ -1,11 +1,11 @@
 # Goals
 
-_Last updated: 2026-10-13_
+_Last updated: 2026-10-15_
 
 ## Profile
 - Age: 25
 - Height: 5'6"
-- Weight: 157.4 lb (home scale standard established 2026-10-05; morning weight minimal clothes; returning to established ~156–157 lb baseline after 10/10 social evening spike; initial baseline was 163 lb on 2026-07-26)
+- Weight: 155.4 lb (home scale standard established 2026-10-05; morning weight minimal clothes; new low on the home scale standard, down from 157.4 lb on 2026-10-13; initial baseline was 163 lb on 2026-07-26)
 - Estimated body fat: high teens–low 20s %
 - Training experience: 10 years weightlifting
 
