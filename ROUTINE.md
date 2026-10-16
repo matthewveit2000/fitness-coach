@@ -1,11 +1,12 @@
 # Current Routine
 
-_Last updated: 2026-10-13_
+_Last updated: 2026-10-15_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
 - **80/20 efficiency.** Favor compound lifts and Hyrox-relevant conditioning over isolation/accessory volume; cut anything that isn't clearly earning its place.
 - **Lower back caution.** Bulging disc — avoid heavy loaded spinal flexion and risky deadlift variations; prefer neutral-spine, back-friendly alternatives (e.g. trap bar over straight bar, controlled hip hinge, avoid weighted spinal flexion work like weighted sit-ups/good mornings).
+- **Knee caution (right knee, added 2026-10-15).** Likely residual Osgood-Schlatter bump below the kneecap (see `GOALS.md` → Injury Constraint). Quad work that loads the patellar tendon (leg extension, leg press, split squats) should be pain-guided: stop or drop weight on sharp or localized pain at the bump, keep tempo controlled, and note which exercise/side flared in the workout log. Do not skip quads entirely — substitute (e.g. Precor super squat, lighter leg press) rather than leave a 0-set week.
 - **Hyrox is secondary.** Main goals are physique/hypertrophy/leanness — Hyrox (Sept 20, 2026) gets maintained (zone 2 + Norwegian 4x4 already in the plan for general conditioning) but isn't optimized for specifically; Day 5 station practice is fully optional and skippable.
 - **Supersets hit opposing muscle groups first, same/adjacent equipment second.** Every pair below is antagonist (or push-vs-pull) *and* shares a machine, rack, or zone — so there's no setup time between exercises and no muscle worked twice in a row. Only one pair breaks the antagonist rule: abs has no opposing muscle in this exercise list, so it's paired for practicality instead.
 

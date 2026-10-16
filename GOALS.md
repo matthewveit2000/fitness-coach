@@ -26,6 +26,7 @@ Optimize for the 20% of work that drives 80% of the result. Favor efficient, hig
 
 ## Injury Constraint
 - Slight lower back bulging disc. Avoid exercises/loading patterns that aggravate it (e.g. heavy loaded spinal flexion, risky deadlift variations). Favor neutral-spine, back-friendly alternatives. Flag this whenever suggesting new lifts.
+- **Right knee (reported 2026-10-15):** bony bump at the very front-middle of the right knee, just below the kneecap, present since childhood/teens; user believes it is residual Osgood-Schlatter. Hurts sometimes with some leg workouts (see 10/13 leg-extension skip). Not a diagnosis — if pain changes (sharp, swelling, night pain, new locking), get it looked at. Log which exercise/side triggers it; keep knee-loading work pain-guided and prefer controlled tempo over heavy ballistic/deep loading on days it flares.
 
 ## Targets
 - Body fat: 15% (from current estimated high teens–low 20s%)
