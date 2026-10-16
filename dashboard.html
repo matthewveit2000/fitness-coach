@@ -1727,7 +1727,7 @@
   <section class="tab-panel" id="progress">
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
-      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">48</span><span class="sub">across 4 months</span></div>
+      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">49</span><span class="sub">across 4 months</span></div>
       <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">597</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
       <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">10</span><span class="sub">home scale (since 10/5)</span></div>
@@ -1836,11 +1836,11 @@
       <div class="card-head">
         <div>
           <h2 class="section-title" style="margin:0; font-size:1.15rem;">Workout Log</h2>
-          <span class="faint">47 completed sessions logged with coach feedback</span>
+          <span class="faint">49 completed sessions logged with coach feedback</span>
         </div>
         <div class="filter-group">
-          <button class="filter-btn active" onclick="filterSessions('all')">All (47)</button>
-          <button class="filter-btn" onclick="filterSessions('gym')">🏋️ Gym (29)</button>
+          <button class="filter-btn active" onclick="filterSessions('all')">All (49)</button>
+          <button class="filter-btn" onclick="filterSessions('gym')">🏋️ Gym (31)</button>
           <button class="filter-btn" onclick="filterSessions('cardio')">🏃 Cardio (18)</button>
           <button class="filter-btn" onclick="filterSessions('pr')">⭐ PRs</button>
         </div>
@@ -1851,6 +1851,33 @@
       </div>
       <!-- Session Cards Container -->
       <div id="workout-sessions-container">
+        
+    <details class="session-card" open data-date="2026-10-16" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-10-16</span>
+          <span class="pill badge-gym">Gym (Day 4)</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-10-16 &mdash; Gym (Day 4 &mdash; Extra Volume) &mdash; P66 Gym</strong></p>
+        <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Reps</th><th>Weight</th></tr>
+      <tr><td>Incline DB Press</td><td class="num">10</td><td class="num">70 lb</td></tr>
+      <tr><td>Low Cable Row <span class="faint">(neutral narrow grip)</span></td><td class="num">10</td><td class="num">190 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">9 <span class="faint">(f10)</span></td><td class="num">70 lb</td></tr>
+      <tr><td>Low Cable Row <span class="faint">(neutral narrow grip)</span></td><td class="num">10</td><td class="num">205 lb</td></tr>
+      <tr><td>Incline DB Press</td><td class="num">7 <span class="faint">(f8)</span></td><td class="num">70 lb</td></tr>
+      <tr><td>Low Cable Row <span class="faint">(neutral narrow grip)</span></td><td class="num">10</td><td class="num">205 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">11 <span class="faint">(f12)</span></td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Extension</td><td class="num">15</td><td class="num">215 lb</td></tr>
+      <tr><td>Leg Curl</td><td class="num">10</td><td class="num">215 lb</td></tr>
+    </table></div>
+        <div class="callout info">Day 4 (Extra Volume / Optimal Booster) upper compound and knee-joint supersets completed at P66 (work) gym. RIR=0 blind default applied except where explicit failed reps provide true failure data directly. No new e1RM records, but a standout performance on rows: <strong>Low Cable Row</strong> (neutral narrow grip: 190lb x 10 [e1RM 253.3lb], followed by two consecutive sets at 205lb x 10 [e1RM 273.3lb]) sets a <strong>new all-time working weight record</strong> (205lb, up from 190lb) with 10 clean reps handled squarely in Epley's validated &le;12-rep zone (under the 278.7lb directional 14-rep PR from 10/9). <strong>Incline DB Press</strong> (70lb x 10 [e1RM 93.3lb], 70x9 failed 10th [e1RM 91.0lb], 70x7 failed 8th [e1RM 86.3lb]) delivered another strong 3-set session at 70lb dumbbells, matching Tuesday's 70x10 top set and sitting right behind the 95.7lb PR (70x11). <strong>Leg Extension return:</strong> After skipping leg extensions on 10/13 due to knee irritation, returned to the machine and successfully locked in two clean 15-rep sets at the P66 stack maximum (215lb x 15 x2 sets, e1RM 322.5lb) with no reported flare-ups. <strong>Leg Curl</strong> (215lb x 11 failed 12th [e1RM 293.8lb], 215lb x 10 [e1RM 286.7lb]) paired seamlessly on the familiar 215lb stack. Direct weekly volume across Days 1&ndash;4 brings <strong>Chest to 12 sets (Optimal / MAV)</strong>, <strong>Back to 15 sets (Optimal / MAV)</strong>, <strong>Quads to 5 sets</strong> (rebounding from the knee pause), and <strong>Hamstrings to 8 sets (&ge; MEV)</strong>.</div>
+      </div>
+    </details>
         
     <details class="session-card" open data-date="2026-10-15" data-cat="gym" data-pr="false">
       <summary class="session-summary">
@@ -4721,6 +4748,7 @@
     'Low Cable Row (wide pronated grip)': { muscle: 'Back', pulling: 1 },
     'Low Cable Row (wide pronated)': { muscle: 'Back', pulling: 1 },
     'Low Cable Row (neutral grip)': { muscle: 'Back', pulling: 1 },
+    'Low Cable Row (neutral narrow grip)': { muscle: 'Back', pulling: 1 },
     'Low Cable Row (neutral shoulder-width grip)': { muscle: 'Back', pulling: 1 },
     'Weighted Pull-Ups': { muscle: 'Back', pulling: 1 },
     'Bodyweight Pull-Ups': { muscle: 'Back', pulling: 1 },
