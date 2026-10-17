@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-10-16_
+_Last updated: 2026-10-17_
 
 ## Bodyweight / Measurements
 | Date | Weight | Notes |
@@ -32,6 +32,7 @@ _Last updated: 2026-10-16_
 | 2026-10-12 (gym) | 162.2 lb | 🔁 **Gym-scale calibration reading — NOT a home-scale trend point, NOT on the dashboard** (per user request). Normal gym, old gym-scale conditions (afternoon ~4:40 PM MT, shoes + clothes, padded floor). Paired with this morning's home-scale 158.6 lb → **same-day offset +3.6 lb** (gym afternoon clothed vs home morning minimal clothing; includes diurnal food/water gain, not just scale calibration). Smaller than the ~4–5 lb assumed on 10/5 (which compared a bedtime home reading against older gym readings, never same-day). First paired reading only — needs 2–3 more pairings (ideally on non-post-alcohol days; 10/12 home reading still carries ~1–1.5 lb of 10/10 water) before the offset is trusted. Direct gym-to-gym comparison: −2.3 lb vs the 7/27–9/4 gym-scale mean (~164.5 lb), −2.0 vs 9/4 (164.2). |
 | 2026-10-13 | 157.4 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -1.2 lb from yesterday (158.6 lb) — fluid/glycogen retention from 10/10 social evening continues to shed as expected, returning directly into the established ~156–157 lb baseline band (matching the pre-spike cluster: 156.4, 157.3, 156.2, 156.7, 157.0). |
 | 2026-10-15 | 155.4 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -2.0 lb from 10/13 (157.4 lb) — new low on the home scale standard (-0.8 lb below prior 156.2 lb low on 10/8). Reflects steady adherence to the 1,700 kcal weekday deficit and post-cardio recovery from 10/14 Zone 2 run. |
+| 2026-10-17 | 156.0 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +0.6 lb from 10/15 (155.4 lb) — ordinary day-to-day noise, continuing tight clustering in the ~155–156 lb range and confirming sustained downward trend under the updated calorie target. |
 
 **Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window, 9/19–9/21 Hyrox travel window, and 9/26–10/04 travel window.
 
