@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-10-18_
+_Last updated: 2026-10-19_
 
 ## Bodyweight / Measurements
 | Date | Weight | Notes |
@@ -34,6 +34,7 @@ _Last updated: 2026-10-18_
 | 2026-10-15 | 155.4 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -2.0 lb from 10/13 (157.4 lb) — new low on the home scale standard (-0.8 lb below prior 156.2 lb low on 10/8). Reflects steady adherence to the 1,700 kcal weekday deficit and post-cardio recovery from 10/14 Zone 2 run. |
 | 2026-10-17 | 156.0 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +0.6 lb from 10/15 (155.4 lb) — ordinary day-to-day noise, continuing tight clustering in the ~155–156 lb range and confirming sustained downward trend under the updated calorie target. |
 | 2026-10-18 | 155.9 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -0.1 lb from 10/17 (156.0 lb) — essentially flat, continuing tight clustering in the ~155–156 lb range and solidifying the sustained downward trend under the updated calorie target. |
+| 2026-10-19 | 156.1 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +0.2 lb from 10/18 (155.9 lb) — flat day-to-day noise, continuing remarkably stable clustering in the ~155–156 lb range (155.4, 156.0, 155.9, 156.1 over the last 5 days). |
 
 **Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window, 9/19–9/21 Hyrox travel window, and 9/26–10/04 travel window.
 
