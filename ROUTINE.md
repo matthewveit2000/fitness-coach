@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-10-15_
+_Last updated: 2026-10-19_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -80,10 +80,10 @@ No true 1-rep-max testing is ever done — an estimated 1RM (e1RM) gets inferred
 
 ## Preferred Exercises
 Machine/cable-leaning selection — works well with the back constraint since these load the spine less than free-weight squats/deadlifts.
-- **Chest:** incline DB press, weighted dips, pec deck
+- **Chest:** incline DB press, weighted dips, pec deck, iso-lateral incline press (machine)
 - **Back:** low cable row, weighted pull-ups, lat pulldown
 - **Delts:** lateral raise (dumbbell/cable/machine — side delt), reverse pec deck (rear delt). Overhead pressing (Arnold press) targets front delts, which are excluded from direct volume targets since chest pressing already satisfies front delt growth.
-- **Legs:** leg press, weighted lunges (barbell/smith machine), leg extension, leg curl, Precor super squat (face-out machine squat alternative at Yellowstone Fitness)
+- **Legs:** leg press / squat press (plate-loaded), weighted lunges (barbell/smith machine), leg extension, leg curl, Precor super squat (face-out machine squat alternative at Yellowstone Fitness)
 - **Arms:** DB curl, hammer curl (biceps), triceps pushdown, overhead triceps extension (triceps)
 - **Core:** crunches — ⚠️ loaded/repeated spinal flexion can aggravate a bulging disc; watch for any tweak or pain and swap to a flexion-free alternative (e.g. Pallof press, plank) if it flares up
 - **Cardio:** zone 2 runs, Norwegian 4x4 intervals (both directly Hyrox-relevant)
@@ -95,8 +95,8 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Workload is distributed evenly across days (~21–25 sets per session). Incline DB Press is programmed on Day 2 as the lead compound to ensure triceps freshness, avoiding the fatigue conflict of pairing it after triceps isolation. Leg Press and Unilateral Leg work (Bulgarian Split Squats / Lunges) are separated on Day 1 and Day 3, with Day 2 featuring knee-joint isolation (extension/curl) alongside Norwegian 4x4 HIIT.
 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
-- Superset: weighted dips 3x8–12 @ **~50–55lb added** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** (back) — _dip/pull-up tower · chest vs back_
-- Superset: leg press 3x10–15 @ **~445.5–501lb** / Precor super squat (face out) 3x10–15 @ **~215–245lb** (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press / squat machine area · no equipment for crunches_
+- Superset: weighted dips 3x8–12 @ **~50–55lb added** / iso-lateral incline press 3x8–12 @ **~75–85lb/arm** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** / lat pulldown 4x10–12 @ **~171–179.5lb** (back) — _chest vs back_
+- Superset: leg press 3x10–15 @ **~445.5–501lb** / Precor super squat (face out) 3x10–15 @ **~215–245lb** / squat press (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press / squat machine area · no equipment for crunches_
 - Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
 - Cardio: zone 2 run, 20–30 min
