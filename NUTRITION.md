@@ -64,6 +64,8 @@ Default items to assume when logging, unless a photo or description says otherwi
 - **Granola bar:** Kirkland Signature 100 Calorie granola bar — 100 kcal, 1g protein, 3g fat, 18g carbs _(exact, from label — established staple)_
 - **White rice (dry basis, established 2026-10-14):** Minute Extra Fluffy White Rice — 46g dry (1/2 cup) is 170.0 kcal, 4.0g protein, 0.0g fat, 38.0g carbs _(exact, from box label photo 2026-10-14; user noted new standard rice going forward)_
 - **Applesauce pouch (established 2026-10-14):** Kirkland Signature Organic Applesauce pouch — 1 pouch (90g) is 50.0 kcal, 0.0g protein, 0.0g fat, 13.0g carbs, 1.0g fiber _(exact, from label photo 2026-10-14)_
+- **Mashed potatoes (established staple):** Idahoan Four Cheese Mashed Potatoes — 1 pouch / 4 servings (113g dry) is 440.0 kcal, 12.0g protein, 10.0g fat, 76.0g carbs, ~1,960mg sodium _(1/4 pouch / 28g dry is 110 kcal / 3g P / 2.5g F / 19g C / 490mg sodium; assumed water-prepared without extra butter/milk unless specified)_
+- **Pot roast (established 2026-10-20):** Kirkland Signature Beef Pot Roast with Gravy / Juices — 5 oz (140g) is 230.0 kcal, 26.0g protein, 12.0g fat (4g sat fat), 4.0g carbs, 450mg sodium _(exact, from packaging label photo 2026-10-20)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
