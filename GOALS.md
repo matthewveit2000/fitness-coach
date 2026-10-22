@@ -1,6 +1,6 @@
 # Goals
 
-_Last updated: 2026-10-18_
+_Last updated: 2026-10-22_
 
 ## Profile
 - Age: 25
@@ -8,6 +8,7 @@ _Last updated: 2026-10-18_
 - Weight: 155.9 lb (home scale standard established 2026-10-05; morning weight minimal clothes; -0.1 lb from 10/17 [156.0 lb], clustering in the ~155–156 lb range near 10/15 low of 155.4 lb; initial baseline was 163 lb on 2026-07-26)
 - Estimated body fat: high teens–low 20s %
 - Training experience: 10 years weightlifting
+- Activity outside workouts: desk job, otherwise sedentary. Occasional dog walks around the block, and hikes on weekends.
 
 ## Primary
 - Look good — physique-driven goal

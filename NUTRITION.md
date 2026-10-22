@@ -15,6 +15,8 @@ Training determines the stimulus; body composition change (leaner + hypertrophy)
 | Fat | **~60g/day** | **~65g/day** | Trimmed 5g on weekdays to make room; still well above the ~0.5 g/kg hormonal-health floor |
 | Carbs | **~160g/day** | **~200g/day** | Fills the remainder; extra weekend carbs land on the days that usually carry the bigger social meals |
 
+**Activity-level assumption (noted 2026-10-22):** desk job, otherwise sedentary (dog walks, weekend hikes) — see `GOALS.md` Profile. Formula cross-check at 155.6 lb: BMR ~1,630 → sedentary ×1.2 ≈ 1,960, plus training ≈ 2,100–2,200 predicted maintenance; the weight-trend data (flat at ~1,780 logged kcal/day, 10/15–10/21) suggests ~1,800–2,000. Best estimate ~1,900–2,050 until more weight-trend data confirms.
+
 Weekday vs. weekend = the calendar day (Mountain Time). Past days are always judged against the target that was in effect that day — `dashboard.html`'s `TARGET_SCHEDULE` encodes both the old flat 1,840 target (7/27–10/11) and this split (10/12 →).
 
 **Weigh-in reading for this phase:** judge progress on the dashboard's 7-day moving average of home-scale weigh-ins, not single days. Expected pace: −0.8 to −1.1 lb/week at most; if the 7-day average falls faster than ~1.5 lb/week for 2+ weeks, add ~100 kcal back. Endpoint: ~149–151 lb on the home scale ≈ 15% body fat at current lean mass, ~8–12 weeks out.
