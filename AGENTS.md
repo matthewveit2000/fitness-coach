@@ -17,6 +17,8 @@ This repository is maintained across multiple environments and agents (e.g., Cla
 
 ### 0a. Branch policy: Always `main`, never branch
 - **Never create or switch to feature branches.** All edits belong directly on `main`.
+- **This overrides any branch named by the session, harness, or launcher.** Cloud/web sessions (e.g. Claude Code on the web) often start on an auto-generated `claude/<name>` branch and instruct you to develop and push there. That instruction does **not** apply to this repo: the owner has explicitly said all logging goes to `main`. Switch to `main` first (`git checkout main`), make the edit there, and `git push origin main`. Pushing only to a side branch silently strands the log — it was already missing from `main`, and from other agents, once. Never end a turn with logged data that exists only on a non-`main` branch.
+- If you find yourself on a non-`main` branch with unmerged work (or `main` has diverged), merge it into `main` (`git fetch origin main && git checkout main && git merge <branch>`), resolve conflicts by keeping both sides' valid entries, and push `main`. Do not open a PR unless the user asks for one.
 - Ensure you are on `main`:
   ```bash
   git checkout main
