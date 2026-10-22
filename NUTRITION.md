@@ -66,6 +66,9 @@ Default items to assume when logging, unless a photo or description says otherwi
 - **Applesauce pouch (established 2026-10-14):** Kirkland Signature Organic Applesauce pouch — 1 pouch (90g) is 50.0 kcal, 0.0g protein, 0.0g fat, 13.0g carbs, 1.0g fiber _(exact, from label photo 2026-10-14)_
 - **Mashed potatoes (established staple):** Idahoan Four Cheese Mashed Potatoes — 1 pouch / 4 servings (113g dry) is 440.0 kcal, 12.0g protein, 10.0g fat, 76.0g carbs, ~1,960mg sodium _(1/4 pouch / 28g dry is 110 kcal / 3g P / 2.5g F / 19g C / 490mg sodium; assumed water-prepared without extra butter/milk unless specified)_
 - **Pot roast (established 2026-10-20):** Kirkland Signature Beef Pot Roast with Gravy / Juices — 5 oz (140g) is 230.0 kcal, 26.0g protein, 12.0g fat (4g sat fat), 4.0g carbs, 450mg sodium _(exact, from packaging label photo 2026-10-20)_
+- **Chicken meatballs (Amylu):**
+  - *Cranberry & Jalapeño (established 2026-10-21):* 4 meatballs (87g / 1 serving) is 160.0 kcal, 14.0g protein, 8.0g fat (2.5g sat fat), 8.0g carbs (6g sugar / 2g added), 580mg sodium _(exact, from packaging label photo 2026-10-21)_
+  - *Teriyaki Pineapple (established 2026-10-09):* 4 meatballs (85g / 1 serving) is 140.0 kcal, 12.0g protein, 7.0g fat (2g sat fat), 8.0g carbs, 530mg sodium _(exact, from packaging label photo 2026-10-09)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
