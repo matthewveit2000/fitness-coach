@@ -71,6 +71,7 @@ Default items to assume when logging, unless a photo or description says otherwi
   - *Teriyaki Pineapple (established 2026-10-09):* 4 meatballs (85g / 1 serving) is 140.0 kcal, 12.0g protein, 7.0g fat (2g sat fat), 8.0g carbs, 530mg sodium _(exact, from packaging label photo 2026-10-09)_
 - **Greek yogurt (Chobani Zero Added Sugar):** 1 container (190g) — 140.0 kcal, 20.0g protein, 3.0g fat, 9.0g carbs, ~100–115mg sodium _(exact, from label photo — established staple; Cherry Berry, Vanilla, Mango)_
 - **Cheese bites (Sartori MontAmoré Cheddar):** 1 piece (0.75 oz / 21g) — 80.0 kcal, 5.0g protein, 7.0g fat, 0.0g carbs _(official Sartori nutrition info, exact — established staple)_
+- **Sweet rolls (King's Hawaiian Original):** 1 roll (40g) — 120.0 kcal, 4.0g protein, 2.5g fat (0.5g sat fat), 21.0g carbs (4g added sugars), 170mg sodium _(exact, from packaging label photo 2026-10-21; assumed unbuttered unless butter is specified)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
