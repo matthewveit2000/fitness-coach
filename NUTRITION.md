@@ -69,6 +69,8 @@ Default items to assume when logging, unless a photo or description says otherwi
 - **Chicken meatballs (Amylu):**
   - *Cranberry & Jalapeño (established 2026-10-21):* 4 meatballs (87g / 1 serving) is 160.0 kcal, 14.0g protein, 8.0g fat (2.5g sat fat), 8.0g carbs (6g sugar / 2g added), 580mg sodium _(exact, from packaging label photo 2026-10-21)_
   - *Teriyaki Pineapple (established 2026-10-09):* 4 meatballs (85g / 1 serving) is 140.0 kcal, 12.0g protein, 7.0g fat (2g sat fat), 8.0g carbs, 530mg sodium _(exact, from packaging label photo 2026-10-09)_
+- **Greek yogurt (Chobani Zero Added Sugar):** 1 container (190g) — 140.0 kcal, 20.0g protein, 3.0g fat, 9.0g carbs, ~100–115mg sodium _(exact, from label photo — established staple; Cherry Berry, Vanilla, Mango)_
+- **Cheese bites (Sartori MontAmoré Cheddar):** 1 piece (0.75 oz / 21g) — 80.0 kcal, 5.0g protein, 7.0g fat, 0.0g carbs _(official Sartori nutrition info, exact — established staple)_
 
 ## Notes
 - Update the targets table above if the calibration protocol calls for a calorie adjustment, or if your actual activity level turns out meaningfully different from "moderate."
