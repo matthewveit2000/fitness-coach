@@ -554,6 +554,36 @@
     border-color: var(--accent);
   }
 
+  /* Bodyweight stat strip */
+  .bw-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .bw-stat { background: var(--surface); padding: 10px 14px; min-width: 0; }
+  .bw-stat-label {
+    display: flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--ink-faint);
+  }
+  .bw-key { display: inline-block; width: 14px; height: 0; border-top: 3px solid; border-radius: 2px; flex: none; }
+  .bw-key.dot { width: 8px; height: 8px; border: none; border-radius: 50%; }
+  .bw-key.dash { border-top-style: dashed; border-top-width: 2px; }
+  .bw-stat-value { font-family: var(--mono); font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .bw-stat-value small { font-size: 0.75rem; font-weight: 500; color: var(--ink-soft); }
+  .bw-stat-sub { font-size: 0.74rem; color: var(--ink-soft); margin-top: 2px; }
+  @media (max-width: 520px) {
+    .bw-stats { grid-template-columns: 1fr 1fr; }
+    .bw-stat:last-child { grid-column: 1 / -1; }
+    .bw-stat { padding: 8px 10px; }
+    .bw-stat-value { font-size: 1.1rem; }
+  }
+
   /* SVG Chart Container */
   .chart-container {
     position: relative;
@@ -562,9 +592,7 @@
     -webkit-overflow-scrolling: touch;
   }
   .chart-svg {
-    width: 100%;
-    min-width: 750px;
-    height: 240px;
+    height: 260px;
     display: block;
   }
   .chart-tooltip {
@@ -1749,17 +1777,18 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <h3 class="card-title">⚖️ Bodyweight Trend & Moving Average</h3>
+          <h3 class="card-title">⚖️ Bodyweight Trend</h3>
           <span class="faint">Home scale standard only (morning, minimal clothing) &middot; since 2026-10-05</span>
         </div>
-        <span class="pill good" id="bw-current-pill">Current: 152.9 lb (Home Scale Standard)</span>
       </div>
+      <!-- Filled by renderBodyweightChart() from WEIGH_INS -->
+      <div class="bw-stats" id="bw-stats"></div>
       <div class="chart-container">
         <div class="chart-tooltip" id="bw-tooltip"></div>
-        <svg class="chart-svg" id="bw-chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none"></svg>
+        <svg class="chart-svg" id="bw-chart-svg" viewBox="0 0 750 260" role="img" aria-label="Daily home-scale weigh-ins with 7-day average and 14-day linear trend"></svg>
       </div>
       <p class="faint" style="margin-top: 8px;">
-        <span style="color:#a371f7;">●</span> Daily home-scale weigh-ins. <span style="color:var(--good);">━</span> Trailing 7-day average (needs &ge;3 readings in the window) &mdash; judge progress on this line, not single days. <span style="color:#f59e0b;">■</span> Amber = untracked/partial days (expect water-weight noise for ~2&ndash;3 days after). <span style="color:var(--good);">┅</span> Goal line 149 lb with shaded 146&ndash;151 lb band = 15% body fat at current lean mass (~124&ndash;129 lb; see GOALS.md). Goal pace: &minus;0.8 to &minus;1.1 lb/week.
+        <span style="color:#a371f7;">●</span> Daily home-scale weigh-ins (value labelled). <span style="color:var(--good);">━</span> Trailing 7-day average (needs &ge;3 readings in the window). <span style="color:var(--accent);">┅</span> 14-day trend: least-squares line through the standard readings from the last 14 days; its slope &times; 7 is the weekly rate shown above. <span style="color:#f59e0b;">■</span> Amber = untracked/partial days (expect water-weight noise for ~2&ndash;3 days after). <span style="color:var(--good);">┅</span> Goal line 149 lb with shaded 146&ndash;151 lb band = 15% body fat at current lean mass (~124&ndash;129 lb; see GOALS.md). Goal pace: &minus;0.8 to &minus;1.1 lb/week.
       </p>
     </div>
 
@@ -4455,7 +4484,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (tabId === 'progress') {
       requestAnimationFrame(function() {
-        scrollWeightChartToRight();
+        renderBodyweightChart(); // re-measure: the chart is drawn at the container's real width
       });
     }
   }
@@ -4768,8 +4797,12 @@
 
     var container = svg.parentElement;
     var DAY = 86400000;
+    var TREND_DAYS = 14;
+    var GOAL_PACE = { min: 0.8, max: 1.1 }; // lb/week loss (GOALS.md)
     function tOf(dStr) { return new Date(dStr + 'T00:00:00').getTime(); }
     function dOf(t) { var x = new Date(t); return x.getFullYear() + '-' + ('0' + (x.getMonth() + 1)).slice(-2) + '-' + ('0' + x.getDate()).slice(-2); }
+    function md(dStr) { var p = dStr.split('-'); return (+p[1]) + '/' + (+p[2]); }
+    function signed(v, digits) { return (v > 0 ? '+' : v < 0 ? '&minus;' : '') + Math.abs(v).toFixed(digits); }
     var dates = WEIGH_INS.map(function(w) { return tOf(w.date); });
 
     // X range: 2 days before the first home-scale weigh-in → max(TODAY, last weigh-in) + 2 days
@@ -4779,27 +4812,58 @@
     var maxT = lastDateT + 2 * DAY;
 
     var totalDays = Math.round((maxT - minT) / DAY);
-    var width = Math.max(750, totalDays * 28);
-    var height = 240;
-    var padLeft = 45, padRight = 48, padTop = 20, padBottom = 30;
+    // Draw at the container's real pixel width (no stretching), scrolling only when days get too dense
+    var width = Math.max(container.clientWidth || 750, totalDays * 38); // ≥38px/day keeps value labels apart
+    var height = 260;
+    var padLeft = 40, padRight = 40, padTop = 22, padBottom = 30;
 
     svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
-    svg.style.minWidth = width + 'px';
+    svg.style.width = width + 'px';
 
     // Readings flagged `offStandard: true` (e.g. the 10/5 bedtime setup reading) are plotted but
-    // excluded from the moving average, since they sit ~1–2 lb above a morning reading.
+    // excluded from the moving average and the trend, since they sit ~1–2 lb above a morning reading.
     function isStandard(w) { return !w.offStandard; }
 
     // Trailing 7-day average on each weigh-in date (≥3 standard readings in the window)
     var maPts = [];
+    var maByT = {};
     WEIGH_INS.forEach(function(w) {
       var t = tOf(w.date);
       var win = WEIGH_INS.filter(function(o) { var ot = tOf(o.date); return isStandard(o) && ot <= t && ot > t - 7 * DAY; });
       if (win.length >= 3) {
         var avg = win.reduce(function(acc, o) { return acc + o.weight; }, 0) / win.length;
         maPts.push({ t: t, w: avg });
+        maByT[t] = avg;
       }
     });
+
+    // 14-day linear trend: ordinary least squares over standard readings in [anchor − 13d, anchor]
+    var anchorT = lastDateT;
+    var trendStartT = anchorT - (TREND_DAYS - 1) * DAY;
+    var trendPts = WEIGH_INS.filter(function(w) { var t = tOf(w.date); return isStandard(w) && t >= trendStartT && t <= anchorT; });
+    var trend = null;
+    if (trendPts.length >= 3) {
+      var xs = trendPts.map(function(w) { return (tOf(w.date) - trendStartT) / DAY; });
+      var ys = trendPts.map(function(w) { return w.weight; });
+      var n = xs.length;
+      var mx = xs.reduce(function(a, b) { return a + b; }, 0) / n;
+      var my = ys.reduce(function(a, b) { return a + b; }, 0) / n;
+      var sxy = 0, sxx = 0, syy = 0;
+      for (var i = 0; i < n; i++) { sxy += (xs[i] - mx) * (ys[i] - my); sxx += (xs[i] - mx) * (xs[i] - mx); syy += (ys[i] - my) * (ys[i] - my); }
+      if (sxx > 0) {
+        var slope = sxy / sxx; // lb/day
+        trend = {
+          slope: slope,
+          intercept: my - slope * mx,
+          weekly: slope * 7,
+          r2: syy > 0 ? (sxy * sxy) / (sxx * syy) : 0,
+          n: n,
+          from: dOf(trendStartT),
+          to: dOf(anchorT)
+        };
+        trend.at = function(t) { return trend.intercept + trend.slope * ((t - trendStartT) / DAY); };
+      }
+    }
 
     var weights = WEIGH_INS.map(function(w) { return w.weight; });
     var minW = Math.floor(Math.min(GOAL_WEIGHT.low, Math.min.apply(null, weights)) - 1);
@@ -4819,87 +4883,137 @@
       svgHtml += '<rect x="' + x0 + '" y="' + padTop + '" width="' + (x1 - x0) + '" height="' + (height - padTop - padBottom) + '" fill="rgba(245, 158, 11, 0.12)" stroke="rgba(245, 158, 11, 0.4)" stroke-dasharray="3 3"><title>' + dStr + ': ' + st + '</title></rect>';
     }
 
-    // Axis borders
-    svgHtml += '<line x1="' + padLeft + '" y1="' + padTop + '" x2="' + padLeft + '" y2="' + (height - padBottom) + '" stroke="var(--border)" stroke-width="1"/>';
-    svgHtml += '<line x1="' + (width - padRight) + '" y1="' + padTop + '" x2="' + (width - padRight) + '" y2="' + (height - padBottom) + '" stroke="var(--border)" stroke-width="1"/>';
-
-    // Horizontal grid every 1 lb, labelled on both axes
+    // Horizontal grid every 1 lb (recessive), labelled every 2 lb on both axes
     for (var gw = minW; gw <= maxW; gw++) {
       var y = getY(gw);
-      svgHtml += '<line x1="' + padLeft + '" y1="' + y + '" x2="' + (width - padRight) + '" y2="' + y + '" stroke="var(--border)" stroke-dasharray="2 2" stroke-width="1"/>';
-      if ((maxW - minW) > 10 && gw % 2 !== 0) continue; // label every 2 lb on tall ranges
-      svgHtml += '<text x="' + (padLeft - 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="end">' + gw + '</text>';
-      svgHtml += '<text x="' + (width - padRight + 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="monospace" text-anchor="start">' + gw + '</text>';
+      svgHtml += '<line x1="' + padLeft + '" y1="' + y + '" x2="' + (width - padRight) + '" y2="' + y + '" stroke="var(--border)" stroke-opacity="' + (gw % 2 === 0 ? 0.9 : 0.4) + '" stroke-width="1"/>';
+      if (gw % 2 !== 0) continue;
+      svgHtml += '<text x="' + (padLeft - 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="var(--mono)" text-anchor="end">' + gw + '</text>';
+      svgHtml += '<text x="' + (width - padRight + 7) + '" y="' + (y + 4) + '" fill="var(--ink-faint)" font-size="10" font-family="var(--mono)" text-anchor="start">' + gw + '</text>';
     }
 
     // Goal band (15% BF range) + goal line
     var gbTop = getY(GOAL_WEIGHT.high), gbBot = getY(GOAL_WEIGHT.low);
     svgHtml += '<rect x="' + padLeft + '" y="' + gbTop + '" width="' + (width - padLeft - padRight) + '" height="' + (gbBot - gbTop) + '" fill="rgba(63, 185, 80, 0.08)"><title>15% body-fat range: ' + GOAL_WEIGHT.low + '–' + GOAL_WEIGHT.high + ' lb</title></rect>';
     var gy = getY(GOAL_WEIGHT.target);
-    svgHtml += '<line x1="' + padLeft + '" y1="' + gy + '" x2="' + (width - padRight) + '" y2="' + gy + '" stroke="var(--good)" stroke-width="2" stroke-dasharray="6 4"/>';
-    svgHtml += '<text x="' + (padLeft + 6) + '" y="' + (gy - 6) + '" fill="var(--good)" font-size="11" font-weight="700" font-family="monospace">🎯 ' + GOAL_WEIGHT.label + '</text>';
+    svgHtml += '<line x1="' + padLeft + '" y1="' + gy + '" x2="' + (width - padRight) + '" y2="' + gy + '" stroke="var(--good)" stroke-width="1.5" stroke-dasharray="6 4" stroke-opacity="0.8"/>';
+    svgHtml += '<text x="' + (padLeft + 6) + '" y="' + (gy - 6) + '" fill="var(--ink-soft)" font-size="11" font-weight="600" font-family="var(--mono)">🎯 ' + GOAL_WEIGHT.label + '</text>';
+
+    // Hover crosshair (positioned on hover)
+    svgHtml += '<line id="bw-crosshair" x1="0" y1="' + padTop + '" x2="0" y2="' + (height - padBottom) + '" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="2 3" visibility="hidden"/>';
 
     // Daily readings (thin purple line)
     var pts = WEIGH_INS.map(function(w) { return getX(tOf(w.date)) + ',' + getY(w.weight); }).join(' ');
     if (WEIGH_INS.length > 1) {
-      svgHtml += '<polyline points="' + pts + '" fill="none" stroke="#a371f7" stroke-opacity="0.55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>';
+      svgHtml += '<polyline points="' + pts + '" fill="none" stroke="#a371f7" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>';
     }
 
-    // 7-day moving average (thick green line) — the trend to judge
+    // 7-day moving average (green)
     if (maPts.length > 1) {
       var maStr = maPts.map(function(p) { return getX(p.t) + ',' + getY(p.w); }).join(' ');
-      svgHtml += '<polyline points="' + maStr + '" fill="none" stroke="var(--good)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';
-      var lastMa = maPts[maPts.length - 1];
-      svgHtml += '<text x="' + (getX(lastMa.t) + 8) + '" y="' + (getY(lastMa.w) + 4) + '" fill="var(--good)" font-size="10" font-family="monospace">7d ' + lastMa.w.toFixed(1) + '</text>';
+      svgHtml += '<polyline points="' + maStr + '" fill="none" stroke="var(--good)" stroke-width="2.5" stroke-opacity="0.85" stroke-linecap="round" stroke-linejoin="round"/>';
     }
 
-    // Dots
-    WEIGH_INS.forEach(function(w) {
+    // 14-day regression line (blue dashed) spanning exactly its window
+    if (trend) {
+      var tx1 = getX(trendStartT), ty1 = getY(trend.at(trendStartT));
+      var tx2 = getX(anchorT), ty2 = getY(trend.at(anchorT));
+      svgHtml += '<line x1="' + tx1 + '" y1="' + ty1 + '" x2="' + tx2 + '" y2="' + ty2 + '" stroke="var(--accent)" stroke-width="2" stroke-dasharray="7 5" stroke-linecap="round"/>';
+      // Window bracket along the bottom so the 14 days in the fit are visible
+      var by = height - padBottom - 4;
+      svgHtml += '<line x1="' + tx1 + '" y1="' + by + '" x2="' + tx2 + '" y2="' + by + '" stroke="var(--accent)" stroke-opacity="0.5" stroke-width="1"/>';
+      svgHtml += '<line x1="' + tx1 + '" y1="' + (by - 4) + '" x2="' + tx1 + '" y2="' + (by + 1) + '" stroke="var(--accent)" stroke-opacity="0.5" stroke-width="1"/>';
+      svgHtml += '<text x="' + ((tx1 + tx2) / 2) + '" y="' + (by - 4) + '" fill="var(--ink-faint)" font-size="9.5" font-family="var(--mono)" text-anchor="middle">14-day trend window</text>';
+      // Direct label at the line's end
+      svgHtml += '<text x="' + (tx2 + 8) + '" y="' + (ty2 + 4) + '" fill="var(--ink-soft)" font-size="10.5" font-weight="700" font-family="var(--mono)">' + signed(trend.weekly, 1) + '/wk</text>';
+    }
+
+    // Dots + value labels. A label sits on the side away from the 7-day average line so the
+    // two never collide; the latest reading is emphasised.
+    var latest = WEIGH_INS[WEIGH_INS.length - 1];
+    WEIGH_INS.forEach(function(w, idx) {
       var t = tOf(w.date);
       var std = isStandard(w);
-      var ma = maPts.filter(function(p) { return p.t === t; })[0];
-      var tipText = w.date + ': ' + w.weight + ' lb' + (std ? '' : ' (bedtime &mdash; not in avg)') + (ma ? ' &middot; 7d avg ' + ma.w.toFixed(1) : '');
-      svgHtml += '<circle cx="' + getX(t) + '" cy="' + getY(w.weight) + '" r="5" fill="' + (std ? '#a371f7' : 'var(--surface)') + '" stroke="#a371f7" stroke-width="2" style="cursor:pointer;" data-tip="' + tipText + '"/>';
+      var cx = getX(t), cy = getY(w.weight);
+      var ref = maByT[t] !== undefined ? maByT[t] : (trend && t >= trendStartT ? trend.at(t) : null);
+      var below = ref !== null && w.weight < ref;
+      var isLatest = w === latest;
+      var ly = below ? cy + 17 : cy - 10;
+      svgHtml += '<text x="' + cx + '" y="' + ly + '" fill="' + (isLatest ? 'var(--ink)' : 'var(--ink-soft)') + '" font-size="' + (isLatest ? 11.5 : 10) + '" font-weight="' + (isLatest ? 700 : 500) + '" font-family="var(--mono)" text-anchor="middle" style="paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;pointer-events:none;">' + w.weight.toFixed(1) + '</text>';
+      svgHtml += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (isLatest ? 5.5 : 4.5) + '" fill="' + (std ? '#a371f7' : 'var(--surface)') + '" stroke="' + (std ? 'var(--surface)' : '#a371f7') + '" stroke-width="2" style="pointer-events:none;"/>';
+      // Generous invisible hit target
+      svgHtml += '<circle class="bw-hit" cx="' + cx + '" cy="' + cy + '" r="14" fill="transparent" style="cursor:pointer;" data-idx="' + idx + '"/>';
     });
 
     // X-axis: label every day when the window is short, else every Monday
-    var step = totalDays <= 24 ? 1 : (totalDays <= 48 ? 2 : 7);
+    var pxPerDay = (width - padLeft - padRight) / totalDays;
+    var step = pxPerDay >= 30 ? 1 : (pxPerDay >= 16 ? 2 : 7);
     for (var tt = minT; tt <= maxT; tt += DAY) {
       var ds = dOf(tt);
       var dayIdx = Math.round((tt - minT) / DAY);
       var isMon = new Date(tt).getDay() === 1;
       if (step === 7 ? !isMon : dayIdx % step !== 0) continue;
-      var parts = ds.split('-');
-      svgHtml += '<text x="' + getX(tt) + '" y="' + (height - 8) + '" fill="' + (isMon ? 'var(--ink-soft)' : 'var(--ink-faint)') + '" font-size="10" font-family="monospace" text-anchor="middle">' + (+parts[1]) + '/' + parts[2] + '</text>';
+      svgHtml += '<text x="' + getX(tt) + '" y="' + (height - 9) + '" fill="' + (isMon ? 'var(--ink-soft)' : 'var(--ink-faint)') + '" font-size="10" font-family="var(--mono)" text-anchor="middle">' + md(ds) + '</text>';
     }
 
     svg.innerHTML = svgHtml;
 
-    // Header pill: latest reading + 7-day average (derived from WEIGH_INS so it never drifts)
-    var pill = document.getElementById('bw-current-pill');
-    if (pill) {
-      var latest = WEIGH_INS[WEIGH_INS.length - 1];
+    // Stat strip: latest · 7-day average · 14-day trend (all derived from WEIGH_INS so they never drift)
+    var statsEl = document.getElementById('bw-stats');
+    if (statsEl) {
+      var prev = WEIGH_INS.length > 1 ? WEIGH_INS[WEIGH_INS.length - 2] : null;
       var lastMaPt = maPts[maPts.length - 1];
-      pill.innerHTML = 'Current: ' + latest.weight + ' lb' + (lastMaPt ? ' &middot; 7d avg ' + lastMaPt.w.toFixed(1) + ' lb' : '');
+      var maWeekAgo = maPts.filter(function(p) { return p.t <= lastMaPt.t - 7 * DAY; }).pop();
+      var trendSub = '';
+      var trendVal = '&mdash;';
+      if (trend) {
+        var loss = -trend.weekly;
+        var pace = loss > GOAL_PACE.max ? 'faster than goal pace' : (loss >= GOAL_PACE.min ? 'on goal pace' : (loss > 0 ? 'slower than goal pace' : 'not losing'));
+        trendVal = signed(trend.weekly, 1) + ' <small>lb/week</small>';
+        trendSub = pace + ' (goal &minus;' + GOAL_PACE.min + ' to &minus;' + GOAL_PACE.max + ') &middot; fit to ' + trend.n + ' readings, ' + md(trend.from) + '&ndash;' + md(trend.to);
+      }
+      statsEl.innerHTML =
+        '<div class="bw-stat"><div class="bw-stat-label"><span class="bw-key dot" style="background:#a371f7"></span>Latest</div>' +
+          '<div class="bw-stat-value">' + latest.weight.toFixed(1) + ' <small>lb</small></div>' +
+          '<div class="bw-stat-sub">' + md(latest.date) + (prev ? ' &middot; ' + signed(latest.weight - prev.weight, 1) + ' vs ' + md(prev.date) : '') + '</div></div>' +
+        '<div class="bw-stat"><div class="bw-stat-label"><span class="bw-key" style="border-color:var(--good)"></span>7-day avg</div>' +
+          '<div class="bw-stat-value">' + (lastMaPt ? lastMaPt.w.toFixed(1) + ' <small>lb</small>' : '&mdash;') + '</div>' +
+          '<div class="bw-stat-sub">' + (maWeekAgo ? signed(lastMaPt.w - maWeekAgo.w, 1) + ' vs a week earlier' : 'trailing 7 days') + '</div></div>' +
+        '<div class="bw-stat"><div class="bw-stat-label"><span class="bw-key dash" style="border-color:var(--accent)"></span>14-day trend</div>' +
+          '<div class="bw-stat-value">' + trendVal + '</div>' +
+          '<div class="bw-stat-sub">' + trendSub + '</div></div>';
     }
 
-    // Tooltip handler with scroll and viewport awareness
+    // Tooltip + crosshair (hover on desktop, tap on touch)
     var tooltip = document.getElementById('bw-tooltip');
-    svg.querySelectorAll('circle').forEach(function(c) {
-      c.addEventListener('mouseenter', function() {
-        if (!tooltip || !container) return;
-        var cRect = c.getBoundingClientRect();
-        var contRect = container.getBoundingClientRect();
-        tooltip.style.display = 'block';
-        tooltip.innerHTML = c.dataset.tip;
-        var tipW = tooltip.offsetWidth || 140;
-        tooltip.style.left = Math.round(cRect.left - contRect.left + container.scrollLeft - (tipW / 2)) + 'px';
-        tooltip.style.top = Math.round(cRect.top - contRect.top - 38) + 'px';
-      });
-      c.addEventListener('mouseleave', function() {
-        if (tooltip) tooltip.style.display = 'none';
-      });
+    var cross = svg.querySelector('#bw-crosshair');
+    function showTip(c) {
+      if (!tooltip || !container) return;
+      var w = WEIGH_INS[+c.dataset.idx];
+      var t = tOf(w.date);
+      var ma = maByT[t];
+      var html = '<strong>' + md(w.date) + ' &middot; ' + w.weight.toFixed(1) + ' lb</strong>' + (isStandard(w) ? '' : ' <span style="color:var(--ink-faint)">(bedtime &mdash; not in avg/trend)</span>');
+      if (ma !== undefined) html += '<br>7-day avg ' + ma.toFixed(1) + ' lb';
+      if (trend && t >= trendStartT && isStandard(w)) html += '<br>Trend line ' + trend.at(t).toFixed(1) + ' lb (' + signed(w.weight - trend.at(t), 1) + ')';
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+      var cx = +c.getAttribute('cx'), cy = +c.getAttribute('cy');
+      if (cross) { cross.setAttribute('x1', cx); cross.setAttribute('x2', cx); cross.setAttribute('visibility', 'visible'); }
+      var tipW = tooltip.offsetWidth || 160, tipH = tooltip.offsetHeight || 40;
+      var left = Math.min(Math.max(cx - tipW / 2, container.scrollLeft + 4), container.scrollLeft + container.clientWidth - tipW - 4);
+      tooltip.style.left = Math.round(left) + 'px';
+      tooltip.style.top = Math.round(cy - tipH - 14 < 0 ? cy + 16 : cy - tipH - 14) + 'px';
+    }
+    function hideTip() {
+      if (tooltip) tooltip.style.display = 'none';
+      if (cross) cross.setAttribute('visibility', 'hidden');
+    }
+    svg.querySelectorAll('.bw-hit').forEach(function(c) {
+      c.addEventListener('mouseenter', function() { showTip(c); });
+      c.addEventListener('mouseleave', hideTip);
+      c.addEventListener('click', function(e) { e.stopPropagation(); showTip(c); });
     });
+    svg.addEventListener('click', function(e) { if (!e.target.classList.contains('bw-hit')) hideTip(); });
 
     scrollWeightChartToRight();
   }
@@ -5468,10 +5582,12 @@
     scrollWeightChartToRight();
   });
 
+  var bwResizeTimer;
   window.addEventListener('resize', function() {
     var progressTab = document.getElementById('progress');
     if (progressTab && progressTab.classList.contains('active')) {
-      scrollWeightChartToRight();
+      clearTimeout(bwResizeTimer);
+      bwResizeTimer = setTimeout(renderBodyweightChart, 120);
     }
   });
 </script>
