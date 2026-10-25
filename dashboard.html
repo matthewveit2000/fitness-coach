@@ -674,6 +674,32 @@
   }
 
   /* Routine Day Grid & Cleaner Cards */
+  .routine-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 640px;
+    margin-bottom: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding: 8px 0;
+    background: var(--bg);
+  }
+  .day-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .day-badges .day-badge { white-space: nowrap; }
+  @media (max-width: 520px) {
+    .routine-picker-select label { display: none; }
+    .ex-metrics { flex-wrap: wrap; gap: 2px 8px; }
+    .badge-weight { white-space: normal; }
+  }
+  .routine-picker-select { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .routine-picker-select select { flex: 1; min-width: 0; font-weight: 600; font-size: 0.9rem; padding: 8px 10px; }
+  .day-grid.single { display: block; max-width: 640px; }
+  .day-grid.single .day-card { display: none; }
+  .day-grid.single .day-card.is-selected { display: flex; }
+  .day-badge.next { background: var(--good-soft); color: var(--good); border: 1px solid var(--good); }
+  .routine-ref-title { font-size: 0.8rem; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
   .day-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -1137,87 +1163,20 @@
   <!-- TAB 3: 🏋️ ROUTINE & GYM COMPANION -->
   <!-- ======================================================== -->
   <section class="tab-panel" id="routine">
-    <!-- Routine Dropdowns Up Top -->
-    <div class="routine-accordion-group">
-      <!-- Dropdown 1: Lower Back Constraint -->
-      <details class="routine-accordion">
-        <summary>
-          <div class="routine-summary-left">
-            <span class="routine-summary-icon">⚠️</span>
-            <span>Lower Back Disc Constraints &amp; Form Rules</span>
-          </div>
-          <span class="routine-summary-chevron">▾</span>
-        </summary>
-        <div class="routine-accordion-body">
-          <div class="callout warn" style="margin-bottom: 10px;">
-            <strong>Bulging Disc Constraint:</strong> Avoid heavy loaded spinal flexion, risky conventional deadlifts, and weighted spinal flexion (e.g. weighted sit-ups, Roman chairs). Favor neutral-spine, back-friendly alternatives. Flagged exercises are marked below with ⚠️.
-          </div>
-          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
-            <li><strong>Neutral Spine Compounds:</strong> Heavy axial free-weight lifts are replaced with chest-supported/cable rows, leg press, and machine knee flexion/extension.</li>
-            <li><strong>Core Safeguards:</strong> Crunches are performed unweighted on a mat; if any disc tightness occurs, swap immediately to isometric anti-extension/anti-rotation movements (e.g. planks, Pallof press).</li>
-            <li><strong>Right Knee (added 10/15):</strong> Bump below the kneecap since childhood, likely residual Osgood-Schlatter. Keep leg-extension / leg press / split-squat work pain-guided; drop weight or stop on sharp pain at the bump, and substitute rather than leave a 0-set quad week.</li>
-            <li><strong>Machine Calibration:</strong> Always check machine feel before loading top working weights on unfamiliar equipment.</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- Dropdown 2: 80/20 Principles -->
-      <details class="routine-accordion">
-        <summary>
-          <div class="routine-summary-left">
-            <span class="routine-summary-icon">🎯</span>
-            <span>80/20 Routine Principles &amp; Hypertrophy Logic</span>
-          </div>
-          <span class="routine-summary-chevron">▾</span>
-        </summary>
-        <div class="routine-accordion-body">
-          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
-            <li><strong>Full Body Frequency:</strong> 3 core days hitting opposing muscle groups 2&ndash;3&times; weekly; far more time-efficient and anabolic than single-muscle bro-splits.</li>
-            <li><strong>Antagonist Supersets:</strong> Push &harr; Pull pairings share zero equipment and maximize muscular rest between working sets without adding gym downtime.</li>
-            <li><strong>Inferred Working Weights:</strong> Programmed from a 90% training-max haircut on your estimated 1RM from real logged sets to safely account for intra-session fatigue.</li>
-            <li><strong>Baseline Effort:</strong> Unstated sets default to ~0 RIR (near-failure), matching your real gym baseline.</li>
-            <li><strong>Hyrox Conditioning:</strong> General conditioning (Zone 2 + Norwegian 4&times;4) is baked into the routine; Day 5 station practice is fully optional.</li>
-          </ul>
-        </div>
-      </details>
-
-      <!-- Dropdown 3: Israetel Volume Landmarks -->
-      <details class="routine-accordion">
-        <summary>
-          <div class="routine-summary-left">
-            <span class="routine-summary-icon">📊</span>
-            <span>Dr. Mike Israetel Volume Thresholds (RP Standards)</span>
-          </div>
-          <span class="routine-summary-chevron">▾</span>
-        </summary>
-        <div class="routine-accordion-body">
-          <p style="margin: 0 0 10px; font-size: 0.84rem;">Direct working sets only &mdash; indirect synergist credit is omitted per Dr. Mike Israetel / Renaissance Periodization (RP) methodology.</p>
-          <div class="table-wrap">
-            <table>
-              <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
-              <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
-              <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">12</td><td class="num">14&ndash;22</td><td class="num">15</td></tr>
-              <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
-              <tr><td>Hamstrings</td><td class="num">6</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-              <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">8</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
-              <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-              <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
-              <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">10</td></tr>
-              <tr><td>Calves *</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
-              <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">6</td><td class="num">6&ndash;10</td><td class="num">6&ndash;8</td></tr>
-            </table>
-          </div>
-          <p class="faint" style="margin-top: 10px; font-size: 0.82rem; line-height: 1.4;">
-            * <strong>Calves excluded (0 sets):</strong> Direct isolation is intentionally omitted per our 80/20 efficiency rule and running/Hyrox recovery. Frequent Zone 2 runs and high-intensity Norwegian 4&times;4 intervals already subject the calves and Achilles tendon to thousands of high-velocity stretch-shortening cycles weekly; direct calf loading adds high tendon overuse/DOMS risk for minimal aesthetic ROI relative to upper-body and thigh development.
-          </p>
-        </div>
-      </details>
+    <!-- Day Picker: one day card visible at a time (all five stay in the DOM for AGENTS.md §5 greps) -->
+    <div class="routine-picker">
+      <button class="date-nav-btn" id="routine-prev-btn" aria-label="Previous day">&larr;</button>
+      <div class="routine-picker-select">
+        <label for="routine-day-select" class="faint">Workout</label>
+        <select id="routine-day-select" class="search-input"></select>
+      </div>
+      <button class="date-nav-btn" id="routine-next-btn" aria-label="Next day">&rarr;</button>
     </div>
 
     <!-- Routine Day Cards -->
-    <div class="day-grid">
+    <div class="day-grid single">
       <!-- DAY 1 -->
-      <div class="day-card core">
+      <div class="day-card core" data-day="D1">
         <div class="day-card-header">
           <div class="day-card-title-group">
             <h3 class="day-card-title">Day 1 &mdash; Full Body A</h3>
@@ -1333,7 +1292,7 @@
       </div>
 
       <!-- DAY 2 -->
-      <div class="day-card core">
+      <div class="day-card core" data-day="D2">
         <div class="day-card-header">
           <div class="day-card-title-group">
             <h3 class="day-card-title">Day 2 &mdash; Full Body B</h3>
@@ -1449,7 +1408,7 @@
       </div>
 
       <!-- DAY 3 -->
-      <div class="day-card core">
+      <div class="day-card core" data-day="D3">
         <div class="day-card-header">
           <div class="day-card-title-group">
             <h3 class="day-card-title">Day 3 &mdash; Full Body C</h3>
@@ -1575,7 +1534,7 @@
       </div>
 
       <!-- DAY 4 -->
-      <div class="day-card optional">
+      <div class="day-card optional" data-day="D4">
         <div class="day-card-header">
           <div class="day-card-title-group">
             <h3 class="day-card-title">Day 4 &mdash; Extra Volume</h3>
@@ -1701,7 +1660,7 @@
       </div>
 
       <!-- DAY 5 -->
-      <div class="day-card optional">
+      <div class="day-card optional" data-day="D5">
         <div class="day-card-header">
           <div class="day-card-title-group">
             <h3 class="day-card-title">Day 5 &mdash; Hyrox Station Practice</h3>
@@ -1747,6 +1706,84 @@
         </div>
       </div>
     </div>
+    <!-- Reference dropdowns (below the selected day) -->
+    <h4 class="routine-ref-title">Reference</h4>
+    <div class="routine-accordion-group">
+      <!-- Dropdown 1: Lower Back Constraint -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">⚠️</span>
+            <span>Lower Back Disc Constraints &amp; Form Rules</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <div class="callout warn" style="margin-bottom: 10px;">
+            <strong>Bulging Disc Constraint:</strong> Avoid heavy loaded spinal flexion, risky conventional deadlifts, and weighted spinal flexion (e.g. weighted sit-ups, Roman chairs). Favor neutral-spine, back-friendly alternatives. Flagged exercises are marked below with ⚠️.
+          </div>
+          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
+            <li><strong>Neutral Spine Compounds:</strong> Heavy axial free-weight lifts are replaced with chest-supported/cable rows, leg press, and machine knee flexion/extension.</li>
+            <li><strong>Core Safeguards:</strong> Crunches are performed unweighted on a mat; if any disc tightness occurs, swap immediately to isometric anti-extension/anti-rotation movements (e.g. planks, Pallof press).</li>
+            <li><strong>Right Knee (added 10/15):</strong> Bump below the kneecap since childhood, likely residual Osgood-Schlatter. Keep leg-extension / leg press / split-squat work pain-guided; drop weight or stop on sharp pain at the bump, and substitute rather than leave a 0-set quad week.</li>
+            <li><strong>Machine Calibration:</strong> Always check machine feel before loading top working weights on unfamiliar equipment.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Dropdown 2: 80/20 Principles -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">🎯</span>
+            <span>80/20 Routine Principles &amp; Hypertrophy Logic</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <ul style="margin: 0; padding-left: 18px; line-height: 1.6;">
+            <li><strong>Full Body Frequency:</strong> 3 core days hitting opposing muscle groups 2&ndash;3&times; weekly; far more time-efficient and anabolic than single-muscle bro-splits.</li>
+            <li><strong>Antagonist Supersets:</strong> Push &harr; Pull pairings share zero equipment and maximize muscular rest between working sets without adding gym downtime.</li>
+            <li><strong>Inferred Working Weights:</strong> Programmed from a 90% training-max haircut on your estimated 1RM from real logged sets to safely account for intra-session fatigue.</li>
+            <li><strong>Baseline Effort:</strong> Unstated sets default to ~0 RIR (near-failure), matching your real gym baseline.</li>
+            <li><strong>Hyrox Conditioning:</strong> General conditioning (Zone 2 + Norwegian 4&times;4) is baked into the routine; Day 5 station practice is fully optional.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Dropdown 3: Israetel Volume Landmarks -->
+      <details class="routine-accordion">
+        <summary>
+          <div class="routine-summary-left">
+            <span class="routine-summary-icon">📊</span>
+            <span>Dr. Mike Israetel Volume Thresholds (RP Standards)</span>
+          </div>
+          <span class="routine-summary-chevron">▾</span>
+        </summary>
+        <div class="routine-accordion-body">
+          <p style="margin: 0 0 10px; font-size: 0.84rem;">Direct working sets only &mdash; indirect synergist credit is omitted per Dr. Mike Israetel / Renaissance Periodization (RP) methodology.</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Muscle</th><th>Dr. Israetel MEV</th><th>Achieved D1&ndash;3 (Direct)</th><th>Dr. Israetel MAV (Optimal)</th><th>Achieved D1&ndash;4 (Direct)</th></tr>
+              <tr><td>Chest</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;20</td><td class="num">12</td></tr>
+              <tr><td>Back</td><td class="num">10&ndash;12</td><td class="num">12</td><td class="num">14&ndash;22</td><td class="num">15</td></tr>
+              <tr><td>Quads</td><td class="num">8&ndash;10</td><td class="num">9</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+              <tr><td>Hamstrings</td><td class="num">6</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Side delt</td><td class="num">6&ndash;8</td><td class="num">8</td><td class="num">12&ndash;18</td><td class="num">12</td></tr>
+              <tr><td>Rear delt</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Biceps</td><td class="num">6&ndash;8</td><td class="num">6</td><td class="num">10&ndash;16</td><td class="num">10</td></tr>
+              <tr><td>Triceps</td><td class="num">4&ndash;6</td><td class="num">6</td><td class="num">10&ndash;14</td><td class="num">10</td></tr>
+              <tr><td>Calves *</td><td class="num">6&ndash;8</td><td class="num">0</td><td class="num">12&ndash;16</td><td class="num">0</td></tr>
+              <tr><td>Abs</td><td class="num">0&ndash;4</td><td class="num">6</td><td class="num">6&ndash;10</td><td class="num">6&ndash;8</td></tr>
+            </table>
+          </div>
+          <p class="faint" style="margin-top: 10px; font-size: 0.82rem; line-height: 1.4;">
+            * <strong>Calves excluded (0 sets):</strong> Direct isolation is intentionally omitted per our 80/20 efficiency rule and running/Hyrox recovery. Frequent Zone 2 runs and high-intensity Norwegian 4&times;4 intervals already subject the calves and Achilles tendon to thousands of high-velocity stretch-shortening cycles weekly; direct calf loading adds high tendon overuse/DOMS risk for minimal aesthetic ROI relative to upper-body and thigh development.
+          </p>
+        </div>
+      </details>
+    </div>
+
   </section>
 
   <!-- ======================================================== -->
@@ -5563,10 +5600,67 @@
     renderWeeklySummary(select.value || currentMon);
   }
 
+  // ==========================================
+  // ROUTINE DAY PICKER
+  // ==========================================
+  // "Up next" = the day after the highest Day N logged in TODAY's Mon–Sun week (Day 1 if none yet).
+  function routineUpNext() {
+    var weekDays = getWeekRangeDays(TODAY);
+    var maxDay = 0;
+    parseWorkoutsFromDOM().forEach(function (sess) {
+      if (weekDays.indexOf(sess.date) === -1) return;
+      var m = sess.type.match(/Day\s*(\d)/);
+      if (m) maxDay = Math.max(maxDay, +m[1]);
+    });
+    return 'D' + (maxDay >= 5 ? 1 : maxDay + 1);
+  }
+
+  function initRoutinePicker() {
+    var select = document.getElementById('routine-day-select');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#routine .day-card[data-day]'));
+    if (!select || cards.length === 0) return;
+    var upNext = routineUpNext();
+
+    cards.forEach(function (card) {
+      var key = card.dataset.day;
+      var title = card.querySelector('.day-card-title').textContent.trim();
+      var optional = card.classList.contains('optional');
+      var opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = title.replace(/\s*—\s*/, ' · ') + (key === upNext ? '  ★ next' : (optional ? ' (optional)' : ''));
+      select.appendChild(opt);
+      if (key === upNext) {
+        var badge = document.createElement('span');
+        badge.className = 'day-badge next';
+        badge.textContent = 'Up next';
+        var existing = card.querySelector('.day-card-header .day-badge');
+        var wrap = document.createElement('div');
+        wrap.className = 'day-badges';
+        existing.parentNode.insertBefore(wrap, existing);
+        wrap.appendChild(badge);
+        wrap.appendChild(existing);
+      }
+    });
+
+    function show(key) {
+      cards.forEach(function (c) { c.classList.toggle('is-selected', c.dataset.day === key); });
+      select.value = key;
+    }
+    function step(delta) {
+      var i = cards.findIndex(function (c) { return c.dataset.day === select.value; });
+      show(cards[(i + delta + cards.length) % cards.length].dataset.day);
+    }
+    select.addEventListener('change', function () { show(select.value); });
+    document.getElementById('routine-prev-btn').addEventListener('click', function () { step(-1); });
+    document.getElementById('routine-next-btn').addEventListener('click', function () { step(1); });
+    show(upNext);
+  }
+
   // Initialize Everything on Load
   renderTodayTab();
   renderTrend();
   initWeekPicker();
+  initRoutinePicker();
   renderBodyweightChart();
 
   // If URL has a tab hash (e.g. #progress), switch to it
