@@ -1,6 +1,6 @@
 # Progress
 
-_Last updated: 2026-10-25_
+_Last updated: 2026-10-26_
 
 ## Bodyweight / Measurements
 | Date | Weight | Notes |
@@ -41,6 +41,7 @@ _Last updated: 2026-10-25_
 | 2026-10-23 | 155.1 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -0.5 lb from 10/22 (155.6 lb) — new low on the home scale standard (prior low 155.4 lb on 10/15), continuing the slow downward drift under the 1,700 kcal weekday target. |
 | 2026-10-24 | 155.4 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +0.3 lb from 10/23 (155.1 lb) — matches 10/15 reading (155.4 lb), continuing steady clustering in the ~155–156 lb range across ten consecutive weigh-ins. |
 | 2026-10-25 | 152.9 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. -2.5 lb from 10/24 (155.4 lb) — new low on the home scale standard (prior low 155.1 lb on 10/23), but **⚠️ likely not a true trend point**: the morning after a heavy-alcohol 10/24 (~8 drinks, ~2,708 kcal). Alcohol diuresis/dehydration can drop scale weight acutely (the opposite direction from the 10/11 post-beer +2.4 lb spike, which carried more food/sodium). Expect a rebound toward ~154–155 lb over the next 1–3 days as fluids normalize; a reading that holds ≤154 lb by 10/27–10/28 would confirm real movement below the ~155–156 lb cluster. |
+| 2026-10-26 | 155.7 lb | 🎯 **Home Scale Standard:** Morning weight, minimal clothing. +2.8 lb from 10/25 (152.9 lb) — **the expected post-alcohol rebound**, confirming 10/25's 152.9 lb was dehydration rather than a real trend point. Back inside the ~155–156 lb cluster (12 of the last 13 readings within 155.1–156.5 lb). 7-day average (10/20–10/26) ~155.3 lb vs ~156.2 lb for 10/13–10/19 (5 readings) — roughly −0.9 lb/week, inside the −0.8 to −1.1 lb/week aim set 10/12, though partly flattered by the tail of the 10/10–10/11 water spike. |
 
 **Post-gap weigh-in rule, added 2026-08-11** — a weigh-in taken within ~3 days of returning from an untracked stretch (vacation/travel, see `README.md` → Logging coverage and gaps) is **not a trend point**. Travel food, sodium, and disrupted routine inflate it with water weight that isn't fat mass. Record such a reading and annotate it as post-travel, but wait for a same-conditions weigh-in after ~3–5 days of normal eating before reading the trend or recalibrating the calorie target off it. This also means **no calorie-balance reconciliation across a window containing untracked days** — the intake denominator doesn't cover the weight change, so the math is invalid in both directions. Applies to the 8/12–8/17 vacation window, 9/19–9/21 Hyrox travel window, and 9/26–10/04 travel window.
 

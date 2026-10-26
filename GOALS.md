@@ -1,11 +1,11 @@
 # Goals
 
-_Last updated: 2026-10-25_
+_Last updated: 2026-10-26_
 
 ## Profile
 - Age: 25
 - Height: 5'6"
-- Weight: 152.9 lb (home scale standard established 2026-10-05; morning weight minimal clothes; 10/25 reading, -2.5 lb from 10/24 [155.4 lb] — likely partly post-alcohol dehydration, recent cluster ~155–156 lb; initial baseline was 163 lb on 2026-07-26)
+- Weight: 155.7 lb (home scale standard established 2026-10-05; morning weight minimal clothes; 10/26 reading, +2.8 lb rebound from the post-alcohol 152.9 lb on 10/25 — back in the ~155–156 lb cluster; 7-day avg ~155.3 lb; initial baseline was 163 lb on 2026-07-26)
 - Estimated body fat: high teens–low 20s %
 - Training experience: 10 years weightlifting
 - Activity outside workouts: desk job, otherwise sedentary. Occasional dog walks around the block, and hikes on weekends.
