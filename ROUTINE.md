@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-10-22_
+_Last updated: 2026-10-28_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -97,14 +97,14 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
 - Superset: weighted dips 3x8–12 @ **~50–55lb added** / iso-lateral incline press 3x8–12 @ **~75–85lb/arm** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** / lat pulldown 4x10–12 @ **~171–179.5lb** (back) — _chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** / Precor super squat (face out) 3x10–15 @ **~215–245lb** / squat press (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press / squat machine area · no equipment for crunches_
-- Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~22.5–24lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
+- Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~24–25.7lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 2 — Full Body B (Incline Compound, Knee Flexion/Extension & Cables)
 - Superset: incline DB press 3x8–12 @ **~61.5–68lb** / iso-lateral decline press 3x8–12 @ **~105–115lb/arm** (chest) ↔ low cable row 4x10–12 @ **~179–188lb** (back) — _adjacent zones · chest vs back; fresh pressing with zero prior triceps fatigue_
 - Superset: leg extension 3x12–15 @ **~288–309lb** _(⚠️ unconfirmed — Yellowstone machine stack; usual gym tops out at repeatedly-confirmed 215lb baseline, see PROGRESS.md)_ (quads) ↔ leg curl 3x12–15 @ **~194–207lb** / lying leg curl @ **~101–114lb** (hamstrings) — _same leg machine · knee-joint antagonist; hamstrings 1st weekly touch (3 sets)_
-- Superset: lateral raise 3x12–15 @ **~22.5–24lb** (DB) / **~84–90lb** (Yellowstone machine) (side delt) ↔ hammer curl 3x10–12 @ **~43.4–45.6lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
+- Superset: lateral raise 3x12–15 @ **~24–25.7lb** (DB) / **~84–90lb** (Yellowstone machine) (side delt) ↔ hammer curl 3x10–12 @ **~43.4–45.6lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: triceps pushdown 3x10–12 @ **~128.6–135lb** (triceps) — _cable stack · triceps 1st weekly touch (3 sets); performed after pressing compound is complete_
 - Cardio: Norwegian 4x4 — _lightest leg day (isolation machines only), so it's the right day for the hardest interval effort_
 
@@ -112,14 +112,14 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 - Superset: pec deck 3x12–15 @ **~176.4–189lb** (chest) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest flye vs rear delt; rear delt 2nd weekly touch (3+3 = 6 sets MEV)_
 - Superset: lat pulldown 4x10–12 @ **~171–179.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
 - Superset: Bulgarian split squats (DB) or weighted lunges 3x10–12/leg @ **~193–202.5lb (barbell/smith)** or **~48–50.5lb/hand (DB)** (quads/glutes) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _DB area to leg curl · unilateral leg compound vs knee flexion; hamstrings 2nd weekly touch (3+3 = 6 sets MEV)_
-- Finisher: lateral raise 2x12–15 @ **~22.5–24lb** (side delt) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _DB rack / mat · side delt 3rd touch (3+3+2 = 8 sets MEV)_
+- Finisher: lateral raise 2x12–15 @ **~24–25.7lb** (side delt) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _DB rack / mat · side delt 3rd touch (3+3+2 = 8 sets MEV)_
 - Cardio: zone 2 run, 20–30 min
 
 ### Day 4 — Optimal / MAV Booster (Extra Volume)
 Additive 4th day that pushes every tracked muscle group from MEV to Optimal (MAV).
 - Superset: incline DB press 3x8–12 @ **~61.5–68lb** (chest) ↔ low cable row 3x10–12 @ **~179–188lb** (back) — _adjacent zones · chest vs back (brings chest to 12 sets, back to 15 sets)_
 - Superset: leg extension 3x12–15 @ **~288–309lb** _(⚠️ unconfirmed, see PROGRESS.md)_ (quads) ↔ leg curl 4x12–15 @ **~194–207lb** / lying leg curl @ **~101–114lb** (hamstrings) — _same leg machine · knee antagonist (brings quads to 12 sets, hamstrings to 10 sets)_
-- Superset: lateral raise 4x12–15 @ **~22.5–24lb** (DB) / **~84–90lb** (Yellowstone machine) (side delt) ↔ reverse pec deck 4x12–15 @ **~153–164lb** (rear delt) — _DB rack vs pec deck machine · delts push vs pull (brings side delts to 12 sets, rear delts to 10 sets)_
+- Superset: lateral raise 4x12–15 @ **~24–25.7lb** (DB) / **~84–90lb** (Yellowstone machine) (side delt) ↔ reverse pec deck 4x12–15 @ **~153–164lb** (rear delt) — _DB rack vs pec deck machine · delts push vs pull (brings side delts to 12 sets, rear delts to 10 sets)_
 - Superset: cable curl 4x10–12 @ **~120–130lb** / DB curl 4x10–12 @ **~38.5–40.5lb** (biceps) ↔ triceps pushdown 4x10–12 @ **~130–135lb** (triceps) — _same cable stack / DB rack · elbow flexion vs extension (brings biceps to 10 sets, triceps to 10 sets)_
 - Cardio: Norwegian 4x4 or zone 2 (optional)
 
