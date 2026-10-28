@@ -9,8 +9,7 @@ on a `claude/...` branch. This repo's owner has overridden that: all edits go on
 `main` (see `AGENTS.md` §0a). Run `git checkout main && git pull origin main`
 before editing and `git push origin main` before ending the turn.
 
-Claude-specific addition: this repo's `dashboard.html` is published as a
-Claude Artifact. `AGENTS.md` §5 covers keeping `dashboard.html`'s *content*
-correct; `README.md` → Workflow covers the additional step only Claude can
-do — calling the `Artifact` tool to republish it to the same URL in the same
-turn a source file changes.
+Claude-specific rule: **never call the `Artifact` tool to republish
+`dashboard.html`** (owner's instruction, 2026-10-28). The owner only uses the
+GitHub Pages copy, which updates automatically on push to `main`. Still keep
+`dashboard.html` itself fully correct per `AGENTS.md` §5.
