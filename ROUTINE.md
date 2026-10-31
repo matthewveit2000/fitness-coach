@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-10-28_
+_Last updated: 2026-10-31_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -95,7 +95,7 @@ Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for
 Workload is distributed evenly across days (~21–25 sets per session). Incline DB Press is programmed on Day 2 as the lead compound to ensure triceps freshness, avoiding the fatigue conflict of pairing it after triceps isolation. Leg Press and Unilateral Leg work (Bulgarian Split Squats / Lunges) are separated on Day 1 and Day 3, with Day 2 featuring knee-joint isolation (extension/curl) alongside Norwegian 4x4 HIIT.
 
 ### Day 1 — Full Body A (Tower & Leg Press Focus)
-- Superset: weighted dips 3x8–12 @ **~50–55lb added** / iso-lateral incline press 3x8–12 @ **~75–85lb/arm** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** / lat pulldown 4x10–12 @ **~171–179.5lb** (back) — _chest vs back_
+- Superset: weighted dips 3x8–12 @ **~50–55lb added** / iso-lateral incline press 3x8–12 @ **~75–85lb/arm** (chest) ↔ weighted pull-ups 4x6–10 @ **~40.5–45lb added** / lat pulldown 4x10–12 @ **~175.7–184.5lb** (back) — _chest vs back_
 - Superset: leg press 3x10–15 @ **~445.5–501lb** / Precor super squat (face out) 3x10–15 @ **~215–245lb** / squat press (quads) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _leg-press / squat machine area · no equipment for crunches_
 - Superset: lateral raise (dumbbell or cable) 3x12–15 @ **~24–25.7lb** (side delt) ↔ DB curl 3x10–12 @ **~38.5–40.5lb** (biceps) — _same DB rack · raise vs curl, push vs pull_
 - Finisher: reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _pec-deck machine; rear delt 1st weekly touch (3 sets)_
@@ -110,7 +110,7 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 
 ### Day 3 — Full Body C (Pec Deck, Unilateral Legs & Vertical Cables)
 - Superset: pec deck 3x12–15 @ **~176.4–189lb** (chest) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest flye vs rear delt; rear delt 2nd weekly touch (3+3 = 6 sets MEV)_
-- Superset: lat pulldown 4x10–12 @ **~171–179.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
+- Superset: lat pulldown 4x10–12 @ **~175.7–184.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** _(Main Gym/P66 stack; ⚠️ Yellowstone's stack reads much lower — 60lb x 10 on 10/31, 60lb on 8/2 & 10/5 — use ~51–54lb there, see PROGRESS.md)_ (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
 - Superset: Bulgarian split squats (DB) or weighted lunges 3x10–12/leg @ **~193–202.5lb (barbell/smith)** or **~48–50.5lb/hand (DB)** (quads/glutes) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _DB area to leg curl · unilateral leg compound vs knee flexion; hamstrings 2nd weekly touch (3+3 = 6 sets MEV)_
 - Finisher: lateral raise 2x12–15 @ **~24–25.7lb** (side delt) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _DB rack / mat · side delt 3rd touch (3+3+2 = 8 sets MEV)_
 - Cardio: zone 2 run, 20–30 min
