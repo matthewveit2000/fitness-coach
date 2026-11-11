@@ -67,6 +67,8 @@ _Last updated: 2026-11-09_
 
 **New scale standard protocol, added 2026-10-05** — As of 2026-10-05, bodyweight tracking transitions from the gym scale (taken after work, wearing shoes and clothing, on a padded floor; consistent ~164–165 lb range) to a new home digital scale (taken before bed with minimal clothing; confirmed settled reading at 159.2 lb). The ~4–5 lb delta from the gym scale cleanly accounts for shoes, clothing, floor surface, and device calibration. Home weigh-ins under minimal clothing serve as the standard baseline going forward.
 
+**Scale stability protocol, added 2026-11-11** — the user suspects the home scale has been wobbling (uneven/soft floor or unstable position), which would bias readings **artificially low** by an unknown amount. From 2026-11-11 onward the user will make sure there is no wobble before each weigh-in. Consequences for reading the trend: (1) readings **before 11/11 are not retroactively corrected** — the ~154.0–155.6 lb band and the 11/3 154.0 / 11/9 153.9 lows were taken under possibly-wobbly conditions and may understate true weight; (2) **a step *up* in the baseline after 11/11 may be a measurement-conditions change, not tissue gain** — do not read it as a real gain or as a calorie-target failure until ~7 days of stable-scale readings exist; (3) the 7-day average and weekly-rate comparisons straddling 11/11 are lower-confidence, and the first clean 7-day stable-scale average (~11/11–11/17) should be treated as the new baseline. The 11/11 reading (155.8 lb) is the first taken under this protocol if the scale was stable (not confirmed for that specific reading).
+
 ## Lift PRs
 | Lift | Weight x Reps | Date |
 |------|---------------|------|
