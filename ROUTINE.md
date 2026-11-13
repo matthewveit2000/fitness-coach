@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-11-03_
+_Last updated: 2026-11-12_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -110,7 +110,7 @@ Workload is distributed evenly across days (~21–25 sets per session). Incline 
 
 ### Day 3 — Full Body C (Pec Deck, Unilateral Legs & Vertical Cables)
 - Superset: pec deck 3x12–15 @ **~176.4–189lb** (chest) ↔ reverse pec deck 3x12–15 @ **~153–164lb** (rear delt) — _same machine, flip position · chest flye vs rear delt; rear delt 2nd weekly touch (3+3 = 6 sets MEV)_
-- Superset: lat pulldown 4x10–12 @ **~175.7–184.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** _(Main Gym/P66 stack; ⚠️ Yellowstone's stack reads much lower — 60lb x 10 on 10/31, 60lb on 8/2 & 10/5 — use ~51–54lb there, see PROGRESS.md)_ (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
+- Superset: lat pulldown 4x10–12 @ **~175.7–184.5lb** (back) ↔ overhead triceps extension 3x10–12 @ **~130–135lb** _(Main Gym/P66 stack; ⚠️ Yellowstone's stack reads much lower — 60lb x 10 on 10/31, 60lb on 8/2 & 10/5 — use ~51–54lb there, see PROGRESS.md; ⚠️ 11/12 Yellowstone 150lb x 9 failed 10th / 135lb x 12 / 135lb x 10 [e1RM 195.0 / 189.0 / 180.0lb] is ~+144% vs that 60lb x 10 [80.0lb] baseline with no machine/station change noted, and 135lb x 12 [189.0lb] equals the Main Gym 9/3 best — unverified until repeated, so the ~51–54lb Yellowstone suggestion is not raised)_ (triceps) — _same cable stack · vertical pull vs elbow extension; triceps 2nd weekly touch (3+3 = 6 sets MEV)_
 - Superset: Bulgarian split squats (DB) or weighted lunges 3x10–12/leg @ **~193–202.5lb (barbell/smith)** or **~48–50.5lb/hand (DB)** (quads/glutes) ↔ leg curl 3x12–15 @ **~194–207lb** (hamstrings) — _DB area to leg curl · unilateral leg compound vs knee flexion; hamstrings 2nd weekly touch (3+3 = 6 sets MEV)_
 - Finisher: lateral raise 2x12–15 @ **~24–25.7lb** (side delt) ↔ crunches 3x20–30 @ **bodyweight** (abs) — _DB rack / mat · side delt 3rd touch (3+3+2 = 8 sets MEV)_
 - Cardio: zone 2 run, 20–30 min
