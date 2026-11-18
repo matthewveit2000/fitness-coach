@@ -79,10 +79,11 @@ conventions (e.g. banana peel discounted at USDA's 36% refuse figure).
   bare date. If the session follows the current tailored recommendation in
   `NEXT_WORKOUT.md` (from 2026-11-18, see §11), label it
   `Gym (Tailored — <headline>) — <Gym>`, e.g.
-  `Gym (Tailored — Legs & Arms) — Yellowstone Fitness`. If a gym session's
-  exercise pairing matches one of the Day 1–5 templates in `ROUTINE.md`, name it
-  (e.g. `Day 4 — Extra Volume`); if it's a genuine mix, say so explicitly
-  rather than leaving the type blank. Gym labels must start with `Gym` — the
+  `Gym (Tailored — Legs & Arms) — Yellowstone Fitness`. Otherwise give it a
+  descriptive label (e.g. `Gym (Upper + Hamstrings)`); if it's a genuine mix,
+  say so explicitly rather than leaving the type blank. `Day N` labels belong to
+  the retired Day 1–5 rotation (archived in `ROUTINE_HISTORY.md`) and appear
+  only on entries through 2026-11-17. Gym labels must start with `Gym` — the
   dashboard treats any non-`Gym…` session whose label contains "run",
   "cardio", "4x4", "hike" or "stairmaster" as cardio.
 - RIR default is **0** (near-failure) unless the message says otherwise — see
@@ -112,10 +113,12 @@ at 300lb can mean something completely different from one gym to the next.
      specific prior baseline being contradicted and by how much, and say
      what would confirm or contradict it (typically: a follow-up session at
      a known gym).
-   - Carry the same flag into the matching `ROUTINE.md` suggested-weight
-     line(s) — **every** occurrence of that exercise (an exercise can appear
-     on more than one day, see §5) — and into that exercise's row/cue in
-     `NEXT_WORKOUT.md` (+ the dashboard's `NEXT_WORKOUT` object) if it's there.
+   - Carry the same flag into that exercise's row in `ROUTINE.md` →
+     **Suggested Working Weights** (one row per exercise; gym-specific numbers
+     share that row) and into that exercise's row/cue in `NEXT_WORKOUT.md`
+     (+ the dashboard's `NEXT_WORKOUT` object) if it's there. Never edit
+     `ROUTINE_HISTORY.md`: it is a frozen archive of the retired Day 1–5
+     rotation, not a live weights list.
 3. **Never delete, soften, or silently overwrite an existing caveat** written
    by a previous session — if new evidence changes the picture, add to the
    history, don't erase it.
@@ -135,16 +138,22 @@ touches any source file, update **all** of the following in `dashboard.html`:
 - [ ] `NUTRITION_LOG` JS object — add/edit the day's item array
 - [ ] `TODAY` — the current Mountain Time date
 - [ ] Workout Log section — one new HTML block per session, in the same
-      `<div class="callout info">...</div>` format as every existing entry
-      (do not introduce a different structure like a bare `<ul><li>` list —
-      grep the file for `class="callout info"` and match it exactly)
+      format as every existing entry: a `<details class="session-card"
+      data-date="YYYY-MM-DD" data-cat="gym|cardio" data-pr="true|false">` with a
+      `session-summary`, then a `session-content` holding the
+      `<p class="muted"><strong>DATE &mdash; TYPE</strong></p>` heading, the sets
+      table, and the notes in `<div class="callout info">...</div>` (do not
+      introduce a different structure like a bare `<ul><li>` list — copy the
+      newest entry and match it exactly). **Close every `<div>`**: the 11/02
+      and 11/17 entries were missing one (fixed 11/18). The dashboard collapses
+      and paginates entries itself, so `open` on `<details>` doesn't matter.
 - [ ] Estimated 1RMs table — every exercise row whose `PROGRESS.md` line
       changed, including confidence label and any ⚠️ flag
-- [ ] **Every** Routine-tab card that mentions the changed exercise — some
-      exercises appear on more than one day (e.g. Leg Extension is on both
-      Day 2 and Day 4). Grep the exercise name in `dashboard.html` after
-      editing and confirm every occurrence changed, not just the first one
-      you found.
+- [ ] Suggested weights on the dashboard live only in the `NEXT_WORKOUT`
+      object (the Train tab's template cards were removed 11/18). After a
+      PR or flag change, grep the exercise name in `dashboard.html` and
+      confirm every occurrence changed (1RM table row + any `NEXT_WORKOUT`
+      exercise), not just the first one you found.
 - [ ] `NEXT_WORKOUT` JS object — after every **workout** log, replace it with
       the regenerated recommendation so it matches `NEXT_WORKOUT.md` field for
       field (§11); after a PR/flag change, update any matching exercise's
@@ -157,10 +166,19 @@ touches any source file, update **all** of the following in `dashboard.html`:
       crosses into a new Monday–Sunday week), verify the Weekly Review tab
       selects and evaluates the new week, and that `#week-select` includes the
       current week
-- [ ] Header `sync-note` "last updated" date
+- [ ] `sync-note` "last updated" date (in the page footer since the 11/18 redesign)
 - [ ] **Calorie/macro target changes** go into `TARGET_SCHEDULE` in `dashboard.html` as a **new dated entry** (never edit an old entry — past days must stay judged against the target in effect that day). Targets are split weekday (Mon–Fri) / weekend (Sat–Sun) since 2026-10-12; all target displays read from `targetsFor(date)`, so don't reintroduce a single hard-coded target number. Also add a row to the Nutrition Target History card.
 - [ ] **Weigh-ins on the dashboard are home-scale only (2026-10-05 onward)**, per the user's 2026-10-12 request. Add new home-scale readings to `WEIGH_INS` and the weigh-in table, and bump the Weigh-ins tile; never re-add the older gym-scale rows from `PROGRESS.md`.
 - [ ] Post-sync review: review the dashboard to verify everything displays correctly (see §5a)
+
+**Dashboard layout (phone-first redesign, 2026-11-18).** Tabs: **Today**,
+**Week** (id `weekly`), **Train** (id `routine`) and **Progress**. Everything
+you see is *rendered by JS* from the data blocks above. Edit only the data
+(`NUTRITION_LOG`, `DAY_STATUS`, `TODAY`, `WEIGH_INS`, `TARGET_SCHEDULE`,
+`NEXT_WORKOUT`, `MUSCLE_RULES`, the session cards, the 1RM / weigh-in / target
+tables, the four stat tiles, the footer `sync-note`) and never hand-edit
+rendered areas (ring, bars, volume list, option tiles). Keep new UI chrome out
+of the data blocks so other agents can keep appending to them.
 
 **Before ending your turn**, grep the file(s) you just edited for the
 exercise/date/value you changed and confirm every match was updated — not
@@ -290,7 +308,7 @@ chosen) live in `ROUTINE.md` → *Adaptive Programming*; this is the checklist.
    `options[]` with blocks/exercises/`muscle`/`sets`/`optional`). `muscle` must
    be one of the `VOLUME_LANDMARKS` names (Chest, Back, Quads, Hamstrings,
    Side Delt, Rear Delt, Biceps, Triceps, Abs) or the volume projection bars
-   won't count it. Then verify (§5a): Today-tab card and Routine-tab plan render
+   won't count it. Then verify (§5a): Today-tab card and Train-tab plan render
    all three options, the volume projection matches the "after" column in
    `NEXT_WORKOUT.md`, and no "stale" banner shows (it appears whenever a session
    dated after `basedOn` is in the Workout Log, i.e. a log without a regenerate).

@@ -2,7 +2,7 @@
 
 _Generated: 2026-11-18 (Wed, Mountain Time) · accounts for every session logged through **2026-11-17** · plans against the week of **Mon 11/16 – Sun 11/22**_
 
-> **What this file is.** From 2026-11-18 the fixed Day 1 → 5 rotation is retired: after **every** logged workout the agent regenerates this file with a recommended next session in **three options: 🏃 Cardio · 🏔️ Yellowstone Fitness · 🏢 Phillips 66**. The programming rules live in `ROUTINE.md` → *Adaptive Programming*; the step-by-step checklist is `AGENTS.md` §11. It is mirrored into `dashboard.html` → `NEXT_WORKOUT` (Today tab → 🎯 Next Workout card; Routine tab → full plan). Loads follow the 90%-training-max method in `ROUTINE.md` and the gym-comparability rule (`AGENTS.md` §4a): every gym option uses **that gym's** numbers only.
+> **What this file is.** From 2026-11-18 the fixed Day 1 → 5 rotation is retired: after **every** logged workout the agent regenerates this file with a recommended next session in **three options: 🏃 Cardio · 🏔️ Yellowstone Fitness · 🏢 Phillips 66**. The programming rules live in `ROUTINE.md` → *Adaptive Programming*; the step-by-step checklist is `AGENTS.md` §11. It is mirrored into `dashboard.html` → `NEXT_WORKOUT` (Today tab → 🎯 Next workout card; Train tab → full plan). Loads follow the 90%-training-max method in `ROUTINE.md` and the gym-comparability rule (`AGENTS.md` §4a): every gym option uses **that gym's** numbers only.
 
 ## Coach's call
 
