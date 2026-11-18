@@ -76,9 +76,15 @@ conventions (e.g. banana peel discounted at USDA's 36% refuse figure).
 
 - Heading format: `## YYYY-MM-DD — <Session Type>` — always include the
   session type/day label (e.g. `Gym (Day 2)`, `Zone 2 Run (Cardio)`), never a
-  bare date. If a gym session's exercise pairing matches one of the Day 1–5
-  templates in `ROUTINE.md`, name it (e.g. `Day 4 — Extra Volume`); if it's a
-  genuine mix, say so explicitly rather than leaving the type blank.
+  bare date. If the session follows the current tailored recommendation in
+  `NEXT_WORKOUT.md` (from 2026-11-18, see §11), label it
+  `Gym (Tailored — <headline>) — <Gym>`, e.g.
+  `Gym (Tailored — Legs & Arms) — Yellowstone Fitness`. If a gym session's
+  exercise pairing matches one of the Day 1–5 templates in `ROUTINE.md`, name it
+  (e.g. `Day 4 — Extra Volume`); if it's a genuine mix, say so explicitly
+  rather than leaving the type blank. Gym labels must start with `Gym` — the
+  dashboard treats any non-`Gym…` session whose label contains "run",
+  "cardio", "4x4", "hike" or "stairmaster" as cardio.
 - RIR default is **0** (near-failure) unless the message says otherwise — see
   `PROGRESS.md`'s RIR history for why. A "failed Nth rep" set uses the reps
   *actually completed* (N−1) in the Epley formula, not N.
@@ -108,7 +114,8 @@ at 300lb can mean something completely different from one gym to the next.
      a known gym).
    - Carry the same flag into the matching `ROUTINE.md` suggested-weight
      line(s) — **every** occurrence of that exercise (an exercise can appear
-     on more than one day, see §5).
+     on more than one day, see §5) — and into that exercise's row/cue in
+     `NEXT_WORKOUT.md` (+ the dashboard's `NEXT_WORKOUT` object) if it's there.
 3. **Never delete, soften, or silently overwrite an existing caveat** written
    by a previous session — if new evidence changes the picture, add to the
    history, don't erase it.
@@ -138,6 +145,10 @@ touches any source file, update **all** of the following in `dashboard.html`:
       Day 2 and Day 4). Grep the exercise name in `dashboard.html` after
       editing and confirm every occurrence changed, not just the first one
       you found.
+- [ ] `NEXT_WORKOUT` JS object — after every **workout** log, replace it with
+      the regenerated recommendation so it matches `NEXT_WORKOUT.md` field for
+      field (§11); after a PR/flag change, update any matching exercise's
+      load/last/cue in it
 - [ ] "What's Logged So Far" stat tiles — Workout Entries and Meal Entries
       counts (count real `## ` session headings in `workouts/*.md`,
       excluding the format-template header and untracked/vacation
@@ -236,4 +247,57 @@ Select only the most relevant dimensions for the situation:
 - **Encouragement & reflection:** Acknowledge genuine consistency, progress, or solid execution (e.g., clean recovery after a high-calorie event or travel) with a grounded, coach-like tone rather than hollow cheerleading.
 - **Actionable advice for the rest of the day:** Provide practical next steps (e.g., "You have ~850 kcal and 45g protein left — aim for a lean protein dinner with plenty of fiber and carbs," or "Heavy leg session completed; prioritize post-workout hydration and keep evening carbs high to replenish glycogen").
 - **Agent judgment over robotic checklists:** Do not output a rigid template for every log. Tailor the feedback to what genuinely matters based on current time of day, remaining budget, and recent training.
+
+## 11. Tailored next workout — regenerate after EVERY workout log (MANDATORY)
+
+Since 2026-11-18 the user no longer follows a fixed Day 1→5 rotation. After
+**every** logged workout (gym or cardio), the agent generates the recommended
+next session. The programming rules (how muscles, loads, cardio and cues are
+chosen) live in `ROUTINE.md` → *Adaptive Programming*; this is the checklist.
+
+1. **Log first, then plan.** Finish the workout entry, `PROGRESS.md` / `ROUTINE.md`
+   updates and §4a checks first. The recommendation must be built from the
+   *updated* numbers.
+2. **Gather inputs** (fresh from the files, not from memory):
+   - Direct sets per muscle for the current Mon–Sun week, counted exactly like
+     the dashboard's Weekly Review (`MUSCLE_RULES`), plus the last date each
+     muscle was trained.
+   - Cardio this week, and days since the last 4×4 / Zone 2 / hike.
+   - Gym-calibrated loads: `ROUTINE.md` suggested weights where they're from
+     that gym; otherwise derive them from **that gym's own** logged sets with
+     the 90%-training-max formula and write the derivation down. Never use a
+     cross-gym number (§4a). Also note the last sets done at that gym.
+   - `ROUTINE.md` → Preference signals and Gym equipment profiles; injury
+     constraints (`GOALS.md`) and every ⚠️ flag.
+   - If the next session falls in a new Mon–Sun week (e.g. generated on
+     Sunday), plan against that new week (all counts reset Monday).
+3. **Write `NEXT_WORKOUT.md`** (overwrite the plan sections; keep the format):
+   - Header: generated date (MT), last session it accounts for, week planned against.
+   - Coach's call (one short paragraph + the ★ pick), Inputs used (week table with
+     "after" projection), then **exactly three options, always:**
+     🏃 Cardio · 🏔️ Yellowstone Fitness · 🏢 Phillips 66. The two gym options hit
+     the same muscles for the same set counts; each lists exercise, sets × reps,
+     load, last time at that gym, and one cue.
+   - Rest-of-week outlook (which later session closes any remaining MEV gaps).
+4. **Close the feedback loop** in `NEXT_WORKOUT.md` → Recommendation history:
+   fill in "What was done" for the previous row (which option, swaps, skipped
+   blocks, or "did something else"), then add a row for the new
+   recommendation. If a choice has now repeated ≥2 times (e.g. same swap,
+   same skipped block), add or adjust a bullet in `ROUTINE.md` → Preference
+   signals. Never silently delete an old signal; mark it superseded.
+5. **Mirror to `dashboard.html` → `NEXT_WORKOUT`** (every field: `generated`,
+   `basedOn`, `weekOf`, `headline`, `pick`, `coachCall`, `why`, `outlook`,
+   `options[]` with blocks/exercises/`muscle`/`sets`/`optional`). `muscle` must
+   be one of the `VOLUME_LANDMARKS` names (Chest, Back, Quads, Hamstrings,
+   Side Delt, Rear Delt, Biceps, Triceps, Abs) or the volume projection bars
+   won't count it. Then verify (§5a): Today-tab card and Routine-tab plan render
+   all three options, the volume projection matches the "after" column in
+   `NEXT_WORKOUT.md`, and no "stale" banner shows (it appears whenever a session
+   dated after `basedOn` is in the Workout Log, i.e. a log without a regenerate).
+6. **Tell the user.** End the post-log coaching response (§10) with a 2–4 line
+   summary of the three options and the coach's pick.
+
+Meal and weigh-in logs don't trigger a regenerate. Do regenerate when the
+user asks for one, or reports something that changes the plan (pain, travel,
+a different gym, a missed day).
 

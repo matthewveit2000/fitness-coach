@@ -1,6 +1,6 @@
 # Current Routine
 
-_Last updated: 2026-11-12_
+_Last updated: 2026-11-18_
 
 ## Design Principles
 - **Full body days, not body-part splits.** Preferred format — considered more time-efficient per the 80/20 philosophy (see `GOALS.md`).
@@ -88,9 +88,47 @@ Machine/cable-leaning selection — works well with the back constraint since th
 - **Core:** crunches — ⚠️ loaded/repeated spinal flexion can aggravate a bulging disc; watch for any tweak or pain and swap to a flexion-free alternative (e.g. Pallof press, plank) if it flares up
 - **Cardio:** zone 2 runs, Norwegian 4x4 intervals (both directly Hyrox-relevant)
 
-## Weekly Structure
+## Adaptive Programming — Tailored Next Workout (from 2026-11-18)
 
-Flexible full-body rotation, 3–5 days/week. **Days 1–3 hit the MEV floor for every tracked muscle** (see table above). **Day 4 is additive** — pushes chest, back, delts, hamstrings, quads, and arms into the optimal zone. **Day 5 is Hyrox-specific conditioning** — optional, low priority given Hyrox is a secondary goal; skip it freely if the week's short on time. Rotate Day 1 &rarr; 5 in order regardless of which day of the week; repeat from Day 1 after finishing whichever day was last that week.
+**The fixed Day 1 → 5 rotation is retired.** At the user's request (2026-11-18), the agent now generates a **recommended next workout after every logged workout**. It is written to [`NEXT_WORKOUT.md`](NEXT_WORKOUT.md) and shown on the dashboard (Today tab → 🎯 Next Workout card; Routine tab → full plan). The Day 1–5 templates below stay as the **template library**: the validated pairings, suggested weights and volume math that tailored workouts are built from. These are the programming rules; the step-by-step checklist is `AGENTS.md` §11.
+
+### Three options, every time
+1. **🏃 Cardio**: a standalone session (Norwegian 4×4, Zone 2 run, or a long Zone 2 run / hike on weekends), with treadmill speeds and WHOOP heart-rate zones taken from the user's own logs.
+2. **🏔️ Yellowstone Fitness**: a lifting session built from Yellowstone's equipment and Yellowstone-calibrated loads.
+3. **🏢 Phillips 66 (work gym)**: the same session built from P66's equipment and P66-calibrated loads.
+
+The two gym options train **the same muscles for the same set counts**, so the week's plan doesn't change with the location. Each one uses that gym's machines and that gym's numbers (gym-comparability rule, `AGENTS.md` §4a). One or more options get a **★ coach's pick**, with a one-paragraph "coach's call" explaining why.
+
+### How the next workout is chosen
+1. **The weekly compass is the MEV/MAV table above** (Mon–Sun, direct sets only). Count this week's direct sets per muscle exactly the way the dashboard's Weekly Review does, then fill the biggest gaps to MEV first. MAV is the stretch goal once every MEV is covered.
+2. **Recovery.** Don't load a muscle again within ~48 h of its last direct work. For example, chest and back trained Mon + Tue sit out Wednesday. If one session can't close every gap, the recommendation says which later session will (the **rest-of-week outlook**).
+3. **Session shape.** ~18–22 working sets, ~55–60 min, antagonist supersets on the same or adjacent equipment (Design Principles above). Blocks are **ordered by priority**: if a session gets cut short (it happens, e.g. 11/17), the first blocks are the ones that matter.
+4. **Loads.** Use the suggested weights in this file (90% training max) wherever they're calibrated to that gym. Otherwise derive the load from **that gym's own logged sets** with the same formula, and show the derivation. Never carry a number across gyms. Every gym exercise also shows the **last sets at that gym**, so the user sees both the safe suggestion and what they actually did.
+5. **One cue per lift.** A progression or safety cue: top of the rep range hit on every set → add load and drop to the bottom of the range (the progressive-overload rule in Notes below); a weight stuck for several sessions → build reps in range; a ⚠️-flagged number → say so and keep the suggestion unchanged; knee/back cautions where relevant.
+6. **Cardio logic.** Aim for ≥2 cardio sessions per Mon–Sun week: one Norwegian 4×4 plus one long Zone 2 run or hike. Prefer the 4×4 when no HIIT in ~7 days, and keep it ≥24 h from a heavy leg session. Use Zone 2 (45–60 min) as the low-fatigue alternative and long Zone 2 / hikes on weekends. Cardio is always its **own option**: lifting options are lift-only (see Preference signals).
+7. **Constraints never relax.** Lower-back disc (no loaded spinal flexion, no heavy axial loading), right knee (quad work pain-guided, substitute rather than skip), and every ⚠️ flag from `PROGRESS.md` carries into the cue.
+8. **Feedback loop.** At each workout log, record in `NEXT_WORKOUT.md` → Recommendation history which option was done, plus any swaps and skipped blocks. When the same choice repeats (≥2 times), update the Preference signals below so the next recommendation leans into it.
+
+### Gym equipment profiles
+_As observed in the logs. Extend as new equipment shows up. Stacks are **not** comparable across gyms._
+
+- **Yellowstone Fitness:** barbell bench press; EZ bar; DBs to at least 70 lb; lat pulldown (205-lb working stack); low cable row; pec deck / reverse pec deck (~150–180 lb); **lateral raise machine** (110 lb working weight); **leg extension (heavy-reading stack: 335–400 lb)**; **lying leg curl (~120 lb)** and a seated leg curl; squat press / leg press (plate-loaded); Precor super squat (face out); iso-lateral incline & decline press machines; cable stations: a **1:1 stack** (pushdown 150-lb PR, cable curl) and a **2:1 pulley station** (pushdown ~60–70 lb; overhead extension reads very low there); facepull.
+- **Phillips 66 (work gym)** (calibrates like the old "Main Gym" numbers): **dip / pull-up tower** with dip belt; plate-loaded **leg press** (490–495 lb working weight); **leg extension and leg curl at 215 lb** (215 is the extension's stack max, so progress there is reps/tempo); pec deck (~190 lb) / reverse pec deck (170 lb); low cable row (205–220 lb); lat pulldown (~175 lb); cable stack (pushdown ~110–120 lb, overhead extension 110–120 lb); level-numbered cable lateral raise (weight per level unknown); DBs to at least 70 lb (incline press, laterals, curls).
+
+### Preference signals
+_Learned from the logs through 11/17. Update when a pattern repeats ≥2 times; never delete an old signal silently. Mark it superseded instead._
+
+- **Cardio has moved to its own day.** In August, runs and 4×4s were often done on lifting days (8/7, 8/10, 8/22, 8/25). Since mid-September only one gym day (10/11) has had cardio attached, and the template runs after Days 1–3 are skipped; cardio now gets its own midweek or weekend day. → Lifting options are lift-only, and cardio is offered as a separate option.
+- **What actually gets done:** ~3 lifting sessions/week, usually Mon–Thu. The Day 1 and Day 2 structures are repeated most; Day 3 is regular; Day 4 was last done 10/16; Day 5 (Hyrox stations) has never been done → no Hyrox station work in recommendations.
+- **Weekend endurance:** long Zone 2 run (2:15 on 11/7) and hikes (11/8). The user also enjoys the **Norwegian 4×4**: they voluntarily added a 5th round on 11/4 and ran aggressive 8.5-mph intervals on 10/11. Zone 2 discipline is excellent (90%+ in-zone).
+- **Yellowstone staples:** lateral raise machine (every visit), Bulgarian split squats, lying leg curl, heavy leg extension, pec deck ↔ reverse pec deck, lat pulldown (preferred there over weighted pull-ups), the 2:1 pushdown station, and recently self-chosen **barbell bench press** (11/16 PR) and **EZ-bar curl** (11/16).
+- **P66 staples:** the dip / pull-up tower with **rotating grips** (4 grip variations per session, so variety is part of the appeal); leg press ↔ crunches; DB laterals ↔ DB curls; reverse pec deck at 170; low cable row ↔ incline DB press.
+- **Rarely or never done:** iso-lateral decline press (once), the template runs, Hyrox stations. The reverse pec deck finisher gets dropped when a session runs long (11/16).
+- **Rep style:** sets go to failure and often run past the top of the range (hammer curl 45×20, leg extension 215×20, leg press 490×15 ×3) → cues use rep targets and the progression rule rather than bigger jumps in the suggestion.
+
+## Template Library (Days 1–5)
+
+_Until 2026-11-18 this was the weekly rotation. It is now the **template library** the tailored workouts above are built from; it is no longer done in order._ The volume math still holds: **Days 1–3 together hit the MEV floor for every tracked muscle** (see table above), **Day 4 is additive** (pushes chest, back, delts, hamstrings, quads and arms into the optimal zone), and **Day 5 is Hyrox-specific conditioning** (optional, never done). Suggested weights on these lines remain the canonical per-exercise numbers. Keep them in sync on every PR (`AGENTS.md` §4a/§5), and mirror any change into `NEXT_WORKOUT.md` if the exercise appears there.
 
 Workload is distributed evenly across days (~21–25 sets per session). Incline DB Press is programmed on Day 2 as the lead compound to ensure triceps freshness, avoiding the fatigue conflict of pairing it after triceps isolation. Leg Press and Unilateral Leg work (Bulgarian Split Squats / Lunges) are separated on Day 1 and Day 3, with Day 2 featuring knee-joint isolation (extension/curl) alongside Norwegian 4x4 HIIT.
 
