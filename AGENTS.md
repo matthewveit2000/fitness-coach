@@ -296,6 +296,7 @@ chosen) live in `ROUTINE.md` → *Adaptive Programming*; this is the checklist.
      🏃 Cardio · 🏔️ Yellowstone Fitness · 🏢 Phillips 66. The two gym options hit
      the same muscles for the same set counts; each lists exercise, sets × reps,
      load, last time at that gym, and one cue.
+   - **Grip rule (user request 2026-11-20):** for any exercise that can be done with different grips/handles, the one-line cue (and any workout coaching tip you give in chat) must state which grip to use and the reason (target muscle emphasis, joint comfort, equipment available at that gym). See `ROUTINE.md` → Preference signals.
    - Rest-of-week outlook (which later session closes any remaining MEV gaps).
 4. **Close the feedback loop** in `NEXT_WORKOUT.md` → Recommendation history:
    fill in "What was done" for the previous row (which option, swaps, skipped
