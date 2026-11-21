@@ -1,16 +1,16 @@
 # Next Workout — Tailored Recommendation
 
-_Generated: 2026-11-20 (Fri, Mountain Time, after the Yellowstone lying leg curl top-off) · accounts for every session logged through **2026-11-20** · plans against the week of **Mon 11/16 – Sun 11/22**_
+_Generated: 2026-11-20 (Fri, Mountain Time, after the 6-interval Norwegian 4×4 + lying leg curl top-off) · accounts for every session logged through **2026-11-20** · plans against the week of **Mon 11/16 – Sun 11/22**_
 
 > **What this file is.** From 2026-11-18 the fixed Day 1 → 5 rotation is retired: after **every** logged workout the agent regenerates this file with a recommended next session in **three options: 🏃 Cardio · 🏔️ Yellowstone Fitness · 🏢 Phillips 66**. The programming rules live in `ROUTINE.md` → *Adaptive Programming*; the step-by-step checklist is `AGENTS.md` §11. It is mirrored into `dashboard.html` → `NEXT_WORKOUT` (Today tab → 🎯 Next workout card; Train tab → full plan). Loads follow the 90%-training-max method in `ROUTINE.md` and the gym-comparability rule (`AGENTS.md` §4a): every gym option uses **that gym's** numbers only.
 
 ## Coach's call
 
-**Cardio next (★): Norwegian 4×4 on Sat 11/21** (followed by a **long Zone 2 run or hike on Sun 11/22**). Today's 3 sets of lying leg curls closed the **last remaining MEV gap** of the week (hamstrings 3 → 6 of 6), so every single muscle group is now at or above MEV. Cardio is still at 0 sessions for the week — 12 days since the 11/8 hike and 16 days since the 11/4 4×4 — and with two weekend days left, getting both conditioning sessions in is the highest-ROI move. If you'd rather lift once more this weekend, Options 2 & 3 are a short, zero-leg **MAV upper/arms top-off** (11 sets, ~30–35 min) that pushes chest (10 → 12) and back (11 → 14) into Optimal MAV and tops off side delts and biceps without taxing your legs ahead of running.
+**Cardio next (★): Long Zone 2 Run or Hike on Sat 11/21 or Sun 11/22.** Today's double header — 3 sets of lying leg curls (closing the last MEV gap: hamstrings 6/6) followed by a **6-interval Norwegian 4×4** (50:08, 24 min hard work, max 182 bpm) — checked off every single lifting MEV AND your weekly HIIT session in one night. With two weekend days left, one steady, low-impact **Zone 2 run or hike** hits your ≥2 cardio/week target without piling more high-intensity stress on legs that just logged 24 minutes of Z4–Z5 intervals. If you also want a light weekend lift on the other day, Options 2 & 3 are a short, zero-leg **Upper & Arms MAV top-off** (11 sets, ~30–35 min) that pushes chest (10 → 12) and back (11 → 14) into Optimal MAV.
 
 ## Inputs used
 
-**Week so far (Mon 11/16 →, direct sets, counted the same way as the dashboard's Weekly Review):** 11/16 Yellowstone (Day 1 variant, 19 sets) + 11/17 P66 (mixed, partial, 10 sets) + 11/18 P66 (tailored legs & arms, 18 sets) + 11/19 Yellowstone (tailored upper + quad top-off, 16 sets) + 11/20 Yellowstone (hamstring top-off, 3 sets).
+**Week so far (Mon 11/16 →, direct sets, counted the same way as the dashboard's Weekly Review):** 11/16 Yellowstone (Day 1 variant, 19 sets) + 11/17 P66 (mixed, partial, 10 sets) + 11/18 P66 (tailored legs & arms, 18 sets) + 11/19 Yellowstone (tailored upper + quad top-off, 16 sets) + 11/20 Yellowstone (hamstring top-off, 3 sets) + 11/20 Norwegian 4×4 (6 intervals, 50:08).
 
 | Muscle | Done | MEV floor | After the next lift (either gym) | Status after |
 |---|---|---|---|---|
@@ -24,28 +24,26 @@ _Generated: 2026-11-20 (Fri, Mountain Time, after the Yellowstone lying leg curl
 | Triceps | 6 | 4 | 6 | ✅ ≥ MEV |
 | Abs | 6 | 0 | 6 | ✅ Optimal (MAV) |
 
-- **Last trained:** hamstrings 11/20 · chest, rear delts, back, triceps, quads 11/19 · side delts, biceps, abs 11/18.
-- **Cardio:** 0 sessions this week; last session 11/8 (hike), last Norwegian 4×4 11/4, last Zone 2 run 11/7.
+- **Last trained:** hamstrings & HIIT cardio 11/20 · chest, rear delts, back, triceps, quads 11/19 · side delts, biceps, abs 11/18.
+- **Cardio:** **1 session this week** (11/20 6-interval Norwegian 4×4, 50:08, avg 145 / max 182 bpm); last Zone 2 run 11/7 (2:15), last hike 11/8 (2:53).
 - **Constraints:** lower-back disc (no loaded spinal flexion, no heavy axial loading) · right knee (quad work pain-guided) · ⚠️ flags carried from `PROGRESS.md` (Yellowstone leg extension 400 lb, hammer curl 45×20, **P66 triceps pushdown 150×12**, **Yellowstone overhead triceps extension 11/12 150/135 lb vs the 60 lb baseline**).
-- **Preference signals applied** (see `ROUTINE.md` → Preference signals): cardio gets its own day · weekend-endurance pattern (reinforced 11/20 after weekday ★ cardio picks were deferred on 11/19 and 11/20) · superset flow · each gym's staples · rep-based cues because you push sets past the top of the range · **grip rule (2026-11-19): every cue names the grip and why.**
+- **Preference signals applied** (see `ROUTINE.md` → Preference signals): weekend endurance (long Zone 2 / hike on Sat/Sun) · superset flow · each gym's staples · rep-based cues because you push sets past the top of the range · **grip rule (2026-11-19): every cue names the grip and why.**
 
-## Option 1 — 🏃 Cardio: Norwegian 4×4 (treadmill) · ~40 min
+## Option 1 — 🏃 Cardio: Long Zone 2 Run or Hike · 60–120+ min
 
-_Pick this Sat 11/21: every muscle is already ≥ MEV, legs only did 3 isolation curl sets today (no heavy quads since Thu 11/19), and this gets the week's first cardio in before a Sunday Zone 2 / hike._
+_Pick this Sat 11/21 or Sun 11/22 (Sunday gives an extra day for legs to freshen up after Friday's 6-interval 4×4): low-impact aerobic base work that hits your 2nd cardio session of the week._
 
 | Block | Time | Target |
 |---|---|---|
-| Warm-up | 10 min | Easy jog, building into Zone 2 (138–151 bpm) |
-| 4 × hard interval | 4 min each | ~7.7–8.5 mph (your 10/11 speeds) · HR ~167–182 bpm (WHOOP Z4–Z5; 11/4 plateaus were 175–182) |
-| Recovery between | 3 min each (×3) | Walk / easy jog until HR is back to ~115–130 bpm |
-| Optional 5th round | 4 + 3 min | Only if recovery HR still drops under ~130 (you added one on 11/4) |
-| Cool-down | 5 min | Easy walk |
+| Warm-up | 10 min | Easy walk / slow jog, easing into low Zone 2 (~125–138 bpm) |
+| Steady Zone 2 | 45–110+ min | **HR 138–151 bpm** (conversational pace; you held 90%+ in-zone on 10/7 & 10/14 and went 2:15 on 11/7) |
+| Cool-down | 5–10 min | Easy walk until HR drops below ~120 bpm |
 
-**Alternative:** if hamstrings feel tight from Friday's curls or energy is low, swap to a **Zone 2 run** (45–60 min at 138–151 bpm; you held 90%+ in-zone on 10/7 and 10/14) or a **weekend hike** and save the 4×4 for Monday/Tuesday.
+**Alternative:** swap the run for a **weekend hike** (like your 11/8 5.5-mi / 1,362-ft hike) — great low-impact aerobic volume and easier on the legs after 24 min of hard treadmill intervals.
 
 ## Option 2 — 🏔️ Yellowstone Fitness: Upper & Arms MAV Top-off · ~30–35 min · 11 sets
 
-_Optional weekend lift (Sat 11/21 is ~48 h after Thu's chest/back and 72 h after Wed's side delts/biceps; zero leg work so it won't interfere with Sunday cardio)._
+_Optional weekend lift (Sat 11/21 is ~48 h after Thu's chest/back and 72 h after Wed's side delts/biceps; zero leg work so legs recover cleanly from Friday's curls + 6-interval 4×4)._
 
 | Block | Exercise | Sets × Reps | Load | Last time at Yellowstone | Cue |
 |---|---|---|---|---|---|
@@ -67,9 +65,9 @@ _Same muscles, set counts, and zero-leg recovery profile as Yellowstone, calibra
 
 ## Rest-of-week outlook
 
-- **All MEV floors are already covered** for Mon 11/16 – Sun 11/22 (chest 10, back 11, quads 9, hamstrings 6, side delts 6, rear delts 6, biceps 6, triceps 6, abs 6).
-- **Sat 11/21: Norwegian 4×4 (★)** — gets the week's first conditioning session in after 12 days without cardio.
-- **Sun 11/22: Long Zone 2 run or hike** (your 11/7–11/8 pattern) — hits the ≥2 cardio/week target. If you only want one weekend cardio session, pick whichever feels best and optionally slot in the 11-set Upper & Arms MAV top-off on the other day.
+- **All lifting MEV floors are covered** for Mon 11/16 – Sun 11/22 (chest 10, back 11, quads 9, hamstrings 6, side delts 6, rear delts 6, biceps 6, triceps 6, abs 6) and **1 cardio session (6-interval 4×4) is logged**.
+- **Sat 11/21:** Rest day or optional **11-set Upper & Arms MAV top-off** (Options 2/3, zero leg fatigue).
+- **Sun 11/22:** **Long Zone 2 run or hike (★)** to hit your 2nd cardio session of the week.
 - **Mon 11/23:** weekly set counts reset to 0 for the new Mon–Sun week.
 
 ## Recommendation history
@@ -80,5 +78,5 @@ _Fill in "What was done" at the next workout log (which option, swaps, skipped b
 |---|---|---|---|---|
 | 2026-11-18 | through 11/17 (P66 mixed, partial) | 🏃 Norwegian 4×4 · 🏔️ YS Legs & Arms ★ · 🏢 P66 Legs & Arms ★ | 🏢 **P66 Legs & Arms** (11/18, same day): leg curl ↔ leg extension 3×3 as planned (extension slowed), crunches 3×, hammer curl ↔ DB lateral raise 3×3, pushdown 3 sets. **Skipped:** leg press block (and the 4th curl / 4th pushdown set). Tried the planned 50 lb hammer curl (9/10/8, some cheating). | First tailored recommendation; replaces the fixed Day 1→5 rotation. Pushdown went well above the suggested ~103–108 lb (135×15, 150×12). First time the leg press was skipped, so no preference signal yet. |
 | 2026-11-18 (after P66 legs) | through 11/18 (P66 tailored legs & arms) | 🏃 Norwegian 4×4 ★ · 🏔️ YS Upper + Ham/Quad top-off · 🏢 P66 Upper + Ham/Quad top-off | 🏔️ **Yellowstone Upper Body + Quad top-off** (11/19, same day, partial match): pec deck ↔ reverse pec deck 4 + 3 sets, lat pulldown 3 sets (planned 4), overhead cable triceps extension 3 sets (in place of the planned 2-set pushdown), BSS 3×12 at 55 lb/hand (new PR). **Skipped:** the lying leg curl block, and the ★ Norwegian 4×4 (did not do cardio; lifted instead). | Cardio first (11 days without), then the upper + hamstring/quad top-off to close MEV gaps. First time the ★ cardio pick was replaced by a lift and the first lying-leg-curl skip: one occurrence each, not yet a preference signal. |
-| 2026-11-19 (after YS upper) | through 11/19 (Yellowstone tailored upper + quad top-off) | 🏃 Norwegian 4×4 ★ · 🏔️ YS Ham + Arms/Delts top-off · 🏢 P66 Ham + Arms/Delts top-off | 🏔️ **Yellowstone Hamstring Top-off (partial)** (11/20, next day): lying leg curl 120 lb × 12 × 3 sets (closed the last MEV gap: hamstrings 3 → 6). **Skipped:** ★ Norwegian 4×4 (deferred for lifting — 2nd consecutive weekday occurrence → preference signal added to `ROUTINE.md`), plus the remaining blocks of Option 2 (4th curl set, low cable row, lateral raise machine, EZ-bar curl). | Cardio first (now 12 days without), then a short hamstring (3/6 → 7) + arms/delts top-off; first plan with grip-reasoned cues (grip rule 11/19). |
-| 2026-11-20 (after YS hamstrings) | through 2026-11-20 (Yellowstone hamstring top-off, partial) | 🏃 Norwegian 4×4 ★ · 🏔️ YS Upper & Arms MAV top-off · 🏢 P66 Upper & Arms MAV top-off | _pending (fill in at next workout log)_ | Every muscle is now ≥ MEV; Sat/Sun weekend window opens for 4×4 + Zone 2/hike (0 cardio so far this week). |
+| 2026-11-19 (after YS upper) | through 11/19 (Yellowstone tailored upper + quad top-off) | 🏃 Norwegian 4×4 ★ · 🏔️ YS Ham + Arms/Delts top-off · 🏢 P66 Ham + Arms/Delts top-off | 🏃 **Norwegian 4×4 ★ (6 intervals: 4 @ 8 mph, 2 @ 7 mph, 50:08)** + 🏔️ **Lying Leg Curl 3×12 @ 120 lb** (11/20, same trip at Yellowstone). Closed the last MEV gap (hamstrings 3 → 6) and nailed the ★ cardio pick with 2 bonus rounds. | Cardio first (12 days without), then hamstring top-off — user combined the hamstring fix and an expanded 6-interval 4×4 on Fri night. |
+| 2026-11-20 (after 6-interval 4×4) | through 2026-11-20 (YS lying leg curl + 6-interval 4×4) | 🏃 Long Zone 2 Run / Hike ★ · 🏔️ YS Upper & Arms MAV top-off · 🏢 P66 Upper & Arms MAV top-off | _pending (fill in at next workout log)_ | Every muscle ≥ MEV and 4×4 done; one weekend Zone 2 run or hike hits ≥2 cardio/week. |
