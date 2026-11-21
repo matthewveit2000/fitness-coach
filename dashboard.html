@@ -733,7 +733,7 @@
   <section class="tab-panel" id="progress">
     <!-- What's Logged So Far (Stat Grid - Preserved for AGENTS.md) -->
     <div class="stat-grid">
-      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">68</span><span class="sub">across 4 months</span></div>
+      <div class="stat-card"><span class="label">Workout Entries</span><span class="value accent">69</span><span class="sub">across 4 months</span></div>
       <div class="stat-card"><span class="label">Meal Entries</span><span class="value accent">947</span><span class="sub">individual items</span></div>
       <div class="stat-card"><span class="label">Lift PRs</span><span class="value">0</span><span class="sub">official 1RMs</span></div>
       <div class="stat-card"><span class="label">Weigh-ins</span><span class="value">40</span><span class="sub">home scale (since 10/5)</span></div>
@@ -776,6 +776,26 @@
       </div>
       <!-- Session Cards Container -->
       <div id="workout-sessions-container">
+        <details class="session-card" open data-date="2026-11-20" data-cat="gym" data-pr="false">
+      <summary class="session-summary">
+        <div class="session-meta">
+          <span class="session-date">2026-11-20</span>
+          <span class="pill badge-gym">Gym (Tailored &mdash; Hamstring Top-off, partial)</span>
+        </div>
+        <span class="session-chevron">▾</span>
+      </summary>
+      <div class="session-content">
+        <p class="muted"><strong>2026-11-20 &mdash; Gym (Tailored &mdash; Hamstring Top-off, partial) &mdash; Yellowstone Fitness</strong></p>
+        <div class="table-wrap"><table>
+      <tr><th>Exercise</th><th>Reps</th><th>Weight</th></tr>
+      <tr><td>Leg Curl (lying variant)</td><td class="num">12</td><td class="num">120 lb</td></tr>
+      <tr><td>Leg Curl (lying variant)</td><td class="num">12</td><td class="num">120 lb</td></tr>
+      <tr><td>Leg Curl (lying variant)</td><td class="num">12</td><td class="num">120 lb</td></tr>
+    </table></div>
+        <div class="callout info">Quick 3-set hamstring top-off at Yellowstone Fitness (Fri Nov 20), following the opening block of the Yellowstone option from NEXT_WORKOUT (planned &#9733; Norwegian 4&times;4 deferred for lifting, 2nd straight day; remaining blocks not performed). RIR=0 default. <strong>Leg Curl (lying variant):</strong> 120lb x 12 on all three sets (e1RM 168.0lb each, High confidence inside &le;12-rep zone) &mdash; under the 180.0lb directional PR (11/12 120lb x 15), no PR change and no gym-comparability flag; first time holding 120lb x 12 across all three sets with zero rep drop-off (matching 11/12&rsquo;s 36-rep total). <strong>Closes the last remaining MEV gap</strong> for Week of Mon 11/16&ndash;Sun 11/22 (every muscle now &ge; MEV): chest 10, back 11, quads 9, hamstrings 6, side delts 6, rear delts 6, biceps 6, triceps 6, abs 6.</div>
+      </div>
+    </details>
+
         <details class="session-card" open data-date="2026-11-19" data-cat="gym" data-pr="true">
       <summary class="session-summary">
         <div class="session-meta">
@@ -4472,28 +4492,29 @@
   // weekly projection counts it; `optional: true` sets are shown but not projected.
   // ==========================================
   var NEXT_WORKOUT = {
-    generated: '2026-11-19',
-    basedOn: '2026-11-19',
+    generated: '2026-11-20',
+    basedOn: '2026-11-20',
     weekOf: '2026-11-16',
-    headline: 'Cardio next (4×4), then a Hamstring + Arms/Delts top-off',
+    headline: 'Cardio next (4×4), then Sunday Zone 2 / hike (all MEVs hit)',
     pick: ['cardio'],
-    coachCall: 'Cardio next (★): Norwegian 4×4 on Fri 11/20. It is your first cardio in 12 days (last session was the 11/8 hike; the Thu 11/19 4×4 got swapped for lifting) and it sits 24 h+ after today’s Bulgarian split squats. Then Sat: a short hamstring + arms/delts top-off at whichever gym you’re at. Today’s Yellowstone session put chest at 10, rear delts at 6, triceps at 6 and quads at 9 (all ≥ MEV), but skipped the lying leg curl, so hamstrings are the one real gap (3 of 6); side delts, biceps and back just need a small top-up. Close the week with a weekend Zone 2 run or hike.',
+    coachCall: 'Cardio next (★): Norwegian 4×4 on Sat 11/21 (followed by a long Zone 2 run or hike on Sun 11/22). Today’s 3 sets of lying leg curls closed the last remaining MEV gap of the week (hamstrings 3 → 6 of 6), so every single muscle group is now at or above MEV. Cardio is still at 0 sessions for the week — 12 days since the 11/8 hike and 16 days since the 11/4 4×4 — and with two weekend days left, getting both conditioning sessions in is the highest-ROI move. If you’d rather lift once more this weekend, Options 2 & 3 are a short, zero-leg MAV upper/arms top-off (11 sets, ~30–35 min) that pushes chest (10 → 12) and back (11 → 14) into Optimal MAV without taxing your legs ahead of running.',
     why: [
-      'Week of 11/16 so far: chest 10 · back 11 · quads 9 · hamstrings 3 · side delts 6 · rear delts 6 · biceps 6 · triceps 6 · abs 6 direct sets.',
-      'Chest, rear delts, back, triceps and quads were trained today (11/19); hamstrings, side delts, biceps and abs on 11/18, so they have 48 h+ before a Saturday top-off.',
-      'No cardio since the 11/8 hike (12 days); last Norwegian 4×4 on 11/4.',
-      'Today’s swaps (4×4 replaced by lifting, lying leg curl skipped) are first occurrences, not yet preference signals. ⚠️ P66 pushdown 150 × 12 and the 11/12 Yellowstone overhead triceps extension reads stay unconfirmed.'
+      'Week of 11/16 so far: chest 10 · back 11 · quads 9 · hamstrings 6 · side delts 6 · rear delts 6 · biceps 6 · triceps 6 · abs 6 direct sets — every muscle is now ≥ MEV.',
+      'Hamstrings were trained today (11/20); chest, back, quads, rear delts and triceps on 11/19 (~48 h by Sat); side delts, biceps and abs on 11/18 (72 h+ by Sat).',
+      'No cardio since the 11/8 hike (12 days); last Norwegian 4×4 on 11/4 (16 days).',
+      'Weekday ★ cardio picks were deferred for lifting on both 11/19 and 11/20 (added to preference signals — Sat/Sun is the primary cardio window). ⚠️ P66 pushdown 150 × 12 and 11/12 Yellowstone overhead triceps extension reads stay unconfirmed.'
     ],
     outlook: [
-      'Fri 11/20: Norwegian 4×4 (≥24 h after today’s Bulgarian split squats).',
-      'Sat 11/21: hamstring + arms/delts top-off (either gym option). That puts every muscle at or above MEV by Sunday: chest 10, back 13, quads 9, hamstrings 7, side delts 9, rear delts 6, biceps 9, triceps 6.',
-      'Sun 11/22: long Zone 2 run or hike (your 11/7–11/8 pattern). Target ≥2 cardio sessions per week; if Friday’s 4×4 slips, make Sunday the cardio day and still do the Saturday lift.'
+      'All MEV floors are already covered for Mon 11/16 – Sun 11/22.',
+      'Sat 11/21: Norwegian 4×4 (★) — gets the week’s first conditioning session in after 12 days without cardio.',
+      'Sun 11/22: Long Zone 2 run or hike (your 11/7–11/8 pattern) to hit the ≥2 cardio/week target; or swap in the 11-set Upper & Arms MAV top-off on one day if you only want one weekend cardio session.',
+      'Mon 11/23: weekly set counts reset to 0 for the new Mon–Sun week.'
     ],
     options: [
       {
         key: 'cardio', label: 'Cardio', icon: '🏃', title: 'Norwegian 4×4', sub: 'Treadmill intervals · ~40 min',
         chips: ['~40 min', 'HR 167–182 hard', 'Z2 138–151 easy'],
-        fit: 'Pick this Fri 11/20: it is ≥24 h after today’s Bulgarian split squats and gets the week’s first cardio in.',
+        fit: 'Pick this Sat 11/21: every muscle is already ≥ MEV, legs only did 3 isolation curl sets today (no heavy quads since Thu 11/19), and this gets the week’s first cardio in before a Sunday Zone 2 / hike.',
         intervals: [
           { label: '10′', min: 10, kind: 'easy', name: 'Warm-up' },
           { label: '4′', min: 4, kind: 'hard', name: 'Hard 1' }, { label: '3′', min: 3, kind: 'rec', name: 'Recover' },
@@ -4509,34 +4530,34 @@
           { name: 'Optional 5th round', detail: 'Only if recovery HR still drops under ~130. You added one on 11/4.' },
           { name: 'Cool-down · 5 min', detail: 'Easy walk.' }
         ],
-        alt: 'Legs heavy or energy low? Do a Zone 2 run instead: 45–60 min at 138–151 bpm. You held 90%+ in-zone on 10/7 and 10/14.'
+        alt: 'Hamstrings tight from Friday’s curls or energy low? Swap to a Zone 2 run (45–60 min at 138–151 bpm; 90%+ in-zone on 10/7 & 10/14) or a weekend hike and save the 4×4 for Mon/Tue.'
       },
       {
-        key: 'ys', label: 'Yellowstone', icon: '🏔️', title: 'Hamstring + Arms/Delts top-off', sub: 'Yellowstone Fitness · ~35–40 min',
-        chips: ['~35–40 min', '12 sets'],
-        fit: 'Closes the hamstring gap (3 → 7) with your lying leg curl, then tops up back, side delts and biceps. Every grip is named with its reason.',
+        key: 'ys', label: 'Yellowstone', icon: '🏔️', title: 'Upper & Arms MAV top-off', sub: 'Yellowstone Fitness · ~30–35 min',
+        chips: ['~30–35 min', '11 sets', 'Zero leg load'],
+        fit: 'Optional weekend lift (~48 h after Thu’s chest/back, 72 h after Wed’s side delts/biceps): pushes chest (10 → 12) and back (11 → 14) into Optimal MAV and tops off side delts and biceps with zero leg fatigue.',
         blocks: [
-          { tag: 'SUPERSET 1', focus: 'Hamstrings ↔ Back', ex: [
-            { name: 'Lying Leg Curl', muscle: 'Hamstrings', sets: 4, reps: '10–15', load: '~101–114 lb', last: '120×15, 11, 10 · 11/12', cue: '120 is your working weight: stay there and push each set to 12+. Hips pinned to the pad; grip the handles lightly so the hamstrings, not your arms, finish the rep.' },
-            { name: 'Low Cable Row (neutral narrow grip)', muscle: 'Back', sets: 2, reps: '10–12', load: '~189–198 lb', last: '205×12, 10, 10, 9 · 11/10', cue: 'Grip: neutral narrow (V-handle). It keeps the elbows tucked so the lats and mid-back do the work, and it is the grip you have logged at 205 here. Keep the torso upright and do not round forward (disc).' }
+          { tag: 'SUPERSET 1', focus: 'Back ↔ Chest', ex: [
+            { name: 'Low Cable Row (neutral narrow grip)', muscle: 'Back', sets: 3, reps: '10–12', load: '~189–198 lb', last: '205×12, 10, 10, 9 · 11/10', cue: 'Grip: neutral narrow (V-handle). Keeps elbows tucked to drive lats and mid-back, matches your confirmed 205-lb Yellowstone grip, and keeps your torso upright without rounding forward (disc).' },
+            { name: 'Incline DB Press', muscle: 'Chest', sets: 2, reps: '8–12', load: '~61.5–68 lb', last: '70×10, 8 · 65×9 · 11/10', cue: 'Grip: ~45° semi-pronated (neutral-angled wrists). Easier on the front shoulders than flared elbows while keeping upper-chest tension high; dumbbells let you set the exact angle. Stay at 70 and chase 11–12s.' }
           ] },
           { tag: 'SUPERSET 2', focus: 'Side Delts ↔ Biceps', ex: [
-            { name: 'Lateral Raise Machine', muscle: 'Side Delt', sets: 3, reps: '12–15', load: '~88–94 lb', last: '110×10, 9, 100×10 · 11/16', cue: 'You have worked at 100–110: start at 100 and build to 12+ before going back to 110. Hands: rest the forearm on the pad and hold the handle loosely so the delt, not the grip, does the lift.' },
-            { name: 'EZ-Bar Curl', muscle: 'Biceps', sets: 3, reps: '10–12', load: '~71–75 lb', last: '85×9, 80×7, 75×6 · 11/16', cue: 'Grip: outer (wider) EZ bends, palms up. Wider hands bias the short head, the angled bar spares your wrists, and your hammer curls already cover brachialis/forearm. 85 was too heavy for strict reps: start at 75.' }
+            { name: 'Lateral Raise Machine', muscle: 'Side Delt', sets: 3, reps: '12–15', load: '~88–94 lb', last: '110×10, 9 · 100×10 · 11/16', cue: 'You have hit 110×10 five straight times: either test 115–120 on set 1 or start at 100 and build to 12+. Hands: rest the forearm on the pad and hold the handle loosely so the side delt, not your grip, does the lift.' },
+            { name: 'EZ-Bar Curl', muscle: 'Biceps', sets: 3, reps: '10–12', load: '~71–75 lb', last: '85×9, 80×7, 75×6 · 11/16', cue: 'Grip: outer (wider) EZ bends, palms up. Wider hands bias the biceps short head, the angled bar spares your wrists, and your hammer curls already cover brachialis/forearm. Start at 75 for strict 10–12s.' }
           ] }
         ]
       },
       {
-        key: 'p66', label: 'Phillips 66', icon: '🏢', title: 'Hamstring + Arms/Delts top-off', sub: 'P66 work gym · ~35–40 min',
-        chips: ['~35–40 min', '12 sets'],
-        fit: 'Closes the hamstring gap (3 → 7) on the 215-lb leg curl, then tops up back, side delts and biceps. Every grip is named with its reason.',
+        key: 'p66', label: 'Phillips 66', icon: '🏢', title: 'Upper & Arms MAV top-off', sub: 'P66 work gym · ~30–35 min',
+        chips: ['~30–35 min', '11 sets', 'Zero leg load'],
+        fit: 'Same muscles, set counts, and zero-leg recovery profile as Yellowstone, calibrated to P66’s equipment.',
         blocks: [
-          { tag: 'SUPERSET 1', focus: 'Hamstrings ↔ Back', ex: [
-            { name: 'Leg Curl', muscle: 'Hamstrings', sets: 4, reps: '12–15', load: '~194–207 lb', last: '215×12, 12, 12 · 11/18', cue: '215 for 12 on every set: stay at 215 and push for 15s. Hips pinned to the pad; hold the handles lightly.' },
-            { name: 'Low Cable Row (neutral narrow grip)', muscle: 'Back', sets: 2, reps: '10–12', load: '~189–198 lb', last: '205×10, 10 · 190×12, 12 · 11/17', cue: 'Grip: neutral narrow (V-handle). Elbows tucked drives the lats/mid-back; keep the torso upright (disc). Start at 190–195.' }
+          { tag: 'SUPERSET 1', focus: 'Back ↔ Chest', ex: [
+            { name: 'Low Cable Row (neutral narrow grip)', muscle: 'Back', sets: 3, reps: '10–12', load: '~189–198 lb', last: '205×10, 10 · 190×12, 12 · 11/17', cue: 'Grip: neutral narrow (V-handle). Elbows tucked drives lats/mid-back; keep torso upright and braced (disc). Start at 195–205.' },
+            { name: 'Incline DB Press', muscle: 'Chest', sets: 2, reps: '8–12', load: '~61.5–68 lb', last: '70×10, 9, 8 · 11/17', cue: 'Grip: ~45° semi-pronated (neutral-angled wrists). Protects the shoulders while keeping upper-chest alignment clean; stay at 70 and push for 11+ on set 1.' }
           ] },
           { tag: 'SUPERSET 2', focus: 'Side Delts ↔ Biceps', ex: [
-            { name: 'DB Lateral Raise', muscle: 'Side Delt', sets: 3, reps: '12–15', load: '~24–25.7 lb', last: '25×15, 15, 12 · 11/18', cue: 'Grip: overhand (palms down) with a slight pinky-up tilt. It biases the side delt over the traps; hold the DB loosely in the fingers. Stay at 25 and get all three sets to 15.' },
+            { name: 'DB Lateral Raise', muscle: 'Side Delt', sets: 3, reps: '12–15', load: '~24–25.7 lb', last: '25×15, 15, 12 · 11/18', cue: 'Grip: overhand (palms down) with a slight pinky-up tilt. Biases the side delt over the traps; hold the DB loosely in the fingers. Stay at 25 and hit clean full-ROM 15s across all 3 sets.' },
             { name: 'DB Curl', muscle: 'Biceps', sets: 3, reps: '10–12', load: '~38.5–40.5 lb', last: '40×10, 10 · 35×10 · 11/9', cue: 'Grip: supinated (palms up), turning the palm up as you lift. Hammer curl (neutral) was Wed 11/18 and already hit brachialis/forearm, so target the biceps peak today. Stay at 40 and chase 12s.' }
           ] }
         ]
